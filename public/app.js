@@ -16,7 +16,7 @@ const state = {
   index: 0,
   selected: null,
   locked: false,
-  lifelines: { fifty: true, audience: true },
+  lifelines: { fifty: true, seventy: true, audience: true },
   removed: [],
   answers: [],
 };
@@ -255,6 +255,10 @@ function useLifeline(name) {
       }
     });
     state.lifelines.fifty = false;
+  } else if (name === 'seventy') {
+    state.lifelines.seventy = false;
+    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    return;
   } else if (name === 'audience') {
     const dist = audienceVote(q, state.index);
     const out = document.getElementById('lifelineOutput');
