@@ -12,35 +12,77 @@ Vt arendusprotsessi ja kasutajalugusid: [`docs/BACKLOG.md`](docs/BACKLOG.md), [`
 
 - **Backend:** Node.js (≥18) + Express 4
 - **Frontend:** vanilla HTML / CSS / JavaScript ESM, ilma raamistikuta — väike lähteülesanne ei õigusta React/Vue keerukust
-- **AI:** [Anthropic Claude](https://www.anthropic.com) ametliku SDK kaudu (`@anthropic-ai/sdk`), mudel `claude-sonnet-4-6` (konfigureeritav)
+- **AI (kolm valikut, automaatselt tuvastatav):**
+  - **Anthropic API** otse (`@anthropic-ai/sdk`) — kui `ANTHROPIC_API_KEY` on seatud.
+  - **Claude Code CLI** läbi `claude -p` — kui CLI on serveris paigaldatud ja sisse logitud (Pro/Max tellimus). API võtit pole vaja.
+  - **Mock-režiim** — kui kumbagi ülaltoodutest pole. 15 demoküsimust malli põhjal.
 - **Failide lugemine:** Node `node:fs/promises`, ignoreerib `node_modules`, `.git`, `vendor` jt
 - **Kogu konfiguratsioon:** `.env` fail (vt `.env.example`)
 
-API võtmeta käivitades töötab rakendus **mock-režiimis** — küsimused genereeritakse lokaalselt deterministliku malli põhjal, et terve mänguvoogu saaks demonstreerida ka ilma võtmeta.
+Allikate **prioriteet** (server tuvastab automaatselt):
+1. Kui `ANTHROPIC_API_KEY` on seatud → Anthropic API.
+2. Muidu kui `claude` binaar on PATH-il ja vastab `--version`-ile → Claude CLI.
+3. Muidu → mock-režiim.
+
+`USE_CLAUDE_CLI=true` keskkonnamuutuja **forsseerib** CLI eelistamise ka siis, kui API võti on seatud. `USE_CLAUDE_CLI=false` keelab CLI tuvastuse täielikult.
 
 ## Käivitamise juhend
 
-```bash
-# 1. Klooni või lae alla projekt
-cd kuldvillak
+### Variant A — kasuta enda Claude tellimust serveris (ilma API võtmeta)
 
-# 2. Paigalda sõltuvused
+See on tõenäoliselt see, mida sa otsid: kui Hetzneri (või muul) serveril on Claude Code paigaldatud ja sisse logitud (`claude /login`), siis iga `POST /api/tasks/:id/questions` käivitab `claude -p "..."` lapseprotsessina ja päring läheb sinu tellimuse arvele. API võtit ega lisaraha ei lähe vaja.
+
+```bash
+# 1. Hetzneri serveris — paigalda Claude Code
+curl -fsSL https://claude.ai/install.sh | sh
+# (või npm i -g @anthropic-ai/claude-code, vt https://claude.com/code paigaldusjuhendit)
+
+# 2. Logi sisse (avab brauseris OAuth-i)
+claude /login
+
+# 3. Kontrolli, et CLI vastab
+claude --version
+
+# 4. Klooni rakendus, paigalda sõltuvused
+git clone <see repo>
+cd kuldvillak
 npm install
 
-# 3. (Soovituslik) Lisa Anthropic API võti
-cp .env.example .env
-# Ava .env ja lisa ANTHROPIC_API_KEY=sk-ant-...
-
-# 4. Käivita server
+# 5. Käivita server
 npm start
-# või arendusrežiimis (auto-restart):
-npm run dev
-
-# 5. Ava brauser
-# http://localhost:3000
+# Konsoolis peaks olema: [Claude CLI (claude-sonnet-4-6)]
 ```
 
-Kui näed lehe ülaosas kollast silti **„AI ühendus: aktiivne (Anthropic)"**, töötab päris AI integratsioon. Kui silt on hall (**„Demorežiim: mock-küsimused"**), tähendab see, et `ANTHROPIC_API_KEY` puudub või on tühi.
+Brauseris `http://<sinu-server>:3000` — silt üleval on **roheline** „Claude CLI (claude-sonnet-4-6)".
+
+> **NB! Aeglus:** iga `claude -p` käivitus võtab CLI startup'i + mudeli mõtlemise (~20–60 s 15 küsimusele). Brauseri spinner näitab seda kasutajale. Vaikimisi on timeout 4 minutit (`CLAUDE_CLI_TIMEOUT_MS`).
+>
+> **NB! Concurrency:** iga päring = uus alamprotsess. Kui kümme inimest mängib korraga, käivitub serveris 10 `claude` protsessi paralleelselt.
+
+### Variant B — Anthropic API võti
+
+```bash
+npm install
+cp .env.example .env
+# Ava .env ja lisa ANTHROPIC_API_KEY=sk-ant-...
+npm start
+# Silt on kollane: „Anthropic API (claude-sonnet-4-6)"
+```
+
+### Variant C — kiire demo ilma midagi paigaldamata
+
+```bash
+npm install && npm start
+# Silt on hall: „Demorežiim: mock-küsimused"
+```
+
+### Sildid (UI ülemises ribas)
+
+| Värv | Tähendus |
+|------|----------|
+| 🟡 kollane | Anthropic API (otse pilv) |
+| 🟢 roheline | Claude CLI (sinu tellimus, läbi `claude -p`) |
+| ⚪ hall | Mock-režiim |
 
 ## Input-kausta struktuur
 

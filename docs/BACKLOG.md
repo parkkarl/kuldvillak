@@ -160,21 +160,44 @@ Seotud failid: `public/app.js` (`confirmAnswer`, `finishGame`).
 
 **Vastuvõtutingimused:**
 - [x] Rakendus käivitub edukalt ilma `ANTHROPIC_API_KEY`-ta.
-- [x] AI staatus on UI-s selgelt nähtav (kollane = päris, hall = mock).
+- [x] AI staatus on UI-s selgelt nähtav (kollane = pilv, roheline = CLI, hall = mock).
 - [x] Mock genereerib 15 küsimust, mis kasutavad ülesande pealkirja ja faili­nimesid, et kontekst oleks vähemalt osaliselt seotud.
+
+---
+
+### US-11: Päris AI ilma API võtmeta — Claude CLI serveris *(Done)*
+
+**Roll:** õpilane / hindaja
+**Soov:** kui rakendus jookseb minu serveris, kus olen Claude Code CLI-ga sisse logitud, läheks päring sealt edasi mudelisse — ilma et kuhugi peaks API võtit panema.
+**Et:** brauseris kasutaja saab päris AI-genereeritud sisuga küsimusi, kuid kogu Anthropic'uga suhtlemine käib ühe inimese (serveri omaniku) tellimuse alt.
+
+**Vastuvõtutingimused:**
+- [x] Rakendus tuvastab automaatselt, kas `claude` binaar on PATH-il (`claude --version` exit code 0).
+- [x] Allikate prioriteet: `ANTHROPIC_API_KEY` > Claude CLI > mock.
+- [x] `USE_CLAUDE_CLI=true` forsseerib CLI-eelistuse ka võtme olemasolul; `USE_CLAUDE_CLI=false` keelab CLI tuvastuse.
+- [x] Sama prompt (`prompts/question-generation.md`) töötab kõigil kolmel allikal.
+- [x] Sama JSON-leping ja sama valideerimine (15 küsimust, 4 varianti, üks õige, selgitus, raskusaste).
+- [x] CLI helistatakse `child_process.spawn`-iga (mitte shell'i kaudu) — koodisisu argv'sse otse, ei pea escaping'uga maadlema.
+- [x] Süsteemi prompt edastatakse `--append-system-prompt` lipuga, kasutaja sõnum `-p` argumendiga.
+- [x] CLI-protsessile määratud timeout (vaikimisi 4 min); aeglane vastus ei jäta päringut igavesti rippuma.
+- [x] Vea/timeout korral selge sõnum UI-s, mitte rakenduse kukkumine.
+- [x] Frontend näitab rohelist silti „Claude CLI (<mudel>)" kui see on aktiivne.
+- [x] README dokumenteerib Hetzneri-stiilis paigaldusvoogu (paigalda → `claude /login` → `npm start`).
+
+Seotud failid: `src/claudeCliClient.js`, `src/aiClient.js` (ruuter), `.env.example`, `README.md`.
 
 ---
 
 ## Backlog (tulevased iteratsioonid, planeerimata)
 
-- **US-11:** Tulemuste salvestamine kohalikku andmebaasi (SQLite) ja mänguajaloo vaade.
-- **US-12:** Genereeritud küsimuste vahemälu, et sama ülesande sama versiooni puhul saaks taas­kasutada.
-- **US-13:** Kasutajate süsteem (õpilane / õpetaja rollid).
-- **US-14:** Õpetaja vaade — kõikide õpilaste tulemused ühes kohas.
-- **US-15:** Veebiliides ülesannete lisamiseks (üleslaadimine).
-- **US-16:** Süntaksivärvimine koodifailide kuvamisel (`highlight.js`).
-- **US-17:** Korralik Markdown render (`marked` paketi täielik kasutus, mitte minimaalne renderer).
-- **US-18:** Mitmekeelne UI (eesti / inglise).
+- **US-12:** Tulemuste salvestamine kohalikku andmebaasi (SQLite) ja mänguajaloo vaade.
+- **US-13:** Genereeritud küsimuste vahemälu, et sama ülesande sama versiooni puhul saaks taas­kasutada.
+- **US-14:** Kasutajate süsteem (õpilane / õpetaja rollid).
+- **US-15:** Õpetaja vaade — kõikide õpilaste tulemused ühes kohas.
+- **US-16:** Veebiliides ülesannete lisamiseks (üleslaadimine).
+- **US-17:** Süntaksivärvimine koodifailide kuvamisel (`highlight.js`).
+- **US-18:** Korralik Markdown render (`marked` paketi täielik kasutus, mitte minimaalne renderer).
+- **US-19:** Mitmekeelne UI (eesti / inglise).
 
 ---
 
@@ -192,7 +215,8 @@ Seotud failid: `public/app.js` (`confirmAnswer`, `finishGame`).
 | US-8 | Õpetaja lisab ülesande | Done | 1 |
 | US-9 | Õlekõrred | Done | 2 |
 | US-10 | Mock-režiim | Done | 2 |
-| US-11..18 | Vt backlog | Backlog | — |
+| US-11 | Claude CLI serveris | Done | 2 |
+| US-12..19 | Vt backlog | Backlog | — |
 
 ---
 
