@@ -1,0 +1,6 @@
+body { font-family: system-ui, sans-serif; background: #fafafa; padding: 32px; }
+.list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.book { background: #fff; padding: 16px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.book h2 { margin: 0 0 4px; font-size: 18px; }
+.book .meta { color: #666; font-size: 14px; }
+.error { color: #b03030; }
