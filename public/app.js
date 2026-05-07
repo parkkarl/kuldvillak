@@ -166,7 +166,10 @@ function renderQuestion() {
   state.selected = null;
   state.locked = false;
   state.removed = [];
-  document.getElementById('confirmBtn').disabled = true;
+  const confirmBtn = document.getElementById('confirmBtn');
+  confirmBtn.disabled = true;
+  confirmBtn.textContent = 'Kinnita vastus';
+  confirmBtn.onclick = null;
   document.getElementById('feedback').classList.add('hidden');
   document.getElementById('lifelineOutput').classList.add('hidden');
 
@@ -219,20 +222,22 @@ function confirmAnswer() {
   feedback.classList.toggle('wrong', !correct);
   feedback.innerHTML = `<strong>${correct ? '✓ Õige!' : '✗ Vale!'}</strong> ${escapeHtml(q.explanation || '')}`;
 
-  document.getElementById('confirmBtn').disabled = true;
-
-  setTimeout(() => {
-    if (!correct) {
-      finishGame({ reason: 'wrong' });
-      return;
-    }
-    if (state.index === PRIZES.length - 1) {
-      finishGame({ reason: 'won' });
-      return;
-    }
+  const confirmBtn = document.getElementById('confirmBtn');
+  const isLastCorrect = correct && state.index === PRIZES.length - 1;
+  if (!correct) {
+    confirmBtn.textContent = 'Vaata tulemust';
+  } else if (isLastCorrect) {
+    confirmBtn.textContent = 'Vaata võitu';
+  } else {
+    confirmBtn.textContent = 'Edasi →';
+  }
+  confirmBtn.disabled = false;
+  confirmBtn.onclick = () => {
+    if (!correct) { finishGame({ reason: 'wrong' }); return; }
+    if (isLastCorrect) { finishGame({ reason: 'won' }); return; }
     state.index += 1;
     renderQuestion();
-  }, 2200);
+  };
 }
 
 function useLifeline(name) {
