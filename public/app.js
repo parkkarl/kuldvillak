@@ -256,12 +256,10 @@ function useLifeline(name) {
     });
     state.lifelines.fifty = false;
   } else if (name === 'seventy') {
-    // piped.video is an open-source ad-free YouTube frontend.
-    // autoplay=1 starts the video; the browser may still autoply it muted on
-    // a first visit to piped.video (autoplay-with-sound is blocked unless the
-    // user has prior media-engagement on the domain). One click on the
-    // speaker icon and they're rickrolled the way nature intended.
-    window.open('https://piped.video/watch?v=dQw4w9WgXcQ&autoplay=1', '_blank', 'noopener');
+    // YouTube watch page autoplays with sound for most users, since they
+    // have prior media-engagement on youtube.com (browser autoplay policy).
+    // Trade-off: pre-roll ads may play first.
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank', 'noopener');
     state.lifelines.seventy = false;
   } else if (name === 'audience') {
     const dist = audienceVote(q, state.index);
