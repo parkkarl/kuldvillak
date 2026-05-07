@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kalkulaator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="calc">
+      <h1>Lihtne kalkulaator</h1>
+      <label>Esimene arv: <input id="a" type="number" /></label>
+      <label>Teine arv: <input id="b" type="number" /></label>
+      <div class="buttons">
+        <button data-op="add">+</button>
+        <button data-op="sub">−</button>
+        <button data-op="mul">×</button>
+        <button data-op="div">÷</button>
+      </div>
+      <output id="result" aria-live="polite"></output>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
