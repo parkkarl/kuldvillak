@@ -3,312 +3,312 @@
     "level": 1,
     "question": "Mis on selle ülesande peamine eesmärk?",
     "options": [
-      "Saata e-kirju kasutaja sõpradele",
+      "Teha tabeliarvutusprogramm Excel-stiilis lahtrite ja valemitega",
       "Teha brauseris töötav kalkulaator nelja põhitehte jaoks",
-      "Kuvada Eesti raamatute nimekirja",
-      "Salvestada andmeid serverisse"
+      "Teha valuutakonverteerija, mis arvutab kursi reaalajas",
+      "Teha kalkulaator, mis salvestab arvutuste ajaloo localStorage'isse"
     ],
     "correctIndex": 1,
-    "explanation": "assignment.md sõnastab eesmärgina kalkulaatori, mis teeb liitmist, lahutamist, korrutamist ja jagamist."
+    "explanation": "assignment.md sõnastab eesmärgina lihtsa kalkulaatori (+, −, ×, ÷). Ajalugu, valuutad ja Excel-funktsionaalsus pole ülesande nõuded."
   },
   {
     "level": 1,
     "question": "Mitu sisendvälja on lehel kasutaja arvude jaoks?",
-    "options": ["Üks", "Kaks", "Kolm", "Neli"],
+    "options": ["Üks (üks väli mõlema arvu jaoks)", "Kaks (eraldi väli iga arvu jaoks)", "Kolm (kaks arvu + tehte tüüp)", "Neli (kaks arvu + kaks abi-välja)"],
     "correctIndex": 1,
-    "explanation": "Lahendus sisaldab kahte input-välja: #a (esimene arv) ja #b (teine arv)."
+    "explanation": "Lahendus sisaldab kahte input-välja: #a (esimene arv) ja #b (teine arv). Tehte valib kasutaja eraldi nupuga, mitte tekstiväljast."
   },
   {
     "level": 1,
     "question": "Mitu tehte-nuppu kuvatakse kasutajale?",
-    "options": ["Kaks", "Kolm", "Neli", "Viis"],
+    "options": ["Kaks (+, −)", "Kolm (+, −, =)", "Neli (+, −, ×, ÷)", "Viis (+, −, ×, ÷, =)"],
     "correctIndex": 2,
-    "explanation": "Lehel on neli nuppu: +, −, ×, ÷ — vastavalt liitmine, lahutamine, korrutamine, jagamine."
+    "explanation": "Lahenduses on neli nuppu: +, −, ×, ÷. Eraldi `=`-nuppu pole — iga tehte-nupu klõps käivitab arvutuse."
   },
   {
     "level": 1,
     "question": "Millises failis on lehe HTML-struktuur?",
     "options": ["script.js", "style.css", "index.html", "package.json"],
     "correctIndex": 2,
-    "explanation": "index.html sisaldab vormi, nuppude ja tulemus-elemendi märgendust."
+    "explanation": "index.html sisaldab vormi-elemente, nuppe ja tulemuse-elementi. script.js on loogika, style.css on stiil."
   },
   {
     "level": 2,
     "question": "Mis on faili style.css peamine roll?",
     "options": [
-      "Käivitab JavaScripti tehted",
+      "Sisaldab käivitatavat JavaScripti loogikat",
       "Kirjeldab lehe visuaalset kujundust ja paigutust",
-      "Salvestab andmebaasi struktuuri",
-      "Loob serveri ühenduse"
+      "Sisaldab andmeid (näiteks tehete nimekirja) JSON-iks parsitavalt",
+      "Sisaldab konfiguratsiooniandmeid arendaja jaoks (näiteks API-võtmed)"
     ],
     "correctIndex": 1,
-    "explanation": "CSS-fail kirjeldab värve, fonte, paigutust — visuaalset kihti, mitte loogikat."
+    "explanation": "CSS-fail kirjeldab värve, fonte, paigutust — visuaalset kihti. Loogika on JS-is, andmed pole sellisel kujul vajalikud, konfiguratsioon ei kuulu CSS-i."
   },
   {
     "level": 2,
     "question": "Millises failis on tehte arvutuse loogika?",
-    "options": ["index.html", "style.css", "script.js", "data.json"],
+    "options": ["index.html (inline <script>)", "style.css", "script.js", "data.json"],
     "correctIndex": 2,
-    "explanation": "script.js sisaldab operations-objekti ja sündmuste käitlejaid, mis arvutavad tulemuse."
+    "explanation": "script.js sisaldab operations-objekti ja sündmuse käitlejaid. Inline-skriptid HTML-is on tehniliselt võimalikud, aga selles lahenduses neid pole."
   },
   {
     "level": 2,
     "question": "Mis tüüpi on input-väljad HTML-is?",
-    "options": ["text", "email", "number", "password"],
+    "options": ["text", "tel", "number", "search"],
     "correctIndex": 2,
-    "explanation": "type=\"number\" lubab brauseril ainult numbreid sisendiks ja kuvada näiteks üles-alla noole."
+    "explanation": "type=\"number\" lubab brauseril ainult numbreid sisendiks ja kuvada üles-alla noole. text aktsepteeriks suvalist teksti, tel oleks telefoninumbri jaoks, search annaks otsingu-stiili."
   },
   {
     "level": 2,
     "question": "Kuidas seostab HTML iga nuppu konkreetse tehtega?",
     "options": [
-      "Klassi nime kaudu",
-      "id-atribuudi kaudu",
+      "Klassi nime kaudu (näiteks class=\"add\")",
+      "id-atribuudi kaudu (näiteks id=\"btn-add\")",
       "data-op atribuudi kaudu (näiteks data-op=\"add\")",
-      "title-atribuudi kaudu"
+      "name-atribuudi kaudu (näiteks name=\"add\")"
     ],
     "correctIndex": 2,
-    "explanation": "Iga nupul on data-op=\"add\"|\"sub\"|\"mul\"|\"div\" — JS loeb seda btn.dataset.op kaudu."
+    "explanation": "Igal nupul on data-op=\"add|sub|mul|div\". JS loeb btn.dataset.op kaudu. Kõik teised on tehniliselt võimalikud, aga lahendus eelistab data-* atribuuti, mis on disainitud just selliseks juhuks."
   },
   {
     "level": 3,
     "question": "Mida teeb funktsioon Number(input.value) selles lahenduses?",
     "options": [
-      "Liidab kõik numbrid kokku",
+      "Teisendab string-väärtuse arvuks; ebaõnnestumisel viskab TypeError-i",
       "Teisendab string-väärtuse arvuks; ebaõnnestumisel tagastab NaN",
-      "Eemaldab kõik tähed",
-      "Genereerib juhusliku arvu"
+      "Teisendab string-väärtuse täisarvuks (parseInt-stiilis), kümnendkohad kaovad",
+      "Teisendab string-väärtuse arvuks; ebaõnnestumisel tagastab 0"
     ],
     "correctIndex": 1,
-    "explanation": "Number(\"3.5\") = 3.5, Number(\"abc\") = NaN. Sealt edasi kontrollib kood Number.isNaN-iga."
+    "explanation": "Number(\"3.5\") = 3.5, Number(\"abc\") = NaN. Number() ei viska viga ega tagasta 0; kümnendkohad säilivad (erinevalt parseInt-ist)."
   },
   {
     "level": 3,
     "question": "Mis juhtub, kui kasutaja jätab esimese sisendvälja tühjaks ja vajutab '+'?",
     "options": [
-      "Tulemuseks on 0",
+      "Tulemuseks on 0 — tühi sisend käsitletakse nullina",
       "readNumber viskab Error 'Esimene arv on tühi' ja kasutaja näeb punast veasõnumit",
-      "Brauser kraashib",
-      "Leht laeb uuesti"
+      "Tulemuseks on NaN ja seda kuvatakse otse kasutajale",
+      "Brauser blokeerib nupuvajutuse, kuna vorm pole täidetud"
     ],
     "correctIndex": 1,
-    "explanation": "readNumber kontrollib trim() == '' ja viskab Error-i; catch-blokk paneb result.classList.add('error')."
+    "explanation": "readNumber kontrollib trim() === '' ja viskab Error-i; catch-blokk paneb result.classList.add('error'). Lahendus EI käsitle tühja kui 0 ega lase NaN-i otse läbi."
   },
   {
     "level": 3,
     "question": "Miks tuleb input.value Number()-iga teisendada?",
     "options": [
       "Sest input.value on alati string ja matemaatiliseks tehteks vajame numbrit",
-      "Sest brauser nõuab seda turvalisuse pärast",
-      "Sest CSS-il on vaja arvu",
-      "Pole vajalik — input.value on juba arv"
+      "Sest type=\"number\" tagastab arvu vaid mõnes brauseris, teisendus tagab ühtluse",
+      "Sest CSS-il on vaja arvu, et stiilid töötaksid",
+      "Sest JavaScript ei luba arve sisestada ilma teisendusteta"
     ],
     "correctIndex": 0,
-    "explanation": "input.value on string ka type=\"number\" puhul. \"5\" + \"3\" annaks \"53\", mitte 8."
+    "explanation": "input.value on string ka type=\"number\" puhul (igas brauseris). \"5\" + \"3\" annaks \"53\" (string-konkatenatsioon), mitte 8."
   },
   {
     "level": 3,
     "question": "Mille jaoks on kontroll Number.isNaN(n) lahenduses?",
     "options": [
-      "Et lehte uuesti laadida",
+      "Et tuvastada negatiivseid arve ja muuta need positiivseteks",
       "Et tuvastada, kui sisendi teisendus arvuks ebaõnnestus, ja anda kasutajale arusaadav viga",
-      "Et väärtus oleks alati positiivne",
-      "Et tehe oleks kiirem"
+      "Et tagada, et tulemus oleks alati täisarv",
+      "Et kontrollida, kas tehte tulemus on lõpmatus (Infinity)"
     ],
     "correctIndex": 1,
-    "explanation": "Kui Number(input) → NaN, on sisend kehtetu — readNumber viskab Error-i koos selgitusega."
+    "explanation": "Kui Number(input) → NaN, siis sisend ei olnud kehtiv arv. NaN ja Infinity on JS-is eraldi mõisted; isNaN ei kontrolli Infinity-d."
   },
   {
     "level": 4,
     "question": "Mida teeb addEventListener('click', ...) iga nupu peal?",
     "options": [
-      "Avab uue brauseri akna",
-      "Saadab e-kirja",
+      "Käivitab antud funktsiooni kohe lehe laadimisel ühe korra",
       "Registreerib funktsiooni, mis käivitub iga kord, kui kasutaja sellele nupule klõpsab",
-      "Loob WebSocket-ühenduse"
+      "Asendab nupu vaike-käitumise — iga klõps avab automaatselt vormi submit-päringu",
+      "Lisab nupule visuaalse hover-efekti, ilma käivitatava loogikata"
     ],
-    "correctIndex": 2,
-    "explanation": "addEventListener seob sündmuse (click) callback-iga; igal klõpsul käivitub sama tehte-loogika."
+    "correctIndex": 1,
+    "explanation": "addEventListener seob sündmuse (click) callback-iga. Igal klõpsul käivitub callback uuesti. Stiili-efektid kuuluvad CSS-i, mitte addEventListener-i."
   },
   {
     "level": 4,
     "question": "Kuidas valib JavaScript õige tehte funktsiooni nupuvajutusel?",
     "options": [
       "Loeb btn.dataset.op ja teeb operations[op](a, b)",
-      "Genereerib juhuslikult",
-      "Vaatab nupu värvi",
-      "Pärib kasutajalt"
+      "Loeb btn.textContent (näiteks '+') ja sobitab seda tehte-funktsiooniga",
+      "Loeb btn.id (näiteks 'add') ja sobitab seda tehte-funktsiooniga",
+      "Igal nupul on eraldi onclick-atribuut, mis kutsub konkreetse tehte"
     ],
     "correctIndex": 0,
-    "explanation": "btn.dataset.op tagastab \"add\", \"sub\", \"mul\" või \"div\"; operations-objekt on lookup-tabel."
+    "explanation": "btn.dataset.op tagastab masin-loetava koodi (\"add\"|\"sub\"|\"mul\"|\"div\"). Tähemärki '+' või id-d saaks kasutada, aga data-op on rakenduses kasutatud muster — robustsem kui sõltuda kuvatud sümbolist."
   },
   {
     "level": 4,
     "question": "Mis tüüpi andmestruktuur on operations lahenduses?",
     "options": [
-      "Massiiv tehetest",
-      "Map() instants",
+      "Massiiv tehetest järjekorras [add, sub, mul, div]",
+      "Map-instants, milles iga tehte kood on võti ja funktsioon väärtus",
       "Tavaline objekt, kus võtmed on tehte koodid (add/sub/mul/div) ja väärtused funktsioonid",
-      "Set unikaalsetest tehetest"
+      "Klass nelja meetodiga (add(), sub(), mul(), div())"
     ],
     "correctIndex": 2,
-    "explanation": "Lookup-objekt on lihtsaim viis tehte-koodi alusel funktsioon valida."
+    "explanation": "Lahendus kasutab object-literal sõnaraamatut: const operations = { add: (a,b)=>..., ... }. Map-instants ja klass oleksid samuti võimalikud, aga objekt on lihtsaim lahendus selle suuruse jaoks."
   },
   {
     "level": 4,
     "question": "Kuidas leiab kood kõik nupud DOM-ist?",
     "options": [
-      "document.getElementById('buttons')",
+      "document.getElementById('buttons') ja siis .children",
       "document.querySelectorAll('.buttons button')",
-      "Iga nupu jaoks eraldi getElementById",
-      "Otsib jQuery-ga"
+      "document.getElementsByClassName('button')",
+      "Iga nupu jaoks eraldi document.getElementById"
     ],
     "correctIndex": 1,
-    "explanation": "querySelectorAll annab NodeList kõikidest nuppudest .buttons sees, forEach käib need läbi."
+    "explanation": "querySelectorAll annab NodeList-i kõikidest nuppudest .buttons sees, forEach käib need läbi. getElementById tagastaks ühe konteineri, getElementsByClassName töötaks vaid täpse klassi peal."
   },
   {
     "level": 5,
     "question": "Miks on lahendus jagatud kolme faili: HTML, CSS ja JS?",
     "options": [
-      "Brauserid nõuavad seda",
-      "Eraldatud vastutuse põhimõtte tõttu — struktuur, stiil ja loogika on lahti",
-      "Kiiruse pärast",
-      "Üks fail oleks olnud liiga väike"
+      "Brauserid nõuavad seda — inline-stiilid ja -skriptid pole lubatud",
+      "Eraldatud vastutuse põhimõtte tõttu — struktuur, stiil ja loogika on lahti, kergem hooldada",
+      "Iga fail laeb paralleelselt eraldi pordil, mis muudab lehe kiiremaks",
+      "JS-i ja CSS-i ei saa segada ühte HTML-faili, see põhjustaks parsimisvigu"
     ],
     "correctIndex": 1,
-    "explanation": "Separation of concerns: HTML = struktuur, CSS = välimus, JS = käitumine. Kergem hooldada."
+    "explanation": "Separation of concerns on tarkvara-disaini põhimõte. Brauserid lubavad ka inline-stiile/-skripte; pordid pole asjakohased; HTML toetab <style> ja <script> tag'i, kuid eraldi failid on hooldatavamad."
   },
   {
     "level": 5,
     "question": "Mis juhtub, kui kasutaja proovib jagada arvu nulliga (näiteks 5 ÷ 0)?",
     "options": [
-      "Tulemus on Infinity",
+      "JavaScripti vaikekäitumine: tulemuseks on Infinity, kuvatakse 'Tulemus: Infinity'",
       "operations.div viskab Error 'Nulliga ei saa jagada' ja kasutaja näeb punast veasõnumit",
-      "Brauser jookseb kokku",
-      "Ekraanile ilmub NaN"
+      "Tulemus on NaN, mida kuvatakse kasutajale",
+      "Brauser keeldub jagamise tehtest ja kuvab oma natiivse veateate"
     ],
     "correctIndex": 1,
-    "explanation": "Lahenduses on tahtlikult b===0 kontroll, mis viskab Error-i, et kasutajale anda selge sõnum."
+    "explanation": "Lahenduses on tahtlikult b===0 kontroll, mis viskab Error-i — see teeb UX paremaks kui Infinity (mis on JS vaikekäitumine, aga kasutajale ebaselge)."
   },
   {
     "level": 5,
     "question": "Miks on result-elementidel atribuut aria-live=\"polite\"?",
     "options": [
-      "Vajalik kompileerimiseks",
-      "Et ekraanilugeja teataks tulemuse muutuse pimedale kasutajale",
-      "Värvib teksti viisakaks roosaks",
-      "Lubab brauseril kõnesüntesaatorit kasutada üldiselt"
+      "See on kompileerimiseks vajalik — ilma selleta brauser ei töötle elementi",
+      "Et ekraanilugeja teataks tulemuse muutuse pimedale kasutajale viisakalt (oodates kõnehäält)",
+      "See määrab elemendi tekstivormingu (sõbralikult ümarad nurgad ja pehme kõne-toon)",
+      "Lubab brauseril element automaatselt tõlkida teistesse keeltesse"
     ],
     "correctIndex": 1,
-    "explanation": "aria-live=\"polite\" on WAI-ARIA atribuut; assistive tech (näiteks NVDA, JAWS) loeb uuendused valjusti."
+    "explanation": "aria-live=\"polite\" on WAI-ARIA atribuut ligipääsetavuse jaoks; assistive tech (NVDA, JAWS) ootab, kuni kasutaja jõuab parajasti pausini, ja siis loeb uuendused valjusti."
   },
   {
     "level": 6,
     "question": "Mis järjekorras täidetakse kood, kui kasutaja vajutab '+' nuppu?",
     "options": [
       "addEventListener callback → readNumber(a) → readNumber(b) → operations.add(a,b) → result.textContent",
-      "operations.add → readNumber → DOM-i muudatus",
-      "result.textContent → readNumber → operations.add",
-      "DOM-i muutmine ja siis arvutamine"
+      "Kõik kood käivitub paralleelselt erinevates lõimedes, lõpus liidetakse tulemused",
+      "operations.add(a,b) kõigepealt, siis readNumber valideerib tagasi-ulatuvalt sisendid",
+      "result.textContent uuendatakse kõigepealt 'Arvutan...'-iks, seejärel readNumber, seejärel operations.add"
     ],
     "correctIndex": 0,
-    "explanation": "Sündmuse käitleja loeb mõlemad arvud (try-blokis), arvutab tehte ja kuvab tulemuse."
+    "explanation": "JavaScript on ühe-lõimeline ja sünkroonne. Sündmuse käitleja täidab try-bloki rea-rea-haaval: lugemine, arvutus, kuvamine. 'Arvutan...' kuvamist lahenduses pole."
   },
   {
     "level": 6,
     "question": "Mis on operations[btn.dataset.op] mustri eelis võrreldes if/else if-ahelaga?",
     "options": [
-      "Kiirem brauseris alati",
-      "Lühem ja kergem laiendada — uue tehte (näiteks astendamine) lisamiseks vajaks ainult ühe uue kirje objektis",
-      "See on kohustuslik standard",
-      "Ei vaja JavaScripti"
+      "Lookup-tabel on alati kiirem brauseris kui if/else võrdlus",
+      "Lühem ja kergem laiendada — uue tehte (näiteks astendamine) lisamiseks vajaks ainult ühe uue kirje objektis ja ühe nupu HTML-i",
+      "if/else ahel ei tööta nuppude data-atribuutidega, ainult lookup-tabel oskab seda lugeda",
+      "Lookup-tabel võimaldab arvutada tehted asünkroonselt, if/else on alati sünkroonne"
     ],
     "correctIndex": 1,
-    "explanation": "Lookup-tabeli muster skaleerub paremini ja eraldab andmed (tehted) loogikast (sündmuse käitlejast)."
+    "explanation": "Lookup-tabel skaleerub paremini ja eraldab andmed (tehete nimekiri) loogikast (sündmuse käitlejast). Performance-erinevus on triviaalne; if/else töötab samuti data-atribuudiga; mõlemad on sünkroonsed."
   },
   {
     "level": 6,
     "question": "Miks võtavad operations.add(a, b) ja teised tehted argumendid, mitte ei loe ise input-väljadest?",
     "options": [
-      "See on kohustuslik standard",
+      "JavaScripti funktsioonid ei saa kasutada document.getElementById-d sees nõnda, ainult väljast",
       "Eraldatud vastutuse põhimõte — tehe ei sõltu DOM-ist ja on iseseisvalt testitav",
-      "Brauseritel on argumentide piirang",
-      "Pole erilist põhjust"
+      "Brauseritel on argumentide piirang, väljast lugemine oleks ohtlik",
+      "Funktsioon, mis kasutab globaalset DOM-i, on alati aeglasem"
     ],
     "correctIndex": 1,
-    "explanation": "Puhas funktsioon (pure function) on testitav ja taaskasutatav; DOM-iga sidumine kuulub sündmuse käitlejasse."
+    "explanation": "Puhas funktsioon (pure function) on testitav ja taaskasutatav; DOM-iga sidumine kuulub sündmuse käitlejasse. Tehniliselt funktsioonid SAAVAD DOM-i lugeda — see lihtsalt halb tava."
   },
   {
     "level": 7,
     "question": "Miks kasutab lahendus throw new Error(...)-i selle asemel, et tagastada näiteks string 'viga'?",
     "options": [
-      "Error-it on kohustuslik kasutada",
+      "throw on kohustuslik — JS keelustab vea-stringide tagastamise",
       "Et kutsujavast saaks kasutada try/catch ja peatada tehe juba sisendi lugemise faasis",
-      "throw on kiirem",
-      "String-tagastus pole võimalik"
+      "throw on kiirem kui return, sest see ei pea käima läbi tagastusväärtuse-kontrolli",
+      "String-tagastus läheks otse DOM-i, mis pole turvaline"
     ],
     "correctIndex": 1,
-    "explanation": "throw katkestab funktsiooni ja annab veaosa catch-blokile, mis tegeleb veast taastumisega."
+    "explanation": "throw katkestab funktsiooni kohe ja annab veavoo catch-blokile. String-tagastus oleks ka võimalik, aga nõuaks iga kõnegi järel `if (result === 'viga')` kontrolli — vähem elegantne."
   },
   {
     "level": 7,
     "question": "Mida kuvab kood, kui kasutaja sisestab sõna 'kala' arvuvälja ja vajutab '+'?",
     "options": [
-      "Tulemus: NaN",
+      "Tulemus: NaN — JavaScripti tüüpkäitumine",
       "Punase teksti veasõnum 'Esimene arv ei ole arv'",
-      "Tulemus: 0",
-      "Brauser keeldub sisendit aktsepteerimast"
+      "Tulemus: 0 — string käsitletakse nullina",
+      "Brauser keeldub sisendit aktsepteerimast — type=\"number\" piirab seda automaatselt"
     ],
     "correctIndex": 1,
-    "explanation": "type=\"number\" küll piirab sisendi natuke, aga readNumber kontrollib Number.isNaN-i ja viskab selge Error-i."
+    "explanation": "Kuigi type=\"number\" piirab sisendi natuke, võivad mõned brauserid lubada teksti vahepeal. readNumber kontrollib Number.isNaN-i ja viskab selge Error-i, mis kuvatakse punasena."
   },
   {
     "level": 7,
     "question": "Mis rollid on `result.classList.remove('error')` ja `result.classList.add('error')` lahenduses?",
     "options": [
-      "Mõlemad teevad sama asja",
+      "Mõlemad teevad sama asja — toggle-laadi käitumine",
       "remove kustutab eelmise vea visuaalse stiili enne uut tehet; add lisab .error klassi catch-blokis, kui tehe ebaõnnestus",
-      "remove on aeglasem",
-      "add toetab vaid vana brauserit"
+      "remove eemaldab kogu sisu (tulemuse teksti); add lisab uue veasõnumi",
+      "remove peatab JS-i; add taastab selle"
     ],
     "correctIndex": 1,
-    "explanation": "Iga uus arvutus algab puhast tahvlit (remove), vea korral pannakse punase teksti klass (add)."
+    "explanation": "Iga uus arvutus algab puhast tahvlit (remove). Vea korral pannakse punase teksti klass (add). textContent käsitleb teksti, mitte classList. classList ei mõjuta JS käivitamist."
   },
   {
     "level": 8,
     "question": "Mis juhtub, kui koodis viidatakse #result-ile, mida HTML-is ei oleks?",
     "options": [
-      "Brauser parandab vea automaatselt",
-      "document.getElementById('result') tagastaks null ja .textContent kutse viskaks TypeError-i",
-      "Leht ei kuvata üldse",
-      "Tulemus läheb console-isse"
+      "Brauser parandab vea automaatselt ja loob #result elemendi tagantjärele",
+      "document.getElementById('result') tagastaks null ja .textContent kutse viskaks TypeError-i (\"Cannot set properties of null\")",
+      "Leht ei kuvata üldse — HTML parser blokeerib kogu skripti",
+      "Tulemus läheks vaikselt console-isse, ilma kasutaja-poolse veata"
     ],
     "correctIndex": 1,
-    "explanation": "null.textContent on TypeError. Robustne kood kontrolliks if (!result) return; enne kasutust."
+    "explanation": "null.textContent = 'x' viskab TypeError-i. Brauser ei loo elemente tagantjärele. HTML parser ei sõltu skriptist. Konsoolisse pole automaatset fallback'i."
   },
   {
     "level": 8,
-    "question": "Miks kasutatakse e.preventDefault()-i nupul ühel klõpsul (kuigi siin koodis seda pole)?",
+    "question": "Miks võib koodis nupu juures kasutada e.preventDefault()-i (kuigi siin koodis seda pole)?",
     "options": [
-      "Vaikne nupp ei vaja preventDefault-i, sest type=\"button\" pole vorminupp",
-      "preventDefault on alati kohustuslik",
-      "preventDefault peatab JS-i täielikult",
-      "preventDefault saadab serverisse veasõnumi"
+      "Iga nupp vajab preventDefault-i — see on alati kohustuslik click-sündmustes",
+      "Kui nupp oleks <form> sees ilma type=\"button\"-ita, käituks ta vaike-submit-nupuna ja vorm saaks GET-päringuga lehte uuesti laadida",
+      "preventDefault peatab JavaScripti täielikult kuni järgmise klõpsuni",
+      "preventDefault saadab serverisse tagasiside, et nupp on klõpsatud"
     ],
-    "correctIndex": 0,
-    "explanation": "Praeguses HTML-is pole <form>, nupud on lihtsalt <button>. Kui oleks vorm, peaks preventDefault() takistama lehe uuesti laadimist."
+    "correctIndex": 1,
+    "explanation": "Praeguses HTML-is pole <form> ümbritsev, nii et nupud on vaike-tüübiga `submit`-id. Kui oleks vorm, peaks preventDefault() takistama lehte uuesti laadimist. Mujal preventDefault on tihti üleliigne."
   },
   {
     "level": 8,
     "question": "Mis vahe on isNaN() ja Number.isNaN() vahel?",
     "options": [
-      "isNaN() proovib enne teisendada arvuks ja võib anda valepositiive (isNaN('abc') === true), Number.isNaN() kontrollib vaid, kas väärtus on tegelikult NaN",
-      "Erinevus puudub",
-      "Number.isNaN on aeglasem",
-      "isNaN() ei tööta moodsates brauserites"
+      "Erinevus puudub — alates ES6-st on need sünonüümid",
+      "isNaN() proovib enne teisendada arvuks (näiteks isNaN('abc') === true), Number.isNaN() kontrollib vaid, kas väärtus on tegelikult NaN",
+      "Number.isNaN() töötab vaid arvudega, isNaN() ka stringidega — neid kasutatakse erinevatel kohtadel",
+      "isNaN() on aeglasem ja see-tõttu vananenud"
     ],
-    "correctIndex": 0,
-    "explanation": "isNaN('abc') = true (kasvõi pole arv), Number.isNaN('abc') = false. Lahendus kasutab täpsemat varianti."
+    "correctIndex": 1,
+    "explanation": "isNaN('abc') = true (sest Number('abc') = NaN), Number.isNaN('abc') = false. Erinevus puudutab täpsust, mitte kiirust ega tüüpi."
   },
   {
     "level": 8,
@@ -316,298 +316,298 @@
     "options": [
       "Tulemuseks on täpselt 0.3",
       "Tulemuseks on 0.30000000000000004 (IEEE-754 ujukomaarvude piirang)",
-      "Brauser keeldub",
-      "Tulemuseks on null"
+      "Tulemuseks on string '0.30000000000000004' — JavaScript hoiab arvud sisemiselt stringidena",
+      "Tulemuseks on 0.3, kuid sisemiselt salvestatakse 0.30000000000000004"
     ],
     "correctIndex": 1,
-    "explanation": "JavaScripti Number on IEEE-754 double, 0.1 ja 0.2 ei ole binaarses esituses täpsed."
+    "explanation": "JavaScripti Number on IEEE-754 double; 0.1 ja 0.2 ei ole binaarses esituses täpsed. result.textContent kuvab arvu .toString()-iga, mis annab 0.30000000000000004."
   },
   {
     "level": 9,
-    "question": "Kuidas on test 'Sisesta arv ja klõpsa +, näe tulemust' seotud koodi käituvuse vaatega?",
+    "question": "Kuidas sobib test 'Sisesta arv ja klõpsa +, näe tulemust' lahenduse käitumise kontrolliga?",
     "options": [
       "Kontrollib happy path'i: kehtiv sisend → operations.add → DOM uuendus",
-      "Kontrollib brauseri versiooni",
-      "Kontrollib serveri kättesaadavust",
-      "Kontrollib SSL-i"
+      "Kontrollib brauseri versiooni — ainult uuemad brauserid läbivad",
+      "Kontrollib serveri kättesaadavust — kui server on maas, ei kuvata midagi",
+      "Kontrollib SSL-sertifikaadi õigsust"
     ],
     "correctIndex": 0,
-    "explanation": "See on klassikaline 'golden path' integratsioonikontroll — tee, kus kõik töötab nagu plaanitud."
+    "explanation": "See on klassikaline 'golden path' integratsioonikontroll — tee, kus kõik töötab nagu plaanitud. Server, SSL ja brauser-spetsiifika pole asjakohased pure-frontend kalkulaatori puhul."
   },
   {
     "level": 9,
-    "question": "Mis funktsiooni kutsumise järjekord juhtuks, kui readNumber(b) viskaks Error-i?",
+    "question": "Mis kõnejärjekord juhtuks, kui readNumber(b) viskaks Error-i?",
     "options": [
       "operations.add ei käivitu — kontroll läheb otse catch-blokile",
-      "Ainult operations.add jookseb",
-      "Kõik funktsioonid jooksevad lõpuni",
-      "Brauser kraashib"
+      "Ainult operations.add jookseb, sest see on järgmine rida pärast readNumber-i",
+      "Kõik funktsioonid jooksevad lõpuni, error logitakse vaikselt console-isse",
+      "Brauser kraashib täielikult"
     ],
     "correctIndex": 0,
-    "explanation": "throw katkestab try-bloki kohe; catch näeb error-objekti ja kuvab err.message kasutajale."
+    "explanation": "throw katkestab try-bloki kohe; catch näeb error-objekti ja kuvab err.message kasutajale. Pärast try-blokis viskamist järgnevad read EI käivitu."
   },
   {
     "level": 9,
     "question": "Miks tühjendab kood enne tehte algust class 'error' (result.classList.remove('error'))?",
     "options": [
-      "Et eelmise vea kollased viited kaoksid uue tehte tegemisel",
-      "Et brauser oleks kiirem",
-      "Et server saaks teate",
-      "See on tüpograafiline viga"
+      "Et brauser oleks järgmise tehte ajal kiirem (väiksem CSS-tabel)",
+      "Et eelmise vea visuaalsed märgid (punane tekst) kaoksid uue tehte tegemisel",
+      "Et server saaks teate uue tehte alustamise kohta",
+      "Et JavaScripti error-state oleks puhas — muidu järgmine throw ei töötaks"
     ],
-    "correctIndex": 0,
-    "explanation": "Iga uus arvutus algab puhast tahvlit — eelmise vea visuaalne märk eemaldatakse."
+    "correctIndex": 1,
+    "explanation": "Iga uus arvutus algab 'puhta tahvliga' — eelmise vea visuaalne märk eemaldatakse. JS error-state pole 'mäletav'; performance ja server pole asjakohased."
   },
   {
     "level": 9,
     "question": "Kui suur on b===0 kontrolli efekt operations.div sees?",
     "options": [
-      "Ennetab Infinity tulemust ja annab kasutajale selge veasõnumi",
-      "Kiirendab tehte tegemist",
-      "Lubab brauseril kompileerida",
-      "Ei mingit efekti"
+      "Ennetab Infinity-tulemust ja annab kasutajale selge veasõnumi",
+      "Kiirendab tehte tegemist, kuna brauser saab loobuda mittevajalikust jagamisest",
+      "Lubab brauseril JIT-kompileerida koodi, ilma selleta tehte ei tööta",
+      "Tegelikult ei mingit efekti — JS pole nullijagamise vastu sõltlik"
     ],
     "correctIndex": 0,
-    "explanation": "JS lubaks 5/0 = Infinity. Domeeni-mõttes pole see kasutajale kasulik tulemus, seega throw."
+    "explanation": "JS lubaks 5/0 = Infinity (ilma vea-eta). Domeeni-mõttes pole see kasutajale kasulik, seega throw. JIT ja kiirus pole siin tegurid."
   },
   {
     "level": 10,
     "question": "Millise stiili saab tulemuse element vea korral?",
     "options": [
-      ".success — roheline tekst",
+      ".success — roheline tekst (#4dd089)",
       ".error — punane tekst (color: #c0392b)",
-      ".disabled — hall tekst",
-      "Ei mingit eraldi stiili"
+      ".warning — kollane taust",
+      ".disabled — hall taust ja loojuv tekst"
     ],
     "correctIndex": 1,
-    "explanation": "style.css määrab #result.error { color: #c0392b; } — punane signaal kasutajale."
+    "explanation": "style.css määrab #result.error { color: #c0392b; }. Lahenduses pole .success, .warning ega .disabled klassi."
   },
   {
     "level": 10,
     "question": "Miks on output-element <output> mitte <div>?",
     "options": [
-      "Semantiline märgendus ja paremini ligipääsetav (HTML5 element vormi-tulemustele)",
-      "Brauserid keelduvad <div>-ist",
-      "<output> on kiirem",
-      "Pole erinevust"
+      "<output> renderdub kiiremini brauseris kui <div>",
+      "<div> ei toeta aria-live-atribuuti, ainult <output> toetab",
+      "Semantiline märgendus — <output> on HTML5 element vormi-tulemustele, ekraanilugejad kohtlevad teda eraldi",
+      "<output> peab olema <form> sees, <div> tohib olla kõikjal — selles lahenduses on lihtsalt eelistatud"
     ],
-    "correctIndex": 0,
-    "explanation": "<output> on dedikeeritud element arvutuse tulemusele; ekraanilugejad ja stiilid kohtlevad teda eraldi."
+    "correctIndex": 2,
+    "explanation": "<output> on dedikeeritud element arvutuse-tulemustele; ekraanilugejad teavad seda. aria-live töötab kõigil elementidel. Renderdus-kiirus pole erinev. <output> EI nõua <form>-i."
   },
   {
     "level": 10,
     "question": "Kui klassiruumi õpetaja tahaks lisada operatsiooni 'astendamine', kuhu peaks ta koodi muutma minimaalseks?",
     "options": [
       "Lisada uus võti operations-objekti (näiteks pow: (a,b)=>Math.pow(a,b)) ja uus nupp HTML-i data-op=\"pow\"-iga",
-      "Kirjutama kogu lahenduse uuesti",
-      "Looma uue serveri",
-      "Lisada uue CSS-faili"
+      "Kirjutada ümber kogu sündmuste käitleja, et see toetaks viit tehet",
+      "Looma eraldi pow.js faili, mis sisaldab kõike vajalikku, ja siduma selle index.html-iga",
+      "Lisada CSS-i .pow-klass, mis rakendaks astendamist visuaalselt"
     ],
     "correctIndex": 0,
-    "explanation": "Lookup-tabeli muster maksabki end ära just selliste laienduste juures."
+    "explanation": "Lookup-tabeli muster maksabki end ära just selliste laienduste juures — uus tehte = uus võti + uus nupp, midagi muud puudutada pole vaja."
   },
   {
     "level": 11,
     "question": "Miks oleks operations-objekti asemel eval(a + op + b) kasutamine halb idee?",
     "options": [
+      "eval() on aeglane, brauserid optimeerivad seda halvasti",
       "eval() on suur turvarisk — käivitab käivitatava JS-koodi, mille võib süstida pahatahtlik sisend",
-      "eval() on aeglasem",
-      "eval() ei ole moodne",
-      "Brauserid keelustasid selle"
+      "eval() ei ole moodne, Babel ei suuda seda transpilida",
+      "Brauserid keelustasid eval()-i ES6-s, see ei tööta enam"
     ],
-    "correctIndex": 0,
-    "explanation": "eval() lubaks kasutajal süstida JS-koodi (näiteks document.cookie), mis on suur XSS-tüüpi risk."
+    "correctIndex": 1,
+    "explanation": "eval() lubaks kasutajal süstida JS-koodi (näiteks `0; document.cookie`). Aeglus ja moodsus on teisejärgulised; eval() on endiselt brauserites toetatud."
   },
   {
     "level": 11,
     "question": "Mis võib juhtuda, kui sisendi suuruseks oleks 10^308 ja teine 10^308 ning kasutaja korrutaks?",
     "options": [
       "Tulemuseks on Infinity (Number.MAX_VALUE ületamine)",
-      "Brauser kraashib alati",
-      "Tehe peatub vaikselt ja andmebaas saab kahjustuda",
-      "Tulemuseks on 0"
+      "Tulemuseks on BigInt-tüüpi suurim arv",
+      "Tehe peatub vaikselt ja tulemus jääb kuvamata",
+      "Tulemuseks on 0 (overflow tagasi nulli)"
     ],
     "correctIndex": 0,
-    "explanation": "JavaScripti Number ülempiir on ~1.8e308; ületamisel tagastatakse Infinity (mitte exception)."
+    "explanation": "JS-i Number-i ülempiir on ~1.8e308; ületamisel tagastatakse Infinity (mitte exception, mitte BigInt-i automaatne edutamine, mitte overflow nullile)."
   },
   {
     "level": 11,
     "question": "Kuidas saaks lahendust muuta turvalisemaks, kui ülesande nõuded lubaksid sisendi olla suvaline string (mitte ainult arv)?",
     "options": [
-      "Kasutada DOMPurify-d sisendil",
+      "Kasutada DOMPurify-d sisendil — see sterileerib HTML-i",
       "Lisada whitelist-validatsioon: lubada vaid /^[0-9.\\-]+$/ regex-iga",
-      "Vaikida ja loota parimat",
-      "Kasutada eval()-it"
+      "Vaikida ja loota, et kasutaja ei sisesta midagi pahatahtlikku",
+      "Kasutada eval()-it koos try/catch-iga"
     ],
     "correctIndex": 1,
-    "explanation": "Whitelist-validatsioon on robustne; piirab, mida üldse aktsepteeritakse, mitte mida keelatakse."
+    "explanation": "Whitelist-validatsioon piirab sisendi enne kasutust. DOMPurify on HTML-i jaoks (XSS), siin on tegu arvuvälja-sisendiga. eval() tooks juurde uue probleemi. Vaikimine pole kunagi turvaline strateegia."
   },
   {
     "level": 11,
-    "question": "Miks on kalkulaator 'pure-frontend' lahendusena turvalisem kui server-side variant?",
+    "question": "Miks on kalkulaator 'pure-frontend' lahendusena privaatsem kui server-side variant?",
     "options": [
+      "Frontend on alati turvalisem, sest brauser sandbox-ib kõike",
       "Kasutaja arvutused jäävad kasutaja arvutisse — pole serverisse minekut, pole logimist",
-      "Frontend on alati turvalisem",
-      "Server ei suuda matemaatikat",
-      "Pole erinevust"
+      "Server ei suuda matemaatikat teha samasuguse täpsusega",
+      "Frontend kood on alati avatud lähtekoodiga, server pole — see teeb selle turvalisemaks"
     ],
-    "correctIndex": 0,
-    "explanation": "Lokaalne arvutamine välistab andmete üle-võrgu lekkimise, kuid samas ei garanteeri täielikku privaatsust (näiteks brauseri ajalugu)."
+    "correctIndex": 1,
+    "explanation": "Lokaalne arvutamine välistab andmete üle-võrgu lekkimise serverisse. 'Sandbox' ei kaitse päringute logimise eest. Server saab matemaatikat teha samasuguse täpsusega; lähtekoodi avatus pole otseses seoses privaatsusega."
   },
   {
     "level": 12,
     "question": "Kuidas muuta lahendust nii, et sama UI toetaks nii kalkulaatorit kui ka muundureid (mph→km/h)?",
     "options": [
-      "Eraldada operations-objekti definitsioon konfiguratsioonifailile ja teha see konfigureeritavaks",
-      "Kopeerida kogu fail teise nimega",
-      "Kasutada iframe-i",
-      "Ei ole võimalik"
+      "Eraldada operations-objekti definitsioon konfiguratsioonifailile ja teha see konfigureeritavaks (load via fetch või import)",
+      "Kopeerida fail teise nimega ja muuta operations-i kohapeal",
+      "Kasutada iframe-i, milles laaditakse erinev kalkulaatorivariant",
+      "Lisada query-parameetri kontroll (?mode=mph) ja kasutada if/else-i"
     ],
     "correctIndex": 0,
-    "explanation": "Konfiguratsiooni eraldamine andmest võimaldab sama UI/loogikat kasutada erinevate operatsioonidega."
+    "explanation": "Konfiguratsiooni eraldamine andmest võimaldab sama UI/loogikat kasutada erinevate operatsioonidega — andmed-muutuvad, loogika püsib. Kopeerimine põhjustab koodiduplikaati; iframe lisab keerukust; query-param + if/else töötab, aga ei skaleeru."
   },
   {
     "level": 12,
     "question": "Mille poolest aitaks lahendust hooldatavamaks teha tehete ja sündmuste eraldatus eraldi moodulitesse?",
     "options": [
+      "Kood töötaks kiiremini brauseris (vähem skripti laadimist)",
       "Iga moodul saaks olla unit-testitud iseseisvalt; muudatused ühes ei mõjutaks teist",
-      "Kood töötaks kiiremini brauseris",
-      "CSS hakkaks paremini töötama",
-      "HTML lihtsustuks"
+      "CSS hakkaks paremini töötama, sest stiilid ei segune logikaga",
+      "HTML lihtsustuks, kuna brauser saaks vajalikud moodulid otse <head>-ist välja jätta"
     ],
-    "correctIndex": 0,
-    "explanation": "Modulaarsus parandab testitavust ja vähendab kogemata-tekkivaid sõltuvusi."
+    "correctIndex": 1,
+    "explanation": "Modulaarsus parandab testitavust, ja vähendab kogemata-tekkivaid sõltuvusi. Performance, CSS ja HTML pole otseselt seotud kooditruktuuriga."
   },
   {
     "level": 12,
-    "question": "Kuidas oleks eelistatud käitleda olukord, kus kasutaja klõpsab nupule ilma ühtegi sisendit täitmata?",
+    "question": "Kuidas oleks parim käitumine, kui kasutaja klõpsab nupule ilma sisendit täitmata?",
     "options": [
-      "Praegune kood teeb seda õigesti — viskab Error-i ja kuvab seda",
-      "Tuleks lehte uuesti laadida",
-      "Tuleks hüpata teisele lehele",
-      "Tuleks logida kasutaja välja"
+      "Praegune kood teeb seda õigesti — viskab Error-i ja kuvab punasena seletuse",
+      "Tuleks lehte uuesti laadida — see annab puhta state'i",
+      "Tuleks suunata kasutaja teisele lehele, kus täidetakse sisendid",
+      "Tuleks blokeerida kõik nupud, kuni mõlemad sisendid on täidetud"
     ],
     "correctIndex": 0,
-    "explanation": "Tühi sisend → Error → punase tekstina kuvatud teade. UX-mõttes parem kui vaikiv NaN."
+    "explanation": "Tühi sisend → Error → punase tekstina kuvatud teade — see on UX-mõttes parim, sest kasutaja näeb, mis valesti läks. Lehte uuesti laadimine kaotaks state'i; nuppude blokeerimine lisab keerukust ilma suure võiduta."
   },
   {
     "level": 13,
     "question": "Mis võib olla probleem, kui kasutaja sisestab väga suure desimaalarvu (näiteks 1e21)?",
     "options": [
+      "JavaScripti Number ei toeta nii suuri arve, tulemus oleks Infinity",
       "JavaScripti tagastab automaatselt eksponentkujul stringi (näiteks '1e+21'), mis võib kasutajat segadusse viia",
-      "Brauser kraashib kindlalt",
-      "Salvestab andmebaasi",
-      "Ei mingit probleemi — alati näitab täielikku numbrit"
+      "Brauser kraashib kindlalt — JS-i memmu mahub ainult 2^32 arvu",
+      "Sisestus blokeeritakse type=\"number\"-iga, kuna see ületab piiri"
     ],
-    "correctIndex": 0,
-    "explanation": "(1e21).toString() === '1e+21'. Kasutaja võib eelistada Number.toFixed() või toLocaleString()."
+    "correctIndex": 1,
+    "explanation": "(1e21).toString() === '1e+21'. Number toetab kuni ~1.8e308 (mitte 2^32 — see oli vananenud); brauser ei kraashi; type=\"number\" ei blokeeri suuri arve."
   },
   {
     "level": 13,
     "question": "Mis võib juhtuda, kui lahenduse koodi importida vanasse brauserisse, kus pole arrow-funktsioone?",
     "options": [
-      "Süntaksiviga — kood ei tööta enne, kui lähestaja (Babel) on selle teisendanud function-iks",
-      "Kõik töötab automaatselt",
-      "Brauser ignoreerib lihtsalt skripti",
-      "Süsteem failoverib"
+      "Kõik töötab automaatselt, brauser tõlgib syntax'i moodsaks",
+      "Süntaksiviga — kood ei tööta enne, kui transpileeriv tööriist (Babel) on selle teisendanud function-iks",
+      "Brauser ignoreerib lihtsalt nendele süntaksitele eitatud read",
+      "Süsteem failoverib alternatiivsele JS-i variandile, mis on aeglasem"
     ],
-    "correctIndex": 0,
-    "explanation": "Arrow-funktsioonid (a, b) => a + b on ES6+. Vanad brauserid (näiteks IE11) ei tunne neid ilma transpileerimiseta."
+    "correctIndex": 1,
+    "explanation": "Arrow-funktsioonid (a, b) => a + b on ES6+. Vanad brauserid (näiteks IE11) ei tunne neid; ilma transpileerimiseta tagastavad SyntaxError-i."
   },
   {
     "level": 13,
     "question": "Miks võib olla probleem, kui koodis on document.getElementById('a') enne, kui DOM on laetud?",
     "options": [
       "Tagastaks null ja .value kutse viskaks vea — selles lahenduses on script <body> all, nii et DOM on juba olemas",
-      "Brauser parandab automaatselt",
-      "Pole probleemi kunagi",
-      "JS reorderib käivituse"
+      "Brauser parandaks vea automaatselt — kõik <script>-id ootavad DOM-i loomulikult",
+      "JS reordab käivituse ja paneb DOM-i loomine ette",
+      "document.getElementById tagastaks Promise-i, mis lahendub pärast DOM-i valmimist"
     ],
     "correctIndex": 0,
-    "explanation": "Lahendus paneb <script> elemendi <body> lõppu, et DOM oleks juba parsitud, kui JS jookseb."
+    "explanation": "null.value viskab TypeError-i. Brauser EI oota automaatselt DOM-i (selleks on `defer` atribuut). getElementById on sünkroonne, mitte Promise. Lahendus paneb <script> <body> lõppu, et DOM oleks valmis."
   },
   {
     "level": 14,
     "question": "Mis võib juhtuda, kui kasutaja kasutab Eesti standardklaviatuuri ja sisestab '3,14' (komaga)?",
     "options": [
       "Number('3,14') = NaN — readNumber viskab vea ('Esimene arv ei ole arv')",
-      "Tulemus on 3.14",
-      "Brauser asendab automaatselt",
-      "Tulemus on 3"
+      "Tulemus on 3.14 — JS oskab automaatselt komaga arvu parsida",
+      "Brauser asendab automaatselt koma punktiga vastavalt lokaadile",
+      "Tulemus on 3 — Number võtab vaid täisosa kuni esimese eraldajani"
     ],
     "correctIndex": 0,
-    "explanation": "JavaScripti Number()-i ei oska komaga arve. Lahendus võiks aktsepteerida koma, asendades selle punktiga."
+    "explanation": "JS-i Number()-i ei oska komaga arve, see annab NaN-i. Brauserid ei tee lokaadi-järgset asendust ega võta osi. Lahendus võiks aktsepteerida koma, asendades selle punktiga enne Number()-it."
   },
   {
     "level": 14,
     "question": "Mis juhtub, kui koodi käivitada keskkonnas, kus document on undefined (näiteks Node.js'is)?",
     "options": [
+      "Kood toimib täpselt sama, kuna Node.js sisaldab DOM-i moodulit",
       "ReferenceError: document is not defined — script eeldab brauseri DOM-i",
-      "Server töötab edasi",
-      "Kood toimib täpselt sama",
-      "Loob virtuaalse DOM-i"
+      "Node.js loob virtuaalse DOM-i automaatselt, kõik töötab aeglasemalt",
+      "Server töötab edasi, kuid kõik DOM-iga seotud read ignoreeritakse"
     ],
-    "correctIndex": 0,
-    "explanation": "Frontend-kood vajab brauseri keskkonda. Node.js-is tuleks kasutada näiteks JSDOM-i."
+    "correctIndex": 1,
+    "explanation": "Frontend-kood vajab brauseri keskkonda. Node.js EI sisalda document-it natiivselt; selle jaoks tuleks paigaldada JSDOM. Read EI ignoreerita — JS viskab ReferenceError-i."
   },
   {
     "level": 14,
     "question": "Mis vahe on classList.add('error') ja element.className = 'error' vahel?",
     "options": [
+      "Erinevus puudub — mõlemad teevad sama",
       "classList.add lisab klassi olemasolevatele, className kirjutab kõik olemasolevad klassid üle",
-      "Erinevus puudub",
-      "className on kiirem",
-      "classList.add ei töota Chrome'is"
+      "className on kiirem, classList.add aeglasem (loomulikult sünkroonib mõlemat)",
+      "classList.add töötab vaid kahel klassil, className saab määrata rohkem"
     ],
-    "correctIndex": 0,
-    "explanation": "classList.add on lisanduv ja turvaline; className= asendab kõik. Hoia varasemad klassid alal."
+    "correctIndex": 1,
+    "explanation": "classList.add on lisanduv ja turvaline; className= asendab kõik olemasolevad klassid. Kiirus pole praktiline tegur; mõlemad toetavad mistahes arvu klasse."
   },
   {
     "level": 15,
     "question": "Milline arhitektuur sobiks paremini, kui sama loogikat oleks vaja jagada mitme rakenduse vahel?",
     "options": [
-      "Kapseldada operations objekt eraldi npm-paketti või eraldi moodulisse, importida vajalikku kohta",
-      "Kopeerida kood iga rakenduse jaoks",
-      "Kirjutada PHP-sse",
-      "Kasutada ainult HTML-i"
+      "Kapseldada operations objekt eraldi npm-paketti või ES-moodulisse, importida vajalikku kohta",
+      "Kopeerida script.js iga rakenduse jaoks ja hoida käsitsi sünkroonis",
+      "Salvestada operations.js GitHub Gist-i ja laadida iga rakendusest fetch-iga",
+      "Panna tehted PHP-skripti ja kutsuda iga arvutus serverisse päringuga"
     ],
     "correctIndex": 0,
-    "explanation": "Eraldi moodul (npm-pakett, ES module) väldib koodi-duplikatsiooni ja teeb uuendused ühes kohas."
+    "explanation": "Eraldi moodul (npm-pakett, ES module) väldib koodi-duplikatsiooni ja teeb uuendused ühes kohas. Kopeerimine põhjustab divergence-i. Gist ei ole CDN. Serveri-päringud lisavad latentsust."
   },
   {
     "level": 15,
     "question": "Kuidas kohandada lahendust mobiilses puutekeskkonnas paremini töötama?",
     "options": [
-      "Suurendada nuppude clickable-pindala (vähemalt 44×44 px), lisada hover-state alternatiivid, kasutada inputmode='decimal'",
-      "Eemaldada nupud",
-      "Lisada video tausta",
-      "Pole midagi teha"
+      "Eemaldada nupud — puutekeskkonnas on kasutaja paremini sunnitud klaviatuurile",
+      "Suurendada nuppude clickable-pindala (vähemalt 44×44 px), lisada inputmode='decimal' ja vältida hover-only state'e",
+      "Lisada video-tausta, mis annab visuaalse pingutust mobiilis",
+      "Kasutada vaid keskmist sinist värvi — mobiilbrauserites teised värvid ei renderdu hästi"
     ],
-    "correctIndex": 0,
-    "explanation": "Mobiil-UX kontroll-listid (Apple HIG, Google Material) annavad selged numbrilised juhised."
+    "correctIndex": 1,
+    "explanation": "Mobiil-UX juhised (Apple HIG, Google Material) annavad selged numbrilised juhised — 44×44 minimaalne touch-target. Värvid pole mobiilis erinevad; videotaust kahjustaks UX-i."
   },
   {
     "level": 15,
     "question": "Mis oleks mõistlik järgmine samm, kui lahendus muutuks äriliseks tooteks?",
     "options": [
-      "Lisada testid (unit, integration), CI-pipeline, accessibility-audit ja monitoring",
-      "Kustutada README",
-      "Lisada juhuslikke nuppe",
-      "Pole midagi vaja"
+      "Lisada testid (unit, integration, e2e), CI-pipeline, accessibility-audit ja monitoring",
+      "Kustutada README ja muu dokumentatsioon — see hoiab konkurentsipositsiooni",
+      "Lisada juhuslikke nuppe UI-le, et tooteleht paistaks vihjusem",
+      "Pole midagi vaja — toode on juba valmis sellisel kujul"
     ],
     "correctIndex": 0,
-    "explanation": "Tootmisrakendused vajavad usaldusväärsuse tagatisi: testid, CI/CD, ligipääsetavus, jälgimine."
+    "explanation": "Tootmisrakendused vajavad usaldusväärsuse tagatisi: testid, CI/CD, ligipääsetavus, jälgimine. Dokumentatsiooni kustutamine, juhuslikud lisad ja status-quo on kahjulikud."
   },
   {
     "level": 15,
-    "question": "Kui kalkulaatorit pidi laiendama mitme samaaegse kasutaja jaoks (jagatud sessioon), kuhu peaks loogika kolima?",
+    "question": "Kui kalkulaatorit pidi laiendama mitme samaaegse kasutaja jaoks (jagatud sessioon, näiteks koostöö-režiim), kuhu peaks loogika kolima?",
     "options": [
+      "Hoida kogu loogika edaspidi pure-frontend-is — kasutajate vahel sünkroonitakse localStorage-iga",
       "Serveripõhine arhitektuur (näiteks WebSocket + jagatud state) — frontend ainult kuvab tulemust",
-      "Lisada rohkem CSS-i",
-      "Kustutada JS",
-      "Lisada uued nupud"
+      "Kasutada cookie-id, et mitu brauserit saaksid sama state'i jagada",
+      "Pole vaja serverit — kahe brauseri vahel saab otse-ühenduse luua"
     ],
-    "correctIndex": 0,
-    "explanation": "Mitmekasutaja koostöö nõuab keskset state'i; pure-frontend lahendus pole sobiv."
+    "correctIndex": 1,
+    "explanation": "Mitmekasutaja koostöö nõuab keskset state'i, mida saab usaldusväärselt sünkroonida. localStorage on lokaalne, cookies on origin-spetsiifilised, peer-to-peer (WebRTC) on võimalik aga keerukam — server on lihtsaim valik."
   }
 ]

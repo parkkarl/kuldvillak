@@ -3,257 +3,257 @@
     "level": 1,
     "question": "Mis on selle ülesande peamine eesmärk?",
     "options": [
-      "Mängida arvutiga kabet",
       "Lugeda kohalik JSON-fail ja kuvada raamatud loetava nimekirjana",
-      "Saata e-kirju lugejatele",
-      "Genereerida juhuslikke pilte"
+      "Luua REST-API, mis tagastab raamatute andmed brauserile",
+      "Lubada kasutajal lisada uusi raamatuid vormi kaudu",
+      "Otsida raamatuid välisest API-st (näiteks Google Books) ja kuvada tulemused"
     ],
-    "correctIndex": 1,
-    "explanation": "assignment.md sõnastab eesmärgina raamatute kuvamise JSON-failist."
+    "correctIndex": 0,
+    "explanation": "assignment.md sõnastab eesmärgina kohaliku JSON-faili lugemise ja raamatute kuvamise. Lisamine, REST-API ja väline otsing pole ülesande nõuded."
   },
   {
     "level": 1,
     "question": "Mitu raamatut on data.json failis?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 3,
+    "options": ["2", "3", "4", "5"],
+    "correctIndex": 2,
     "explanation": "data.json sisaldab nelja Eesti klassikut: Tõde ja õigus, Kevade, Mehed jäävad mehiks, Hingede öö."
   },
   {
     "level": 1,
     "question": "Mis välju iga raamatu objektil on?",
     "options": [
+      "title, description, year",
       "title, author, year",
-      "name, surname, age",
-      "id, title, description",
-      "isbn, pages, genre"
+      "title, author, year, isbn",
+      "name, author, publishYear"
     ],
-    "correctIndex": 0,
-    "explanation": "data.json struktuur: { title, author, year } iga raamatu kohta."
+    "correctIndex": 1,
+    "explanation": "data.json struktuur: { title, author, year } iga raamatu kohta. ISBN-i ega description-it pole; väljad on inglise keeles."
   },
   {
     "level": 1,
     "question": "Millises kaustas asuvad lahenduse failid?",
-    "options": ["root/", "src/", "app/", "lib/"],
+    "options": ["Otse projekti juurkaustas (root)", "src/", "app/", "public/"],
     "correctIndex": 1,
-    "explanation": "Kõik lahenduse failid (index.html, app.js, style.css, data.json) on src/ kaustas."
+    "explanation": "Kõik lahenduse failid (index.html, app.js, style.css, data.json) on src/ kaustas. Juurkaustas on ainult assignment.md."
   },
   {
     "level": 2,
     "question": "Millist API-t kasutatakse JSON-faili lugemiseks?",
-    "options": ["XMLHttpRequest", "fetch()", "import", "require()"],
+    "options": ["XMLHttpRequest", "fetch()", "Promise.resolve()", "axios"],
     "correctIndex": 1,
-    "explanation": "assignment.md nõuab fetch() kasutamist; XMLHttpRequest on keelatud."
+    "explanation": "assignment.md nõuab fetch() kasutamist; XMLHttpRequest on keelatud. Promise.resolve() ei loe võrgust; axios on väline pakett, mida lahendus ei kasuta."
   },
   {
     "level": 2,
     "question": "Millises programmeerimismustris on loadBooks() kirjutatud?",
     "options": [
-      "Sünkroonne, ilma callback-iteta",
+      "Sünkroonne — kasutab tavalist for-tsüklit ilma asünkroonseta",
       "async/await — kaasaegne asünkroonse koodi vorming",
-      "Callback-pyramid (callback hell)",
-      "Promise.then().then() ahel"
+      "Callback-pyramid — fetch(url, function(res) { res.json(function(books) { ... }) })",
+      "Promise.then().then() ahel ilma async-märksõnata"
     ],
     "correctIndex": 1,
-    "explanation": "Lahendus kasutab async funktsiooni ja await-i fetch()-i ja .json()-i ees."
+    "explanation": "Lahendus kasutab async-funktsiooni ja await-i fetch()-i ja .json()-i ees. .then-ahelad ja callback-id oleksid alternatiivsed stiilid."
   },
   {
     "level": 2,
     "question": "Milline element kuvab vea kasutajale?",
-    "options": ["<h1>", "<div id=\"list\">", "<p id=\"error\">", "<script>"],
-    "correctIndex": 2,
-    "explanation": "HTML-is on <p id=\"error\" hidden> — JS eemaldab hidden-atribuudi vea ilmnemisel."
+    "options": ["<div id=\"list\"> — sama, mis raamatute jaoks", "<p id=\"error\" hidden>", "<span class=\"error\">", "<dialog id=\"error-dialog\">"],
+    "correctIndex": 1,
+    "explanation": "HTML-is on <p id=\"error\" hidden> — JS eemaldab hidden-atribuudi vea ilmnemisel. Vead ei tule sama elemendi sisse, kus raamatud."
   },
   {
     "level": 2,
     "question": "Mis CSS-i tehnikat kasutab raamatute paigutus?",
     "options": [
-      "Float-paigutus",
+      "Float-paigutus (float: left iga kaardile)",
       "CSS Grid auto-fit (grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)))",
-      "Inline-block",
-      "Flexbox vertikaalselt"
+      "Flexbox vertikaalse veerga (flex-direction: column)",
+      "Inline-block iga kaardi peal, white-space: nowrap konteineril"
     ],
     "correctIndex": 1,
-    "explanation": "auto-fit + minmax loob responsiivse tabeli, mis kohandub akna laiusega."
+    "explanation": "auto-fit + minmax loob responsiivse paigutuse, mis kohandub akna laiusega. Float on legaty-tehnika; flex-column annaks vertikaalse loendi."
   },
   {
     "level": 3,
-    "question": "Mida teeb fetch('data.json') kõne tulemus enne await-i?",
+    "question": "Mida tagastab fetch('data.json') kõne enne await-i?",
     "options": [
-      "Tagastab JSON-objekti otse",
-      "Tagastab Promise, mis lahendub Response-objektiks",
-      "Tagastab kohe stringi",
-      "Loob uue brauseri akna"
+      "JSON-objekti otse parsituna",
+      "Promise, mis lahendub Response-objektiks",
+      "Promise, mis lahendub kohe parsitud JSON-iks",
+      "Response-i otse, ilma Promise-i ümbritsemata"
     ],
     "correctIndex": 1,
-    "explanation": "fetch tagastab Promise<Response>; await ootab Promise lahenemist."
+    "explanation": "fetch tagastab Promise<Response>, mitte Promise<any>. Body-i parsimiseks on vaja eraldi .json() kõne. Promise-i ümbritsus on JS asünkroonse mudeli alus."
   },
   {
     "level": 3,
     "question": "Mida teeb await res.json()?",
     "options": [
-      "Sulgeb ühenduse",
-      "Loeb response-i body parsib selle JSON-iks (tagastab Promise<any>)",
-      "Saadab uue päringu",
-      "Validateerib JSON-i skeemi"
+      "Sulgeb HTTP-ühenduse pärast päringu lõppu",
+      "Loeb response-i body ja parsib selle JSON-iks (tagastab Promise<any>)",
+      "Validateerib JSON-skeemi, viskab vea, kui väljad ei vasta oodatud kujule",
+      "Saadab uue HTTP-päringu sama URL-i suunas"
     ],
     "correctIndex": 1,
-    "explanation": "Response.json() loeb body-stream'i ja parsib teksti JSON.parse()-i abil."
+    "explanation": "Response.json() loeb body-stream'i ja parsib teksti JSON.parse()-i abil. Skeemi-validatsiooni see EI tee — selleks tuleb eraldi koodi kirjutada."
   },
   {
     "level": 3,
     "question": "Mida teeb kontroll if (!res.ok)?",
     "options": [
       "Kontrollib, kas response oli 200-299 vahemikus; vastasel korral viskab Error",
-      "Kontrollib, kas server on internetis",
-      "Kontrollib, kas brauser toetab fetch-i",
-      "Kontrollib JSON-i süntaksi"
+      "Kontrollib, kas server saatis vastuse 1 sekundi sees, vastasel korral aborts",
+      "Kontrollib, kas brauser toetab fetch-i — tagastab false vanal IE-l",
+      "Kontrollib, kas JSON-i süntaks on valiidne"
     ],
     "correctIndex": 0,
-    "explanation": "fetch ei viska veast (404 jne) automaatselt — peab kontrollima res.ok ise."
+    "explanation": "fetch ei viska automaatselt 404 ja muudest HTTP-veakoodidest — peab kontrollima res.ok ise. Timeout-i, brauseri-toetuse ega JSON-süntaksi kontrolli see ei tee."
   },
   {
     "level": 3,
     "question": "Mille jaoks on iga raamatu juures CSS-klass .book?",
     "options": [
-      "JS-i loogika jaoks vajalik",
+      "JS-i loogika kasutab seda, et leida kõik raamatud DOM-ist tagasi",
       "Stiilide rakendamiseks raamatu kaardile (varju, valge taust, padding)",
-      "JSON-i parsimiseks",
-      "Vea käsitluseks"
+      "Et brauser teaks, et tegemist on raamatuga ja optimeeriks indekseerimist",
+      "Ülikõlapidu — kahe sama-klassiga elemendid jagavad sündmuse-kuulajaid"
     ],
     "correctIndex": 1,
-    "explanation": ".book määrab valge tausta, padding-i, ümarad nurgad ja varju — kaardi visuaalse stiili."
+    "explanation": ".book määrab valge tausta, padding-i, ümarad nurgad ja varju — kaardi visuaalse stiili. JS pärast laadimist DOM-ist tagasi raamatuid ei otsi."
   },
   {
     "level": 4,
     "question": "Mis järjekorras käivitub kood, kui leht laeb edukalt?",
     "options": [
-      "loadBooks() → fetch → res.json() → forEach → DOM-i uuendus",
-      "DOM → CSS → JSON → HTML",
-      "JSON-i parsing on alati esimene",
-      "fetch on viimane samm"
+      "loadBooks() → fetch → res.json() → for-of tsükkel → DOM-i uuendus",
+      "DOM laaditud → CSS rakendatud → JSON parsitud kohe lehega → JS käivitub viimaks",
+      "JS käivitub kõigepealt, fetch kohe, siis HTML parser ootab andmeid",
+      "Lehe laadimisel loetakse kõik andmed paralleelselt eri lõimedes"
     ],
     "correctIndex": 0,
-    "explanation": "loadBooks() kutsutakse skripti lõpus; siis async funktsioon käivitab fetch'i ja parsimise."
+    "explanation": "loadBooks() kutsutakse skripti lõpus; siis async-funktsioon teeb fetch'i, parsib, renderdab. JS on ühe-lõimeline; HTML parser ei oota fetch-i."
   },
   {
     "level": 4,
     "question": "Mis tüüpi tagastusväärtus on async funktsioonil loadBooks?",
     "options": [
       "void — ei tagasta midagi",
-      "Promise<undefined> (async funktsioonid alati tagastavad Promise)",
-      "Boolean true või false",
-      "Massiiv raamatuid"
+      "Promise<undefined> (async-funktsioonid alati tagastavad Promise)",
+      "Boolean — true õnnestumisel, false vea korral",
+      "Massiiv raamatuid, mille kutsuja saab edasi kasutada"
     ],
     "correctIndex": 1,
-    "explanation": "Iga async funktsioon mässib oma tagastusväärtuse Promise-i. Kuigi return-i pole, tagastab ta Promise<undefined>."
+    "explanation": "Iga async-funktsioon mässib oma tagastusväärtuse Promise-i. Kuigi return-i pole, tagastab ta Promise<undefined>. void ei eksisteeri JS-is (see on TS mõiste)."
   },
   {
     "level": 4,
     "question": "Kuidas lisab kood iga raamatu DOM-i?",
     "options": [
-      "list.innerHTML += <article>...",
-      "Loob <article class=\"book\"> elemendi document.createElement-iga, määrab selle innerHTML-i ja lisab list.appendChild()-iga",
-      "Kirjutab serverisse",
-      "Loob iframe-i iga raamatule"
+      "list.innerHTML += '<article>...</article>' iga raamatu kohta",
+      "Loob <article class=\"book\"> elemendi document.createElement-iga, määrab innerHTML-i ja lisab list.appendChild()-iga",
+      "Kirjutab andmebaasi ja brauser laeb need automaatselt tagasi",
+      "Loob iframe-i iga raamatu jaoks, et need oleksid eraldi sandbox-itud"
     ],
     "correctIndex": 1,
-    "explanation": "createElement + innerHTML + appendChild — DOM-i otse, mitte string-konkatenatsioon kogu listis."
+    "explanation": "createElement + innerHTML + appendChild — DOM-i otse, mitte string-konkatenatsioon kogu listis (see oleks aeglasem ja kaotaks event-handler-id)."
   },
   {
     "level": 4,
     "question": "Mis on for...of tsükli eelis võrreldes for(let i=0;...)-iga selles koodis?",
     "options": [
-      "Kiirem alati",
+      "for...of on alati kiirem brauseris",
       "Loetavam — saame book-objekti otse, ei pea jälgima indeksit",
-      "for...of toetab vana IE-d paremini",
-      "Ei mingit erinevust"
+      "for...of toetab paralleelset käitumist, tavaline for on sünkroonne",
+      "for...of toetab vana IE-d paremini"
     ],
     "correctIndex": 1,
-    "explanation": "for...of iterates iterable üle — koodi loetavus paraneb kui indeks pole vajalik."
+    "explanation": "for...of iterates iterable üle — koodi loetavus paraneb, kui indeks pole vajalik. Kiirus on praktiliselt sama; mõlemad on sünkroonsed; for...of EI toeta IE-d (vaja transpilida)."
   },
   {
     "level": 5,
     "question": "Mis juhtub, kui data.json fail puudub?",
     "options": [
+      "Fetch viskab kohe 'Network error' ja UI ei reageeri",
       "fetch tagastab Response-i 404 staatusega; res.ok===false; throw 'Andmete laadimine ebaõnnestus (404)'; catch kuvab veasõnumi",
-      "Brauser kraashib",
-      "Kuvab tühja lehte ilma teateta",
-      "Server taastab faili"
+      "Brauser asendab puuduva faili tühja JSON-massiiviga",
+      "Server saadab automaatselt vaike-andmed"
     ],
-    "correctIndex": 0,
-    "explanation": "Kontroll if (!res.ok) viskab Error-i; catch-blokk kuvab err.message kasutajale punase tekstina."
+    "correctIndex": 1,
+    "explanation": "Kui server tagastab 404, fetch lahendub edukalt (Promise ei reject-u), kuid res.ok=false. Kontroll viskab Error-i, mis catch-blokis kuvatakse."
   },
   {
     "level": 5,
     "question": "Miks kasutatakse try/catch-i ümber kogu loadBooks() loogika, mitte ümber fetch-i?",
     "options": [
-      "Et catch käsitleks kõiki vigu (võrgu-, parsi-, DOM-i) ühe blokis",
-      "try peab olema esimene rida funktsioonis",
-      "fetch ei viska kunagi vigu",
-      "JS nõuab seda"
+      "try peab JS-is olema esimene rida funktsioonis — see on süntaksi-nõue",
+      "Et catch käsitleks kõiki vigu (võrgu-, parsimise-, DOM-i) ühtses blokis",
+      "fetch ei viska kunagi vigu, seega try ei aitaks",
+      "JS-i optimeerija eelistab pikka try-blokki — see kompileerib kiiremini"
     ],
-    "correctIndex": 0,
-    "explanation": "Suur try-blokk sünteesib kõik veaolukorrad ühte catch-blokki — lihtsam kasutaja-veasõnumi kuvamine."
+    "correctIndex": 1,
+    "explanation": "Suur try-blokk sünteesib kõik veaolukorrad ühte catch-blokki — lihtsam UX. fetch-il endal try ei piiraks võrguveast tulevaid SyntaxError-eid res.json()-ist."
   },
   {
     "level": 5,
     "question": "Mille poolest erineb fetch() XMLHttpRequest-ist?",
     "options": [
-      "fetch on uuem, Promise-põhine API; XHR on vanem callback-põhine",
-      "fetch ei toeta GET-i",
-      "XHR on alati kiirem",
-      "Erinevus puudub"
+      "fetch on uuem, Promise-põhine API; XHR on vanem callback-põhine ja keerukam korraldada async/await-iga",
+      "fetch ei toeta GET-i, ainult POST-i — XHR oskab mõlemat",
+      "XHR on alati kiirem, sest see on natiivne C++ kood",
+      "Erinevus puudub — fetch on lihtsalt XHR-i sünonüüm"
     ],
     "correctIndex": 0,
-    "explanation": "fetch tuli koos Promise'idega ja muudab koodi async/await-stiilis lihtsamaks."
+    "explanation": "fetch tuli koos Promise'idega ja muudab koodi async/await-stiilis lihtsamaks. fetch toetab kõiki HTTP-meetodeid; kiirus pole oluliselt erinev."
   },
   {
     "level": 6,
     "question": "Miks ei viska fetch() automaatselt error-it, kui server tagastab 404?",
     "options": [
-      "fetch viskab vea ainult võrguveal (näiteks DNS-resolutsiooni vea, CORS-i probleem); HTTP veakoode peab kasutaja ise kontrollima",
-      "fetch viskab kõikjal",
-      "404 pole päris viga",
-      "JS keelustab"
+      "fetch viskab vea kõikjal, ülaltoodu pole tõsi",
+      "fetch viskab vea ainult võrguveal (näiteks DNS-resolutsiooni vea, CORS-i probleem); HTTP-veakoode peab arendaja ise kontrollima",
+      "404 pole tegelikult viga — see tähendab vaid 'sisu pole olemas'",
+      "JavaScripti spetsifikatsioon keelab fetch-il vigu visata"
     ],
-    "correctIndex": 0,
-    "explanation": "fetch lubab res.ok kontrolliga otsustada, mis on viga sinu domeeni-mõttes."
+    "correctIndex": 1,
+    "explanation": "fetch lahendab Promise-i edukalt iga HTTP-vastusega; res.ok kontrolli abil otsustab arendaja, mis on viga sinu domeeni-mõttes. See on disain-otsus."
   },
   {
     "level": 6,
     "question": "Mis tüüpi sisu sisaldab Response-objekt enne .json()-i kutsumist?",
     "options": [
-      "Raw stream — body pole veel parsitud",
-      "Parsitud objekt valmis",
-      "HTML-string",
-      "CSS-fail"
+      "Raw stream — body pole veel parsitud (saab kasutada .json(), .text() või .blob() kaudu)",
+      "Parsitud JavaScript-objekt valmis kasutamiseks",
+      "HTML-string — kõik fetch-vastused on alguses HTML",
+      "Krüpteeritud bait-massiiv, mille .json() dekrüpteerib"
     ],
     "correctIndex": 0,
-    "explanation": "Response on stream; .json(), .text() või .blob() tarbib selle ja parsib soovitud kujul."
+    "explanation": "Response on stream; .json(), .text() või .blob() tarbib selle ja parsib soovitud kujul. Krüpteerimine pole HTTP standard ega siin kontekstis asjakohane."
   },
   {
     "level": 6,
-    "question": "Mis juhtub, kui data.json on sisaldab vigast JSON-i (näiteks puuduvat sulgu)?",
+    "question": "Mis juhtub, kui data.json sisaldab vigast JSON-i (näiteks puuduvat sulgu)?",
     "options": [
       "res.json() viskab SyntaxError-i, mis catch-blokis kuvatakse veasõnumina",
-      "Tühi list",
-      "Brauser kraashib",
-      "Server taastab faili"
+      "Brauser parandab automaatselt vigase JSON-i ja parsib niipalju, kui suudab",
+      "Tühi list ilma veata — brauser ignoreerib lihtsalt vigaseid kirjeid",
+      "fetch annab Promise.reject-i, mis lähtestab ühenduse"
     ],
     "correctIndex": 0,
-    "explanation": "JSON.parse (mille kutsub res.json()) viskab SyntaxError-i; catch-blokk haarab seda."
+    "explanation": "JSON.parse (mille kutsub res.json()) viskab SyntaxError-i kohe, kui leiab vigase märgi. Brauserid EI paranda JSON-i; vigast saab ainult terve faili ulatuses kasutada."
   },
   {
     "level": 7,
     "question": "Miks kasutatakse element.hidden = false, mitte element.style.display = 'block'?",
     "options": [
-      "hidden on HTML5 atribuut ja sobib semantiliselt; style on viimane variant kui CSS-i ei saa kasutada",
-      "hidden ei toeta IE-d",
-      "Erinevus puudub",
-      "style on aeglasem"
+      "hidden on HTML5-atribuut ja semantiline; style.display = 'block' töötab, aga oleks override CSS-stiilile",
+      "hidden ei toeta vanu brausereid",
+      "Erinevus puudub — mõlemad on sama loogikaga",
+      "style.display on aeglasem brauseris kui hidden"
     ],
     "correctIndex": 0,
-    "explanation": "hidden on HTML standard atribuut; CSS-iga saab vajadusel uuesti kuvada (display: block)."
+    "explanation": "hidden on standard HTML-atribuut (==display:none); element.hidden=false eemaldab atribuudi. style.display='block' kirjutaks otse inline-stiili, mis saaks kõrgemate spetsifitsuse tõttu konflikti CSS-iga."
   },
   {
     "level": 7,
@@ -261,95 +261,95 @@
     "options": [
       "Pole midagi — string-mall töötab alati",
       "Kui book.title on usaldamatu (näiteks kasutajalt sisestatud), võib pahatahtlik HTML/JS olla süstitud — XSS-risk",
-      "JSON-fail rikub iseenesest",
-      "Brauser ei toeta"
+      "Brauser kustub kuvama, kui mall sisaldab täpitähti",
+      "Performance — innerHTML on aeglasem kui textContent suure mahu juures"
     ],
     "correctIndex": 1,
-    "explanation": "innerHTML parsib HTML-i; <script>-tagid sees saaks JS-i käivitada. Eestluse data.json on usaldatud, aga reaalsetes rakendustes kasuta textContent."
+    "explanation": "innerHTML parsib HTML-i; <script>-tagid ja event-handler-atribuudid (onerror) saavad JS-i käivitada. Performance pole peamine probleem — turvalisus on."
   },
   {
     "level": 7,
-    "question": "Mis on async funktsiooni await-i alternatiiv (kui tahaks .then-iga kirjutada)?",
+    "question": "Mis on async/await-i alternatiiv (kui tahaks .then-iga sama loogikat kirjutada)?",
     "options": [
-      "fetch('data.json').then(res => res.json()).then(books => ...).catch(err => ...)",
-      "fetch.callback()",
-      "async ainus võimalus",
-      "Promise on keelatud"
+      "fetch('data.json').then(res => res.json()).then(books => /* render */).catch(err => /* handle */)",
+      "fetch.callback(url, function(books) { /* render */ })",
+      "async-võõrkeel on ainus võimalus — .then-i ei saa kasutada",
+      "Promise.fetchSync('data.json') — sünkroonne variant"
     ],
     "correctIndex": 0,
-    "explanation": ".then-ahel teeb sama, mis async/await; viimane on lihtsalt loetavam stiil."
+    "explanation": ".then-ahel teeb sama, mis async/await; viimane on lihtsalt loetavam stiil. fetch.callback ja Promise.fetchSync pole olemas."
   },
   {
     "level": 8,
     "question": "Mis juhtub, kui data.json on tühi massiiv ([])?",
     "options": [
       "Tühi list ilma veata — for...of ei käivita keha kordagi",
-      "Brauser viskab vea",
-      "Kuvatakse 'Pole raamatuid' teade",
-      "Päring kordab end"
+      "Brauser viskab vea, kuna massiiv ei sisalda andmeid",
+      "Kuvatakse 'Pole raamatuid' teade automaatselt",
+      "Loadbooks viskab Error-i, kuna res.ok ei kontrolli sisu"
     ],
     "correctIndex": 0,
-    "explanation": "for...of [] keha ei jookse. Praegune kood ei kuva 'tühi' teadet — see oleks lisatav UX-täiendus."
+    "explanation": "for...of [] keha ei jookse. Praegune kood ei kuva 'tühi' teadet — see oleks lisatav UX-täiendus. res.ok kontrollib HTTP-staatust, mitte sisu."
   },
   {
     "level": 8,
     "question": "Mis on Cross-Origin Resource Sharing (CORS) ja kuidas see selle koodiga seotud on?",
     "options": [
       "fetch('data.json') on relatiivne URL — sama päritolu, CORS ei rakendu. Kui oleks 'https://example.com/data.json', vajaks server CORS-päiseid",
-      "CORS on keelustatud",
-      "CORS pole asjakohane fetch-iga",
-      "fetch ei toeta CORS-i"
+      "CORS on JavaScripti turvarežiim, mille saab koodist välja lülitada",
+      "CORS rakendub ainult POST-päringutele, GET on alati lubatud",
+      "CORS pole asjakohane fetch-iga, ainult XMLHttpRequest-iga"
     ],
     "correctIndex": 0,
-    "explanation": "CORS on brauseri turvamehhanism teiste päritolude ressursside kasutamisel — sama-päritolule ei rakendu."
+    "explanation": "CORS on brauseri turvamehhanism teiste päritolude ressursside kasutamisel — sama-päritolule ei rakendu. CORS rakendub mõlemale fetch-ile ja XHR-ile, sõltumata meetodist."
   },
   {
     "level": 8,
     "question": "Mis erinevus on relatiivse 'data.json' ja '/data.json' URL-i vahel?",
     "options": [
       "'data.json' on relatiivne praeguse lehe URL-ile; '/data.json' on absoluutne saidi-juure suhtes",
-      "Erinevust pole",
-      "'/data.json' on aeglasem",
-      "Üks toetab JSON-i, teine ei"
+      "Erinevust pole — brauser käsitleb mõlemat samamoodi",
+      "'/data.json' on kiirem, sest see ei vaja URL-i lahendamist",
+      "Üks toetab JSON-i, teine teisi vorminguid"
     ],
     "correctIndex": 0,
-    "explanation": "Saidi paigutus mõjutab — kui index.html on /src/, siis 'data.json' viitab /src/data.json-ile, '/data.json' on /data.json."
+    "explanation": "Saidi paigutus mõjutab — kui index.html on /src/-is, siis 'data.json' viitab /src/data.json-ile, '/data.json' on /data.json. Kiirus on sama; mõlemad toetavad mistahes faili."
   },
   {
     "level": 9,
     "question": "Kuidas oleks kõige turvalisem viis raamatu pealkirja DOM-i lisada (kasutaja-andmete puhul)?",
     "options": [
-      "el.textContent = book.title — automaatne escape",
-      "innerHTML = book.title",
-      "eval(book.title)",
-      "document.write(book.title)"
+      "el.textContent = book.title — automaatne escape, HTML-tähemärke ei tõlgendata",
+      "el.innerHTML = book.title — kiireim variant",
+      "el.outerHTML = '<h2>' + book.title + '</h2>'",
+      "document.write(book.title) — kõige otsetõlke variant"
     ],
     "correctIndex": 0,
-    "explanation": "textContent käsitleb stringi kui pelgalt teksti; HTML-tähed nagu < ja > pole interpreterititavad."
+    "explanation": "textContent käsitleb stringi kui pelgalt teksti; HTML-tähed (<, >) pole interpreterititavad. innerHTML ja outerHTML lubavad süstida HTML-i; document.write lisab veelgi suurema turvariski."
   },
   {
     "level": 9,
     "question": "Miks on data.json failis raamatu year arv (mitte string '1926')?",
     "options": [
+      "JSON ei toeta stringe, ainult arve",
       "Et matemaatilisi tehteid (näiteks sortimist) saaks teha ilma teisendusteta",
-      "JSON ei toeta stringe",
-      "Brauserid eelistavad arve",
-      "Eesti keel ei luba aastaid stringidena"
+      "Brauserid renderdavad arve kiiremini kui stringe",
+      "Eesti keele standard nõuab aastate hoidmist arvuna"
     ],
-    "correctIndex": 0,
-    "explanation": "JSON toetab number-tüüpi; arvuks hoidmine teeb hilisema sortimise/võrdluse lihtsamaks."
+    "correctIndex": 1,
+    "explanation": "JSON toetab nii arve kui stringe. Arvuks hoidmine teeb hilisema sortimise/võrdluse lihtsamaks (mitte parseInt iga kord). Brauseri renderdusel pole vahet."
   },
   {
     "level": 9,
     "question": "Mille jaoks on .meta klassiga <p>-element raamatukaardis?",
     "options": [
+      "SEO-jaoks — Google indekseerib seda eraldi",
       "Stiili eraldi (väiksem font, hall värv) autori ja aasta info jaoks",
-      "Märksõnade jaoks SEO-le",
-      "Kompileerimise jaoks vajalik",
-      "Pole vajalik"
+      "JavaScripti loogika kasutab seda andmete leidmiseks DOM-ist",
+      "Pole vajalik — see on jäänuk algsest disaini-prototüübist"
     ],
-    "correctIndex": 0,
-    "explanation": "style.css määrab .book .meta { color: #666; font-size: 14px; } — visuaalne hierarhia."
+    "correctIndex": 1,
+    "explanation": "style.css määrab .book .meta { color: #666; font-size: 14px; } — visuaalne hierarhia. SEO ei sõltu klassi-nimest; JS pärast laadimist ei otsi raamatuid DOM-ist tagasi."
   },
   {
     "level": 10,
@@ -358,225 +358,225 @@
       "Kontrollida if (!book.title) continue ja näiteks kuvada warning konsoolis",
       "Praegune kood lihtsalt kuvab undefined — UX-i parandamiseks tuleks valideerida",
       "Mõlemad ülal pakutud sammud on mõistlikud — kasutada whichever sobib projekti rangusele",
-      "Pole oluline"
+      "Kustutada vigane kirje data.json-ist enne fetch-imist"
     ],
     "correctIndex": 2,
-    "explanation": "Defensive coding aitab vältida 'undefined' kuvamist; valideerimine on hea tava."
+    "explanation": "Defensive coding aitab vältida 'undefined' kuvamist. Failide muutmine eelnevalt pole frontend-i ülesanne — kood peab tulema toime mistahes vorminguga andmetega."
   },
   {
     "level": 10,
     "question": "Mille jaoks on grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))?",
     "options": [
-      "Loob responsiivse veerukomplekti — minimaalne 220px, paindlik 1fr, ja brauser otsustab veergude arvu lähtudes laiusest",
-      "Fikseeritud 4 veergu",
-      "Vertikaalne paigutus",
-      "Float-paigutus"
+      "Loob fikseeritud 4-veerulise paigutuse, mis ei muutu",
+      "Loob responsiivse veerukomplekti — minimaalne 220px, paindlik 1fr, brauser otsustab veergude arvu",
+      "Kuvab kõik elemendid ühes veerga, kuid kõrgust 220px",
+      "Lukustab paigutuse, et keegi ei saaks CSS-i käsitsi muuta"
     ],
-    "correctIndex": 0,
-    "explanation": "auto-fit teeb tabeli responsive ilma media-query-deta — laiusel 800px võib olla 3, laiusel 400 ainult 1 veerg."
+    "correctIndex": 1,
+    "explanation": "auto-fit teeb tabeli responsiivseks ilma media-query-deta — laiusel 800px võib olla 3, laiusel 400 ainult 1 veerg."
   },
   {
     "level": 11,
     "question": "Kui andmestikku oleks 10 000 raamatut, mis muutuks praeguses lahenduses probleemiks?",
     "options": [
       "Iga raamatu jaoks luuakse DOM-element ja appendChild — 10000 DOM-i operatsiooni võib lehe blokkida",
-      "JSON-i parsimine ebaõnnestub",
-      "Brauser keelustab fetch-i",
-      "Pole midagi"
+      "JSON-i parsimine ebaõnnestub — JSON.parse-l on 1024-objekti piirang",
+      "Brauser keelustab fetch-i, kui vastus on liiga suur",
+      "Pole midagi — brauser käsitleb mistahes mahu sama hästi"
     ],
     "correctIndex": 0,
-    "explanation": "Suure listi puhul tuleks kasutada virtualization (näiteks ainult nähtavate elementide renderdamine)."
+    "explanation": "Suure listi puhul tuleks kasutada virtualization (näiteks ainult nähtavate elementide renderdamine). JSON.parse-l pole objekti-piirangut; fetch toetab suuri vastuseid."
   },
   {
     "level": 11,
     "question": "Mis turvarisk tekib, kui server tagastab JSON-i, mis sisaldab pahatahtlikku skripti title-väljas?",
     "options": [
+      "Brauser tunneb ohu ja keelab raamatu kuvamise automaatselt",
       "Kuna kood kasutab innerHTML-i, võiks <script>-tag olla süstitud ja täituda — XSS",
-      "Brauser tunneb ohu ja keelab",
-      "Pole riski, sest fetch on turvaline",
-      "Server peatab pahatahtliku JSON-i"
+      "Pole riski, sest fetch on alati turvaline",
+      "Server peatab pahatahtliku JSON-i automaatselt"
     ],
-    "correctIndex": 0,
-    "explanation": "innerHTML parsib HTML-i; <script>-tag on tagasi-laaditud, kuid event-handler-id (onerror, onclick) töötavad XSS-veterinariaks."
+    "correctIndex": 1,
+    "explanation": "innerHTML parsib HTML-i. Otsene <script>-tag innerHTML-iga küll ei käivitu kohe, kuid event-handler-id (onerror, onclick) töötavad XSS-vektoritena. Brauser ja server EI tea, mis on 'pahatahtlik'."
   },
   {
     "level": 11,
     "question": "Kuidas vältida XSS-riski, mis seoses innerHTML-iga eelmises küsimuses kirjeldati?",
     "options": [
       "Asendada innerHTML textContent-iga ja luua iga lapselement createElement-iga",
-      "Lisada try/catch",
-      "Kasutada eval()",
-      "Lisada CSS"
+      "Lisada try/catch ümber innerHTML-i kõne",
+      "Kasutada eval()-it koos sterilseerimisega",
+      "Lisada Content-Type päis HTML-vastusele"
     ],
     "correctIndex": 0,
-    "explanation": "DOM-i loomine textContent + createElement ei interpreteeri HTML-i — sisendi-andmed on alati tekst."
+    "explanation": "DOM-i loomine textContent + createElement-iga ei interpreteeri HTML-i. try/catch ei eemalda XSS-i, lihtsalt püüab errori. eval() on veelgi ohtlikum. Content-Type ei mõjuta innerHTML-i."
   },
   {
     "level": 11,
     "question": "Mis on subresource-integrity (SRI) ja kas see oleks selles lahenduses mõistlik?",
     "options": [
       "SRI on hash-põhine kontroll väliste skriptide muutmatuse tuvastamiseks. Selles lahenduses pole väliseid skripte, seega pole vajalik",
-      "SRI on kohustuslik kõikjal",
-      "SRI on JSON-iga seotud",
-      "SRI on CSS-iga seotud"
+      "SRI on andmete krüpteerimine kasutaja brauseris",
+      "SRI on JSON-faili sisu valideerimine vastu eelnevalt salvestatud skeemi",
+      "SRI on Content-Security-Policy alternatiiv, mis kaitseb XSS-i vastu"
     ],
     "correctIndex": 0,
-    "explanation": "SRI rakendub <script src=\"https://cdn...\" integrity=\"sha384-...\"> puhul — täiesti väline ressurss."
+    "explanation": "SRI rakendub <script src=\"https://cdn...\" integrity=\"sha384-...\"> puhul — täiesti väline ressurss. CSP on eraldi mehhanism; SRI ei tegele JSON-i ega andmete krüpteerimisega."
   },
   {
     "level": 12,
     "question": "Kuidas muuta kood paremini testitavaks?",
     "options": [
       "Eraldada raamatu-renderdus eraldi funktsiooni renderBook(book) → HTMLElement; testida ühest sõltumatust unit-testiga",
-      "Lisada rohkem konsoolitrükkimist",
-      "Kustutada try/catch",
-      "Eemaldada fetch"
+      "Lisada rohkem konsoolitrükkimist iga sammus",
+      "Kustutada try/catch, et vead leviksid edasi testides",
+      "Muuta loadBooks sünkroonseks, et testid oleksid lihtsamad"
     ],
     "correctIndex": 0,
-    "explanation": "Pure funktsioonid (input → output, ilma DOM-i mõjuta) on lihtsamini testitavad."
+    "explanation": "Pure-funktsioonid (input → output, ilma DOM-i mõjuta) on lihtsamini testitavad. Rohkem console.log-e ei aita; try/catch eemaldamine peidab vigu; sünkroonseks muutmine pole võimalik (fetch on async)."
   },
   {
     "level": 12,
     "question": "Mis on document.createDocumentFragment ja millal seda kasutada?",
     "options": [
-      "Mälus elav DOM-fragment, millele saab lapse elemente lisada ilma leheümarduseta; appendiitakse päris DOM-i ühe operatsiooniga — efektiivsem suurte listide puhul",
-      "Brauseri sisemine viga",
-      "CSS-iga seotud klass",
-      "JSON-i osa"
+      "Mälus elav DOM-fragment, millele saab lapse elemente lisada ilma leheümarduseta; appendiitakse päris DOM-i ühe operatsiooniga",
+      "Brauseri sisemine objekt, mida arendaja ei saa kasutada",
+      "JavaScripti DOM-i tagavara, mis aktiveerub vaid <fragment>-tagi sees",
+      "Eraldi window-objekt iframe-de jaoks"
     ],
     "correctIndex": 0,
-    "explanation": "DocumentFragment vähendab reflow/repaint-tsükleid suurte DOM-i muudatuste juures."
+    "explanation": "DocumentFragment vähendab reflow/repaint-tsükleid suurte DOM-i muudatuste juures. See on standard DOM-meetod, kättesaadav igas brauseris."
   },
   {
     "level": 12,
     "question": "Kuidas eraldada andmete laadimine UI-renderdusest?",
     "options": [
-      "Luua eraldi funktsioon fetchBooks() (tagastab Promise<book[]>) ja renderBooks(books) — andmemudel ja kuva on lahti",
-      "Kustutada raamatud",
-      "Lisada inline JS HTML-i",
-      "Pole vaja"
+      "Luua eraldi funktsioon fetchBooks() (tagastab Promise<Book[]>) ja renderBooks(books) — andmemudel ja kuva on lahti",
+      "Kasutada inline-skriptide jaoks <script type=\"data\"> tag-i, mis hoiab andmeid HTML-is",
+      "Kasutada CSS-i, et stiilide kaudu sisendada andmeid lehte",
+      "Pole vaja — fetch on juba ise kahekihiline"
     ],
     "correctIndex": 0,
-    "explanation": "Klassikaline MVC/MVVM eraldatus: data fetcher on iseseisev, view ainult kuvab."
+    "explanation": "Klassikaline MVC/MVVM eraldatus: data fetcher on iseseisev, view ainult kuvab. CSS pole andmete tööriist; <script type=\"data\"> on hack, mitte standard tava."
   },
   {
     "level": 13,
     "question": "Mis on race condition (võistlustingimus) ja kas see võib praeguses lahenduses tekkida?",
     "options": [
-      "Praegu mitte, kuna loadBooks kutsutakse vaid üks kord; kui aga lisada otsing, mis käivitab fetch'i iga klahvivajutuse peal, võib vana päring saabuda hiljem ja kirjutada uuele üle — vajaks AbortController-i",
-      "Race condition on ainult andmebaasides",
-      "Brauserid takistavad seda automaatselt",
-      "JS on alati ühe-lõimeline, race condition pole võimalik"
+      "Praegu mitte, kuna loadBooks kutsutakse vaid üks kord; kui aga lisada otsing, mis käivitab fetch'i iga klahvivajutusega, võib vana päring saabuda hiljem ja kirjutada uuele üle — vajaks AbortController-i",
+      "Race condition on ainult andmebaasides ja serveris, brauseris pole",
+      "Brauserid takistavad seda automaatselt, eraldades iga fetch-i eraldi protsessi",
+      "JS on ühe-lõimeline — race condition pole võimalik mitte kunagi"
     ],
     "correctIndex": 0,
-    "explanation": "Üksiku-fetch lahendus on turvaline; mitme samaaegse päringu puhul on AbortController parim viis vana päringu peatamiseks."
+    "explanation": "Üksiku-fetch lahendus on turvaline; mitme samaaegse päringu puhul on AbortController parim viis vana päringu peatamiseks. JS on ühe-lõimeline, kuid asünkroonseid I/O-tehteid saab korraga toimuda."
   },
   {
     "level": 13,
     "question": "Mis erinevus oleks, kui data.json oleks väga suur (näiteks 50 MB)?",
     "options": [
-      "Brauser laadiks kogu faili enne parsimise alustamist; mälukasutus oleks suur ja kasutaja näeks hetkel tühja lehte. Streaming JSON-parser oleks parim lahendus",
-      "Ei mingit erinevust",
-      "Brauser kraashib alati",
-      "JSON.parse keelaks"
+      "Brauser laadiks kogu faili enne parsimise alustamist; mälukasutus oleks suur ja kasutaja näeks tühja lehte. Streaming JSON-parser oleks parim lahendus",
+      "Pole erinevust — brauserid käsitlevad mistahes JSON-i sama kiirusega",
+      "Brauser kraashib alati üle 10 MB JSON-iga",
+      "JSON.parse keelaks suure mahu, vajaks alternatiivset parser-it"
     ],
     "correctIndex": 0,
-    "explanation": "Tavalised .json() loeb kogu body korraga; suurte failide puhul tuleks kasutada ReadableStream-i ja jada-parsimist."
+    "explanation": "Tavaline .json() loeb kogu body korraga; suurte failide puhul tuleks kasutada ReadableStream-i ja jada-parsimist. Brauserid ei kraashi automaatselt; JSON.parse-l pole hard-piiri."
   },
   {
     "level": 13,
-    "question": "Mis juhtub, kui kasutaja avab lehe sõbra arvutil HTTPS-iga, aga data.json saadetakse HTTP-iga?",
+    "question": "Mis juhtub, kui kasutaja avab lehe HTTPS-iga, aga data.json saadetakse HTTP-iga?",
     "options": [
       "Brauser blokeerib mixed-content päringud — fetch ebaõnnestub turvariski tõttu",
-      "Kõik töötab",
-      "Brauser laadib aeglasemalt",
+      "Kõik töötab — HTTP-fail laaditakse ja parsitakse normaalselt",
+      "Brauser laadib aeglasemalt, kuid lõpuks õnnestub",
       "JSON automaatselt teisendub HTTPS-iks"
     ],
     "correctIndex": 0,
-    "explanation": "Mixed content (HTTPS leht, HTTP-fetch) on automaatne brauseri keeld."
+    "explanation": "Mixed content (HTTPS leht, HTTP-fetch) on automaatne brauseri keeld. Brauser EI tee automaatset HTTPS-i upgrade-i ega lase HTTP-päringut lihtsalt aeglasemalt."
   },
   {
     "level": 14,
     "question": "Mis on JSON-faili eelis võrreldes inline JS-objektiga (const books = [...])?",
     "options": [
       "Saab andmeid uuendada ilma JS-faili muutmata; saab kasutada sama faili mitmes rakenduses",
-      "JSON on kiirem alati",
-      "JS-objekt ei tööta brauseris",
-      "Erinevust pole"
+      "JSON on alati kiirem kui JS-objekt",
+      "JS-objekt ei tööta brauseris, ainult Node.js-is",
+      "JSON-i saab pakkida väiksemaks (gzip), JS-i ei saa"
     ],
     "correctIndex": 0,
-    "explanation": "Andmete eraldamine koodist (data ≠ logic) on hooldatavuse põhimõte."
+    "explanation": "Andmete eraldamine koodist (data ≠ logic) on hooldatavuse põhimõte. Kiirus on sama; JS-objekt töötab brauseris; mõlemat saab gzip-iga pakkida."
   },
   {
     "level": 14,
     "question": "Mis on JSON-i piirangud võrreldes JavaScript-objektiga?",
     "options": [
-      "JSON ei toeta funktsioone, kuupäevi (Date), undefined, BigInt, kommentaare või kompleksseid objekte (RegExp jne)",
-      "Erinevust pole",
-      "JSON toetab kõike, mida JS",
-      "JSON on alati binaarne"
+      "JSON ei toeta funktsioone, kuupäevi (Date), undefined, BigInt, kommentaare ega kompleksseid objekte (RegExp jne)",
+      "JSON ei toeta sisestatud objekte ega massiive",
+      "Erinevust pole — JSON on lihtsalt JS-objekti tekstiline esitus",
+      "JSON toetab kõike, mida JS, ainult string-ümbritsemine on erinev"
     ],
     "correctIndex": 0,
-    "explanation": "JSON on andmete-vahetuse vorming (data interchange format), mitte programmeerimiskeel."
+    "explanation": "JSON on andmete-vahetuse vorming (data interchange format), mitte programmeerimiskeel. Sisestatud objekte ja massiive JSON KÜLL toetab; piirangud on funktsioonidel ja eri-tüüpidel."
   },
   {
     "level": 14,
     "question": "Miks ei oleks data.json sees kommentaare, isegi kui need oleksid loetavusele kasulikud?",
     "options": [
       "JSON-spetsifikatsioon ei toeta kommentaare; lubatud on JSONC (näiteks tsconfig.json), aga standard JSON.parse() viskab vea",
-      "Kommentaarid kustuvad alati",
-      "Brauserid keelavad",
-      "Kommentaarid on lubatud"
+      "Kommentaarid kustuksid alati JSON-i serialiseerimisel",
+      "Brauserid keelavad kommentaaride lugemist turvalisuse pärast",
+      "Kommentaarid oleksid lubatud, lahendus jätab need lihtsalt välja stiili pärast"
     ],
     "correctIndex": 0,
-    "explanation": "Kommentaarid jäeti tahtlikult välja, et hoida vorming lihtne. JSON5/JSONC laiendid toetavad neid."
+    "explanation": "Kommentaarid jäeti tahtlikult välja, et hoida vorming lihtne ja interoperatiivne. JSON5/JSONC laiendid toetavad kommentaare, aga nõuavad eraldi parserit."
   },
   {
     "level": 15,
     "question": "Kuidas muuta lahendust nii, et raamatuid saaks dünaamiliselt sortida (näiteks aasta järgi) ilma serverist uuesti laadimata?",
     "options": [
       "Hoida books-massiiv state'is, lisada nupp 'Sorteeri aasta järgi' ja teha books.sort((a,b) => a.year - b.year), siis renderdada uuesti DOM",
-      "Iga sortimisel teha uus fetch",
-      "Lisada server-side sorteerimine",
-      "Pole võimalik"
+      "Iga sortimisel teha uus fetch, kuid backend-iga 'sort=year' parameetriga",
+      "Lisada CSS-i flex-direction: column-reverse — see lubab lehel sortida ise",
+      "Pole võimalik ilma serveri toeta"
     ],
     "correctIndex": 0,
-    "explanation": "Lokaalne sort on koheselt kiire ja ei vaja serverit — andmed on juba kliendis."
+    "explanation": "Lokaalne sort on koheselt kiire ja ei vaja serverit — andmed on juba kliendis. CSS ei sorda andmeid; uus fetch pole vajalik."
   },
   {
     "level": 15,
     "question": "Kuidas paremini hooldada lahendust, kui raamatute mudel laieneks (lisanduksid välju nagu kirjastus, ISBN, pildi-URL)?",
     "options": [
-      "Eraldada renderBook(book) eraldi mooduliks; lisada TypeScript-tüübid Book-objektile; kasutada näiteks ES module süsteemi",
-      "Kirjutada kogu kood ühte faili",
-      "Vältida muudatusi",
-      "Lisada juhuslikke märkusi"
+      "Eraldada renderBook(book) eraldi mooduliks; lisada TypeScript-tüübid Book-objektile; kasutada ES-module süsteemi",
+      "Kirjutada kogu kood ühte faili, et kõik oleks ühes kohas",
+      "Vältida muudatusi — uued väljad tooksid liiga palju keerukust",
+      "Lisada nähtamatud HTML-tagid, mis hoiavad uusi välju"
     ],
     "correctIndex": 0,
-    "explanation": "Tüübid + moodulid + üks vastutus funktsiooni kohta on järgneva-arenduse pant."
+    "explanation": "Tüübid + moodulid + üks vastutus funktsiooni kohta on järgneva-arenduse pant. Kõik ühes failis lõhub modulaarsust; muudatuste vältimine pole hooldus."
   },
   {
     "level": 15,
     "question": "Kui see lahendus oleks päris veebipoodi tooteleht, mis täiendusi vajaksid kohe?",
     "options": [
       "Pagineerimine (10-20 toodet korraga), otsing/filter, lazy-loading piltidele, accessibility-audit, SEO-meta-tagid, error-monitoring (näiteks Sentry)",
-      "Lisada ainult ühe toote",
-      "Eemaldada CSS",
-      "Lisada juhuslikke linke"
+      "Lisada juhuslikke linke, et leht paistaks 'rikkalikum'",
+      "Eemaldada CSS, et lehe laadimine oleks kiirem",
+      "Lisada ainult ühe toote — vähem on rohkem"
     ],
     "correctIndex": 0,
-    "explanation": "Tootmis-veebipoes on tundub UX, otsing, accessibility ja monitoring tegelikult elementaarsed."
+    "explanation": "Tootmise veebipoes on UX, otsing, accessibility ja monitoring elementaarsed. Juhuslike linkide lisamine ja CSS-i eemaldamine on selge halvendus."
   },
   {
     "level": 15,
     "question": "Kui andmed peaksid olema tegelikkuses live (näiteks raamatukogu varudest), millised arhitektuurilised muudatused oleksid vajalikud?",
     "options": [
       "Vahetada staticline JSON dünaamilise API-iga (REST või GraphQL), lisada keskne andmebaas, vajaduse korral cache (Redis), WebSocket reaalaja-uuendusteks",
-      "Jätta kõik samaks",
-      "Lisada veelgi rohkem JSON-i",
-      "Eemaldada JS"
+      "Kasutada localStorage-i, et iga kasutaja näeks oma värsket varianti",
+      "Jätta JSON, aga laadida see iga 5 sekundi tagant uuesti",
+      "Pole vaja midagi muuta — JSON-fail saab olla live"
     ],
     "correctIndex": 0,
-    "explanation": "Live-andmed nõuavad eraldi backend-süsteemi; static JSON sobib ainult muutumatute andmete jaoks."
+    "explanation": "Live-andmed nõuavad eraldi backend-süsteemi. localStorage on kasutaja-isiklik, mitte jagatud; pidev re-fetch on raiskav võrreldes WebSocket'iga; staatiline JSON-fail pole live."
   }
 ]
