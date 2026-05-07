@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'node:path';
 import { promises as fs } from 'node:fs';
 import { listTasks, readTask } from './src/fileReader.js';
-import { generateQuestions, generateHint, getStatus } from './src/aiClient.js';
+import { getQuestionsForTask, getBankSize } from './src/questionStore.js';
 
 await loadEnv();
 
@@ -12,24 +12,28 @@ const app = express();
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.resolve('public')));
 
-app.get('/api/health', async (req, res) => {
-  res.json({ ok: true, ...(await getStatus()) });
+app.get('/api/health', (req, res) => {
+  res.json({ ok: true });
 });
 
 app.get('/api/tasks', async (req, res) => {
   try {
-    const [tasks, status] = await Promise.all([listTasks(), getStatus()]);
-    res.json({ tasks, ...status });
+    const tasks = await listTasks();
+    const withBankSize = await Promise.all(
+      tasks.map(async (t) => ({ ...t, bankSize: await getBankSize(t.id) })),
+    );
+    res.json({ tasks: withBankSize });
   } catch (err) {
     console.error('GET /api/tasks failed:', err);
-    res.status(500).json({ error: 'Ulesannete loend ei avanenud' });
+    res.status(500).json({ error: 'Ülesannete loend ei avanenud' });
   }
 });
 
 app.get('/api/tasks/:id', async (req, res) => {
   try {
     const task = await readTask(req.params.id);
-    res.json(task);
+    const bankSize = await getBankSize(task.id);
+    res.json({ ...task, bankSize });
   } catch (err) {
     console.warn('GET /api/tasks/:id failed:', err.message);
     res.status(404).json({ error: err.message });
@@ -39,30 +43,20 @@ app.get('/api/tasks/:id', async (req, res) => {
 app.post('/api/tasks/:id/questions', async (req, res) => {
   try {
     const task = await readTask(req.params.id);
-    const result = await generateQuestions(task);
-    const questions = result.questions.map((q, i) => ({
+    const { questions, bankSize } = await getQuestionsForTask(task.id);
+    const withIds = questions.map((q, i) => ({
       ...q,
       id: `${task.id}-${Date.now()}-${i}`,
     }));
-    res.json({ questions, source: result.source, taskId: task.id, taskTitle: task.title });
+    res.json({
+      questions: withIds,
+      taskId: task.id,
+      taskTitle: task.title,
+      bankSize,
+    });
   } catch (err) {
     console.error('POST /api/tasks/:id/questions failed:', err);
-    res.status(500).json({ error: `Kusimuste genereerimine ebaonnestus: ${err.message}` });
-  }
-});
-
-app.post('/api/tasks/:id/hint', async (req, res) => {
-  try {
-    const { question } = req.body || {};
-    if (!question || !Array.isArray(question.options)) {
-      return res.status(400).json({ error: 'Korrektne kusimus puudub' });
-    }
-    const task = await readTask(req.params.id);
-    const hint = await generateHint(task, question);
-    res.json({ hint });
-  } catch (err) {
-    console.error('POST /api/tasks/:id/hint failed:', err);
-    res.status(500).json({ error: `Vihje ei saadud: ${err.message}` });
+    res.status(500).json({ error: `Küsimuste laadimine ebaõnnestus: ${err.message}` });
   }
 });
 
@@ -70,9 +64,8 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Mitteleitud' });
 });
 
-app.listen(PORT, async () => {
-  const status = await getStatus();
-  console.log(`Miljonimang kuulab: http://localhost:${PORT}  [${status.label}]`);
+app.listen(PORT, () => {
+  console.log(`Miljonimäng kuulab: http://localhost:${PORT}`);
 });
 
 async function loadEnv() {
@@ -88,6 +81,6 @@ async function loadEnv() {
       if (!process.env[key]) process.env[key] = value;
     }
   } catch (err) {
-    if (err.code !== 'ENOENT') console.warn('.env lugemine ebaonnestus:', err.message);
+    if (err.code !== 'ENOENT') console.warn('.env lugemine ebaõnnestus:', err.message);
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "miljonimang",
-  "version": "0.3.0",
-  "description": "AI-pohine ulesannete valideerimise rakendus miljonimangu pohimottel",
+  "version": "0.4.0",
+  "description": "Ulesannete valideerimise rakendus miljonimangu pohimottel — eelgenereeritud kusimustepank",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -12,9 +12,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.30.1",
-    "express": "^4.19.2",
-    "marked": "^14.1.3"
+    "express": "^4.19.2"
   },
   "license": "MIT"
 }

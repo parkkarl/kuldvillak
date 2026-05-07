@@ -9,14 +9,14 @@ const app = document.getElementById('app');
 const aiBadge = document.getElementById('aiBadge');
 
 const state = {
-  aiEnabled: false,
   questions: [],
   taskTitle: '',
   taskId: null,
+  bankSize: 0,
   index: 0,
   selected: null,
   locked: false,
-  lifelines: { fifty: true, hint: true, audience: true },
+  lifelines: { fifty: true, audience: true },
   removed: [],
   answers: [],
 };
@@ -36,13 +36,10 @@ async function fetchJson(url, options = {}) {
   return res.json();
 }
 
-function setAiBadge(status) {
-  const source = status?.source || 'mock';
-  const label = (status?.label || 'Demorežiim: mock-küsimused').replace('Demorezhiim', 'Demorežiim');
-  state.aiEnabled = source !== 'mock';
-  aiBadge.textContent = label;
-  aiBadge.classList.remove('mock', 'cli', 'cloud');
-  aiBadge.classList.add(source === 'mock' ? 'mock' : source === 'claude-cli' ? 'cli' : 'cloud');
+function setBadge(totalBank) {
+  aiBadge.textContent = `Küsimustepank: ${totalBank} valmis küsimust`;
+  aiBadge.classList.remove('mock', 'cli');
+  aiBadge.classList.add('cloud');
 }
 
 async function showTaskList() {
@@ -53,7 +50,8 @@ async function showTaskList() {
 
   try {
     const data = await fetchJson('/api/tasks');
-    setAiBadge(data);
+    const totalBank = data.tasks.reduce((sum, t) => sum + (t.bankSize || 0), 0);
+    setBadge(totalBank);
     if (!data.tasks.length) {
       emptyState.classList.remove('hidden');
       return;
@@ -63,7 +61,7 @@ async function showTaskList() {
       li.innerHTML = `
         <span class="task-id">${task.id}</span>
         <span class="task-title">${escapeHtml(task.title)}</span>
-        <span class="muted">▸</span>
+        <span class="muted">${task.bankSize || 0} küsimust ▸</span>
       `;
       li.addEventListener('click', () => showTaskDetail(task.id));
       list.appendChild(li);
@@ -88,13 +86,13 @@ async function showTaskDetail(taskId) {
   try {
     const task = await fetchJson(`/api/tasks/${taskId}`);
     titleEl.textContent = task.title;
-    filesEl.textContent = `${task.files.length} faili kontekstina (sh assignment.md)`;
+    filesEl.textContent = `${task.files.length} faili (sh assignment.md) · küsimustepank: ${task.bankSize || 0}`;
     bodyEl.innerHTML = renderMarkdown(task.assignment || '*(assignment.md puudub)*');
 
     startBtn.addEventListener('click', async () => {
       startBtn.disabled = true;
       status.classList.remove('hidden', 'error');
-      status.textContent = 'Genereerin küsimusi… (AI puhul võib see kesta 10–30 sekundit)';
+      status.textContent = 'Valin küsimustepangast 15 küsimust…';
       try {
         const data = await fetchJson(`/api/tasks/${taskId}/questions`, { method: 'POST' });
         startBtn.disabled = false;
@@ -118,7 +116,7 @@ function startGame(data) {
   state.index = 0;
   state.selected = null;
   state.locked = false;
-  state.lifelines = { fifty: true, hint: true, audience: true };
+  state.lifelines = { fifty: true, audience: true };
   state.removed = [];
   state.answers = [];
 
@@ -258,18 +256,6 @@ function useLifeline(name) {
     out.classList.remove('hidden');
     out.innerHTML = `<strong>Publik hääletas:</strong>` + audienceBars(dist);
     state.lifelines.audience = false;
-  } else if (name === 'hint') {
-    const out = document.getElementById('lifelineOutput');
-    out.classList.remove('hidden');
-    out.textContent = 'Küsin AI-lt vihjet…';
-    state.lifelines.hint = false;
-    fetchJson(`/api/tasks/${state.taskId}/hint`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: q }),
-    })
-      .then((data) => { out.textContent = data.hint; })
-      .catch((err) => { out.textContent = `Vihje ei saadud: ${err.message}`; });
   }
   syncLifelineButtons();
 }

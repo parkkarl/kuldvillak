@@ -9,14 +9,6 @@ services:
     environment:
       NODE_ENV: production
       PORT: "3000"
-      CLAUDE_CLI_BIN: claude
-      CLAUDE_CLI_MODEL: claude-sonnet-4-6
-      CLAUDE_CLI_TIMEOUT_MS: "300000"
     volumes:
-      # Share host's Claude auth + cache so the container reuses the existing
-      # `claude /login` session. Read-write because the CLI appends to history
-      # and writes to its cache directory during normal use.
-      - /root/.claude:/root/.claude
-      # Make new tasks added under input/ visible without rebuilding the image.
+      # Make new tasks (assignment + questions.json) visible without rebuilding the image.
       - ./input:/app/input:ro
-      - ./prompts:/app/prompts:ro

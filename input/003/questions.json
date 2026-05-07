@@ -1,0 +1,597 @@
+[
+  {
+    "level": 1,
+    "question": "Mis on selle ülesande peamine eesmärk?",
+    "options": [
+      "Saata e-kirju ülesannete kohta",
+      "Luua veebipõhine to-do nimekiri, mille sisu püsib brauseri taaskäivitamise järel",
+      "Kuvada ilmateadet",
+      "Mängida malet arvutiga"
+    ],
+    "correctIndex": 1,
+    "explanation": "assignment.md sõnastab eesmärgina püsivat ülesannete nimekirja localStorage'iga."
+  },
+  {
+    "level": 1,
+    "question": "Mis brauseri-mehhanismiga andmed püsima jäetakse?",
+    "options": [
+      "sessionStorage — kustub akna sulgemisel",
+      "localStorage — säilib brauseri taaskäivitamise järel",
+      "Cookies",
+      "IndexedDB"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lahendus kasutab localStorage-it võtmega 'todos', mis säilitab andmed taaskäivituste vahel."
+  },
+  {
+    "level": 1,
+    "question": "Mille all hoitakse ülesannete andmeid localStorage-is?",
+    "options": ["võtmega 'tasks'", "võtmega 'todos'", "võtmega 'list'", "võtmega 'data'"],
+    "correctIndex": 1,
+    "explanation": "STORAGE_KEY = 'todos' — kõik salvestamised ja lugemised toimuvad selle võtmega."
+  },
+  {
+    "level": 1,
+    "question": "Mitu peamist tegevust kasutaja saab teha?",
+    "options": [
+      "Ainult lisada",
+      "Ainult kustutada",
+      "Lisada uue ülesande, märkida tehtuks (linnukesega) ja kustutada",
+      "Ainult sirvida"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kolm CRUD-operatsiooni: Create (form submit), Update (toggle done), Delete."
+  },
+  {
+    "level": 2,
+    "question": "Mis vorming hoiab andmed localStorage'is?",
+    "options": [
+      "Binaarne pakitud kuju",
+      "JSON-string (JSON.stringify-iga serialiseeritud)",
+      "XML",
+      "CSV"
+    ],
+    "correctIndex": 1,
+    "explanation": "localStorage hoiab vaid stringe; lahendus serialiseerib JSON.stringify-iga ja parsib JSON.parse-iga."
+  },
+  {
+    "level": 2,
+    "question": "Kus toimub iga ülesande renderdamine?",
+    "options": [
+      "Pärast iga muudatust kutsutakse render(), mis ehitab kogu listi uuesti localStorage'ist loetud andmete põhjal",
+      "Iga element renderdatakse eraldi animatsiooniga",
+      "Server saadab HTML-i",
+      "CSS teeb seda automaatselt"
+    ],
+    "correctIndex": 0,
+    "explanation": "render() loeb localStorage'ist andmeid ja loob list.innerHTML uuesti — täielik re-render iga muudatuse järel."
+  },
+  {
+    "level": 2,
+    "question": "Mis kasutaja-tegevus käivitab uue ülesande lisamise?",
+    "options": [
+      "Lehe avamine",
+      "Vormi (form#addForm) submit-sündmus — kasutaja vajutab Enter või klõpsab 'Lisa' nuppu",
+      "Liikumine teisele lehele",
+      "Konsool-käsk"
+    ],
+    "correctIndex": 1,
+    "explanation": "form.addEventListener('submit', ...) kuulab vormi submit-sündmust."
+  },
+  {
+    "level": 2,
+    "question": "Mille jaoks on kontrolli linnuke (checkbox) iga ülesande juures?",
+    "options": [
+      "Kustutab ülesande",
+      "Märgib ülesande tehtuks (lisab .done klassi, mis joonib teksti läbi)",
+      "Saadab serverisse",
+      "Lisab kommentaari"
+    ],
+    "correctIndex": 1,
+    "explanation": "Toggle muudab todo.done väärtuse; CSS .done span { text-decoration: line-through } annab visuaalse efekti."
+  },
+  {
+    "level": 3,
+    "question": "Mida teeb funktsioon load()?",
+    "options": [
+      "Salvestab andmeid",
+      "Loeb localStorage võtme 'todos' alt JSON-i ja parsib selle massiiviks; vea või tühja korral tagastab []",
+      "Loob ühenduse serveriga",
+      "Käivitab CSS-animatsiooni"
+    ],
+    "correctIndex": 1,
+    "explanation": "JSON.parse(localStorage.getItem('todos')) || []; tagastab massiivi või vea korral tühja."
+  },
+  {
+    "level": 3,
+    "question": "Mida teeb funktsioon save(todos)?",
+    "options": [
+      "Saadab andmed serverisse",
+      "Konverterib todos-massiivi JSON-stringiks ja kirjutab localStorage võtmesse 'todos'",
+      "Loeb andmeid",
+      "Kustutab andmed"
+    ],
+    "correctIndex": 1,
+    "explanation": "localStorage.setItem(STORAGE_KEY, JSON.stringify(todos)) — pure-frontend persistents."
+  },
+  {
+    "level": 3,
+    "question": "Miks on koodis e.preventDefault() form-i submit-käitlejas?",
+    "options": [
+      "Et katkestada vormi vaikekäitumine (lehe uuesti laadimine GET-päringuga)",
+      "preventDefault on alati kohustuslik",
+      "Et saata serverisse",
+      "Brauseri kompileerimine"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vormi submit ilma preventDefault-ita laeb lehe uuesti — kogu state kaduks ekraanilt."
+  },
+  {
+    "level": 3,
+    "question": "Mida teeb input.value.trim() === '' kontroll?",
+    "options": [
+      "Eemaldab tähed",
+      "Eemaldab algus- ja lõpu-tühikud ning kontrollib, kas allesjäänud string on tühi — sellisel juhul ei lisata midagi",
+      "Kontrollib serverit",
+      "Lisab juhusliku ülesande"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tühjenduse-kontroll vältib '   ' (ainult tühikute) lisamist; assignment.md nõuab seda."
+  },
+  {
+    "level": 4,
+    "question": "Mis muster on kasutusel list.addEventListener('click', ...) ühe sündmuse-kuulajaga kõikide ülesannete jaoks?",
+    "options": [
+      "Sündmuse-delegeerimine (event delegation) — üks kuulaja vanemal asemel paljude kuulajate iga lapsel",
+      "Promise-ahel",
+      "Async/await",
+      "Race condition"
+    ],
+    "correctIndex": 0,
+    "explanation": "Event delegation on efektiivne muster, mis töötab ka uutel elementidel ilma re-attachmenti vajamata."
+  },
+  {
+    "level": 4,
+    "question": "Kuidas tuvastab klõps-käitleja, millise ülesandega on tegemist?",
+    "options": [
+      "Loeb e.target.dataset.idx — andmeatribuudilt indeks numbrina",
+      "Räägib kasutajaga",
+      "Eelnev ülesanne on alati valitud",
+      "Loob serveripäringu"
+    ],
+    "correctIndex": 0,
+    "explanation": "data-idx atribuut HTML-is muutub e.target.dataset.idx-iks JS-is; Number() teisendab string-i numbriks."
+  },
+  {
+    "level": 4,
+    "question": "Mis erinevus on input-väljal classList-i järgi 'toggle' ja 'del'?",
+    "options": [
+      "Toggle on checkbox; del on kustuta-nupp; klassi-nime põhjal otsustab kood, mis tegevust teha",
+      "Erinevust pole",
+      "Mõlemad teevad sama",
+      "Üks toetab Chrome'i, teine Firefox-i"
+    ],
+    "correctIndex": 0,
+    "explanation": "if (e.target.classList.contains('toggle')) — toggle muudab done; classList.contains('del') — kustutab indeksist."
+  },
+  {
+    "level": 5,
+    "question": "Miks on todos-massiiv kogu aeg uuesti salvestatud (save) ja uuesti renderdatud (render) iga muudatuse järel?",
+    "options": [
+      "Lihtsuse pärast — täielik state-snapshot lihtsam kui inkrementaalsed uuendused; UI alati sünkroonis salvestatuga",
+      "JS nõuab seda",
+      "Brauserid eelistavad seda",
+      "Ei pea olema, see on viga"
+    ],
+    "correctIndex": 0,
+    "explanation": "Re-render-pohjaline lähenemine on funktsionaalsem; state on alati ühene allikas (single source of truth)."
+  },
+  {
+    "level": 5,
+    "question": "Miks on load() funktsioonis try/catch?",
+    "options": [
+      "Lihtsalt stiili pärast",
+      "Kui localStorage'is olev väärtus pole valiidne JSON (näiteks kasutaja muutis seda käsitsi DevTools-is), JSON.parse viskab vea — catch-blokk tagastab tühja massiivi, mitte ei jäta lehte katki",
+      "preventDefault on kohustuslik",
+      "JSON.parse-i ei saa kasutada"
+    ],
+    "correctIndex": 1,
+    "explanation": "Defensive coding: vana või vigaste andmete graceful handling."
+  },
+  {
+    "level": 5,
+    "question": "Mis on .done CSS-klassi efekt?",
+    "options": [
+      "Eemaldab elemendi",
+      "Joonib teksti läbi (text-decoration: line-through) ja muudab värvi halliks",
+      "Saadab e-kirja",
+      "Lisab pildi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Visuaalne signaal, et ülesanne on tehtud — selgesti äratuntav 'done' state."
+  },
+  {
+    "level": 6,
+    "question": "Mis järjekorras käib uue ülesande lisamine?",
+    "options": [
+      "submit → preventDefault → trim-kontroll → load → push → save → input.value tühjendus → render",
+      "render → save → submit",
+      "save → load → submit",
+      "render → load → trim"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lugu lihtsalt: takista vaikekäitumine, valideeri, lisa state'i, salvesta, puhasta sisend, joonista uuesti."
+  },
+  {
+    "level": 6,
+    "question": "Mis erinevus oleks, kui save() kasutaks JSON.stringify(todos, null, 2)?",
+    "options": [
+      "Andmed oleksid loetavamad (whitespace + indent), kuid võtaksid rohkem ruumi localStorage-is",
+      "Erinevust pole",
+      "Andmed kaoksid",
+      "Brauser keelaks"
+    ],
+    "correctIndex": 0,
+    "explanation": "Indenteeritud JSON on debug-sõbralik, kuid kompaktne JSON salvestab ruumi — localStorage'i piirang on tihti 5-10 MB."
+  },
+  {
+    "level": 6,
+    "question": "Mis juhtub, kui kustutada element splice-iga, ja seejärel rederdada uuesti?",
+    "options": [
+      "Indeksid uuenevad — vana data-idx väärtused ei viita enam samadele kirjetele, kuid täielik re-render määrab uued indeksid",
+      "Indeksid jäävad samaks",
+      "Brauser kraashib",
+      "Element ei kustu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Re-render on alati kogu listi peal; uued indeksid määratakse forEach((todo, idx) => ...) kaudu."
+  },
+  {
+    "level": 7,
+    "question": "Miks kasutab kood event delegation'i, mitte iga elemendi peal eraldi addEventListener-i?",
+    "options": [
+      "Üks kuulaja kogu listi peal töötab automaatselt ka uutel elementidel; pole vaja iga uue ülesande puhul re-attachida event-handler-eid",
+      "Üksiku kuulaja jõudlus on alati halvem",
+      "Brauserid keelavad mitut kuulajat",
+      "Pole erinevust"
+    ],
+    "correctIndex": 0,
+    "explanation": "Event delegation on klassikaline DOM-muster — väiksem mälukasutus, lihtsam koodibaas."
+  },
+  {
+    "level": 7,
+    "question": "Mis on Number(e.target.dataset.idx) kontroll Number.isNaN ja miks?",
+    "options": [
+      "Kui klõpsati elemendil ilma data-idx atribuudita (näiteks <span> sees), tagastab dataset.idx undefined ja Number(undefined) = NaN; kontroll väldib vale-indeksiga töötamist",
+      "Math.PI hoidja",
+      "Brauseri viga",
+      "Pole vajalik"
+    ],
+    "correctIndex": 0,
+    "explanation": "Defensive coding — klõps võib trapida ka <li> sisemustele elementidele, mille data-idx puudub."
+  },
+  {
+    "level": 7,
+    "question": "Mis võib olla probleem load()-i tagastatud massiivi kasutamisega ilma valideerimiseta?",
+    "options": [
+      "Kui localStorage sisaldab vana skeemi (näiteks {text, completed: bool} mitte {text, done: bool}), kuvamine ootamatu — kood ei valideeri välju",
+      "JSON.parse alati validateerib",
+      "localStorage automatiseerib",
+      "Pole probleemi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Andmete-skeemi-evolutsiooniga puhul tuleks lisada migratsioon või vähemalt valideerimine."
+  },
+  {
+    "level": 8,
+    "question": "Mis turvarisk tekib praeguse koodi puhul, kui ülesande tekst (todo.text) sisaldab pahatahtlikku HTML-i?",
+    "options": [
+      "Kuna kood paneb tooteti.text otse innerHTML-isse <span>${todo.text}</span>-iga, võib pahatahtlik <img onerror=...> või <script> käivituda — XSS",
+      "innerHTML on automaatselt turvaline",
+      "Pole riski, sest localStorage on lokaalne",
+      "Brauser blokeerib igal juhul"
+    ],
+    "correctIndex": 0,
+    "explanation": "assignment.md mainib seda piirangut — innerHTML + valideerimata sisend = XSS-vektor."
+  },
+  {
+    "level": 8,
+    "question": "Kuidas vältida eelmises küsimuses kirjeldatud XSS-i?",
+    "options": [
+      "Asendada innerHTML createElement + textContent-iga; tekst ei tõlgendata HTML-ina",
+      "Lisada try/catch",
+      "Eemaldada localStorage",
+      "Kasutada eval()"
+    ],
+    "correctIndex": 0,
+    "explanation": "textContent escape'ib HTML-i automaatselt; sisend on alati pelgalt tekst."
+  },
+  {
+    "level": 8,
+    "question": "Mis on localStorage'i suuruse piirang tüüpilises brauseris?",
+    "options": [
+      "Tüüpiliselt 5-10 MB origin'i kohta (sõltub brauserist)",
+      "1 KB",
+      "Piiramatu",
+      "1 GB"
+    ],
+    "correctIndex": 0,
+    "explanation": "Spec ei nõua täpset piiri, aga praktikas on Chrome/Firefox/Safari ~5-10 MB origin'i kohta."
+  },
+  {
+    "level": 8,
+    "question": "Mis juhtub, kui localStorage on täis (näiteks teiste lehetede tõttu) ja save() proovib kirjutada?",
+    "options": [
+      "setItem viskab QuotaExceededError; lahendus ei käsitle seda praegu (catch puudub) — andmete kadumine on võimalik",
+      "Brauser kustutab vanad andmed",
+      "Kõik on alati turvaline",
+      "Pole probleemi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Robust kood lisaks try/catch save()-i ümber ja teataks kasutajale, kui salvestamine ebaõnnestus."
+  },
+  {
+    "level": 9,
+    "question": "Miks on toggle ja delete eraldi if-blokid in event delegation handleriks?",
+    "options": [
+      "Iga klõps võib olla checkbox-il VÕI kustuta-nupul; kood eristab classList.contains-iga ja teeb iga juhul oma loogika",
+      "JS nõuab seda",
+      "Pole vahet",
+      "Performance"
+    ],
+    "correctIndex": 0,
+    "explanation": "Erinev tegevus iga klassiga — toggle muudab done-välja, del kustutab kirje."
+  },
+  {
+    "level": 9,
+    "question": "Kuidas saaks 'kustuta kõik tehtud' funktsiooni lisada minimaalselt?",
+    "options": [
+      "Filter: const todos = load().filter(t => !t.done); save(todos); render()",
+      "Saata serverisse",
+      "Kasutada eval()",
+      "Eemaldada CSS"
+    ],
+    "correctIndex": 0,
+    "explanation": "Filter-meetod on idiomaatne JS-is; mittetehtud kirjed jäävad alles."
+  },
+  {
+    "level": 9,
+    "question": "Mis kasutaja-stsenaariumi (UAT) sammud on 'lisa ülesanne, märgi tehtuks, taasava brauser'?",
+    "options": [
+      "Kontrollib salvestumise → reload-i tsüklit: pärast taasavamist on ülesanne ikka olemas ja done=true (linnuke märgistatud)",
+      "Pole asjakohane",
+      "JS-i kompileerimine",
+      "Serveriühendus"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klassikaline acceptance test — assignment.md põhinõue 'andmed püsivad'."
+  },
+  {
+    "level": 10,
+    "question": "Mis CSS-tehnikat kasutab .del nupp paigutusele 'kustuta' nupp parempoole?",
+    "options": [
+      "margin-left: auto — flex-konteineris lükkab elementi paremale",
+      "position: absolute",
+      "float: right",
+      "transform: translateX"
+    ],
+    "correctIndex": 0,
+    "explanation": "Flex-itemi puhul margin-left: auto on idiomaatne 'push to the right'."
+  },
+  {
+    "level": 10,
+    "question": "Mis on aria-label või title atribuudi vajadus 'Kustuta' nupul ligipääsetavuses?",
+    "options": [
+      "Praegu on tekst 'Kustuta' — see on iseenesest accessible. Aga kui oleks ainult ikoon, oleks aria-label vajalik, et ekraanilugeja teaks nupu eesmärki",
+      "aria-label on alati keelatud",
+      "Brauserid lisavad ise",
+      "Pole vajalik kunagi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tekstiga nupp on a11y-friendly; ikoon-only nupp vajaks aria-label-i."
+  },
+  {
+    "level": 11,
+    "question": "Miks ei oleks innerHTML probleem, kui andmed pärinevad ainult kasutaja enda klaviatuurist samalt arvutilt?",
+    "options": [
+      "Üksiku kasutaja-stsenaariumi puhul (offline pwa) on risk väike — kasutaja saaks XSS-i ainult enda vastu. Aga jagatud (näiteks sünkroonitud cloud) andmetes on see suur risk",
+      "innerHTML on alati turvaline",
+      "Pole vahet",
+      "JS automatiseerib"
+    ],
+    "correctIndex": 0,
+    "explanation": "Threat-modeling — risk sõltub sellest, kes saab andmed sisse panna ja kus need käivituvad."
+  },
+  {
+    "level": 11,
+    "question": "Kui rakendust laiendada multikasutaja-stsenaariumiks (näiteks pere-jagatud nimekirjaga), mis turvameetmed lisanduksid?",
+    "options": [
+      "Server-side validatsioon, autentimine ja autoriseerimine (kes saab kelle ülesannet näha/muuta), CSRF-tokenid POST-päringutel, content-security-policy päised",
+      "Pole midagi",
+      "Lisada ainult CSS-i",
+      "Eemaldada localStorage"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multikasutaja-süsteem on uus thread surface — eraldi serveriga ja audit-trail-iga."
+  },
+  {
+    "level": 11,
+    "question": "Mis on Content-Security-Policy (CSP) ja kuidas see XSS-i vastu kaitseks?",
+    "options": [
+      "CSP on HTTP-päis, mis ütleb brauserile, mis allikatest skripte/stiile/pilte laadida tohib; range CSP nullist lubab inline-skripti, st <script>alert(1)</script> ei tööta",
+      "CSP on JS-funktsioon",
+      "CSP on andmebaas",
+      "CSP keelustab fetch-i"
+    ],
+    "correctIndex": 0,
+    "explanation": "CSP on defense-in-depth XSS-i vastu — isegi kui keegi süstib skripti, brauser ei käivita seda."
+  },
+  {
+    "level": 11,
+    "question": "Kui keegi avaks DevTools-i ja muudaks localStorage'i sisu otse, mis võib juhtuda?",
+    "options": [
+      "Kasutaja saab muuta enda andmeid; load() peab seda taluma (try/catch on selleks). Mistahes valideerimist saaks lisada, aga see ei kaitse pahasoovi vastu — frontend-koodi ei usaldata kunagi turvaliselt",
+      "DevTools on alati keelatud",
+      "Brauser keelab",
+      "Pole oluline"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klient-poole 'turvalisus' on tegelikult UX-tugi; kuritarvituste vastu kaitseb ainult server-side autoriteet."
+  },
+  {
+    "level": 12,
+    "question": "Kuidas refaktoreerida koodi nii, et state-management oleks selgem (näiteks 100 ülesande puhul)?",
+    "options": [
+      "Sissetuua state-objekt: const state = { todos: [] }; functions update state ja kutsuvad render(state). Eraldi state-mutator-funktsioonid (addTodo, toggleTodo, removeTodo) ühe vastutusega",
+      "Lisada juhuslikke globaale",
+      "Eemaldada state",
+      "Kustutada localStorage"
+    ],
+    "correctIndex": 0,
+    "explanation": "Centralized state + reducers/actions on Redux/MVU-stiilis lähenemine, mis skaleerub paremini."
+  },
+  {
+    "level": 12,
+    "question": "Mis oleks mõistlik samm hooldatavuse parandamiseks?",
+    "options": [
+      "Lisada TypeScript Todo-objekti tüübile ({text: string, done: boolean}); kompileerimisaegne kontroll vältib kogemata-kasutusi",
+      "Lisada rohkem konsoolitrükkimist",
+      "Eemaldada save",
+      "Pole vajalik"
+    ],
+    "correctIndex": 0,
+    "explanation": "TS aitab vältida 'undefined is not a function' tüüpi vigasid juba arenduses."
+  },
+  {
+    "level": 12,
+    "question": "Kuidas eraldada storage-loogika UI-st, et saaks kerge testida ilma DOM-ita?",
+    "options": [
+      "Luua TodoStore objekt {load, save, add, toggle, remove} ilma DOM-iga sõltuvuseta; UI ainult kuulab muudatusi (event-emitter või lihtne callback)",
+      "Kombineerida kõik ühte funktsiooni",
+      "Lisada eval()",
+      "Eemaldada storage"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klassikaline MVC eraldatus aitab unit-teste kirjutada storage-loogikale ilma JSDOM-i kasutamata."
+  },
+  {
+    "level": 13,
+    "question": "Mis erinevus on localStorage ja IndexedDB vahel?",
+    "options": [
+      "localStorage on key-value (string-only); IndexedDB on transaktsioonide-põhine NoSQL-baas, toetab indekseerimist, suuremat mahtu ja struktureeritud objekte",
+      "Pole erinevust",
+      "IndexedDB on alati aeglasem",
+      "localStorage on serveris"
+    ],
+    "correctIndex": 0,
+    "explanation": "Suurte/struktureeritud andmete jaoks IndexedDB on parem; lihtsa key-value jaoks localStorage piisab."
+  },
+  {
+    "level": 13,
+    "question": "Mis võib juhtuda mitme tab-i vahel sünkroniseerimisega (kasutaja avab kaks tab-i)?",
+    "options": [
+      "Tab-id ei näe automaatselt teiste muudatusi enne re-loadi; kasutaja võiks lisada storage-event-i kuulaja, mis re-renderdab teises tab-is",
+      "Kõik sünkroonib automaatselt",
+      "Tab-id ei tööta",
+      "Brauser keelaks"
+    ],
+    "correctIndex": 0,
+    "explanation": "window.addEventListener('storage', ...) kuulab teises tab-is tehtud localStorage-muudatusi."
+  },
+  {
+    "level": 13,
+    "question": "Mis on storage event-i piirang, mis võib üllatada?",
+    "options": [
+      "Storage event käivitub ainult TEISTES tab-ides (mitte selles, kus muutus tehti), nii et oma tab-is peab callback-i ise kutsuma",
+      "Storage event ei tööta",
+      "Sündmus käivitub kogu aeg",
+      "Pole piirangut"
+    ],
+    "correctIndex": 0,
+    "explanation": "Disain-otsus, et oma tab-i muudatused ei tekitaks tsükleid — kuid see vajab spetsiaalset käsitlust."
+  },
+  {
+    "level": 14,
+    "question": "Kui kasutaja kasutab incognito-režiimi, kuidas käitub localStorage?",
+    "options": [
+      "Mõnedes brauserites töötab tavaliselt sessiooni piires, kuid kustutatakse akna sulgemisel; mõnedes (vana Safari) viskab vea setItem-il",
+      "Töötab alati nagu tavaliselt",
+      "Brauser keelaks JS-i",
+      "Salvestab eraldi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Incognito-tugi on ebaühtlane; production-koodis tuleks setItem ümber try/catch panna."
+  },
+  {
+    "level": 14,
+    "question": "Mis on JSON.parse('null') tagastusväärtus ja kuidas mõjutab see load()-i?",
+    "options": [
+      "JSON.parse('null') = null; load() on || [] fallback ja tagastab tühja massiivi; kui keegi salvestaks 'null'-string-i, see oleks ikka käsitletud korrektselt",
+      "JSON.parse('null') viskab vea",
+      "Tagastab undefined",
+      "Tagastab tühja massiivi automaatselt"
+    ],
+    "correctIndex": 0,
+    "explanation": "null on JSON-iks lubatud väärtus; || [] tagab, et load() tagastab alati massiivi."
+  },
+  {
+    "level": 14,
+    "question": "Mis on event delegation'i piirang?",
+    "options": [
+      "Kuulaja peab olema piisavalt kõrgel DOM-puus, et kõik soovitud lapsed ulatuksid; sündmused, mis ei mulli (näiteks blur) ei tööta hästi delegeeritult",
+      "Pole piirangut",
+      "Toetab vaid kahte tab-i",
+      "Töötab ainult Chrome-is"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sündmuste mulli (event bubbling) põhimõte — mitte iga sündmus ei mulli."
+  },
+  {
+    "level": 15,
+    "question": "Kui rakendus liiguks pere-jagatud rakendusele, milliseid arhitektuurilisi muudatusi vajaks?",
+    "options": [
+      "Backend (näiteks Node.js + andmebaas), kasutajakontod (autentimine), reaalaja-uuendused (WebSocket või polling), konfliktide lahendamine (kui kaks inimest muudavad samaaegselt), encryption-at-rest, audit-trail",
+      "Pole vaja midagi muuta",
+      "Lisada CSS",
+      "Eemaldada localStorage"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multikasutaja-rakendus on tegelikult palju keerulisem kui üksiku-kasutaja PWA."
+  },
+  {
+    "level": 15,
+    "question": "Mis on 'optimistic UI update' ja kuidas see selles lahenduses praegu töötab?",
+    "options": [
+      "UI uuendatakse kohe, ilma serverit ootamata; localStorage-stsenaariumis on see triviaalne, kuna 'salvestamine' on välkkiire ja ei ebaõnnestu peaaegu kunagi",
+      "Pessimistlik update on ainus võimalus",
+      "Optimistlik on aeglasem",
+      "Ei tähenda midagi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Server-poolse rakenduses tähendaks see, et UI uuendab kohe ja taandab muudatuse, kui server keeldub."
+  },
+  {
+    "level": 15,
+    "question": "Mis oleks järgmine reaalne arendus-iteratsioon, et lahendus muutuks tõsiseks rakenduseks?",
+    "options": [
+      "Lisada testid (unit ja end-to-end), TypeScript-tüübid, build-protsess (näiteks Vite), service worker offline-toeks, accessibility-audit, ja monitoring (Sentry)",
+      "Lisada juhuslikke nuppe",
+      "Eemaldada CSS",
+      "Pole midagi vaja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Arendamise hügieen muudab projekti taluma kasutaja-skaalat ja uut arendajat."
+  },
+  {
+    "level": 15,
+    "question": "Kuidas teha lahendusest PWA (Progressive Web App)?",
+    "options": [
+      "Lisada manifest.json (icons, name, start_url, display), service worker (cache-strateegia), HTTPS-iga hostida, ja installable lisada",
+      "Pole võimalik",
+      "Eemaldada JS",
+      "Lisada inline CSS"
+    ],
+    "correctIndex": 0,
+    "explanation": "PWA-de kolm peamist tehnoloogiat on manifest, service worker ja HTTPS — täiendavalt töötaks app ka offline."
+  }
+]
