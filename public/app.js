@@ -116,7 +116,7 @@ function startGame(data) {
   state.index = 0;
   state.selected = null;
   state.locked = false;
-  state.lifelines = { fifty: true, audience: true };
+  state.lifelines = { fifty: true, seventy: true, audience: true };
   state.removed = [];
   state.answers = [];
 
