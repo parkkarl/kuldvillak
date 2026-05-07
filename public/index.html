@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Miljonimäng — AI ülesannete valideerija</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Miljonimäng</h1>
+      <p class="subtitle">AI-põhine ülesande valideerimise rakendus</p>
+      <p id="aiBadge" class="ai-badge"></p>
+    </header>
+
+    <main id="app"></main>
+
+    <template id="taskListTemplate">
+      <section class="card">
+        <h2>Vali ülesanne</h2>
+        <p class="lead">Iga ülesande kohta küsib AI sinult 15 küsimust, et kontrollida, kas saad lahendusest aru.</p>
+        <ul id="taskList" class="task-list"></ul>
+        <p id="taskListEmpty" class="empty hidden">
+          Kausta <code>input/</code> ei lisatud ühtegi numbrilist alamkausta. Lisa näiteks <code>input/001/assignment.md</code>.
+        </p>
+      </section>
+    </template>
+
+    <template id="taskDetailTemplate">
+      <section class="card task-detail">
+        <button class="link" data-action="back">← Tagasi nimekirja</button>
+        <h2 id="taskTitle"></h2>
+        <div class="task-meta">
+          <span id="taskFiles" class="muted"></span>
+        </div>
+        <div id="assignmentBody" class="markdown"></div>
+        <div class="actions">
+          <button id="startGameBtn" class="primary">Alusta mängu</button>
+        </div>
+        <p id="generationStatus" class="status hidden"></p>
+      </section>
+    </template>
+
+    <template id="gameTemplate">
+      <section class="game">
+        <aside class="ladder">
+          <h3>Punktiastmed</h3>
+          <ol id="ladder" class="ladder-list"></ol>
+          <div class="lifelines">
+            <h3>Õlekõrred</h3>
+            <button data-lifeline="fifty" class="lifeline">50:50</button>
+            <button data-lifeline="hint" class="lifeline">Küsi AI-lt vihjet</button>
+            <button data-lifeline="audience" class="lifeline">Küsi publikult</button>
+          </div>
+          <div class="game-controls">
+            <button id="quitBtn" class="link">Lahku mängust</button>
+          </div>
+        </aside>
+        <div class="stage">
+          <header class="stage-header">
+            <span class="qnum">Küsimus <strong id="qIndex">1</strong>/15</span>
+            <span class="qprize" id="qPrize"></span>
+            <span class="qsafe" id="qSafe"></span>
+          </header>
+          <h2 class="question" id="questionText"></h2>
+          <ul class="options" id="optionsList"></ul>
+          <p id="lifelineOutput" class="lifeline-output hidden"></p>
+          <footer class="stage-footer">
+            <button id="confirmBtn" class="primary" disabled>Kinnita vastus</button>
+          </footer>
+          <p id="feedback" class="feedback hidden"></p>
+        </div>
+      </section>
+    </template>
+
+    <template id="resultTemplate">
+      <section class="card result-card">
+        <h2 id="resultHeading"></h2>
+        <p id="resultMessage" class="lead"></p>
+        <p class="prize">Lõplik tulemus: <strong id="resultPrize"></strong> punkti</p>
+        <div id="reviewList"></div>
+        <div class="actions">
+          <button id="playAgainBtn" class="primary">Mängi seda ülesannet uuesti (uued küsimused)</button>
+          <button id="backToListBtn" class="link">Tagasi ülesannete nimekirja</button>
+        </div>
+      </section>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
