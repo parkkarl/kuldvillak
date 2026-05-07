@@ -36,10 +36,13 @@ async function fetchJson(url, options = {}) {
   return res.json();
 }
 
-function setAiBadge(enabled) {
-  state.aiEnabled = enabled;
-  aiBadge.textContent = enabled ? 'AI ühendus: aktiivne (Anthropic)' : 'Demorežiim: mock-küsimused';
-  aiBadge.classList.toggle('mock', !enabled);
+function setAiBadge(status) {
+  const source = status?.source || 'mock';
+  const label = (status?.label || 'Demorežiim: mock-küsimused').replace('Demorezhiim', 'Demorežiim');
+  state.aiEnabled = source !== 'mock';
+  aiBadge.textContent = label;
+  aiBadge.classList.remove('mock', 'cli', 'cloud');
+  aiBadge.classList.add(source === 'mock' ? 'mock' : source === 'claude-cli' ? 'cli' : 'cloud');
 }
 
 async function showTaskList() {
@@ -50,7 +53,7 @@ async function showTaskList() {
 
   try {
     const data = await fetchJson('/api/tasks');
-    setAiBadge(data.ai);
+    setAiBadge(data);
     if (!data.tasks.length) {
       emptyState.classList.remove('hidden');
       return;

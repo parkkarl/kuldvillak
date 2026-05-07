@@ -1,11 +1,17 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import {
+  isClaudeCliAvailable,
+  claudeCliQuestions,
+  claudeCliHint,
+  getCliInfo,
+} from './claudeCliClient.js';
 
 const PROMPT_PATH = path.resolve('prompts', 'question-generation.md');
 const HINT_PROMPT_PATH = path.resolve('prompts', 'hint-generation.md');
 
-const DEFAULT_MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
+const DEFAULT_MODEL = () => process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-6';
 
 let cachedSystemPrompt = null;
 let cachedHintPrompt = null;
@@ -22,11 +28,36 @@ async function loadHintPrompt() {
   return cachedHintPrompt;
 }
 
-export function isAiEnabled() {
+function hasAnthropicKey() {
   return Boolean(process.env.ANTHROPIC_API_KEY);
 }
 
-function getClient() {
+export async function getActiveSource() {
+  if (process.env.USE_CLAUDE_CLI === 'true' && (await isClaudeCliAvailable())) {
+    return 'claude-cli';
+  }
+  if (hasAnthropicKey()) return 'anthropic';
+  if (await isClaudeCliAvailable()) return 'claude-cli';
+  return 'mock';
+}
+
+export async function getStatus() {
+  const source = await getActiveSource();
+  if (source === 'anthropic') {
+    return { source, label: `Anthropic API (${DEFAULT_MODEL()})` };
+  }
+  if (source === 'claude-cli') {
+    const info = getCliInfo();
+    return { source, label: `Claude CLI (${info.model})`, ...info };
+  }
+  return { source, label: 'Demorezhiim: mock-kusimused' };
+}
+
+export function isAiEnabled() {
+  return hasAnthropicKey();
+}
+
+function getAnthropicClient() {
   return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 }
 
@@ -82,56 +113,71 @@ function validateQuestions(questions) {
 }
 
 export async function generateQuestions(task) {
-  if (!isAiEnabled()) {
+  const source = await getActiveSource();
+
+  if (source === 'mock') {
     return { questions: generateMockQuestions(task), source: 'mock' };
   }
 
   const systemPrompt = await loadSystemPrompt();
   const userMessage = buildContext(task);
 
-  const client = getClient();
-  const response = await client.messages.create({
-    model: DEFAULT_MODEL,
-    max_tokens: 4000,
-    system: systemPrompt,
-    messages: [{ role: 'user', content: userMessage }],
-  });
+  let rawText;
+  if (source === 'anthropic') {
+    const client = getAnthropicClient();
+    const response = await client.messages.create({
+      model: DEFAULT_MODEL(),
+      max_tokens: 4000,
+      system: systemPrompt,
+      messages: [{ role: 'user', content: userMessage }],
+    });
+    rawText = response.content
+      .filter((b) => b.type === 'text')
+      .map((b) => b.text)
+      .join('\n');
+  } else {
+    rawText = await claudeCliQuestions({ systemPrompt, userMessage });
+  }
 
-  const text = response.content
-    .filter((b) => b.type === 'text')
-    .map((b) => b.text)
-    .join('\n');
-
-  const parsed = extractJson(text);
+  const parsed = extractJson(rawText);
   const questions = validateQuestions(parsed);
-  return { questions, source: 'anthropic' };
+  return { questions, source };
 }
 
 export async function generateHint(task, question) {
-  if (!isAiEnabled()) {
+  const source = await getActiveSource();
+
+  if (source === 'mock') {
     return generateMockHint(question);
   }
+
   const systemPrompt = await loadHintPrompt();
-  const client = getClient();
-  const response = await client.messages.create({
-    model: DEFAULT_MODEL,
-    max_tokens: 200,
-    system: systemPrompt,
-    messages: [
-      {
-        role: 'user',
-        content: `Ulesanne: ${task.title}\n\nKusimus: ${question.question}\n\nVastusevariandid:\n${question.options
-          .map((o, i) => `${'ABCD'[i]}) ${o}`)
-          .join('\n')}\n\nAnna lyhike vihje (1-2 lauset), mis suunab oige vastuse poole, kuid ei utle seda otse.`,
-      },
-    ],
-  });
-  const text = response.content
-    .filter((b) => b.type === 'text')
-    .map((b) => b.text)
-    .join('\n')
-    .trim();
-  return text || generateMockHint(question);
+  const userMessage = `Ulesanne: ${task.title}\n\nKusimus: ${question.question}\n\nVastusevariandid:\n${question.options
+    .map((o, i) => `${'ABCD'[i]}) ${o}`)
+    .join('\n')}\n\nAnna lyhike vihje (1-2 lauset), mis suunab oige vastuse poole, kuid ei utle seda otse.`;
+
+  try {
+    if (source === 'anthropic') {
+      const client = getAnthropicClient();
+      const response = await client.messages.create({
+        model: DEFAULT_MODEL(),
+        max_tokens: 200,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMessage }],
+      });
+      const text = response.content
+        .filter((b) => b.type === 'text')
+        .map((b) => b.text)
+        .join('\n')
+        .trim();
+      return text || generateMockHint(question);
+    }
+    const text = await claudeCliHint({ systemPrompt, userMessage });
+    return text || generateMockHint(question);
+  } catch (err) {
+    console.warn(`Vihje ${source}-iga ebaonnestus, lahen mock-i: ${err.message}`);
+    return generateMockHint(question);
+  }
 }
 
 function generateMockHint(question) {

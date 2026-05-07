@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'node:path';
 import { promises as fs } from 'node:fs';
 import { listTasks, readTask } from './src/fileReader.js';
-import { generateQuestions, generateHint, isAiEnabled } from './src/aiClient.js';
+import { generateQuestions, generateHint, getStatus } from './src/aiClient.js';
 
 await loadEnv();
 
@@ -12,14 +12,14 @@ const app = express();
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.resolve('public')));
 
-app.get('/api/health', (req, res) => {
-  res.json({ ok: true, ai: isAiEnabled() });
+app.get('/api/health', async (req, res) => {
+  res.json({ ok: true, ...(await getStatus()) });
 });
 
 app.get('/api/tasks', async (req, res) => {
   try {
-    const tasks = await listTasks();
-    res.json({ tasks, ai: isAiEnabled() });
+    const [tasks, status] = await Promise.all([listTasks(), getStatus()]);
+    res.json({ tasks, ...status });
   } catch (err) {
     console.error('GET /api/tasks failed:', err);
     res.status(500).json({ error: 'Ulesannete loend ei avanenud' });
@@ -70,9 +70,9 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Mitteleitud' });
 });
 
-app.listen(PORT, () => {
-  const aiNote = isAiEnabled() ? 'paris AI uhendus aktiivne' : 'mock-kusimused (ANTHROPIC_API_KEY puudub)';
-  console.log(`Miljonimang kuulab: http://localhost:${PORT}  [${aiNote}]`);
+app.listen(PORT, async () => {
+  const status = await getStatus();
+  console.log(`Miljonimang kuulab: http://localhost:${PORT}  [${status.label}]`);
 });
 
 async function loadEnv() {

@@ -53,6 +53,8 @@ html, body {
   border: 1px solid var(--gold-soft);
 }
 .ai-badge.mock { background: rgba(140, 154, 214, 0.15); color: var(--muted); border-color: rgba(140, 154, 214, 0.25); }
+.ai-badge.cli { background: rgba(77, 208, 137, 0.15); color: var(--green); border-color: rgba(77, 208, 137, 0.35); }
+.ai-badge.cloud { background: var(--gold-soft); color: var(--gold); border-color: var(--gold-soft); }
 
 main {
   max-width: 1100px;
