@@ -256,9 +256,8 @@ function useLifeline(name) {
     });
     state.lifelines.fifty = false;
   } else if (name === 'seventy') {
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank', 'noopener');
     state.lifelines.seventy = false;
-    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-    return;
   } else if (name === 'audience') {
     const dist = audienceVote(q, state.index);
     const out = document.getElementById('lifelineOutput');
