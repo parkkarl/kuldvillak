@@ -2,6 +2,8 @@
 
 Ülesannete valideerimise rakendus, mis töötab "Kes tahab saada miljonäriks?" põhimõttel ja kasutab eelgenereeritud küsimustepanka.
 
+🎮 **Live demo:** [juuksur.kalaradar.ee](https://juuksur.kalaradar.ee)
+
 ## Projekti kirjeldus
 
 Rakendus kontrollib, kas õppija saab aru enda või kellegi teise tehtud ülesande lahendusest. Kasutaja valib ülesande kaustast `input/`, server loeb sama ülesande **eelgenereeritud küsimustepanga** failist `questions.json` ning valib igale mängule 15 küsimust raskusastmetes 1–15. Vale vastus lõpetab mängu, õige liigub edasi.
