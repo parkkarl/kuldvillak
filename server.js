@@ -10,12 +10,28 @@ const PORT = Number(process.env.PORT) || 3000;
 const app = express();
 
 app.use(express.json({ limit: '1mb' }));
+
+// Cloudflare aggressively caches static .js/.css for 4h regardless of the
+// origin Cache-Control header (it overrides). HTML is served as 'dynamic' so
+// it stays fresh. So: rewrite /app.js and /style.css references in HTML to
+// include ?v=<startupId> on the way out — every container restart forces a
+// fresh URL, which CF treats as a brand-new asset.
+const startupId = Date.now().toString(36);
+
+app.get(['/', '/index.html'], async (req, res, next) => {
+  try {
+    let html = await fs.readFile(path.resolve('public', 'index.html'), 'utf8');
+    html = html
+      .replace('href="/style.css"', `href="/style.css?v=${startupId}"`)
+      .replace('src="/app.js"', `src="/app.js?v=${startupId}"`);
+    res.type('html').setHeader('Cache-Control', 'no-cache').send(html);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.use(express.static(path.resolve('public'), {
   setHeaders: (res, filePath) => {
-    // Force the browser (and Cloudflare) to revalidate every time. We deploy
-    // small frontend changes often and 4h cached JS leaves users stuck on
-    // stale code for hours after a release. ETag still allows 304 responses,
-    // so this is cheap on the wire.
     if (/\.(html|js|css)$/.test(filePath)) {
       res.setHeader('Cache-Control', 'no-cache');
     }
