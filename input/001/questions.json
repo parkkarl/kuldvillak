@@ -264,15 +264,15 @@
   },
   {
     "level": 7,
-    "question": "Mis on classList.toggle('error', false) ja classList.add('error') erinevus selles koodis?",
+    "question": "Mis rollid on `result.classList.remove('error')` ja `result.classList.add('error')` lahenduses?",
     "options": [
-      "Erinevus puudub",
-      "toggle parameetriga lubab kasutada conditional add/remove ühe kõnega; lahendus kasutab eraldi remove ja add, et oleks selgem",
-      "toggle on aeglasem",
-      "add toetab vaid IE-d"
+      "Mõlemad teevad sama asja",
+      "remove kustutab eelmise vea visuaalse stiili enne uut tehet; add lisab .error klassi catch-blokis, kui tehe ebaõnnestus",
+      "remove on aeglasem",
+      "add toetab vaid vana brauserit"
     ],
     "correctIndex": 1,
-    "explanation": "Mõlemad sobivad; lahendus kasutab classList.remove enne arvutust ja classList.add catch-blokis — selgem voog."
+    "explanation": "Iga uus arvutus algab puhast tahvlit (remove), vea korral pannakse punase teksti klass (add)."
   },
   {
     "level": 8,
@@ -432,7 +432,7 @@
   },
   {
     "level": 11,
-    "question": "Kuidas saaks lahendust muuta turvalisemaks, kui mängu reeglid lubaksid sisendi olla string?",
+    "question": "Kuidas saaks lahendust muuta turvalisemaks, kui ülesande nõuded lubaksid sisendi olla suvaline string (mitte ainult arv)?",
     "options": [
       "Kasutada DOMPurify-d sisendil",
       "Lisada whitelist-validatsioon: lubada vaid /^[0-9.\\-]+$/ regex-iga",
@@ -504,7 +504,7 @@
   },
   {
     "level": 13,
-    "question": "Mis võib juhtuda, kui koolikoodi importida vanasse brauserisse, kus pole arrow-funktsioone?",
+    "question": "Mis võib juhtuda, kui lahenduse koodi importida vanasse brauserisse, kus pole arrow-funktsioone?",
     "options": [
       "Süntaksiviga — kood ei tööta enne, kui lähestaja (Babel) on selle teisendanud function-iks",
       "Kõik töötab automaatselt",
