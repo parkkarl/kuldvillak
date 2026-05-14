@@ -244,6 +244,12 @@ function useLifeline(name) {
   if (!state.lifelines[name] || state.locked) return;
   const q = state.questions[state.index];
   if (name === 'fifty') {
+    // Buttons preserve their visible label & position, but functions are swapped:
+    // the 50:50-labeled button opens the rickroll.
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank', 'noopener');
+    state.lifelines.fifty = false;
+  } else if (name === 'seventy') {
+    // The 70:30-labeled button actually removes two wrong options (classic 50:50).
     const wrongIdxs = q.options
       .map((_, i) => i)
       .filter((i) => i !== q.correctIndex);
@@ -254,12 +260,6 @@ function useLifeline(name) {
         li.classList.add('disabled');
       }
     });
-    state.lifelines.fifty = false;
-  } else if (name === 'seventy') {
-    // YouTube watch page autoplays with sound for most users, since they
-    // have prior media-engagement on youtube.com (browser autoplay policy).
-    // Trade-off: pre-roll ads may play first.
-    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank', 'noopener');
     state.lifelines.seventy = false;
   } else if (name === 'audience') {
     const dist = audienceVote(q, state.index);
