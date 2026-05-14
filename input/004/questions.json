@@ -1,0 +1,734 @@
+[
+  {
+    "level": 1,
+    "question": "Mis on tarkvara testimise peamine eesmärk?",
+    "options": [
+      "Tõestada, et tarkvara on täiesti vigadeta",
+      "Avastada defekte ja hinnata tarkvara kvaliteeti, andes infot riskidest ja vastavusest nõuetele",
+      "Asendada programmeerijate töö",
+      "Kiirendada tarkvara käivitumist"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISTQB definitsioon: testimine on tegevuste kogum, mille eesmärk on hinnata tarkvara kvaliteeti ja avastada defekte. 'Vigadeta tarkvara' on müüt — testimine näitab defekti olemasolu, mitte selle puudumist."
+  },
+  {
+    "level": 1,
+    "question": "Mida tähendab termin 'defekt' (defect/bug) tarkvara testimises?",
+    "options": [
+      "Iga kasutaja kaebus, ka kui see ei vasta nõuetele",
+      "Tarkvara komponendi või süsteemi puudus, mis võib põhjustada selle ootuspärasest käitumisest erineva tulemuse — leitakse koodist või dokumendist",
+      "Kasutaja sisestatud vale väärtus",
+      "Brauseri sisemine viga"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISTQB sõnastiku järgi defekt (defect) on töötoote puudus, mis võib põhjustada ebakorrektse käitumise. Eristatakse: error (inimese eksimus) → defect (artefaktis olev viga) → failure (käivitusaegne tõrge)."
+  },
+  {
+    "level": 1,
+    "question": "Mis vahe on terminitel 'error', 'defect' ja 'failure'?",
+    "options": [
+      "Need on sünonüümid",
+      "Error = inimese eksimus (mõtteviga); defect = selle eksimuse tagajärjel koodi/dokumendi jäänud viga; failure = käivitusaegne kõrvalekalle oodatust",
+      "Error on kasutaja viga, defect on disainer-viga, failure on serveri viga",
+      "Error tähendab kompileerimisviga, defect kompileerimishoiatust, failure süntaksiviga"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISTQB põhiline mõisteahel: error (mistake) → defect (bug, fault) → failure. Programmeerija eksib (error), kood saab vea (defect), kasutaja näeb tõrget (failure). Iga defekt ei pruugi viia failure'ini — võib jääda peidetuks."
+  },
+  {
+    "level": 1,
+    "question": "Miks ei saa tarkvara täielikult testida?",
+    "options": [
+      "Sest testimine on liiga kallis ainult suurte ettevõtete jaoks",
+      "Kombinatsioonide hulk (sisendid × seisundid × keskkonnad) on praktiliselt lõpmatu — täielik testimine pole võimalik, seetõttu kasutatakse riskipõhist valikut",
+      "Sest brauserid keelduvad testimisest",
+      "Sest testijad on liiga aeglased"
+    ],
+    "correctIndex": 1,
+    "explanation": "Üks ISTQB seitsmest põhimõttest: täielik testimine on võimatu (exhaustive testing is impossible). Praktikas valitakse testid riski, prioriteedi ja ulatuse järgi — ammendav testimine on majanduslikult ebamõistlik."
+  },
+  {
+    "level": 2,
+    "question": "Milline ISTQB põhimõte ütleb, et samade testide kordamine ei leia uusi vigu?",
+    "options": [
+      "Testimine sõltub kontekstist",
+      "Defektide kobardumine (defect clustering)",
+      "Putukamürgi paradoks (pesticide paradox) — testid tuleb regulaarselt üle vaadata ja muuta, et nad jätkaksid uute defektide leidmist",
+      "Vigadeta on illusioon"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pesticide paradox: kui samu teste käivitada korduvalt, ei leia nad enam uusi defekte (sest neid katavaid defekte enam pole). Testikomplekti tuleb regulaarselt täiendada ja muuta — sarnaselt nagu putukad muutuvad mürgi-resistentseks."
+  },
+  {
+    "level": 2,
+    "question": "Mis on testitasandid (test levels) tarkvaraarenduses?",
+    "options": [
+      "Algaja, kesktase, edasijõudnu",
+      "Komponenditest (unit), integratsioonitest, süsteemitest, vastuvõtutest (acceptance) — testimine erinevatel detailsuse-tasemetel arenduse vältel",
+      "Frontend, backend, andmebaas",
+      "Manuaalne, automaatne, segatud"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISTQB neli testitasandit: 1) komponendi-/üksuste-test (üks funktsioon/klass), 2) komponentide vaheline integratsioon, 3) süsteem tervikuna, 4) vastuvõtt (kasutaja perspektiiv, UAT). Iga tasand vastab erinevale arendusetapile."
+  },
+  {
+    "level": 2,
+    "question": "Mis on funktsionaalse ja mittefunktsionaalse testimise vahe?",
+    "options": [
+      "Funktsionaalne on kallim",
+      "Funktsionaalne kontrollib MIDA süsteem teeb (nõuded, ärireeglid); mittefunktsionaalne KUIDAS ta seda teeb (jõudlus, turvalisus, kasutatavus, ühilduvus)",
+      "Funktsionaalne on käsitsi, mittefunktsionaalne automaatne",
+      "Erinevust pole — sünonüümid"
+    ],
+    "correctIndex": 1,
+    "explanation": "Funktsionaalne test vastab küsimusele 'kas funktsioon töötab nõuetele vastavalt?'. Mittefunktsionaalne testib süsteemi kvaliteediomadusi (ISO 25010): jõudlus, turvalisus, kasutatavus, töökindlus, hooldatavus, ühilduvus, mobiilsus."
+  },
+  {
+    "level": 2,
+    "question": "Mida tähendab termin 'tarkvaraarenduse elutsükkel' (TA elutsükkel, SDLC)?",
+    "options": [
+      "Aeg, mille jooksul tarkvara turul müüakse",
+      "Tarkvara arendamise faaside ahel: nõuete kogumine → analüüs → disain → realisatsioon → testimine → juurutamine → hooldus",
+      "Brauseri elutsükkel",
+      "Aeg, mille jooksul üks testija töötab"
+    ],
+    "correctIndex": 1,
+    "explanation": "SDLC (Software Development Life Cycle) on tarkvara loomise faaside kogum. Mudelid: Waterfall (kose-mudel), V-mudel, iteratiivne, Agile/Scrum, DevOps. Testimine toimub kõigis faasides — mitte ainult lõpus."
+  },
+  {
+    "level": 2,
+    "question": "Mis on V-mudel tarkvaraarenduses?",
+    "options": [
+      "Versioonihalduse süsteem nagu Git",
+      "Mudel, kus iga arendusetapp (nõuded, süsteemidisain, kõrgtasemedisain, mooduldisain) seotakse vastava testitasandiga (vastuvõtu-, süsteemi-, integratsiooni-, komponenditest) — testimine planeeritakse paralleelselt arendusega",
+      "Programmikood, mis algab tähega V",
+      "Vananenud mudel, mida enam ei kasutata"
+    ],
+    "correctIndex": 1,
+    "explanation": "V-mudel rõhutab, et testimine on arendusega võrdne — iga arendusetapi kõrval valmib vastava taseme testimise plaan. 'V' kuju näitab vasakul arenduse ja paremal testimise sümmeetriat."
+  },
+  {
+    "level": 3,
+    "question": "Mis on testiplaan (test plan) ja mis selles üldjuhul sisaldub?",
+    "options": [
+      "Ainult testide nimekiri",
+      "Dokument, mis kirjeldab testimise ulatust, lähenemist, ressursse, ajakava, riske ja vastutusi — vastab küsimustele MIDA, KUIDAS, KES, MILLAL ja MILLISTE riskidega testitakse",
+      "Programmi lähtekood",
+      "Kasutaja juhend"
+    ],
+    "correctIndex": 1,
+    "explanation": "Testiplaan (IEEE 829 ja hiljem ISO/IEC/IEEE 29119-3) on testimise juhtdokument: ulatus, eesmärgid, sisenemis-/väljumiskriteeriumid, ressursid, ajakava, riskid, vastutused. Test Plan ≠ test cases."
+  },
+  {
+    "level": 3,
+    "question": "Mis on testistsenaarium (test scenario) ja mis on testijuht (test case)?",
+    "options": [
+      "Need on samad asjad — kaks nime sünonüümile",
+      "Stsenaarium on kõrgetasemeline kirjeldus, MIDA testitakse (näiteks 'kasutaja logib sisse'); testijuht on konkreetne samm-sammuline juhend koos sisend-andmete, sammude ja oodatud tulemusega",
+      "Stsenaarium on alati automaatne, testijuht manuaalne",
+      "Testijuht on kohtumäärus"
+    ],
+    "correctIndex": 1,
+    "explanation": "Test scenario = situatsioon või kasutaja-teekond, mida tahetakse katta. Test case = konkreetne realisatsioon (preconditions, steps, expected results, postconditions). Üks stsenaarium võib hõlmata mitut testijuhtu (positiivne, negatiivne, piirväärtused)."
+  },
+  {
+    "level": 3,
+    "question": "Mis kuulub kvaliteetse testijuhu (test case) juurde?",
+    "options": [
+      "Ainult oodatud tulemus",
+      "Unikaalne ID, eeltingimused (preconditions), sammud (test steps), sisend-andmed, oodatud tulemus (expected result), järeltingimused (postconditions), prioriteet ja seos nõudega",
+      "Programmi lähtekood",
+      "Brauseri versioon"
+    ],
+    "correctIndex": 1,
+    "explanation": "IEEE 829 / ISO 29119-3 määratleb testijuhu struktuuri. Hea testijuht on korratav (iga testija saab sama tulemuse), jälgitav (lingib nõudega) ja ühemõtteline (oodatud tulemus on selge)."
+  },
+  {
+    "level": 3,
+    "question": "Mis on positiivne ja negatiivne testijuht?",
+    "options": [
+      "Positiivne on lihtsam, negatiivne raskem",
+      "Positiivne kontrollib oodatud (happy path) käitumist kehtivate sisenditega; negatiivne kontrollib veatöötlust ja süsteemi reageeringut ebakorrektsetele sisenditele (näiteks tühi väli, vale formaat, lubatust suurem arv)",
+      "Positiivne testija on hea, negatiivne paha tujuga",
+      "Positiivne käivitub edukalt, negatiivne ei käivitu"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mõlemad on hädavajalikud. Negatiivseid teste kiputakse alahindama — kuid produktsioonis kohtab süsteem ettearvamatuid sisendeid (kasutaja paneb e-mailile välja '12345' või tühja teksti)."
+  },
+  {
+    "level": 4,
+    "question": "Mis on must kast (black-box) testimine?",
+    "options": [
+      "Testimine kella 22 ja 06 vahel",
+      "Testimine, kus testija ei vaata lähtekoodi — keskendub ainult sisendile ja oodatud väljundile vastavalt spetsifikatsioonile; sünonüüm: spetsifikatsiooni-põhine testimine",
+      "Testimine ilma testimisvahenditeta",
+      "Testimine, kus brauser on suletud"
+    ],
+    "correctIndex": 1,
+    "explanation": "Black-box ehk spec-based testing: testija näeb süsteemi 'kasti väljast', teadmata kuidas see seest töötab. Tehnikad: ekvivalentsusklassid, piirväärtused, otsustustabelid, kasutusjuhud. Sobib süsteemi- ja vastuvõtutestidele."
+  },
+  {
+    "level": 4,
+    "question": "Mis on valge kast (white-box) testimine?",
+    "options": [
+      "Testimine valges ruumis",
+      "Testimine, kus testija näeb lähtekoodi ja kasutab seda testide kavandamiseks — keskendub kontrollivoo, andmevoo või katvuse (coverage) mõõtmisele",
+      "Testimine ainult kasutajaliidese kaudu",
+      "Testimine, mis kasutab pakettide nimesid"
+    ],
+    "correctIndex": 1,
+    "explanation": "White-box ehk structure-based testing: testija loeb koodi ja kavandab testid, mis katavad konkreetseid teid (statement coverage, branch coverage, path coverage). Tüüpiliselt komponenditestidele."
+  },
+  {
+    "level": 4,
+    "question": "Mis on hall kast (grey-box) testimine?",
+    "options": [
+      "Testimine pilve sees",
+      "Hübriid musta ja valge kasti vahel — testijal on osaline ülevaade süsteemi sisemisest struktuurist (näiteks andmebaasi skeem, API-spec), kuid ta testib peamiselt välistest liidestest",
+      "Testimine, kus tulemus pole selge",
+      "Vananenud termin"
+    ],
+    "correctIndex": 1,
+    "explanation": "Grey-box ühendab eelised: testija tunneb arhitektuuri (saab kavandada nutikamaid teste), kuid ei sõltu täielikult koodist. Tüüpiliselt integratsiooni- ja API-testimisel."
+  },
+  {
+    "level": 4,
+    "question": "Mis on ekvivalentsusklasside (equivalence partitioning) tehnika?",
+    "options": [
+      "Kõikide võimalike sisendite testimine",
+      "Sisendite jagamine rühmadeks, mille kõik liikmed käituvad sarnaselt — igast klassist testitakse ühte esindajat, vähendades testide arvu kaotamata katvust",
+      "Klassikalise muusika kasutamine testimisel",
+      "Programmi muutujate ühe-tüübiliseks tegemine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Klassikaline black-box tehnika. Näide: vanus 0-17 (laps), 18-64 (täiskasvanu), 65+ (pensionär), -1, 200 (vigased) — testitakse iga klassi esindajat (näiteks 10, 30, 70, -1). Vähendab teste eksponentsiaalselt."
+  },
+  {
+    "level": 5,
+    "question": "Mis on piirväärtuste analüüs (boundary value analysis, BVA)?",
+    "options": [
+      "Riigipiiri testimine",
+      "Testimise tehnika, kus keskendutakse väärtustele, mis asuvad ekvivalentsusklasside piiridel — defektid kobarduvad piiride lähedusse (näiteks ≤ vs <, off-by-one vead)",
+      "Maksimum-väärtuse arvutamine",
+      "Brauseri ekraani ääre testimine"
+    ],
+    "correctIndex": 1,
+    "explanation": "BVA täiendab ekvivalentsusklasse. Klassi 1-100 piirväärtused: 0, 1, 100, 101 (mõnikord ka 2 ja 99). Programmeerijad eksivad sageli piiritingimustes (kasutavad `<` `<=` asemel) — siit nime."
+  },
+  {
+    "level": 5,
+    "question": "Mis on staatiline testimine?",
+    "options": [
+      "Testimine, mis ei muutu kunagi",
+      "Tarkvara hindamine ILMA seda käivitamata — koodi ülevaatused (code review), staatilised analüsaatorid (linter, SonarQube), nõuete ja disaini dokumentide kontroll",
+      "Testimine ainult ühe sisendi puhul",
+      "Testimine ilma andmebaasita"
+    ],
+    "correctIndex": 1,
+    "explanation": "Static testing ≠ static analysis. Hõlmab kõike, mis hindab artefakti seda käivitamata: code review, walkthrough, inspection (Fagan), staatilised tööriistad. Eelis: defekte leitakse VARA — odavam parandada."
+  },
+  {
+    "level": 5,
+    "question": "Mis on dünaamiline testimine?",
+    "options": [
+      "Testimine liikuvate seadmetega",
+      "Tarkvara hindamine seda KÄIVITADES — sisendid antakse ja võrreldakse väljundit oodatuga (kõik 'tavalised' funktsionaalsed ja mittefunktsionaalsed testid kuuluvad siia)",
+      "Testimine ilma testijuhtudeta",
+      "Testimine animatsioonidega"
+    ],
+    "correctIndex": 1,
+    "explanation": "Dynamic testing eeldab käivitatavat tarkvara. Vastandiks staatilisele testimisele. Sisaldab valdavat osa testimisest — unit, integration, system, acceptance, performance, security."
+  },
+  {
+    "level": 5,
+    "question": "Mis on uurimustestimine (exploratory testing)?",
+    "options": [
+      "Spioneerimine konkurendi tarkvaraga",
+      "Mitteformaalne lähenemine, kus testija samaaegselt õpib süsteemi, kavandab teste ja viib neid läbi — sobib tundmatusse tarkvarasse ja prototüüpidele, eeldab testija oskust ja kogemust",
+      "Akadeemiline uurimustöö testimise teemal",
+      "Vananenud meetod, mida enam ei kasutata"
+    ],
+    "correctIndex": 1,
+    "explanation": "Exploratory testing (Cem Kaner, James Bach) on session-based — testija saab ajaboksi (näiteks 90 min) ja missiooni. Tasakaalustab skripti-põhist testimist — leiab defekte, mida formaalsed testid ei kataks."
+  },
+  {
+    "level": 6,
+    "question": "Mis vahe on verifitseerimisel (verification) ja valideerimisel (validation)?",
+    "options": [
+      "Need on sünonüümid",
+      "Verification: 'kas me ehitame toodet ÕIGESTI?' (vastavus spetsifikatsioonile, nõuetele); Validation: 'kas me ehitame ÕIGET toodet?' (vastavus kasutaja vajadustele, kasutuskontekstile)",
+      "Verification on tehniline, validation finantsiline",
+      "Verification on automaatne, validation manuaalne"
+    ],
+    "correctIndex": 1,
+    "explanation": "Klassikaline Boehmi sõnastus. Verification = vastavuskontroll (kood vs disain, disain vs nõuded). Validation = kasutaja-vaatest sobivuskontroll (kas süsteem lahendab tegelikku probleemi). UAT on tüüpiline validation, code review verification."
+  },
+  {
+    "level": 6,
+    "question": "Mis on regressioonitestimine (regression testing)?",
+    "options": [
+      "Vanade testijate ümberõpe",
+      "Olemasoleva funktsionaalsuse uuesti-testimine pärast muudatusi (uus feature, bug fix, refactoring) — eesmärk kontrollida, et muudatus ei ole rikkunud varem töötanud osi",
+      "Tarkvara versiooni alla viimine",
+      "Statistikaline analüüs vigadest"
+    ],
+    "correctIndex": 1,
+    "explanation": "Regressioon = 'taandareng'. Üks 'muutusetega seotud' testitüüpidest. Tüüpiliselt automatiseeritakse, sest käivitatakse iga muudatuse järel (CI/CD pipeline). Ilma regressioonitestideta on iga muudatus risk."
+  },
+  {
+    "level": 6,
+    "question": "Mis on suitsutestimine (smoke testing)?",
+    "options": [
+      "Tarkvara testimine tulekahjus",
+      "Lühike, lai test, mis kontrollib, kas süsteem käivitub üldse ja põhifunktsioonid töötavad — kui smoke fail, ei tasu sügavamale testimisele aega kulutada",
+      "Testimine sigaretisuitsu juuresolekul",
+      "Tarkvara kuumutamise test"
+    ],
+    "correctIndex": 1,
+    "explanation": "Nimi tuleb riistvara-testimisest ('kas seade hakkab suitsema, kui sisse lülitatakse?'). Smoke test on build verification test — kiire 'kas see toodab on üldse jätkamiseks valmis?'. Vastand: sanity test (kitsam, sügavam)."
+  },
+  {
+    "level": 6,
+    "question": "Mis on kordustestimine (retesting / confirmation testing)?",
+    "options": [
+      "Sama testi kordamine huvi pärast",
+      "Pärast defekti parandust selle konkreetse defekti taas-testimine — kontrollitakse, et probleem on lahendatud; erineb regressioonist, mis kontrollib KÕIKI varem töötanud osi",
+      "Testija saab teist kindlustust",
+      "Testijuhu kopeerimine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Retest = 'kas parandus tegelikult tööt­ab?'. Regression = 'kas parandus rikkus midagi muud?'. Kahte tihti kombineeritakse — esmalt retest, siis regressioon."
+  },
+  {
+    "level": 7,
+    "question": "Mis on IEEE 829 standard?",
+    "options": [
+      "Brauseri turvastandard",
+      "Klassikaline IEEE standard testimise dokumentatsioonile — defineeris testiplaani, testidisaini, testijuhu, testiprotseduuri, testikäituse logi, intsidendi raporti ja kokkuvõtte vormingud; alates 2013. aastast asendatud ISO/IEC/IEEE 29119-ga",
+      "Failisüsteemi standard",
+      "Programmeerimiskeel"
+    ],
+    "correctIndex": 1,
+    "explanation": "IEEE 829-1998/2008 oli aastakümneid testdokumentatsiooni alusstandard. Defineeris 8 põhidokumenti. Tänapäeval asendab ISO/IEC/IEEE 29119-3 (Test Documentation), mis on rahvusvaheline ja moodulpõhisem."
+  },
+  {
+    "level": 7,
+    "question": "Mis on ISO/IEC/IEEE 29119 standardiseeria?",
+    "options": [
+      "Andmebaasi standardiseeria",
+      "Rahvusvaheline tarkvara testimise standardite kogum — 1) mõisted, 2) protsessid, 3) dokumentatsioon, 4) tehnikad, 5) võtmesõnapõhine testimine — annab tervikraamistiku organisatsiooni testimisele",
+      "Veebibrauserite standardid",
+      "Programmeerimiskeelte spetsifikatsioonid"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISO/IEC/IEEE 29119 (alates 2013) on moodne 'üks standard kogu testimisele'. Praktikutel vastuoluline (kogukond on kritiseerinud akadeemilisuse ja agile-ebasõbralikkuse pärast), aga organisatsioonilise raamistikuna laialt aktsepteeritud."
+  },
+  {
+    "level": 7,
+    "question": "Mis on ISTQB ja mis rolli see testimise valdkonnas mängib?",
+    "options": [
+      "Standard-organisatsioon, mis avaldab testimise standardeid",
+      "International Software Testing Qualifications Board — koostab globaalset sertifitseerimise süsteemi (Foundation, Advanced, Expert tasemed) ja avaldab testimise sõnastiku (glossary), mis on de facto terminoloogia alus",
+      "Programmeerimiskeel",
+      "Ettevõte, mis müüb testimisvahendeid"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISTQB on mittetulundusühing, mis akrediteerib sertifitseerimist (CTFL on testija 'algtase'). Sõnastik on tasuta saadaval ja kasutuses kõikjal. Ei ole standardiseerimisorganisatsioon, vaid kvalifikatsiooninõukogu."
+  },
+  {
+    "level": 7,
+    "question": "Mis on testimise protsessi etapid (testing process) vastavalt ISTQB-le?",
+    "options": [
+      "Ainult testimine ja vea raporteerimine",
+      "1) Planeerimine, 2) jälgimine ja kontroll, 3) analüüs, 4) disain, 5) realisatsioon (test implementation), 6) käivitamine, 7) lõpetamine (test completion / closure)",
+      "Käivitamine ja debug",
+      "Disain ja realisatsioon"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISTQB Foundation Syllabus määratleb 7 põhitegevust. Need pole alati lineaarsed — agile-keskkonnas iteratiivsed. Lõpetamine sisaldab õppetundide kogumist (lessons learned) ja varade arhiveerimist."
+  },
+  {
+    "level": 8,
+    "question": "Mis on jõudlustestimine (performance testing) ja millised on selle alaliigid?",
+    "options": [
+      "Üksainus test kiiruse mõõtmiseks",
+      "Mittefunktsionaalne testimine, mis hindab vastuseaega, läbilaskvust ja ressursikasutust; alaliigid: load test (oodatud koormus), stress test (üle piiri), spike test (järsk hüpe), endurance/soak test (pikk aeg), volume test (suur andmemaht)",
+      "Sport-tarkvara testimine",
+      "Programmi tõlgendamise kiirus"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jõudlus on ISO 25010 üks kvaliteediomadusi. Tööriistad: JMeter, k6, Gatling, LoadRunner. Tüüpilised mõõdikud: response time (p50, p95, p99), throughput (req/s), error rate, resource utilization (CPU, mälu)."
+  },
+  {
+    "level": 8,
+    "question": "Mis on turvatestimine (security testing)?",
+    "options": [
+      "Testimine kindlas hoones",
+      "Mittefunktsionaalne testimine, mis tuvastab haavatavusi: autentimine, autoriseerimine, andmete konfidentsiaalsus, terviklikkus, käideldavus; tehnikad: penetration testing, vulnerability scanning, OWASP Top 10 kontroll",
+      "Testimine, mille käigus testija turvab tooli",
+      "Testimine, kus arvuti kettal on parool"
+    ],
+    "correctIndex": 1,
+    "explanation": "Security testing eesmärk on leida nõrkused enne kurjategijaid. OWASP Top 10 (Injection, Broken Auth, XSS jne) on tüüpiline kontrolnimekiri. Pen test simuleerib reaalset rünnakut; SAST/DAST on automaatne staatiline/dünaamiline analüüs."
+  },
+  {
+    "level": 8,
+    "question": "Mis on kasutatavustestimine (usability testing)?",
+    "options": [
+      "Kontroll, kas tarkvara saab installeerida",
+      "Mittefunktsionaalne testimine, mis hindab kasutajaliidese arusaadavust, õpitavust ja efektiivsust — tüüpiliselt päris kasutajad sooritavad ülesandeid jälgija juuresolekul; mõõdikud: edukus, aeg, vead, rahulolu",
+      "Testimine, kas tarkvara on kasutamiseks ohutu",
+      "Programmi loetavuse hindamine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Usability testing on UX-uuringu osa. Standardmeetodid: think-aloud protocol, A/B testing, heuristiline hindamine (Nielseni 10 reeglit). Mõõdikud: task success rate, time-on-task, error rate, SUS (System Usability Scale) skoor."
+  },
+  {
+    "level": 8,
+    "question": "Mis on testikatvus (test coverage)?",
+    "options": [
+      "Testija kindlustusleping",
+      "Mõõdik, mis näitab, kui suur osa süsteemist on testidega kaetud — code coverage (statement, branch, path, MC/DC), requirements coverage, risk coverage. Kõrge katvus pole garantii kvaliteedist, vaid näitab, et oluline pole jäänud testimata",
+      "Brauseri ekraani katvus",
+      "Hindamise dokumendi pikkus"
+    ],
+    "correctIndex": 1,
+    "explanation": "Coverage on indikaator, mitte eesmärk. 100% statement coverage ei tähenda 0 bugi — võivad puududa edge case'id. Branch coverage on rangem; MC/DC (Modified Condition/Decision Coverage) on nõutav lennundus-tarkvaras (DO-178C)."
+  },
+  {
+    "level": 9,
+    "question": "Mis on alfa- ja beetatestimine?",
+    "options": [
+      "Keemia katsete järjestus",
+      "Alfa: vastuvõtutest, mille viib läbi sisemine kasutaja arendajate kontoris (tihti enne tarkvara ametlikku ilmumist); Beeta: testimine välistes 'päris' kasutajate keskkonnas, et leida vigu, mida sisemine test ei tabaks",
+      "Versioonihalduse nimed",
+      "Programmeerimiskeele versioonid"
+    ],
+    "correctIndex": 1,
+    "explanation": "Alpha ja beta on operative acceptance testing alaliigid. Alpha — kontrollitud keskkond, varased adoptiivid; Beta — laiem auditoorium, leitakse keskkonna- ja kasutusmustri-spetsiifilisi probleeme. Pärast neid 'üldine kättesaadavus' (GA)."
+  },
+  {
+    "level": 9,
+    "question": "Mis on muutusetega seotud testimise alaliigid?",
+    "options": [
+      "Ainult regressioon",
+      "1) Kordustest (confirmation/retest) — kas parandus töötab; 2) Regressioonitest — kas parandus rikkus midagi muud; 3) Impact analysis — milliseid osi muudatus mõjutab ja milliseid teste tuleb seetõttu käivitada",
+      "Suitsutest ja sanity-test",
+      "Alfa- ja beetatest"
+    ],
+    "correctIndex": 1,
+    "explanation": "Change-related testing on ISTQB neljas testitüüp (funktsionaalse, mittefunktsionaalse ja valge-kasti kõrval). Iga muudatus = potentsiaalne defekt. Hea regressioonitestide automaatika lubab muutusi kindlamalt."
+  },
+  {
+    "level": 9,
+    "question": "Mis on testimise sõltumatus (test independence) ja miks see oluline on?",
+    "options": [
+      "Testija saab puhkust võtta",
+      "Testija sõltumatuse aste arendajast — tasemed: 1) arendaja testib oma koodi, 2) sama tiimi teine arendaja, 3) sõltumatu testitiim, 4) väline organisatsioon. Suurem sõltumatus = uus vaatenurk, vähem 'pime laik', kuid pikem tagasiside-tsükkel ja vajab head suhtlust",
+      "Tarkvara saab töötada võrgust eraldi",
+      "Testijal pole tarvis töövahendeid"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sõltumatu silmade-paar leiab defekte, mille kohta arendaja on 'pime'. Aga sõltumatu test ei asenda arendaja-poolset unit-testi. Optimaalne kombinatsioon sõltub kontekstist (kriitilisus, regulatsioon, ajakava)."
+  },
+  {
+    "level": 9,
+    "question": "Mis on tarkvara konfiguratsioonihalduse (configuration management) roll testimises?",
+    "options": [
+      "Pole testimisega seotud",
+      "Tagab, et testitakse õiget versiooni õige andmestiku ja keskkonnaga; jälgib koodi-versioone, ehitusi (build), keskkondi (dev/test/staging/prod), testandmeid ja testitulemusi — ilma selleta ei saa korratavalt testida ega reprodutseerida defekte",
+      "Sünonüüm testimisele",
+      "Ainult programmeerija ülesanne"
+    ],
+    "correctIndex": 1,
+    "explanation": "Configuration management (Git, CI/CD, artefakti-registrid, Infrastructure as Code) on testimise alus. 'Töötab minu masinas' on klassikaline märk halvast CM-ist. ISTQB nõuab testija arusaamu CM-i põhimõtetest."
+  },
+  {
+    "level": 10,
+    "question": "Mis on ISO/IEC 25010 standardi sisu?",
+    "options": [
+      "Brauserite testimise standard",
+      "Tarkvara kvaliteedi mudel — defineerib 8 toote-kvaliteedi omadust (funktsionaalne sobivus, jõudlus, ühilduvus, kasutatavus, töökindlus, turvalisus, hooldatavus, mobiilsus) koos alaomadustega; aluseks mittefunktsionaalsete nõuete sõnastamisele",
+      "Programmeerimiskeele standard",
+      "Andmebaasi standard"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISO 25010 (asendas ISO 9126) on Software Product Quality Model. Iga omadus (näiteks turvalisus) jaguneb alaomadusteks (konfidentsiaalsus, terviklikkus, mittetagasilükatavus, vastutus, autentsus). Aluseks tester-i 'mida testida' analüüsile."
+  },
+  {
+    "level": 10,
+    "question": "Mis on intsidendi (incident) raport tarkvara testimises?",
+    "options": [
+      "Politseile esitatav dokument",
+      "Defekti registreerimise dokument: ID, kirjeldus, sammud reprodutseerimiseks, oodatud vs tegelik tulemus, raskusaste (severity), prioriteet, keskkond, lisad (logid, screenshot'id), staatus (open, in progress, fixed, verified, closed)",
+      "Tarkvara installeerimise õpetus",
+      "Kasutaja kaebus klienditeenindusele"
+    ],
+    "correctIndex": 1,
+    "explanation": "IEEE 829 'Test Incident Report', ISO 29119-3 'Test Status Report' — defekti elutsükli alus. Hea raport on reprodutseeritav (teine inimene saab sama sammude põhjal sama tulemuse). Severity = mõju süsteemile, Priority = parandamise kiirus."
+  },
+  {
+    "level": 10,
+    "question": "Mis vahe on raskusastmel (severity) ja prioriteedil (priority)?",
+    "options": [
+      "Need on sünonüümid",
+      "Severity = defekti tehniline mõju süsteemile (Critical, High, Medium, Low) — TESTIJA hindab; Priority = parandamise kiirus äri perspektiivist — TOOTEOMANIK/JUHT hindab. Need ei pruugi kokku langeda (väike äri-tähtsus, kuid süsteem jookseb kokku)",
+      "Severity on testija, priority arendaja hinnang",
+      "Severity on numbriline, priority sõnaline"
+    ],
+    "correctIndex": 1,
+    "explanation": "Klassikaline näide: hangub kassasüsteem reedel pärastlõunal (Severity: Critical, Priority: Critical) vs typo Kasutuselt-võetud lehel (Severity: Low, Priority: High enne pressikonverentsi). Hindajad on erinevad."
+  },
+  {
+    "level": 10,
+    "question": "Mis on testimise sisenemis- ja väljumiskriteeriumid (entry/exit criteria)?",
+    "options": [
+      "Testija töökoha juurdepääsulennud",
+      "Entry: tingimused, mis peavad olema täidetud enne testimise alustamist (näiteks ehitus on stabiilne, testandmed on valmis, keskkond töötab); Exit: tingimused, millal testimine on 'piisavalt valmis' (testikatvuse-tase, defektide-tihedus, jäänud defektide raskusaste)",
+      "Tarkvara käivitamise sõnumid",
+      "Programmi sisendid ja väljundid"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kriteeriumid panevad testimisele 'väravad'. Ilma entry-criteria-ta testitakse halba ehitust (raisatud aeg); ilma exit-criteria-ta ei teata, millal lõpetada (perfectionism). Tüüpiline: '100% kriitilistest funktsioonidest testitud, 0 lahtist Critical defekti, 95% testijuhte täidetud.'"
+  },
+  {
+    "level": 11,
+    "question": "Mis on Test-Driven Development (TDD) ja kuidas see testimisega seotud on?",
+    "options": [
+      "Testimine, mis juhitakse spetsiaalse autoga",
+      "Arendusmeetod: 1) Red — kirjuta katkitestiv test esimesena, 2) Green — kirjuta minimaalne kood, mis testi rohestab, 3) Refactor — paranda struktuuri test rohelisena hoides. Test on disainivahend, mitte ainult kvaliteedikontrolli vahend",
+      "Testija eraldi tiim",
+      "Andmebaasi-juhitud arendus"
+    ],
+    "correctIndex": 1,
+    "explanation": "TDD (Kent Beck) muudab testi 'disaini draiveriks'. Tulemus: 100% testidega kaetud kood, modulaarne struktuur, kindlustunne refaktoreerimisel. ATDD (Acceptance TDD) ja BDD (Behavior-Driven Development) on seotud variandid."
+  },
+  {
+    "level": 11,
+    "question": "Mis on BDD (Behavior-Driven Development) ja millise süntaksiga seda kirjeldatakse?",
+    "options": [
+      "Brauseri-juhitud arendus",
+      "Arendusmeetod, kus käitumist kirjeldatakse loomulikus keeles Gherkin süntaksiga: Given (lähteolukord), When (sündmus), Then (oodatud tulemus). Tööriistad: Cucumber, SpecFlow, Behave. Eesmärk: ühine keel ärianalüütiku, arendaja ja testija vahel",
+      "Bibliograafiline andmebaasi disain",
+      "Brutaalne dünaamiline debugimine"
+    ],
+    "correctIndex": 1,
+    "explanation": "BDD (Dan North, 2006) laiendab TDD-d. Gherkin laused on 'elav dokumentatsioon' — täidetavad spetsifikatsioonid. Klassikaline näide: 'Given kasutaja on sisse loginud / When ta klõpsab Logout / Then ta suunatakse avalehele.'"
+  },
+  {
+    "level": 11,
+    "question": "Mis on testimispüramiid (test pyramid) ja miks seda soovitatakse?",
+    "options": [
+      "Egiptuse pürmiidiformaadis testikomplekt",
+      "Mike Cohni mudel — palju kiireid komponenditeste (lai alus), vähem integratsiooniteste (kesktasand), veel vähem aeglaseid UI/e2e teste (tipp). Eesmärk: kiire tagasiside, väike hooldekoormus, suur usaldusväärsus",
+      "Testijate hierarhia organisatsioonis",
+      "Vananenud kontseptsioon"
+    ],
+    "correctIndex": 1,
+    "explanation": "Anti-muster on 'ice cream cone' — palju aeglaseid UI-teste, vähe unit-teste. Tagajärg: aeglane CI, habras testikomplekt, palju 'flaky' teste. Pyramid eelistab kiireid stabiilseid teste mahus, aeglasemaid teste vaid kriitiliste teekondade jaoks."
+  },
+  {
+    "level": 11,
+    "question": "Mis rolli mängib testikeskkond (test environment) ja milliseid keskkondi tüüpiliselt kasutatakse?",
+    "options": [
+      "Pole oluline — kõik testitakse produktsioonis",
+      "Eraldatud keskkonnad: DEV (arendaja kohalik), CI (automaattest pärast iga commit'i), TEST/QA (testitiim, terviklikud testid), STAGING (tootmiselähedane konfiguratsioon, UAT), PROD (lõppkasutajad). Iga aste piirab eelmise riske",
+      "Ainult test- ja prod-keskkond",
+      "Brauseri tab-id"
+    ],
+    "correctIndex": 1,
+    "explanation": "Keskkonna-progressioon kindlustab, et probleemid tabatakse VARA. Staging peaks olema 'sama nagu prod' — sama OS, andmebaas, võrgu-topoloogia. Praktikas keerukam (andmete konfidentsiaalsus, kulu) — kasutatakse maskimist, sünteetilisi andmeid."
+  },
+  {
+    "level": 12,
+    "question": "Mis on testautomaatika eelised ja varjuküljed?",
+    "options": [
+      "Ainult eelised — testautomaatika on alati parem",
+      "Eelised: kiirus, korratavus, regressiooni-katvus, töötab 24/7, üksikasjalik logide jätmine. Varjuküljed: hooldekulu (testid murduvad UI-muudatustega), algkulu (raamistik, oskused), ei leia kasutatavuse-probleeme, varjab 'flaky' testidena tegelikke defekte",
+      "Ainult varjuküljed — käsitsi alati parem",
+      "Pole eeliseid ega varjukülgi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Automaatika ROI sõltub: kui sageli test käivitatakse? Kui stabiilne on UI? Kui kõrge on käsitsi-testimise kulu? Klassikaline juhend: automatiseeri korduvaid stabiilseid teste, käsitsi tee uurivat ja kasutatavuse-testimist."
+  },
+  {
+    "level": 12,
+    "question": "Mis on 'flaky test' ja kuidas seda käsitleda?",
+    "options": [
+      "Hea test, mis leiab palju defekte",
+      "Test, mis sama koodi ja sisendiga annab vahel pass, vahel fail tulemust — põhjused: race condition, timing-sõltuvus, jagatud state, väline sõltuvus (võrk, kell, juhuslikkus). Tuleb ravida, mitte ignoreerida või automaatselt korrata, sest see varjab tegelikke regressioone",
+      "Test, mis on liiga lühike",
+      "Test, mis kasutab värvilist väljundit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flaky testid on tehnilise võla allikas. Vale lahendus: lihtsalt retry. Õige: leida juur (näiteks lisa explicit wait timing-i asemel, isolatsiooni andmebaas, deterministlik kell). Google ja Microsoft on avaldanud uuringuid — flaky testid maksavad miljardeid."
+  },
+  {
+    "level": 12,
+    "question": "Mis on mutatsioon-testimine (mutation testing) ja milleks seda kasutatakse?",
+    "options": [
+      "Geenitehnoloogia tarkvara",
+      "Tehnika testikomplekti KVALITEEDI hindamiseks: tööriist (Pitest, Stryker) muudab koodis süstemaatiliselt väikseid asju (näiteks `>` → `>=`, `+` → `-`) ja kontrollib, kas mõni test 'tapab' selle mutandi. Madal mutation score = testid läbivad ka katki tehtud koodi — testide kvaliteet on madal",
+      "Programmide automaatne refaktoreerimine",
+      "Tarkvara versiooni-mutatsioon"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mutation testing on 'testide testimine'. Erineb code coverage'ist — 100% coverage võib elada 30% mutation score-iga (testid käivitavad rida, kuid ei kontrolli tegelikult tulemust). Aeglane (palju mutante), kuid tugev kvaliteedinäitaja."
+  },
+  {
+    "level": 12,
+    "question": "Mis on 'shift-left' testimise põhimõte?",
+    "options": [
+      "Klaviatuuri vasaku Shift-klahvi kasutamine",
+      "Testimise tegevuste viimine SDLC-s võimalikult VARA (vasakule): koos nõuetega valmib testikriteerium, koos disainiga testidisain, koos koodiga unit-test (TDD). Eesmärk: leida defekte varakult, kui parandamine on odav",
+      "Vasakkätele optimeerimine",
+      "Testide nihutamine produktsiooni"
+    ],
+    "correctIndex": 1,
+    "explanation": "Klassikaline põhimõte: defekti parandus on 10× kallim igal hilisemal SDLC etapil. Shift-left: code review, static analysis, unit testing, TDD, threat modeling juba disainifaasis. Vastandina 'shift-right' = testimine produktsioonis (canary, A/B, observability)."
+  },
+  {
+    "level": 13,
+    "question": "Mis on chaos engineering (kaose-engineering)?",
+    "options": [
+      "Kontrollimatu kodeerimine",
+      "Distsipliin, mis tahtlikult sisestab tõrkeid produktsiooni-sarnasesse süsteemi (näiteks kustutab serveri, lisab võrgu-latentsuse) ja jälgib, kas süsteem säilib graceful-mode'is — testib reaalsete keskkonnatingimuste vastupidavust. Tööriistad: Chaos Monkey (Netflix), Gremlin, Litmus",
+      "Programmide juhuslik kustutamine",
+      "Vananenud testimismeetod"
+    ],
+    "correctIndex": 1,
+    "explanation": "Netflix populariseeris 2010ndatel. Filosoofia: hajutatud süsteemis tõrked toimuvad; parem harjutada, kui oodata. 'Game days' on plaanitud kaose-eksperimendid. Eeldab head observability'd (kuidas muidu mõõta mõju?)."
+  },
+  {
+    "level": 13,
+    "question": "Mis on testimise risk-põhine lähenemine (risk-based testing)?",
+    "options": [
+      "Testija võtab finantsriske",
+      "Testimise prioriseerimine riski järgi: risk = tõenäosus × mõju. Suurima riskiga funktsioonid (kriitiline äritähtsus, suur kompleksus, hiljutine muudatus, nõrk arendaja-kogemus) saavad enim testimisressursse. Madalama riskiga osad saavad piisavalt — mitte maksimumi",
+      "Ainult riskantsete tehnoloogiate testimine",
+      "Testija juhuslikud katsed"
+    ],
+    "correctIndex": 1,
+    "explanation": "Risk-based testing on praktiline vastus 'täielik testimine pole võimalik' põhimõttele. Tüüpiline risk-maatriks: tõenäosus × mõju. ISO 29119 kohustab dokumenteerima riski-analüüsi. Aitab põhjendada testimise ulatust juhtkonnale."
+  },
+  {
+    "level": 13,
+    "question": "Mis on lepingupõhine (contract) testimine mikroteenuste arhitektuuris?",
+    "options": [
+      "Juriidiline kontrolli",
+      "Tehnika, kus testitakse, et teenuste A ja B vaheline LIIDES (API-leping) on ühilduv — A (tarbija) defineerib oodatud lepingu, B (pakkuja) kontrollib, kas seda täidab. Tööriistad: Pact, Spring Cloud Contract. Eelis: ei pea käivitama kõiki teenuseid koos end-to-end testimiseks",
+      "Tarkvara müügilepingu testimine",
+      "Testimine, mis kasutab paberit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Consumer-Driven Contracts (CDC) on mikroteenuste integratsiooni- testimise lahendus. Vältima 'integratsiooni-põrgu' (kõik teenused koos, aeglane, ebastabiilne). Iga teenust saab testida iseseisvalt; lepingu-test garanteerib koostöö."
+  },
+  {
+    "level": 13,
+    "question": "Mis on testimise küpsusmudel (Test Maturity Model integration, TMMi)?",
+    "options": [
+      "Testija vanus organisatsioonis",
+      "Mudel, mis hindab organisatsiooni testimisprotsesside küpsust 5 tasemel: 1) Algne (kaootiline), 2) Hallatud (planeeritud), 3) Defineeritud (standardiseeritud), 4) Mõõdetav (kvantitatiivne juhtimine), 5) Optimeeriv (pidev parendus). Sarnaneb CMMi-le",
+      "Programmeerimiskeele versioon",
+      "Brauseri funktsionaalsuse aste"
+    ],
+    "correctIndex": 1,
+    "explanation": "TMMi (ja varasem TMM) on organisatsioonilise küpsuse raamistik. Sertifitseerimisega: organisatsiooni testimispraktikaid auditeeritakse vastavalt mudelile. Tüüpiliselt suurettevõtetes või regulatiivsetes keskkondades (pangad, lennundus, meditsiin)."
+  },
+  {
+    "level": 14,
+    "question": "Mis on installeerimise testimine (installation testing)?",
+    "options": [
+      "Tarkvara müügitestimine",
+      "Testimine, mis kontrollib installeerimise protsessi: erinevad keskkonnad (OS-versioonid, riistvara), õnnestunud install, ebaõnnestunud install (kettal vähe ruumi, õigused puuduvad), uuendamine (upgrade) vanematelt versioonidelt, deinstall (puhas eemaldamine), rollback",
+      "Programmi käivitusaja mõõtmine",
+      "Tarkvara paigaldamine raamatusse"
+    ],
+    "correctIndex": 1,
+    "explanation": "Installation testing on operative acceptance testing osa (ISTQB). Tihti unustatud, kuid kriitiline — kasutaja kogemus algab installeerimisest. Tüüpilised vead: vajalikud sõltuvused puuduvad, õigused valed, eelmine versioon jätab räämakoht, install fail jätab süsteemi katki."
+  },
+  {
+    "level": 14,
+    "question": "Mis on hooldatavuse testimine (maintainability testing)?",
+    "options": [
+      "Tarkvara remondi tellimine",
+      "Mittefunktsionaalne testimine, mis hindab, kui kerge on tarkvara modifitseerida, parandada ja edasi arendada: modulaarsus, taaskasutatavus, analüüsitavus, modifitseeritavus, testitavus (ISO 25010 alaomadused). Mõõdikud: tsükloomatne keerukus, koodi-duplikatsioon, sõltuvuste-tihedus, testikatvus",
+      "Testija tervisekontroll",
+      "Tarkvara eluea pikendamine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintainability on hilisem aga oluline kvaliteediomadus — 'iga rida koodi on rohkem loetud kui kirjutatud'. Hindamiseks: static analysis (SonarQube), code review, refactoring-mõõdikud. Halb hooldatavus = tehniline võlg, mis kasvab eksponentsiaalselt."
+  },
+  {
+    "level": 14,
+    "question": "Mis on kasutusjuhendi (user manual) testimise eripära?",
+    "options": [
+      "Kasutusjuhendit ei testita",
+      "Dokumentatsiooni testimine: kas juhendi sammud reaalselt töötavad (kontrolli iga samm tarkvaras), kas terminoloogia on järjekindel, kas screenshot'id on värsked, kas keele-tase sobib auditooriumile, kas linkid töötavad. Eraldi: tõlke-kvaliteet i18n korral",
+      "Brauseri abi-süsteemi",
+      "Tarkvara reklaami testimine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Dokumentatsiooni-testimine on testimise alaliik (vahel jäetakse põhjendamatult kõrvale). Vananenud dokumentatsioon on tihti hullem kui mitte mingi — kasutaja kaotab usalduse. Tehnilised kirjutajad ja testijad teevad tihti tihedat koostööd."
+  },
+  {
+    "level": 14,
+    "question": "Mis on A/B testimine ja kus see asetub testimispüramidis?",
+    "options": [
+      "Tähtede järjekorra kontroll",
+      "Statistiline tehnika, kus kasutajaid jagatakse juhuslikult kahte rühma (A ja B näevad erinevaid versioone), mõõdetakse äri-mõõdikuid (konversioon, klikkimine, säilivus) ja valitakse parem. Asetub väljaspool klassikalist püramiidi — pole funktsionaalne test, vaid hüpoteesi-test produktsioonis",
+      "Programmi tähestiku järgi sorteerimine",
+      "Kaheastmeline turvatest"
+    ],
+    "correctIndex": 1,
+    "explanation": "A/B test on 'experiment in production' — kuulub shift-right kategooriasse. Erineb funktsionaalsest testimisest: ei kontrolli 'kas töötab', vaid 'kumb variant on parem'. Vajab piisavat valimit (statistiline võimsus) ja ettevaatust valede mõõdikutega."
+  },
+  {
+    "level": 15,
+    "question": "Mis on testimise tulevikutrendid (AI-testimine, ML-rakenduste testimine)?",
+    "options": [
+      "Pole muutusi — testimine jääb samaks",
+      "1) AI/ML rakenduste eripärad: mittedeterministlikud väljundid, mudeli-degradatsioon (drift), õigluse/biase testimine, andmekvaliteet kui osa testidest; 2) AI-toega testimine: testide automaatne genereerimine, isetehispüsivad testid (self-healing), defektide ennustamine; 3) Continuous Testing DevOps-is — testimine pole eraldi etapp, vaid pidev tegevus",
+      "Ainult automaatika kasvab",
+      "Testijad asendatakse robotitega"
+    ],
+    "correctIndex": 1,
+    "explanation": "AI rakenduste testimine eeldab uut metodoloogiat: traditsiooniline 'kas väljund == oodatud' ei tööta tõenäosuspõhiste mudelite puhul. Tehnikad: metamorphic testing, statistilised piiritestid, bias-auditid, model monitoring. ISO/IEC 25059 ja IEEE P2841 töötavad AI kvaliteedi-standardite kallal."
+  },
+  {
+    "level": 15,
+    "question": "Mis rolli mängib testija agile/Scrum tiimis võrreldes klassikalise V-mudeliga?",
+    "options": [
+      "Sama roll",
+      "Agile-s on testija tiimi täisliige iga sprindi vältel — osaleb planeerimises (kriteeriumid), backlog-grooming'us, defineerib 'Definition of Done', kirjutab teste samaaegselt arendusega (mitte pärast), automatiseerib regressiooni. Klassikaline 'testimine pärast arendust' faas kaob — asendub pideva testimisega. Rolli vahel nimetatakse Quality Engineer / SDET",
+      "Agile-s testijat polegi",
+      "Testija on agile-s ainult demo-de jaoks"
+    ],
+    "correctIndex": 1,
+    "explanation": "Agile testimine vastandub V-mudeli 'big bang test phase'-ile. Whole-team approach: kvaliteet on kogu tiimi vastutus. Testija toob spetsiifilist oskust (riski-analüüs, testidisain, automaatika), kuid arendajad kirjutavad ise unit-teste. ISTQB Agile Tester sertifikaat katab seda rolli."
+  },
+  {
+    "level": 15,
+    "question": "Kuidas tagada testimise jätkusuutlikkus suures pikaealises projektis?",
+    "options": [
+      "Lisada üha rohkem teste",
+      "1) Testpüramiid (kiired stabiilsed unit-testid baasis); 2) Pidev refaktoreerimine (testid on KOOD — vajavad sama hoolt); 3) Flaky testide tõhus käsitlus (ravi, mitte ignoreerimine); 4) Testandmete haldus (fikseeritud andmekomplektid, andmekäibe-strateegia); 5) Mõõdetav kvaliteet (mutation score, defektide tihedus, MTTR); 6) Dokumentatsioon kui osa lepingust (BDD, contract-test); 7) Õpetus ja teadmiste jagamine tiimi sees",
+      "Vältida testimist",
+      "Vahetada testijaid sageli"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pikaealine projekt = testikomplekt vananeb sama tempos kui kood. Ilma teadliku hoolduseta degradeerub testikomplekt: aeglustub, muutub habras, kaotab usaldusväärsuse. ROI mõõtmine (testid leiavad VARA defekte) õigustab investeeringuid. Klassikud: 'Working Effectively with Legacy Code' (Feathers), 'xUnit Test Patterns' (Meszaros)."
+  },
+  {
+    "level": 15,
+    "question": "Mis on testimise eetilised aspektid (testing ethics)?",
+    "options": [
+      "Testijad peavad olema viisakad",
+      "1) Aus raporteerimine — defekte ei peideta survest hoolimata; 2) Konfidentsiaalsus — testandmetes pole päris isikuandmeid (GDPR), pen-testimisel teadmata haavatavusi ei avalikustata enne paranduse-akent; 3) Konflikt huvide — testija ei tohi olla finantsiliselt motiveeritud teste 'rohelisena' näidata; 4) Sõltumatus — surve all 'kiirelt lõpetada' tuleb dokumenteerida riski-aktseptina; 5) ISTQB Code of Ethics nimetab põhimõtteid (avalikkus, klient, toode, hindamine, juhtimine, professioon, kolleeg, mina-areng)",
+      "Testijad ei räägi defektidest",
+      "Eetika pole testimisega seotud"
+    ],
+    "correctIndex": 1,
+    "explanation": "Eetika on tarkvara kvaliteedi tähtis tasand. ACM Software Engineering Code of Ethics ja ISTQB Code of Ethics on viited. Reaalsed juhtumid: Volkswageni 'dieselgate' (testid 'rohelised' tehti tahtlikult), Therac-25 (eluohtlikud kiirituse-vead testimise puudumise tõttu), Boeing 737 MAX (MCAS testimise puudus). Testija eetika kaitseb kasutajaid."
+  }
+]
