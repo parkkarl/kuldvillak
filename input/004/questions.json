@@ -1138,5 +1138,77 @@
     ],
     "correctIndex": 0,
     "explanation": "DR-testi neli sammu: 1) tahtlik tõrke-simulatsioon (lülita primaarne maha, blokeeri võrk), 2) kontroll, et sekundaarne tegelikult üle võtab, 3) andmete kontroll (kas kõik on terved), 4) RTO/RPO mõõtmine (kas täideti?). Variandid 2, 3, 4 on muude testimise-tegevuste sammud (CI-test järjekord, koodi-audit, turvaskaneering)."
+  },
+  {
+    "level": 4,
+    "question": "Mis on configuration testing peamine eesmärk?",
+    "options": [
+      "Hinnata, kuidas rakendus töötab eri riistvara, tarkvara, võrgu ja OS-i kombinatsioonide all — leida optimaalne konfiguratsioon, kus süsteem töötab ilma defektideta",
+      "Kontrollida, et iga kasutaja saab oma personaalsed seaded (teema, keel, ajavöönd) õigesti salvestada brauseri-cookies'idesse pikemas perspektiivis suuremas veebirakenduses ettevõttes pikas vaates kogu maailmas",
+      "Hinnata Git-konfiguratsioonifailide korrektsust (.gitignore, .gitconfig, .github/workflows) iga commit'i järel CI pipeline'is suuremas tarkvaratiimis pikemas perspektiivis pikas vaates pikas vaates pikemas vaates",
+      "Kontrollida, et application configuration files (application.yml, .env, config.json) ei sisalda hardcoded secret'eid — staatilise analüüsi-alaliik suuremas tarkvarapakettis pikemas perspektiivis ettevõttes pikas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Configuration testing = mittefunktsionaalne kontrolli vorm: kuidas süsteem käitub eri keskkondade kombinatsioonidel (Chrome+Win11+8GB RAM, Firefox+macOS+16GB RAM jne). Eesmärk: leida soovituslik 'minimum spec' ja stabiilsed konfiguratsioonid. Variandid 2, 3, 4 võtavad sõna 'configuration' eri kontekstides (kasutaja-seaded, Git-konf, app-config-failid)."
+  },
+  {
+    "level": 5,
+    "question": "Mis vahe on configuration testing'u ja compatibility testing'u vahel?",
+    "options": [
+      "Configuration testing keskendub SISEMISTELE süsteemi-seadetele (OS, riistvara, võrk); compatibility testing kontrollib VÄLIST koostalitlust kolmandate poolte platvormidega",
+      "Configuration on alati manuaalne ja compatibility alati automaatne — automatiseerimise aste on kahe testimise peamine eristaja praktikas suurettevõttes pikemas perspektiivis IT-osakonnas pikas vaates pikas perspektiivis pikas vaates",
+      "Configuration kontrollib funktsionaalset poolt ja compatibility mittefunktsionaalset poolt süsteemis — kaks ortogonaalset mõõdet ISO 25010 raamistikus pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates pikas perspektiivis",
+      "Configuration toimub arendusfaasis ja compatibility ainult production'is pärast juurutamist — kaks järjestikust ajalist faasi sama tegevuse jaoks pikas perspektiivis projekti vältel suuremas ettevõttes pikemas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Configuration = SAMA rakendus, eri sisemised seaded (CPU, RAM, OS-versioon, brauser, võrgu-seaded). Compatibility = kas rakendus 'läbib' eri väliste platvormidega (eri brauserid kui ka eri OS-id loetakse compatibility puhul väliseks vaatest). Variandid 2, 3, 4 segavad eristust automatiseerimise, funktsionaalsuse ja ajalise mõõtmega."
+  },
+  {
+    "level": 7,
+    "question": "Mis vahe on Software Configuration Testing'u ja Hardware Configuration Testing'u vahel?",
+    "options": [
+      "Software config testib eri OS- ja brauseri-versioone (tihti virtuaalmasinatega tõhususe huvides); hardware config testib päris seadmetel eri komponentidega (graafikakaardid, mälu, salvestus)",
+      "Software config testib ainult arendaja masinas ja hardware config ainult testija masinas — kaks rolli järgi defineeritud testimist sõltuvalt töötaja-asukohast pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas vaates",
+      "Software config testib unit-testidega ja hardware config integration-testidega — kahe testitaseme rakendus eri kontekstis vastavalt testpüramidile pikemas perspektiivis pikas vaates suuremas tarkvarapakettis ettevõttes pikas perspektiivis",
+      "Software config on tasuta avatud lähtekoodiga ja hardware config kommertstööriistadega — kaks erineva eelarvega lähenemist sõltuvalt ettevõtte suurusest pikemas perspektiivis IT-osakonna eelarves pikas vaates pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Software config = OS-i ja tarkvara-pinu variatsioonid (Windows 10/11, macOS Sonoma/Sequoia, Ubuntu 22/24, Chrome 120/121). VM-id (VMware, VirtualBox, Hyper-V) tõhusad — üks füüsiline masin, kümned snapshot'id. Hardware config = päris seadmed (eri GPU-d, eri kettad, eri RAM). Variandid 2, 3, 4 on müüdid."
+  },
+  {
+    "level": 8,
+    "question": "Kuidas valitakse, milliseid konfiguratsioone (OS + brauser + seade) konfiguratsioonitestimisel prioritiseerida?",
+    "options": [
+      "Sihtgrupi-andmete alusel (analüütika, web-statistika): testitakse populaarsemaid kombinatsioone (näiteks 80% Chrome+Windows) põhjalikumalt, harvaesinevaid valikuliselt",
+      "Tähestiku järjekorras alustades A-st (Android, Apple Safari, Arch Linux) ja minnes Z-ni (Zorin OS, Zephyr) — süstemaatiline läbimine kõikidest tarkvaratoodetest tagab täieliku katvuse pikemas perspektiivis pikas vaates kogu maailmas pikas vaates",
+      "Juhuslikult valitud kümnest variandist sprindi alguses — testija tõmbab nimed kübarast välja, et vältida eelarvamust ja tagada objektiivsus pikas perspektiivis suuremas ettevõttes pikemas vaates pikas vaates kogu maailmas",
+      "Vastavalt arendaja eelistustele sprindi planeerimisel — iga arendaja valib oma lemmik-keskkonnad, mille testimine toimub eelisjärjekorras pikemas perspektiivis pikas vaates suuremas tarkvaratiimis pikas vaates kogu maailmas"
+    ],
+    "correctIndex": 0,
+    "explanation": "Risk-põhine prioritiseerimine: testimisressursid jagatakse vastavalt kasutaja-baasile. Allikad: Google Analytics, StatCounter, ettevõtte-sisesed log'id (User-Agent statistika). Long-tail väiksemate kombinatsioonide jaoks pilve-platvormid (BrowserStack, Sauce Labs). Variandid 2, 3, 4 on absurdsed valiku-kriteeriumid."
+  },
+  {
+    "level": 10,
+    "question": "Miks kasutatakse software configuration testing'us tihti virtuaalmasinaid (VM-e)?",
+    "options": [
+      "Tõhus viis testida kümneid OS- ja brauseri-versioone ühel füüsilisel masinal — kiire ümberlülitus, kergesti taastatav puhas seisund (snapshot-id), pole vaja eraldi riistvara",
+      "Virtuaalmasinad on tasuta — ei nõua litsentse Windows-i ega macOS-i jaoks, isegi kommertskasutuses pikemas perspektiivis ettevõttes pikas vaates kogu maailmas pikas perspektiivis suuremas tarkvarapakettis pikemas vaates",
+      "VM-id on kiiremad kui füüsiline riistvara — virtualiseerimine optimeerib CPU-d ja mälu paremini kui natiivne OS pikemas perspektiivis suuremas süsteemis pikas vaates ettevõttes pikas vaates pikemas perspektiivis suuremas pakettis",
+      "VM-id on ainus viis testida cross-platform ühilduvust — füüsilistel masinatel pole võimalik eri OS-e samaaegselt jooksutada vastavalt riistvara-piirangutele pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "VM eelised: snapshot'id (testige, taastage puhas seisund minutiga), parallelism (mitu OS-i ühe füüsilise masina peal), reprodutseeritavus (sama VM-image jagatud tiimi vahel). Variant 2 on faktiliselt vale (Windows-i licens nõutav); variant 3 on vastupidi (VM-id on aeglasemad); variant 4 on liialdus (dual-boot, container'id on alternatiivid)."
+  },
+  {
+    "level": 12,
+    "question": "Mis on configuration testing'u tüüpilised protsessisammud?",
+    "options": [
+      "1) vali konfiguratsioonid (OS+brauser+riistvara) sihtgrupi järgi, 2) loo testijuhud iga setupi jaoks, 3) käivita (manuaalselt või automaatselt), 4) analüüsi konfiguratsiooni-spetsiifilisi defekte",
+      "1) sea CI pipeline, 2) konfigureeri Selenium Grid, 3) lisa Allure raporteerimine, 4) integreeri Jira-ga sprindi vältel pikas perspektiivis suuremas ettevõttes pikemas vaates pikas vaates suuremas tarkvarapakettis ettevõttes pikas vaates",
+      "1) auditeeri SonarQube-iga, 2) mõõda tsükloomatset keerukust, 3) võrdle baseline'iga, 4) raporteeri juhtkonnale kvartali aruandes pikemas perspektiivis ettevõttes pikas vaates pikas vaates pikemas perspektiivis suuremas pakettis pikas vaates",
+      "1) käivita unit-testid, 2) integration-testid, 3) e2e-testid, 4) jõudlustestid pikas järjekorras vastavalt testpüramidile pikas perspektiivis pikemas vaates suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Configuration testing protsess: vali (mis kombinatsioonid katta), loo (testijuhud iga setupi jaoks), käivita (manuaal/auto), analüüsi (mis on setupi-spetsiifiline defekt vs ühine bug). Variandid 2, 3, 4 on muude testimise-tegevuste sammud (CI-pipeline ehitamine, koodi-audit, testpüramid)."
   }
 ]
