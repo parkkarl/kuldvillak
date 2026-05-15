@@ -478,5 +478,161 @@
     ],
     "correctIndex": 2,
     "explanation": "ISTQB Code of Ethics ja ACM SE Code of Ethics: testija peab raporteerima ausalt, isegi surve all. Risk acceptance dokumendis kirjeldatakse lahtised defektid + riskid + otsustaja allkiri — surve ei kao, kuid vastutus on selge. Reaalsed juhtumid (Volkswagen 'dieselgate', Boeing 737 MAX) näitavad, mis juhtub eetika eiramisel. Variandid 1, 2, 4 on eetika rikkumised (kuuletumine, võltsimine, põgenemine)."
+  },
+  {
+    "level": 2,
+    "question": "Mis on automaattestimise (automation testing) põhiline eelis manuaalse testimise ees?",
+    "options": [
+      "Automaattestimine asendab inimese täielikult — tester pole enam vajalik, kogu kvaliteedikontroll käib skriptide ja AI-tööriistadega ilma järelevalveta",
+      "Automaattestimine on eelduste kohaselt 100% defekti-vaba, sest skriptid ei tee inimese-tüüpi tähelepanu-vigu testijuhtude käivitamisel",
+      "Korduvate testijuhtude (eriti regressioonitestide) kiire ja korratav käivitamine — sobib CI/CD pipeline'i, kus iga koodimuudatuse järel tuleb sadu teste käivitada",
+      "Automaattestimine sobib eriti hästi exploratory ja usability-testimiseks, kus inimese intuitsiooni asendamine annab parema katvuse ja objektiivsuse"
+    ],
+    "correctIndex": 2,
+    "explanation": "Automaatika tugevus on KORRATAVUS ja KIIRUS — sobib stabiilsetele, korduvatele stsenaariumitele (regressioon, smoke, API-testid). Variant 1 ignoreerib testija analüüsi-rolli; variant 2 on müüt — skriptid testivad ainult seda, mida programmeeritud; variant 4 on vastupidi tõele — exploratory ja usability nõuavad just inimese intuitsiooni, mida automaatika ei suuda."
+  },
+  {
+    "level": 3,
+    "question": "Millist tüüpi testimine on automatiseerimiseks tüüpiliselt KÕIGE EBASOOVITAVAM?",
+    "options": [
+      "Regressioonitestimine, mis käivitatakse iga koodimuudatuse järel CI pipeline'is — sadu teste, mille manuaalne käivitamine oleks majanduslikult ebaratsionaalne",
+      "Jõudlustestimine (load, stress, spike), kus simuleeritakse tuhandeid samaaegseid kasutajaid — inimene ei suudaks füüsiliselt sellist koormust tekitada",
+      "Exploratory ja usability-testimine, kus testija intuitiivselt avastab süsteemi ja hindab kasutajakogemust — automatiseeritud skript ei oska avastada ootamatut",
+      "API-testimine, kus tuhandeid päringuid käivitatakse erinevate sisendi-kombinatsioonidega — kiired ja deterministlikud testid sobivad automaatikale ideaalselt"
+    ],
+    "correctIndex": 2,
+    "explanation": "Exploratory ja usability vajavad inimese taju — 'kas see tundub loogiline?', 'kas värvi-kontrast on piisav?', 'mis juhtub, kui ma teen midagi ootamatut?'. Skript järgib ainult ette antud sammusi. Variandid 1, 2, 4 on klassikalised automaatika TUGEVUSED — korduv, suuremahuline, deterministlik."
+  },
+  {
+    "level": 4,
+    "question": "Mis on Selenium peamine kasutusala automaattestimises?",
+    "options": [
+      "Veebirakenduste UI-testimise automatiseerimine — Selenium WebDriver käivitab brauserit (Chrome, Firefox, Edge) programmaatiliselt ja simuleerib kasutaja-tegevusi (klikk, sisestus, navigeerimine)",
+      "Mobiilirakenduste (iOS, Android) testimise automatiseerimine natiivseid SDK-kutseid kasutades — tuntud konkurent Appium-ile mobiili-valdkonnas",
+      "Jõudlustestimine ja koormustestimine, kus simuleeritakse tuhandeid samaaegseid kasutajaid — alternatiivne tööriist JMeter-ile ja k6-le",
+      "Lähtekoodi staatiline analüüs ja koodikvaliteedi mõõtmine — tuntud konkurent SonarQube-le ja ESLint-ile arenduskeskkonnas"
+    ],
+    "correctIndex": 0,
+    "explanation": "Selenium = veebi UI-automaatika de facto standard. WebDriver protokoll töötab Chrome, Firefox, Safari, Edge brauseritega. Toetab Java, Python, JavaScript, C# jt keelte sidumeid. Variant 2 kirjeldab Appium-it (mobiil); variant 3 JMeter/k6 (jõudlus); variant 4 SonarQube (staatiline analüüs) — kõik on REAALSED tööriistad eri otstarvetel."
+  },
+  {
+    "level": 5,
+    "question": "Mis on Appium peamine kasutusala?",
+    "options": [
+      "Veebirakenduste cross-browser testimine kõigis suuremates brauserites paralleelselt — pilve-põhine alternatiiv Selenium Grid-ile",
+      "Mobiilirakenduste (iOS, Android) UI-automaatika ühtse API-ga — sama testikood töötab nii natiivsetel, hübriid- kui veebi-mobiilirakendustel",
+      "API-testimine REST ja GraphQL teenuste vastu — kerge alternatiiv Postman-i ja REST Assured-i ees",
+      "Andmebaasi-testimine (PostgreSQL, MySQL, MongoDB) — kontrollib päringute korrektsust ja jõudlust kindlate sisendite puhul"
+    ],
+    "correctIndex": 1,
+    "explanation": "Appium kasutab WebDriver protokolli (sama, mis Selenium), kuid sihib mobiili-platforme. Toetab natiivset (Swift/Kotlin), hübriid- (Cordova, Ionic) ja mobiili-veebi rakendusi. Variant 1 kirjeldab BrowserStack/Sauce Labs/LambdaTest tüüpi platforme; variandid 3 ja 4 on eraldi spetsialiseerunud testitööriistade nišid."
+  },
+  {
+    "level": 6,
+    "question": "Mis on TestNG ja JUnit roll testautomaatika kontekstis?",
+    "options": [
+      "Brauseri-draiverid, mis ühendavad testikoodi konkreetsete brauseritega (Chrome, Firefox) — vajalikud Selenium WebDriver-i koos kasutamiseks",
+      "Java testiraamistikud, mis pakuvad annotatsioone (@Test, @Before, @After), assertion-eid ja testikäituse haldamist (parallel execution, grouping, dependencies) — testikoodi struktuuri alus",
+      "CI/CD pipeline'i tööriistad, mis käivitavad teste automaatselt iga koodimuudatuse järel — alternatiivid Jenkins-ile ja GitHub Actions-ile",
+      "Defekti-haldustööriistad, kus salvestatakse leitud bug'id ja jälgitakse parandamise edenemist — alternatiivid Jira-le ja Bugzilla-le"
+    ],
+    "correctIndex": 1,
+    "explanation": "TestNG (next generation) ja JUnit on test runner / framework Java-le. Pakuvad: testimeetodi annotatsioonid, eel-/järeltingimused, assertion'id, parallel run, raportid. TestNG on rikkamate funktsioonidega; JUnit lihtsam ja standardsem. Variandid 1 (driver'id), 3 (CI/CD), 4 (defekt-haldus) on testimise ökosüsteemi muud kihid."
+  },
+  {
+    "level": 7,
+    "question": "Kuidas Jenkins (või muu CI-tööriist) toetab automaattestimist?",
+    "options": [
+      "Jenkins genereerib automaatselt testijuhud koodist staatilise analüüsi abil — testija ei pea testikoodi käsitsi kirjutama uue feature jaoks",
+      "Jenkins käivitab automaattestid iga commit'i / pull request'i / scheduled trigger'i järel kindlas keskkonnas, kogub raportid ja teavitab tiimi tõrkest — kiire tagasiside-tsükli alus",
+      "Jenkins asendab Selenium WebDriver-i ja Appium-i, sest pakub natiivset brauseri- ja mobiili-automaatikat ilma eraldi tööriistadeta",
+      "Jenkins on testijate koostöö-platform, kus saab jagada testijuhte, kommenteerida defekte ja koordineerida tööd reaalajas (sarnane Slack-ile)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jenkins on CI/CD orchestrator — käivitab pipeline'i (build → test → deploy) trigger'ite peale. Tüüpiline test-step: 'käivita unit-testid, kui faililes, peatu; muidu jätka integration → e2e → deploy staging'. Variant 1 on AI-test-generation tüüpi tööriistade lubadus (Diffblue, Testim); variant 3 on tehniliselt vale (Jenkins ei tea brauserist midagi); variant 4 segab koostöö-tööriistadega."
+  },
+  {
+    "level": 8,
+    "question": "Mis on Page Object Model (POM) muster Selenium-testides?",
+    "options": [
+      "Mehhanism, kus iga testitulemus salvestatakse ühe 'Page' objektina andmebaasis — võimaldab hilisemat analüüsi ja raporteerimist",
+      "Disainimuster, kus iga veebileht (või selle suurem osa) on eraldi klass koos selektoritega ja tegevustega; testid kasutavad neid klasse, mitte ei tegele HTML-elementidega otse — UI muudatused mõjutavad ainult vastavat klassi",
+      "Selenium-i sisemine optimeerimine, mis cache-ib lehe DOM-i mälus, et järgnevad testid ei peaks lehte uuesti laadima — jõudluse-parandus",
+      "Andmevoog, kus iga lehekülg saab unikaalse ID ja test salvestab ID-ahela käivituse käigust — vajalik raporteerimiseks ja audit-logiks"
+    ],
+    "correctIndex": 1,
+    "explanation": "POM on testautomaatika klassikaline disainimuster. Probleem ilma POM-ita: kui nupu CSS-selektor muutub, peavad SADAD testid muutuma. Lahendus POM-iga: muudad ühte page-class'i meetodit, kõik testid jätkavad tööd. Eelis: hooldatavus + loetavus. Variandid 1, 3, 4 võtavad sõnu 'page' ja 'object' eri kontekstides, mis pole POM."
+  },
+  {
+    "level": 9,
+    "question": "Mis on andme-juhitud (data-driven) testimise põhiidee?",
+    "options": [
+      "Testimine, mis kasutab ainult production-andmebaasi reaalseid andmeid — sünteetilised testandmed pole lubatud, sest võivad jätta kahe silma vahele tegelikud kasutusmustrid",
+      "Sama testi-loogika käivitamine paljude eri sisendi-kombinatsioonide vastu (CSV, Excel, JSON, andmebaas) — testikood eraldatakse testandmetest, mis muudab testikomplekti laiendatavaks ilma koodi muudatuseta",
+      "Testitulemuste analüüs masinõppega, et tuvastada defektide kobardumis-mustreid ja ennustada, milliseid teste järgmisena käivitada CI pipeline'is",
+      "Andmete (nõuded, defektid, testikatvus) keskne haldamine ühes tööriistas (Jira, TestRail), millest kõik testimise otsused tehakse statistiliselt"
+    ],
+    "correctIndex": 1,
+    "explanation": "Data-driven test = sama loogika × N andmestik. Näide: sisselogimise test kasutaja/parooli kombinatsioonidega tabelist. Tööriistad: TestNG @DataProvider, JUnit @ParameterizedTest, Cucumber Examples. Eelis: 1 test + 100 rida andmeid = 100 testijuhtu. Variandid 1, 3, 4 võtavad sõna 'data' eri kontekstides (production-data, ML, data-management)."
+  },
+  {
+    "level": 10,
+    "question": "Mis on BDD (Behavior-Driven Development) Gherkin-süntaksi kolm võtmesõna?",
+    "options": [
+      "Setup-Action-Cleanup: 1) seadista keskkond, 2) tee testitav tegevus, 3) puhasta keskkond — klassikaline xUnit testirakenduste struktuur",
+      "Given-When-Then: 1) Given (lähteolukord), 2) When (sündmus/tegevus), 3) Then (oodatav tulemus) — loomulikus keeles spetsifikatsioonide vorm Cucumber-i, SpecFlow-i ja Behave-i jaoks",
+      "Build-Test-Deploy: 1) ehita rakendus, 2) jooksuta testid, 3) juuruta produktsiooni — DevOps CI/CD pipeline'i kolm peamist etappi",
+      "Plan-Do-Check: 1) plaani test, 2) tee test, 3) kontrolli tulemust — Demingi PDCA-tsükli rakendamine testimisele kvaliteediringi mõttes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gherkin on BDD-tööriistade (Cucumber, SpecFlow, Behave) ühine keel. Näide: 'Given kasutaja on sisse loginud / When ta klõpsab Logout / Then ta suunatakse avalehele.' Eelis: ärianalüütik, arendaja ja tester räägivad ühte keelt. Variandid 1 (xUnit), 3 (DevOps), 4 (PDCA) on kõik reaalsed mustrid eri valdkondades."
+  },
+  {
+    "level": 11,
+    "question": "Mis on API-testimise põhiline eelis UI-testimise ees automaatikas?",
+    "options": [
+      "API-testid on alati 100% katvusega, sest testivad otse äriloogikat — UI-testid jätavad alati osa serveri-poolset koodi katmata",
+      "API-testid on tüüpiliselt kiiremad, stabiilsemad (ei sõltu UI-renderdamisest, brauseri-versioonist, animatsioonidest) ja saavad otse kontrollida andmevoogu, autoriseerimist ja äriloogikat — vähem flaky",
+      "API-testid asendavad täielikult UI-teste — kui API töötab, töötab automaatselt ka kogu kasutaja-kogemus, sest UI on lihtsalt ümbris API ümber",
+      "API-testid ei vaja teste-andmeid ega keskkonna-seadistust, sest töötavad otse koodi vastu — eelis manuaalse seadistuse koormuse ees"
+    ],
+    "correctIndex": 1,
+    "explanation": "API-testid (REST Assured, Postman/Newman, Karate, supertest) on testpüramidi 'kesktasand'. Eelised: kiired (millisekundid, mitte sekundid), stabiilsemad (ei murdu UI-muudatustega), parem katvus äriloogikale. Aga ei kata UI-d ja UX-i. Variant 1 on liialdus; variant 3 jätab UI-defektid katmata; variant 4 on faktiliselt vale (API-testid vajavad samuti andmeid ja keskkonda)."
+  },
+  {
+    "level": 13,
+    "question": "Stsenaarium: tiim kaalub investeeringut testautomaatikasse. Mis tegur on automaatika ROI hindamisel KÕIGE OLULISEM?",
+    "options": [
+      "Tööriista kommertshind aastas — kõige odavam tööriist annab automaatselt parima ROI-i sõltumata projekti iseärasustest",
+      "Programmeerimiskeele moodsus — uusimat keelt (näiteks Rust või Kotlin) toetav tööriist annab pikemas perspektiivis suurema ROI-i",
+      "Kui sageli teste käivitatakse ja kui stabiilne on testitav osa: harva muutuv stabiilne UI + sage CI-käivitus = kõrge ROI; sageli muutuv UI + harv käivitus = madal ROI (võib olla kahjumis)",
+      "Tiimi suurus — mida suurem testijate tiim, seda suurem ROI, sest automaatika säästab proportsionaalselt rohkem inimtunde"
+    ],
+    "correctIndex": 2,
+    "explanation": "Automaatika ROI = (säästetud aeg × käivituste arv) − (algkulu + hooldekulu). Sage käivitus + stabiilne sihtmärk = kasum. Kiiresti muutuv UI võib teha hoolduskulu suuremaks kui säästetud aeg. Klassikaline juhend: automatiseeri korduvaid stabiilseid teste, käsitsi tee uurivat. Variandid 1, 2, 4 on lihtsustused, mis ignoreerivad hoolduskulu."
+  },
+  {
+    "level": 14,
+    "question": "Mis on cross-browser testimise eesmärk ja millised tööriistad seda toetavad?",
+    "options": [
+      "Testimine, mille käigus kasutaja saab valida lemmikbrauseri ja teste kohandatakse selle järgi — personalisatsiooni-omadus kasutaja-kogemuses",
+      "Testimine, kus kontrollitakse rakenduse käitumist eri brauserites (Chrome, Firefox, Safari, Edge) ja versioonides — pilveplatvormid (BrowserStack, Sauce Labs, LambdaTest) pakuvad sadu brauseri+OS kombinatsioone ilma kohaliku seadistuseta",
+      "Testimine, mille käigus kaks brauseri-akent on samaaegselt avatud ja võrreldakse erinevusi reaalajas — debug-tehnika UI-arendaja igapäeva-tööks",
+      "Testimine, kus mitu testijat töötavad samaaegselt eri brauseritega võrgu-konverentsis — koostöö-vorm hajutatud testitiimi jaoks"
+    ],
+    "correctIndex": 1,
+    "explanation": "Cross-browser testing tabab CSS-i, JS-i ja DOM-i renderdamise erinevusi brauserites. Selenium Grid lubab oma infrastruktuuris paralleelset käivitamist; pilveplatvormid annavad sama ilma kohaliku seadistuseta (sh vanad versioonid, mobile brauserid, eri OS-id). Variandid 1, 3, 4 võtavad sõnu 'cross' ja 'browser' eri kontekstides."
+  },
+  {
+    "level": 15,
+    "question": "Mis on AI/ML rolli kaasaegses testautomaatikas?",
+    "options": [
+      "AI asendab täielikult testijad ja arendajad — kogu kvaliteedi-protsess käib autonoomse generatiivse mudeliga, mis kirjutab koodi, teste ja parandab defekte ilma inimese sekkumiseta",
+      "Self-healing testid (auto-uuenduvad selektorid UI-muudatuste järel), AI-juhitud testigeneraatorid, visuaalne regressioon ML-iga, defektide ennustamine code change'i põhjal, flaky test'ide tuvastamine — täiendavad inimest, ei asenda",
+      "AI on testimises kasutu hype, sest testimine nõuab determinismi ja korratavust — neuronvõrkude tõenäosuspõhised väljundid pole kunagi sobivad testimisvahendiks",
+      "AI rakendub testimisel ainult AI-rakenduste enda testimisel (nt LLM-i vastuse hindamine) — traditsioonilises tarkvaraarenduses ei oma rolli"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tööriistad: Testim, Mabl, Functionize (self-healing UI-testid); GitHub Copilot / Diffblue Cover (testikoodi generatsioon); Applitools (visuaalne AI-regressioon); Launchable (test prioritization ML-iga). Variant 1 on hype-ülepingutus; variant 3 on defensiivne eitus (AI on juba praktikas kasutuses); variant 4 on liiga kitsas (AI on muutmas kogu testimise valdkonda)."
   }
 ]
