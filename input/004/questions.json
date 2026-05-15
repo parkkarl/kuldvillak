@@ -1426,5 +1426,77 @@
     ],
     "correctIndex": 0,
     "explanation": "Bottleneck = kitsaskoht, mis piirab kogu süsteemi läbilaskvust (Amdahli seadus). Performance test näitab kohorvalt: koormus kasvab → CPU on 100%, mälu on 40%, andmebaas on 30% → bottleneck on CPU. Lahendus: optimeerida CPU-intensiivseid teid VÕI skaaleerida horisontaalselt. Variandid 2, 3, 4 on muude analüüside metoodikad."
+  },
+  {
+    "level": 4,
+    "question": "Mis on stress testing'u põhi-eesmärk?",
+    "options": [
+      "Tahtlikult koormata süsteemi üle TAVAOOTUSPÄRASE võimsuse — kuni murdumiseni või lähedale —, et tuvastada stabiilsus, breaking point ja käitumine ekstreemsetes tingimustes",
+      "Hinnata kasutaja-rahulolu süsteemi kiirusega tavakoormuse all — peamine UX-mõõdik suuremas tarkvarapakettis pikemas perspektiivis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Mõõta arendaja-tiimi tööstressi tasandit sprindi vältel — HR-meetodi rakendamine pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Kontrollida koodibaasi keerukuse-näitajat (cognitive complexity) — staatilise analüüsi mõõdik moodses tarkvaratiimis pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stress testing = tahtlik üle-koormamine kuni murdumiseni. Eesmärk: leida 'breaking point' (kus süsteem kokku jookseb), jälgida käitumist enne ja pärast (kas degradeerub graatsiliselt? kas taastub?). Variant 2 on UX-mõõtmine, variant 3 on inimese stress, variant 4 on koodi-keerukus — kõik valedes kontekstides."
+  },
+  {
+    "level": 5,
+    "question": "Mis vahe on stress testing'u ja load testing'u vahel?",
+    "options": [
+      "Load test kontrollib OODATUD koormuse talumist (kas süsteem peab tavanõudlust); stress test kontrollib ÜLE tavakoormuse — kus on murdumispunkt",
+      "Load on alati automaatne ja stress alati manuaalne — automatiseerimise aste on kahe testimise peamine eristaja praktikas suurettevõttes pikemas perspektiivis IT-osakonnas pikas vaates pikas perspektiivis pikas vaates",
+      "Load testing toimub arenduse algfaasis ja stress projekti lõpus — kaks järjestikust ajalist faasi sama tegevuse jaoks pikas perspektiivis projekti vältel suuremas ettevõttes pikemas vaates pikas perspektiivis pikas vaates",
+      "Load kontrollib serverit ja stress kasutaja-poolt — kaks erinevat süsteemi kihti, mis täiendavad üksteist pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Load = 'kas süsteem talub planeeritud koormust?' (näit 1000 samaaegset kasutajat). Stress = 'kuhu jõuab süsteem kõvera lõpus?' (näit kasvatatakse 500 → 1000 → 2000 → 5000 kuni jookseb kokku). Stress on alati üle-load. Variandid 2, 3, 4 on müüdid (automatiseerimine, ajakava, kihi-jaotus) — pole õige eristamise alus."
+  },
+  {
+    "level": 7,
+    "question": "Miks on oluline tuvastada süsteemi 'breaking point' (murdumispunkt) stress testing'us?",
+    "options": [
+      "Annab konkreetse arvu — 'meie süsteem talub kuni X kasutajat / Y RPS-i' — mis aitab kapatsiteedi-planeerimisel, skaleerimis-otsustes ja SLA-de seadmisel",
+      "ISTQB Foundation eksami nõue, mis kontrollib, kas testija oskab arvutada matemaatiliselt stress-piiri vastavalt formula'le pikemas perspektiivis suuremas ettevõttes pikas vaates pikas perspektiivis pikas vaates",
+      "Kindlustusettevõttetel on kohustuslik teada täpne arv tarkvara katastroofi-kindlustuse jaoks — juriidiline nõue suurte ettevõtete puhul pikemas perspektiivis suuremas korporatsioonis pikas vaates kogu maailmas",
+      "Selleks et arendajad saaksid bonust vastavalt sellele, kui kõrgele talumis-piiri suudavad tõsta — motivatsiooni-süsteem moodses tarkvaratiimis pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas"
+    ],
+    "correctIndex": 0,
+    "explanation": "Breaking point on praktiline mõõdik: kapatsiteedi-planeerimine ('kas vajame 5 või 50 serverit?'), auto-scaling triggerite konfigureerimine, SLA realistlik garantii, äri-ootuste juhtimine ('Black Friday tipp 3000 RPS — meie limiit on 5000, oleme valmis'). Variandid 2, 3, 4 on väljamõeldud bürokraatlikud põhjused."
+  },
+  {
+    "level": 9,
+    "question": "Mida tähendab 'graceful degradation' (sujuv halvenemine) stress testing'u kontekstis?",
+    "options": [
+      "Süsteem ei jookse ekstreemse koormuse all kokku, vaid degradeerub mõõdukalt — vastuseaeg pikeneb järk-järgult, vähem tähtsad funktsioonid lülituvad ette välja (näit pildi-resolutsioon)",
+      "Kasutajad saavad järk-järgult harjuda uue rakenduse-versiooni UI-muudatustega vastavalt rolling-out plaanile — UX-aspekt suuremas tarkvarapakettis pikemas perspektiivis ettevõttes pikas vaates pikas perspektiivis pikas vaates",
+      "Tarkvara version-numbrid (semver) liiguvad sujuvalt MAJOR.MINOR.PATCH skaalal aja jooksul — versioneerimise konventsioon pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas vaates",
+      "Defektide arv väheneb järk-järgult sprindi vältel testija pidevalt töötades — kvaliteedi paranemise muster pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Graceful degradation = mitte 'kõik või mitte midagi'. Hea näide: video-platvorm vähendab ekstreemse koormuse all stream-i resolutsiooni 4K → 1080p → 720p, jätab funktsioonid 'soovituste algoritm' ja 'kommentaarid' ette välja, säilitab põhi-vaatamise. Variandid 2, 3, 4 võtavad sõna 'degradation' eri kontekstides."
+  },
+  {
+    "level": 11,
+    "question": "Mida kontrollib 'recovery' aspekt pärast stress testing-ut?",
+    "options": [
+      "Kas süsteem TAASTUB normaalseks pärast koormuse vähendamist — vastuseaeg läheb normaalseks, mälu vabaneb, ühenduste-pool tühjeneb; halvad süsteemid jäävad 'kahjustatud' olekusse",
+      "Kas testijad saavad puhata pärast stress-testi vältavat ületöö perioodi — HR-aspekt suuremas tarkvaratiimis pikemas perspektiivis ettevõttes pikas vaates pikas perspektiivis pikas vaates pikas perspektiivis",
+      "Kas defektide tagasi-suunamine arendajale toimus piisavalt kiiresti — Jira-tööprotsessi mõõdik pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Kas tarkvara versioon pööratakse tagasi pärast ebaõnnestunud stress-testi — release management muster pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Recovery testing on stress-testi tähtis osa: pärast piigi-koormust tuleb koormus tagasi tavalisele ja kontrollitakse, et süsteem TAASTUB (ei jää näiteks lekitatud mälu või kinni-jäänud thread'idega). Klassikaline anti-muster: süsteem 'jääb' degraadunud olekusse, kuni see käsitsi taaskäivitatakse. Variandid 2, 3, 4 on muude protsesside kirjeldused."
+  },
+  {
+    "level": 13,
+    "question": "Mida tüüpiliselt mõõdetakse riistvara stress testing'us (CPU, GPU, RAM)?",
+    "options": [
+      "Termiline stabiilsus 100% koormusel pikema aja jooksul (tunnid+) — Prime95, FurMark, MemTest86; jälgitakse temperatuure, CPU-throttle'i, mälu-vigu ja crash'e",
+      "Riistvara turvahaavatavused (Spectre, Meltdown, Rowhammer) skaneeritakse Snyk-i abil — turvatestimise alaliik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Riistvara müügistatistika eri turgudel — turundusuuringu mõõdik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates",
+      "Riistvara füüsiline maht (mm³) ja kaal (kg) eri konfiguratsioonidel — disaini-mõõdikud pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hardware stress test = pane CPU/GPU 100% koormusele, vaata mis juhtub. Prime95 katsetab CPU FPU-d, FurMark GPU-d, MemTest86 RAM-i. Avastatavad probleemid: ebapiisav jahutus (throttling, kraash), ebastabiilne overclock, vigased mälu-cellid. Tüüpiline test 1-24 tundi. Variandid 2, 3, 4 on muude valdkondade mõõdikud."
   }
 ]
