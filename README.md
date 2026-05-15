@@ -10,6 +10,8 @@ Rakendus kontrollib, kas õppija saab aru enda või kellegi teise tehtud ülesan
 
 Vt arendusprotsessi ja kasutajalugusid: [`docs/BACKLOG.md`](docs/BACKLOG.md), [`docs/PLANNING.md`](docs/PLANNING.md), [`docs/DEFINITION_OF_DONE.md`](docs/DEFINITION_OF_DONE.md), [`docs/TESTING.md`](docs/TESTING.md).
 
+Deploy live'i ja serveri-info: [`docs/DEPLOY.md`](docs/DEPLOY.md).
+
 ## Kasutatud tehnoloogiad
 
 - **Backend:** Node.js (≥18) + Express 4 — ainus npm-sõltuvus
