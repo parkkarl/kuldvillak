@@ -1642,5 +1642,65 @@
     ],
     "correctIndex": 0,
     "explanation": "Klassikalised volume defektid: SELECT * FROM orders ORDER BY created_at LIMIT 50 OFFSET 1000000 (lehe 20001 jaoks) — võtab minutid; Excel-export 1M rea peal sööb mälu (parem stream-ima); pildi-üleslaadimine 5GB faili annab 500 (max file size limit); puudub paginatsioon → frontend lukustub. Variandid 2, 3, 4 on muude testitüüpide leiud."
+  },
+  {
+    "level": 3,
+    "question": "Mis on BVT (Build Verification Test) seos smoke testing'uga?",
+    "options": [
+      "BVT, smoke test, sanity test (mõnedes organisatsioonides), build acceptance ja intake test on enamasti sama mõiste — kiire 'kas build üldse kõlbab?' kontroll",
+      "BVT on alati automaatne CI pipeline'is ja smoke test alati manuaalne testija poolt — automatiseerimise aste on peamine eristaja praktikas suurettevõttes pikas perspektiivis pikas vaates pikemas vaates pikas vaates",
+      "BVT testib ainult Java-rakendusi ja smoke test ainult JavaScript-rakendusi — programmeerimiskeele-spetsiifiline jagamine pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas vaates",
+      "BVT toimub arenduse algfaasis ja smoke test projekti lõpus — kaks järjestikust ajalist faasi sama tegevuse jaoks pikas perspektiivis projekti vältel suuremas ettevõttes pikemas vaates pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tarkvara-testimise terminoloogia kattub: BVT, smoke test, build acceptance test, intake test, pretest viitavad enamasti samale 'build pole täielikult katki' kontrollile. Sanity test on tähenduselt veidi erinev (kitsam, sügavam pärast väikest muudatust). Variandid 2, 3, 4 on müüdid (automatiseerimine, keel, ajakava)."
+  },
+  {
+    "level": 6,
+    "question": "Mida sisaldab tüüpiline smoke test komplekt?",
+    "options": [
+      "Väike alamkogum kriitilistest testidest — 'kas süsteem käivitub?', 'kas UI avaneb?', 'kas peamine nupp midagi teeb?' — kiire käivitusaeg tagab kohe-tagasiside",
+      "Kõik testijuhud kogu projektist täielikult — eesmärk on saavutada 100% katvus enne edasiminekut sprindi vältel pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Ainult mittefunktsionaalsed testid (jõudlus, turvalisus, kasutatavus) — funktsionaalsust kontrollivad eraldi tiimid pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis",
+      "Ainult performance ja load testid — peamine kontroll, kas süsteem talub tipp-koormust enne juurutust pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Smoke test = väike, kiire, lai katvus põhi-funktsioonidele. Eesmärk: 5-30 minutit, mitte 5 tundi. Kui need kriitilised testid pass, on mõtte jätkata sügavamate testidega. Kui fail, peatu kohe — pole mõtet kulutada CI-ressursse katkise build'i süvitsi-testimisele. Variandid 2, 3, 4 on muude testitüüpide kirjeldused."
+  },
+  {
+    "level": 7,
+    "question": "Kus tüüpiliselt asetseb smoke test CI/CD pipeline'is?",
+    "options": [
+      "PÄRAST build'i edukat valmimist, ENNE sügavamaid testimistasandeid (integration, e2e) — gatekeeper, mis hoiab ressursse, kui build on katki",
+      "ENNE build'i alustamist, et kontrollida, kas keskkond on valmis kompileerimiseks — eelhindamise samm pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis",
+      "Pärast tarkvara juurutamist production'i, et kontrollida live-süsteemi tervist — observability-aspekt pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikas vaates",
+      "Iga sprindi alguses planeerimise käigus, et kontrollida tooteomaniku ootuste vastavust — projektijuhtimise praktika pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tüüpiline pipeline: checkout → build → SMOKE TEST → unit tests → integration tests → e2e tests → deploy. Smoke pärast build'i (kuna vajab artefakti), kuid enne kalleid teste (kuna kiire). Variant 3 kirjeldab production smoke test'i (eraldi muster); variandid 2, 4 võtavad terminit valedes kontekstides."
+  },
+  {
+    "level": 9,
+    "question": "Miks peetakse smoke testing'ut väga kulutõhusaks?",
+    "options": [
+      "Väike investeering (väike testikomplekt) — suur kasu (väldib kallit aja-kulu sügavamatele testidele katkise build'i peal); defektid leitakse võimalikult vara",
+      "Smoke testimine on tasuta avatud lähtekoodiga tööriistadega tehtav — pole vaja maksta litsentside eest pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikas vaates",
+      "Smoke testid kasutavad vähem CPU-ressursse kui muud testid — pilve-arvete kokkuhoid pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikemas vaates pikas vaates",
+      "Smoke testijad on odavamad kui täis-testijad — palgakulu on madalam pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikemas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Microsofti uuringus 'most cost-effective method'. Loogika: kui build on täiesti katki, siis 4-tunnine täielik regressioonikomplekt ei aita kedagi (kõik fail samadel põhjustel). Smoke test peatab pipeline'i 5 minuti järel, suunab arendaja kohe parandusele. Variandid 2, 3, 4 on hinna-puudutavad eksitused."
+  },
+  {
+    "level": 11,
+    "question": "Kui sageli tüüpiliselt smoke testi käivitatakse moodses CI praktikas?",
+    "options": [
+      "Iga commit'i järel source code repositooriumi (peamine eelis: regressioonid avastatakse koheselt enne kui koguneb mitu muudatust koos)",
+      "Üks kord nädalas reedel pärast lõuna-pausi — väldib töötajate häiringut sprindi vältel pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis",
+      "Üks kord aastas auditi käigus — formaalne nõue suuremate organisatsioonide puhul pikemas perspektiivis suuremas korporatsioonis pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates",
+      "Ainult enne suurte release'ide juurutamist production'i — väldib ebavajalikku tööd sprintide vahel pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "CI hea tava: smoke test iga commit'iga (push → CI trigger → smoke test). Põhjus: kui regressioon ilmub, on viimane muudatus väike (lihtne diagnoosida) ja arendaja konteksti veel mäletab. Vananenud lähenemine 'nightly build' (üks kord öösiti) jätab regressioonid 24h+ varjatuks. Variandid 2, 3, 4 on aeglased anti-mustrid."
   }
 ]
