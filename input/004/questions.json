@@ -730,5 +730,101 @@
     ],
     "correctIndex": 0,
     "explanation": "Fail-fast põhimõte: kui unit-testid jooksevad sekunditega ja leiavad 80% defektidest, pole mõtet enne neid läbida aeglaste e2e-de (minutid). Pyramid-järjekord. Variant 2 raiskab aega; variant 3 ignoreerib unit-testide kiirust (paralleelsus aitab e2e-de sees, mitte tasemete vahel); variant 4 on absurd (test järjekord pole testitulemuse-relevantne)."
+  },
+  {
+    "level": 4,
+    "question": "Miks peavad TDD unit-testid olema ÜKSTEISEST sõltumatud (test independence)?",
+    "options": [
+      "Sõltuvused põhjustavad cascading false negatives — ühe testi tõrge põhjustab järgnevate ebaõnnestumist, juurpõhjus on raskem tuvastada",
+      "ISTQB CTFL standard nõuab unit-testide täielikku sõltumatust formaalselt — testija ei saa sertifitseeritud kvalifikatsiooni, kui testid ei vasta sellele nõudele tema portfellis kvartaalse hindamise käigus",
+      "Sõltumatud testid kasutavad oluliselt vähem mälu kui sõltuvad — paralleelses CI keskkonnas see tähendab odavamat pilve-arvet ja kiiremat pipeline'i sprindi käigus suuremas ettevõttes ja organisatsioonis",
+      "Sõltumatud testid saavad jooksta paralleelses järjekorras eri konteinerites — testid omavahel ei jaga state'i, andmebaasi ühendust ega väliseid sõltuvusi mis nõuaks sünkroniseerimist tüüpiliselt teistes ettevõtetes ja organisatsioonides"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cascading false negatives = klassikaline TDD anti-muster. Kui test B sõltub test A state'ist, siis A tõrge kustutab B tulemuse usaldusväärsuse — pole selge, kas B oli katki või mõjutatud A-st. Variant 2 on liialdus (standardid soovitavad); variant 3 puudutab mälu, mis pole põhipõhjus; variant 4 on TÕELINE kasutee, kuid mitte PEAMINE eesmärk."
+  },
+  {
+    "level": 5,
+    "question": "Mis on test-first lähenemise (TDD) peamine kasu disainile?",
+    "options": [
+      "Test-first sunnib enne koodi kirjutamist mõtlema, KUIDAS funktsionaalsust kasutatakse — tulemuseks tihti modulaarsem ja testitavam disain",
+      "Test-first kiirendab arendust 50% võrra võrreldes traditsioonilise lähenemisega — see on Kent Becki algses raamatus dokumenteeritud mõõdetav efekt tarkvaratiimidele suuremas mahus globaalselt empiiriliselt",
+      "Test-first eemaldab vajaduse code review järele — kui testid jooksevad, on kood automaatselt produktsiooni-valmis ilma teiste arendajate kontrollita ja PR-i menetluse läbimiseta tiimis pikemas perspektiivis",
+      "Test-first lubab arendajal kirjutada koodi ilma spetsifikatsiooni — testid täidavad nõuete dokumentatsiooni rolli täielikult ja PO ei pea kirjutama user-story-sid sprindi planeerimise käigus tooteomaniku rolli järgi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Test-first sunnib küsima 'kuidas seda kasutatakse?' enne 'kuidas seda implementeerida?' — tulemuseks tugeva API-ga modulaarne kood. Variant 2 on faktiliselt vale (TDD pole kiirem, on stabiilsem); variant 3 on ohtlik müüt — TDD ei asenda code review'd; variant 4 segab TDD'i ATDD/BDD-ga (mis sisaldab acceptance criteria's, kuid PO-d siiski vajab)."
+  },
+  {
+    "level": 7,
+    "question": "Mis on test doubles (mocks, stubs, fakes) eesmärk TDD-s?",
+    "options": [
+      "Asendada välised sõltuvused (DB, API, kell, võrk) kontrollitava asendajaga — unit-test jääb isoleerituks ja kiireks",
+      "Salvestada testitulemused mitmes formaadis (JSON, XML, JUnit XML, HTML, Markdown) korraga — vajalik integreerimiseks eri raporteerimissüsteemidesse nagu Allure, Jenkins, TestRail samaaegselt suuremas ettevõttekontekstis",
+      "Genereerida juhuslikke testandmeid eri kombinatsioonides (property-based testing, fuzz testing) — Hypothesis ja QuickCheck stiilis lähenemine, mis täiendab klassikalist example-based testimist suurel mahul mitmes valdkonnas",
+      "Imiteerida testimisvahendi UI-d ka siis, kui tegelik tööriist pole installeeritud — kasulik testikoodi prototüüpimisel, demonstreerimisel ja arendamisel kohaliku masina peal sõltumata pilve-tellimusest või litsents-võtmest"
+    ],
+    "correctIndex": 0,
+    "explanation": "Test doubles (Gerard Meszaros 'xUnit Test Patterns'): stub = annab fikseeritud vastused, mock = kontrollib, kas teda KUTSUTI õigesti, fake = lihtsustatud töötav implementatsioon (näiteks in-memory DB). Eesmärk: testid jäävad kiireteks, deterministlikeks, isoleerituks. Variandid 2, 3, 4 kirjeldavad eraldi testitööriistade nišše."
+  },
+  {
+    "level": 8,
+    "question": "Mis on TDD-i 'baby steps' põhimõte?",
+    "options": [
+      "Iga TDD tsükkel peaks olema väike — üks väike test, minimaalne kood, refaktoreerimine; commit'i tihti, et tõrke korral saab tagasi pöörata ilma palju tööd kaotamata",
+      "Algajad arendajad peavad alustama TDD-st väikeste sammudega (algul lihtsad funktsioonid, hiljem keerukamad) — see on koolitusmetoodika juniorite jaoks alustusperioodi vältel mentori juhendamisel ettevõtte koolitusprogrammis",
+      "TDD-i õpib alustades AINULT unit-testidest, järk-järgult lisades integration-testid, e2e-testid, performance-testid pikemas perspektiivis — õppimisteekonna ülesehitamise ametlik järjekord ISTQB raamatus ja sertifitseerimise kontekstis",
+      "TDD-tsüklit tuleb läbida alati paaris (pair programming) — üks arendaja kirjutab testi, teine koodi, et säilitada objektiivsus ja vältida sama-blind-spot eksimusi ühe inimese kontekstis järjest mitme sprindi jooksul"
+    ],
+    "correctIndex": 0,
+    "explanation": "Baby steps = TDD-i protsessi-distsipliin: väike test → minimaalne kood → refaktoreerimine → commit. Eelis: kui midagi katki, viimane samm oli väike (lihtne tagasi pöörata, lihtne juurpõhjust näha). Variant 2 võtab terminit metafoorselt; variandid 3 ja 4 kirjeldavad eraldi mõisteid (õppimise teekond, pair programming)."
+  },
+  {
+    "level": 10,
+    "question": "Milline on TDD-i klassikaline anti-muster?",
+    "options": [
+      "Testid kontrollivad implementatsiooni-detaile (private-meetodite kutseid, sisemise state'i muudatusi) — iga refaktoreerimine murrab testid, ka kui käitumine ei muutu",
+      "Testid on liiga kiired (millisekundid) — aeglasemad testid annaksid testija ja arendaja tiimile parema arusaama, mis süsteemis täpselt toimub, ja võimaldaksid täpsemat debug-protsessi sammude vahel reaalajas",
+      "TDD-tsükkel käivitatakse ainult üks kord enne väljaandmist — sellega kaob TDD kiire tagasiside eelis, sest defektid avastatakse alles staging keskkonnas integreerimise käigus pärast sprindi lõppu enne demo-d",
+      "Test kasutab AAA mustrit (Arrange-Act-Assert) — see on liiga formaalne struktuur, muudab testid pikkadeks ja raskesti loetavaks tiimi uutele liikmetele sissetulekul ning slõhub kiirele lugemisele kontekstuaalselt"
+    ],
+    "correctIndex": 0,
+    "explanation": "Implementatsiooni-detailide testimine on klassikaline anti-muster: testid muutuvad refaktoreerimise tõttu fragiilseks, isegi kui väline käitumine on sama. Hea TDD test kontrollib KÄITUMIST (musta-kasti vaade). Variant 2 on absurd (kiired testid on EELIS); variant 3 pole TDD üldse; variant 4 on TDD HEA tava (AAA on positiivne)."
+  },
+  {
+    "level": 12,
+    "question": "Mis vahe on TDD, BDD ja ATDD lähenemiste vahel?",
+    "options": [
+      "TDD on arendaja-keskne (test → kood → refaktor), BDD kasutab Gherkin-keelt (Given-When-Then) ärilise kommunikatsiooni jaoks, ATDD rõhutab vastuvõtukriteeriume PO/kliendi vaates",
+      "TDD on programmeerimiskeel, BDD raamistik ja ATDD pilveplatvorm — kolm täiesti erinevat tehnoloogilist kihti, mis täiendavad üksteist moodses tarkvaraprojektis pikas perspektiivis sprindi käigus arenduses",
+      "Need on kõik sünonüümid eri organisatsioonide kasutuses — TDD on ameerika-traditsioon, BDD euroopa, ATDD aasia turul levinud terminoloogia variandid sama metoodika kirjeldamisel formaalselt akadeemilises kontekstis",
+      "TDD testib funktsionaalsust, BDD jõudlust, ATDD turvalisust — kolm spetsialiseeritud testimisharu, kus iga keskendub ühele mittefunktsionaalsele kvaliteediomadusele ISO 25010 raamistikus erinevalt suuremas projektis"
+    ],
+    "correctIndex": 0,
+    "explanation": "TDD = arendaja kirjutab unit-testi enne koodi (technical practice). BDD = Cucumber/SpecFlow Gherkin'iga 'elav dokumentatsioon' ärianalüütiku-arendaja-testija ühiseks keeleks. ATDD = vastuvõtukriteeriumid kliendi-vaatest enne arendust. Variandid 2, 3, 4 on faktiliselt valed — segavad termineid muude mõistetega (programmeerimiskeel, regioon, testitüüp)."
+  },
+  {
+    "level": 14,
+    "question": "Millises olukorras on TDD-i rakendamine TÜÜPILISELT raske või ebasoovitav?",
+    "options": [
+      "UI-arendus, andmebaasi-raskelt sõltuv kood, võrgu-spetsiifiline integreerimine — neil juhtudel test-doubles muudaks tsükli mõttetuks",
+      "Kõikides olukordades on TDD parim valik — kui tiim seda kvaliteetselt rakendab, pole ühtegi konteksti, kus TDD ei annaks lisa-väärtust, isegi UI-arenduses ja prototüüpide kontekstis lühema sprindi vältel ettevõttes",
+      "TDD-i ei saa rakendada kompileeritavates keeltes (Java, C++, Go, Rust) — see on disainitud ainult dünaamilistele keeltele nagu Python ja JavaScript, kus refaktoreerimine on lihtsam sisemiselt suuremate tarkvarapakettide juures",
+      "TDD-i ei saa rakendada veebirakenduste arenduses üldse — see meetod sobib ainult süsteemi-tasandi C-koodile ja kompilaatorite arendusele, kus üksiku funktsiooni testimine on selge piiriga ja tõestamise kontekst on rangem"
+    ],
+    "correctIndex": 0,
+    "explanation": "TDD raskuskohad: UI (elemendid muutuvad sageli, test-doubles ei kata renderdus-detaile), andmebaasi-raske kood (mock-imine eemaldab põhi-loogika), välise süsteemi integratsioon (võrk, kell). Neil tasub kasutada integration- või contract-teste. Variandid 2, 3, 4 on faktiliselt valed (TDD töötab kõigis keeltes ja konteksides)."
+  },
+  {
+    "level": 15,
+    "question": "Mis on TDD-i ja koodikatvuse (code coverage) suhe?",
+    "options": [
+      "TDD saavutab tüüpiliselt kõrge katvuse (iga koodirida kirjutatakse mõne testi tõttu) — KUID kõrge katvus ei garanteeri kvaliteeti",
+      "TDD garanteerib alati 100% statement coverage'i igas projektis — see on TDD-i põhi-väärtuspakkumine ja peamine põhjus, miks ettevõtted seda rakendavad sõltumata domääni keerukusest või tehnoloogiast pikemas perspektiivis sprindi vältel",
+      "TDD ja koodikatvuse vahel pole otsest seost — TDD keskendub disainile, mitte katvusele, ja katvuse mõõdikuid kasutavad ainult kvaliteedi-juhid, mitte arendajad oma sprindi-toime jälgimiseks koosolekutel ja juhtimisarmatuurlauas",
+      "TDD vähendab katvust, sest arendaja kirjutab ainult MINIMAALSE koodi testi rohestamiseks — tulemuseks on hõre testitud kood ilma kaitstuna refaktoreerimise vastu ja regressioonide tabamiseks pikemas perspektiivis järgmistes sprintides"
+    ],
+    "correctIndex": 0,
+    "explanation": "TDD annab loomulikult kõrge katvuse (sest iga rida koodi vastab testi nõudele), kuid katvus EI mõõda assertion'ide tugevust ega edge case'ide hõlmamist. 100% katvus + nõrgad assertion'id = vale-kindlus. Variant 2 on liialdus; variant 3 on faktiliselt vale; variant 4 ajab segi minimaalse implementatsiooni minimaalse katvusega."
   }
 ]
