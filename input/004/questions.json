@@ -1066,5 +1066,77 @@
     ],
     "correctIndex": 0,
     "explanation": "Tervishoid (HL7 sõnumid haiglate-andmebaaside vahel, FHIR REST-API patsiendi-andmetele), IoT (sensorid + gateway + cloud, MQTT-protokoll), mikroteenused (Service A räägib Service B-ga). Regulatsioonid (HL7 vastavus EL-is, USA-s) nõuavad ametlikku interop-sertifitseerimist. Variandid 2, 3, 4 on valdkonnad, kus interop pole peamine fookus."
+  },
+  {
+    "level": 4,
+    "question": "Mis on failover testing peamine eesmärk?",
+    "options": [
+      "Valideerida, et töökoormus liigub viivitamata primaarsest süsteemist sekundaarsesse — säilitada teenuse kättesaadavus lokaalse rikke korral",
+      "Valideerida, et arendaja kood läbib testikomplekti enne juurutamist staging-keskkonda — peamine kvaliteedi-kontroll sprindi vältel suuremas tarkvaraprojektis pikemas perspektiivis ettevõttes pikas vaates",
+      "Valideerida, et kasutajad saavad probleemideta süsteemi sisse logida pärast parooli muutmist — autentimise kontroll moodses veebirakenduses pikemas perspektiivis kasutajakogemuse kontekstis suuremas tarkvarapakettis ettevõttes",
+      "Valideerida, et kõik logifailid jõuavad keskse log-süsteemi (ELK, Splunk, Loki) — observability-aspekt suuremate süsteemide jälgimisel pikemas perspektiivis tarkvaratiimi sees suurkorporatsioonis pikemas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Failover testing kontrollib, et kui primaarne süsteem läheb katki, võtab sekundaarne (active-passive või active-active) automaatselt üle ilma kasutajat häirimata. Mõõdetakse switchover-aega ja andmete-järjepidevust. Variandid 2, 3, 4 on muude testimise-tegevuste eesmärgid (sprindi-test, autentimine, observability) — pole failover."
+  },
+  {
+    "level": 5,
+    "question": "Mis on failover testing'u ja disaster recovery (DR) testing'u peamine erinevus?",
+    "options": [
+      "Failover testib viivitamatut üleminekut sekundaarsele (sekundid-minutid); DR testib laiemalt süsteemide, andmete ja äritegevuse taastamist suuremate katastroofide järel",
+      "Failover testib alati ainult riistvara ja DR alati ainult tarkvara — kaks ortogonaalset kihti süsteemis, mis täiendavad üksteist suuremate ettevõtete IT-strateegias pikemas perspektiivis pikas vaates kogu maailmas pikas perspektiivis",
+      "Failover on tasuta avatud lähtekoodiga lähenemine ja DR kommertstööriistade kasutamine — kaks erineva eelarve-skeemiga lahendust, mis sobivad eri suurusega ettevõtetele pikemas perspektiivis tüüpiliselt sprindi vältel projektijuhtimises pikas vaates",
+      "Failover on alati automaatne tegevus ja DR alati manuaalne — automatiseerimise aste on kahe lähenemise peamine eristaja praktikas suurettevõttes pikemas perspektiivis IT-osakonna igapäevatöös pikas vaates kvartali aruandluses pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Failover = lokaalse tõrke vastus (sekundid/minutid, näiteks DB primary läheb maha → replica võtab üle). DR = suurema katastroofi (andmekeskuse tulekahju, küberrünnak, looduskatastroof) järel kogu äri-jätkuvuse taastamine. Variandid 2, 3, 4 on müüdid (riistvara/tarkvara, eelarve, automatiseerimine) — pole õige eristamise alus."
+  },
+  {
+    "level": 7,
+    "question": "Mis vahe on 'test failover' ja 'live failover' vahel?",
+    "options": [
+      "Test failover on mittehäiriv harjutus (drill), mis valideerib replikatsiooni ja taastamist ilma production'i mõjutamata; live failover on tegelik üleminek päris katastroofi ajal",
+      "Test failover on alati öösiti (kui koormus madal) ja live failover ainult päeval (kui SLA on tähtis) — kahe erineva ajakava-mustri eristus suuremas ettevõttes pikemas perspektiivis IT-tiimi koordineerimisel pikas vaates",
+      "Test failover on ainult arendaja-tasandi käivitatud (DEV-keskkond) ja live failover ainult production-tiimi (PROD-keskkond) — kaks rolli järgi defineeritud üleminekut sõltuvalt keskkonnast pikas perspektiivis ettevõttes pikas vaates",
+      "Test failover kasutab Selenium WebDriver-it ja live failover Appium-it — kaks erinevat tehnoloogilist tööriistakomplekti sõltuvalt platvormist (web vs mobiil) pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Test failover = harjutus, mis ei katkesta tegelikku replikatsiooni ega tootmist — kontrollib, ET süsteem saab vajadusel üle minna. Live failover = tegelik üleminek tegeliku katastroofi ajal. Eelised regulaarsetel test failover'ite tegemisel: tiim teab protseduuri, automaatika on testitud, RTO/RPO on mõõdetud reaalselt enne kriisi."
+  },
+  {
+    "level": 9,
+    "question": "Mis vahe on Recovery Time Objective'il (RTO) ja Recovery Point Objective'il (RPO)?",
+    "options": [
+      "RTO = kui kaua süsteem võib all olla (taastamise sihtaeg); RPO = kui palju andmeid maksimaalselt võib kaduda (varundamise sagedus määrab piiri)",
+      "RTO = uue koodi juurutamise sagedus (release rate per kuu) ja RPO = juurutamise õnnestumise protsent — kaks DevOps-mõõdikut, mis hinnatakse kvartali lõpus pikemas perspektiivis ettevõttes pikas vaates pikas vaates pikemas perspektiivis pikas vaates",
+      "RTO = testijate aja-kestus projektis (rolli ajaline pühendumus) ja RPO = nende toodetud testijuhtude arv (tootlikkuse mõõdik) — kaks personali-juhtimise indikaatorit pikemas perspektiivis tarkvaratiimis ettevõttes pikas vaates pikemas vaates pikas vaates",
+      "RTO = retry timeout välise teenuse päringu jaoks ja RPO = retry'de arv (poll count) enne lõplikku tõrget — kaks võrgu-tasandi konfiguratsiooni mikroteenuste arhitektuuris pikemas perspektiivis suuremas süsteemis pikas perspektiivis ettevõttes pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Näide: pank deklareerib RTO = 4 tundi (süsteem peab olema tagasi 4 tunni jooksul) ja RPO = 5 minutit (max 5 minutit andmeid võib kaduda). RPO määrab varundamise/replikatsiooni sageduse; RTO määrab taastamise infrastruktuuri ja protseduurid. Variandid 2, 3, 4 ajavad RTO/RPO segi muude akronüümidega (DORA-mõõdikud, HR, retry-konfiguratsioon)."
+  },
+  {
+    "level": 11,
+    "question": "Mis on 'failback' protsess pärast disaster recovery sündmust?",
+    "options": [
+      "Töökoormuse tagasi-toomine algselt primaarsele süsteemile, kui see on jälle töökindel ja turvaline — andmete-terviklikkus säilitatakse ülemineku jooksul ilma kao või rikkumiseta",
+      "Defekti raporteerimise tagasi-suunamine arendajale pärast testija leidu — Jira-s 'returned to dev' staatuse omistamine sprindi vältel suuremas tarkvaratiimis pikemas perspektiivis ettevõttes pikas vaates kvartali raames pikemas vaates",
+      "Testikomplekti kogu uuesti-käivitamine pärast iga ebaõnnestumist — automaatne retry-mehhanism CI pipeline'is, mis vähendab flaky test'ide mõju tulemustele pikemas perspektiivis tarkvaratiimi koormusele pikas vaates pikemas vaates",
+      "Pen-testi tulemuste tagasi-suunamine turvaarhitektidele pärast leitud haavatavusi — formaalne raporteerimisprotsess vastavus-audit'is suuremas korporatsioonis pikemas perspektiivis ja regulatsiooni-vastavuse tagamisel pikas vaates ettevõttes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Failback on failover'i pöördprotsess: pärast primaarse süsteemi parandust andmed sünkroniseeritakse tagasi (sekundaaris kogunenud uued andmed → primaarne) ja töökoormus liigub tagasi. Tihti komplitseeritum kui failover ise — vajab andmete delta-sync'i ja planeeritud cutover'i. Variandid 2, 3, 4 on muude protsesside kirjeldused."
+  },
+  {
+    "level": 13,
+    "question": "Mis on disaster recovery testimise tüüpilised valideerimise sammud?",
+    "options": [
+      "Simuleeri tõrge → kontrolli, et backup-süsteem võtab tootmiskoormuse üle → tagab andmete-terviklikkuse → mõõda RTO/RPO täidetavust",
+      "Käivita kõik unit-testid → integration-testid → e2e-testid pikas järjekorras vastavalt testpüramidile, kuni leitakse esimene ebaõnnestumine ja siis peatutakse pikemas perspektiivis pikas vaates pikas vaates",
+      "Auditeeri koodi-kvaliteet SonarQube-ga → mõõda tsükloomatset keerukust → võrdle eelmise sprindi tulemustega trend-jälgimise diagrammis juhtimisarmatuurlauas pikas perspektiivis ettevõttes pikemas vaates pikas vaates",
+      "Käivita turvalisuse skaneerimine OWASP ZAP-iga → kontrolli iga endpoint'i → genereeri vastavus-raport regulaatorile (PCI-DSS, ISO 27001) pikemas perspektiivis suuremas korporatsioonis pikas vaates ettevõttes pikas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "DR-testi neli sammu: 1) tahtlik tõrke-simulatsioon (lülita primaarne maha, blokeeri võrk), 2) kontroll, et sekundaarne tegelikult üle võtab, 3) andmete kontroll (kas kõik on terved), 4) RTO/RPO mõõtmine (kas täideti?). Variandid 2, 3, 4 on muude testimise-tegevuste sammud (CI-test järjekord, koodi-audit, turvaskaneering)."
   }
 ]
