@@ -1498,5 +1498,77 @@
     ],
     "correctIndex": 0,
     "explanation": "Hardware stress test = pane CPU/GPU 100% koormusele, vaata mis juhtub. Prime95 katsetab CPU FPU-d, FurMark GPU-d, MemTest86 RAM-i. Avastatavad probleemid: ebapiisav jahutus (throttling, kraash), ebastabiilne overclock, vigased mälu-cellid. Tüüpiline test 1-24 tundi. Variandid 2, 3, 4 on muude valdkondade mõõdikud."
+  },
+  {
+    "level": 4,
+    "question": "Mis on stability testing'u (stabiilsuse testimine) põhi-eesmärk?",
+    "options": [
+      "Hinnata, kas süsteem säilitab jõudluse pikema (tundi-päevi) jätkuva koormuse all — ei aeglustu, ei jää kinni, ei jookse kokku, ei leke mälu",
+      "Mõõta süsteemi konfiguratsiooni stabiilsust eri OS-i versioonide vahel — cross-OS testimise alaliik pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas vaates pikas perspektiivis",
+      "Kontrollida, et arendaja-tiim säilitab töötempo (velocity) sprindi vältel — projektijuhtimise mõõdik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Hinnata kasutaja-konto stabiilsust süsteemis (kas ei lukustu, kas parool töötab, kas roll säilib) — autentimise-aspekt pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stability testing = 'kas süsteem säilib pikas perspektiivis hea töökorras?'. Tüüpilised leiud: mälu-lekked (heap kasvab pidevalt), connection pool exhaustion (ühendusi ei vabastata), file descriptor leak. Variandid 2, 3, 4 võtavad sõna 'stabiilsus' eri kontekstides (cross-OS, velocity, autentimine), mis pole õige termin."
+  },
+  {
+    "level": 5,
+    "question": "Mis on reliability testing'u (töökindluse testimine) peamine fookus?",
+    "options": [
+      "Mõõta korrektse käitumise sagedust, vea-taastumise võimet ja MTBF (mean time between failures) — kui usaldusväärne süsteem on aja jooksul",
+      "Mõõta võrgu-ühenduse stabiilsust (ping latency, packet loss) eri pilve-regioonides — observability-mõõdik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Mõõta arendaja-tiimi koodi-toodangut nädala jooksul (commit-id arv, PR-id) — produktiivsuse-mõõdik pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Mõõta brauseri-cookie-de säilimise aega kasutaja sessioonis — UX-mõõdik veebirakenduses pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Reliability testing = 'kui usaldusväärne ja taastumis-võimeline on süsteem?'. Mõõdikud: MTBF (kaua kahe tõrke vahel), MTTR (kaua taastumiseks), failure rate. Sisaldab fault injection, error recovery test'e. Variandid 2, 3, 4 on muude valdkondade mõõdikud (võrgu observability, arendaja produktiivsus, UX)."
+  },
+  {
+    "level": 7,
+    "question": "Mis vahe on stability testing'ul ja reliability testing'ul?",
+    "options": [
+      "Stability keskendub PIKAS JOOKSUL ressursside-haldusele (mälu-lekked, performance degradation); reliability keskendub KORREKTSUSELE ja vea-taastumisele (MTBF, fault recovery)",
+      "Stability on alati manuaalne ja reliability alati automaatne — automatiseerimise aste on kahe testimise peamine eristaja praktikas suurettevõttes pikemas perspektiivis IT-osakonnas pikas vaates pikas perspektiivis pikas vaates",
+      "Stability testib frontend-i ja reliability backend-i — kaks kihti, mis täiendavad üksteist suuremas süsteemis pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Stability on tasuta avatud lähtekoodiga ja reliability kommertstööriistadega — kaks erineva eelarvega lähenemist sõltuvalt ettevõtte suurusest pikemas perspektiivis suuremas korporatsioonis pikas vaates kogu maailmas pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tihti aetakse segi (õigustatult — kattuvad mõisted). Kuid: STABILITY küsib 'kas pikas jooksus jääb terveks?' (mälu, jõudlus). RELIABILITY küsib 'kas teeb õigesti ja taastub vigadest?' (MTBF, recovery time, fault tolerance). Variandid 2, 3, 4 on müüdid (automatiseerimine, kihi-jaotus, eelarve)."
+  },
+  {
+    "level": 9,
+    "question": "Mis on soak testing (või endurance testing) tüüpiline kasutus?",
+    "options": [
+      "Käivita rakendus PIKEMA aja (üleöö, nädalavahetuseks) tavakoormusega, et avastada mälu-lekkeid ja jõudluse-degradatsiooni",
+      "Käivita testid kõik üheskoos lühikese aja jooksul (5 minutit) maksimaalsel paralleelsusel — CI pipeline'i optimeerimine pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Käivita testid ainult öösiti planeeritud aknas, kui koormus madal — ressursi-säästmise muster pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikemas vaates",
+      "Käivita testid mitu nädalat järjest sama testiandmestiku peal — testikomplekti stabiilsuse-kontroll pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Soak/endurance test = pikem-kestev koormus 'normaalsel' tasemel (mitte stress-tase). Eesmärk: avastada AEGA NÕUDVAID probleeme. Klassikaline näide: rakendus töötab 1h hästi, kuid 8h järel jõudlus langeb (memory leak). Variandid 2, 3, 4 võtavad terminit 'pikem aeg' eri kontekstides."
+  },
+  {
+    "level": 11,
+    "question": "Mida tähendab MTBF (Mean Time Between Failures) reliability testing'us?",
+    "options": [
+      "Keskmine aeg kahe järjestikuse tõrke vahel — mõõdik, mis hindab, kui usaldusväärne süsteem on jätkuval kasutusel; kõrgem MTBF = stabiilsem süsteem",
+      "Maksimaalne lubatud build'i aeg CI pipeline'is enne 'time-out' viga — DevOps konfiguratsiooni mõõdik suuremas tarkvaratiimis pikemas perspektiivis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Mean Time to Bug Fix — keskmine aeg defekti raporteerimisest selle parandamiseni — Jira-tööprotsessi mõõdik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Mean Time Before Backup — varundamise sageduse mõõdik tüüpiliselt päevades või tundides — DBA-aspekt pikemas perspektiivis suuremas korporatsioonis pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "MTBF = total uptime / number of failures. Näide: süsteem jookseb 10 000 tundi, sel ajal 5 tõrget → MTBF = 2000 tundi. Kasutusel SLA-de defineerimisel ja riistvara-soovitustes. Seotud mõisted: MTTR (mean time to recovery), MTTF (mean time to failure). Variandid 2, 3, 4 on välja mõeldud akronüümid sarnase struktuuriga."
+  },
+  {
+    "level": 13,
+    "question": "Mis on fault injection testing reliability testing'u kontekstis?",
+    "options": [
+      "Tahtlikult süstida tõrkeid süsteemi (network latency, kernel panic, disk full, process kill) — kontrolli, kuidas süsteem reageerib ja kas taastub graatsiliselt",
+      "Süstida testandmeid andmebaasi enne testi käivitamist — fixture/seed-data muster pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Süstida JS-koodi brauseri-konsooli kaudu, et debug-ida produktsiooni — front-end debug-tehnika pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates",
+      "Süstida turvauuringu skaneerimine OWASP ZAP-iga süsteemi vastu — turvatestimise alaliik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Fault injection = chaos engineering juur (Netflix Chaos Monkey). Tööriistad: Chaos Monkey, Gremlin, Litmus, ToxiProxy. Tüüpilised süstitavad tõrked: võrgu-latents, packet loss, CPU 100%, disk fill, kill -9 protsessile, DB ühenduse kõrvaldamine. Variandid 2, 3, 4 võtavad sõna 'süstida' eri kontekstides (test data, debug, security)."
   }
 ]
