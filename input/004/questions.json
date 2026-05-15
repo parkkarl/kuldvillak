@@ -826,5 +826,89 @@
     ],
     "correctIndex": 0,
     "explanation": "TDD annab loomulikult kõrge katvuse (sest iga rida koodi vastab testi nõudele), kuid katvus EI mõõda assertion'ide tugevust ega edge case'ide hõlmamist. 100% katvus + nõrgad assertion'id = vale-kindlus. Variant 2 on liialdus; variant 3 on faktiliselt vale; variant 4 ajab segi minimaalse implementatsiooni minimaalse katvusega."
+  },
+  {
+    "level": 3,
+    "question": "Mis on funktsionaalse testimise klassikalised kuus sammu (IBM tüüpiline järjekord)?",
+    "options": [
+      "1) Tuvasta funktsioonid, 2) loo sisendandmed, 3) sea oodatav väljund, 4) käivita testijuhud, 5) võrdle tegelik vs oodatav, 6) hinda rahuldavust",
+      "1) Sea eelarve, 2) palka testijad, 3) osta tööriistad, 4) konfigureeri keskkond, 5) käivita testid, 6) raporteeri juhtkonnale tulemustest projekti edukuse kohta sprindi lõpus juhtkomitees",
+      "1) Kirjuta unit-testid, 2) integration-testid, 3) e2e-testid, 4) jõudlustestid, 5) turvatestid, 6) kasutatavustestid — testpüramidi täielik läbimine pikemas perspektiivis tarkvarapakettide järgi pikemas vaates",
+      "1) Plan, 2) Do, 3) Check, 4) Act, 5) Review, 6) Adjust — Demingi PDCA-tsükli laiendatud variant tarkvara-testimise protsessile vastavalt rahvusvahelistele standarditele organisatsiooni kvaliteedi-strateegias kvartali kaupa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klassikaline funktsionaalse testimise protsess: identifitseerimine → sisendi-loomine → oodatava väljundi defineerimine → täitmine → võrdlus → otsus. Variant 2 on projekti-juhtimise sammud, mitte testimise sammud; variant 3 on testitasandite loetelu, mitte ühe testimise samm-jaotus; variant 4 on PDCA-tsükli laiendus, kuid pole funktsionaalse testimise protsess."
+  },
+  {
+    "level": 5,
+    "question": "Mis on 'buddy testing' (sõber-testimine) ad-hoc testimise kontekstis?",
+    "options": [
+      "Mitteformaalne ad-hoc vorm, kus arendaja ja testija töötavad kõrvuti — testija leiab vigu, arendaja parandab kohe",
+      "Sertifitseeritud kahekordse-läbivaatuse muster, kus iga testijuhu peab kinnitama kaks sõltumatut testijat — tagab objektiivsuse ja vähendab inimliku eelarvamuse mõju kvaliteedi-hindamisel kvartali audit'is",
+      "ISTQB Foundation kursuse paaris-õppimise meetodi nimi — kaks õppurit valmistuvad eksami-küsimustega koos, et saavutada paremaid tulemusi sertifitseerimise eksamil esimese korraga ametlikult globaalselt",
+      "Pair programming testautomaatika kontekstis, kus üks testija kirjutab Selenium-koodi ja teine testija seda jooksvalt review-b kõrvuti — variant code review'st automaatika-tiimi jaoks suuremas projektis sprindi käigus"
+    ],
+    "correctIndex": 0,
+    "explanation": "Buddy testing on ad-hoc testimise alaliik — arendaja+testija paar, lühike tagasiside-tsükkel ühisel istungil. Eelis: arendaja näeb vigu reaalajas, testija saab konteksti küsimustele kohe vastuse. Variandid 2, 3, 4 võtavad sõna 'buddy/sõber' eri kontekstides (audit, koolitus, pair programming), kuid pole ad-hoc testimise vorm."
+  },
+  {
+    "level": 6,
+    "question": "Mis on 'headless' API-testimise tüüpiline kasutuskontekst?",
+    "options": [
+      "Olukord, kus testitavale teenusele puudub kasutajaliides või sisestus-väli — sisendid antakse otse API-le programmaatiliselt, mitte vormi kaudu",
+      "API-testimine, mille käigus brauseri-aken on suletud (headless brauser) ja Selenium käivitub taustal — kiirem variant cross-browser testimise jaoks pilve-platvormidel laiema katvusega ühe instantsi peal",
+      "API-testimine, kus ühelgi testijal pole rolli ('ei mingit pead') — täielikult AI-juhitud autonoomne testikomplekt, mis genereerib ja käivitab teste ilma inimese sekkumiseta sprindi vältel pikemas perspektiivis",
+      "Olukord, kus API-tagasivastus ei sisalda HTTP-päiseid (header'eid) — testitakse ainult body-osa sisu, mitte status-koode ega cache-juhiseid kasutajavoolu kontrolliks ja autentimiseks suuremas süsteemis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Headless API testing = testitavale teenusele puudub UI (näiteks backend-mikroteenus, batch-processor, sisemine API). Testija suhtleb otse REST/GraphQL liidesega Postman/REST Assured/Karate kaudu. Variant 2 ajab segi 'headless brauseri' (UI-test ilma akna kuvamiseta) ja 'headless API' mõisteid; variandid 3 ja 4 on väljamõeldud."
+  },
+  {
+    "level": 7,
+    "question": "Mis on system testing (mõnikord nimetatud end-to-end testing) eesmärk?",
+    "options": [
+      "Hinnata, kuidas KOGU süsteemi tarkvara töötab koos — analüüsib mitut iseseisvat alamosa ja tervet kasutajateekonda algusest lõpuni",
+      "Testida ainult süsteemi-tasandi koodi (kerneli, draiverid, OS) — arendaja-tasandi rakendus-koodi see ei puuduta, sest see on eraldi testitasand vastavalt OSI-mudelile ettevõtte taristus pikas perspektiivis ettevõttes",
+      "Mõõta süsteemi vastuseaega tippkoormuse all — esmane jõudlustestimise variant, mis annab numbrilise SLA-mõõdiku konkreetsete kasutajate-arvude kohta sprindi vältel pikas perspektiivis tüüpiliselt globaalselt",
+      "Kontrollida system-call'ide korrektset töötlust operatsioonisüsteemi ja rakenduse vahel — madala-tasandi integratsioonitest C-tarkvara või kompilaatorite arendusele vajalik tüüpiliselt suurettevõttes pikemas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "System testing = testitasand, kus terve süsteem testitakse koos (vt ka end-to-end). Näide: online-jaemüük — alates päringust kuni tellimuse täitmiseni. Variandid 2 (kerneli kood), 3 (jõudlus), 4 (system-call'id) võtavad sõna 'süsteem' eri tähendustes, kuid pole funktsionaalne system test."
+  },
+  {
+    "level": 9,
+    "question": "Miks investeerida 'complex test scenarios' (komplekssed testistsenaariumid) loomisesse?",
+    "options": [
+      "Kajastada päris kasutajate täielikku teekonda (näiteks tellimuse: lisa korvi → kupong → makse → kinnitus) — annab täpsema pildi kui üksiksammude eraldi testimine",
+      "Et täita ISTQB Foundation eksami-nõuded, kus kompleksed stsenaariumid moodustavad 60% küsimustest sertifitseerimise raames vastavalt ametlikule koolituskavale tegelikult globaalselt rahvusvaheliselt",
+      "Et vähendada CI pipeline'i kestust, sest üks komplekssem test asendab mitu lihtsamat ja pipeline jookseb kiiremini sprindi käigus paralleelses keskkonnas mitmel pilve-instantsil samaaegselt",
+      "Et säästa testijate tööaega, sest üks pikk stsenaarium tähendab vähem testijuhtude haldamist Jira-s ja TestRail-is suurettevõtte kontekstis pikemas perspektiivis koos audit-trail'iga vastavalt nõuetele"
+    ],
+    "correctIndex": 0,
+    "explanation": "Complex scenarios kajastavad päris kasutaja-teekonda — paljud üksikud testid, mis eraldi rohelised, võivad koos teekonnas tabada integratsiooni-defekti. Maksumus: rohkem eeltööd, hooldus. Variant 2 on väljamõeldud; variant 3 on vastupidi tõele (pikem stsenaarium aeglustab); variant 4 alahindab hoolduskoormust."
+  },
+  {
+    "level": 11,
+    "question": "Mis on unit-testi ja integration-testi peamine erinevus funktsionaalses testimises?",
+    "options": [
+      "Unit-test kontrollib ühte koodi-tükki isoleeritult test doubles'idega; integration-test kontrollib mitme komponendi koos töötamist (näiteks tellimus + makse)",
+      "Unit-test on alati automaatne ja integration-test alati manuaalne — automatiseerimise aste on terminite peamine eristaja praktikas tarkvaratiimis vastavalt kasutusele tüüpiliselt projekti algfaasis ettevõttes",
+      "Unit-test käsitleb funktsionaalset, integration-test mittefunktsionaalset poolt süsteemis — kaks ortogonaalset mõõdet, mis täiendavad üksteist mittefunktsionaalsete kvaliteediomaduste hindamisel ISO 25010 raamistikus pikas perspektiivis",
+      "Unit-test kirjutatakse arendaja poolt enne funktsionaalseid nõudeid, integration-test pärast nõuete kinnitamist tooteomanikuga — kaks järjestikust faasi sprindi alguses planeerimise käigus tüüpiliselt järjestust sisaldab tavaliselt"
+    ],
+    "correctIndex": 0,
+    "explanation": "Unit = üks isoleeritud koodi-tükk + test doubles. Integration = mitme moodul koos (tüüpiliselt tegelik andmebaas, tegelik HTTP-ühendus). Eri kiirus, eri scope. Variant 2 on müüt (mõlemad tavaliselt automaatsed); variant 3 segab funktsionaalse/mittefunktsionaalse mõõtmega; variant 4 on faktiliselt vale."
+  },
+  {
+    "level": 13,
+    "question": "Mis on funktsionaalse testimise tüüpiline väljund testija raportis?",
+    "options": [
+      "Pass/Fail seisund iga testijuhu kohta + leitud defektide nimekiri — funktsionaalne test on must-kasti vaade, kus sisemine 'kuidas' pole oluline",
+      "Detailne kood-katvuse raport, mis näitab iga rea läbimise arvu kõikides moodulites — staatilise analüüsi-stiilis tulemus iga build'i jaoks lisamõõdikuna ja jälgimise abivahendina sprindi vältel ettevõttes",
+      "Visuaalne diagramm süsteemi performance'ist (vastuseaeg, läbilaskvus, P95) — graafik koos baseline'i võrdlusega eelmise sprindi tulemustega ja trend-jälgimise tabeliga otsustajatele juhtimisarmatuurlauas kvartali aruandes",
+      "ISO 25010 8 kvaliteediomaduse hinnang viiepalli skaalal — terviklik kvaliteedipilt iga release'i jaoks, mis näitab edasiminekut kõigis mittefunktsionaalsetes mõõdetes pikemas perspektiivis tarkvaratiimi sees iga sprindi lõpus"
+    ],
+    "correctIndex": 0,
+    "explanation": "Funktsionaalse testi väljund: iga testijuhu Pass/Fail (must-kasti vaade — sisemine pole oluline) + defektide nimekiri. Variant 2 on white-box / koodikatvuse raport (eraldi tegevus); variant 3 on jõudlustesti tulemus (mittefunktsionaalne); variant 4 on ISO 25010 audit, mis hõlmab palju enamat kui funktsionaalsust."
   }
 ]
