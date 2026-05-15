@@ -910,5 +910,89 @@
     ],
     "correctIndex": 0,
     "explanation": "Funktsionaalse testi väljund: iga testijuhu Pass/Fail (must-kasti vaade — sisemine pole oluline) + defektide nimekiri. Variant 2 on white-box / koodikatvuse raport (eraldi tegevus); variant 3 on jõudlustesti tulemus (mittefunktsionaalne); variant 4 on ISO 25010 audit, mis hõlmab palju enamat kui funktsionaalsust."
+  },
+  {
+    "level": 3,
+    "question": "Mis on turvatestimise (security testing) kuus põhi-mõistet?",
+    "options": [
+      "Confidentiality, Integrity, Authentication, Authorization, Availability, Non-repudiation",
+      "Confidentiality, Integrity, Availability — klassikaline CIA-triaad on ainus turvalisuse alus, ülejäänud lisamõisted pole iseseisvad ja tulenevad nendest kolmest põhilisest pikemas vaates",
+      "Performance, Reliability, Maintainability, Portability, Usability, Security — ISO 25010 toote-kvaliteedi omadused tervikuna kvaliteedi-mudelis pikemas perspektiivis tarkvarapakettide hindamisel",
+      "Encryption, Hashing, Signing, Logging, Auditing, Monitoring — kuus tehnilist mehhanismi turvalisuse rakendamiseks koodibaasis ja taristus tüüpiliselt suuremate ettevõtete puhul"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klassikaline 6 turvalisuse põhi-mõistet (laiendatud CIA-triaad): konfidentsiaalsus (kes tohib näha), terviklikkus (kas andmed on muutmata), autentimine (kes oled), autoriseerimine (mida tohid teha), käideldavus (kas saadaval), mittetagasilükatavus (kas saab eitada). Variant 1 jätab välja AAN; variant 2 on ISO 25010; variant 3 on tehnilised mehhanismid."
+  },
+  {
+    "level": 4,
+    "question": "Mis vahe on SAST ja DAST turvatestimise meetoditel?",
+    "options": [
+      "SAST analüüsib lähtekoodi seda käivitamata; DAST testib jooksvat rakendust väljast",
+      "SAST testib ainult serverit ja DAST ainult kliendipoolt — kaks ortogonaalset kihti, mis koos annavad täieliku turvavaate süsteemile, eriti suuremate veebiplatvormide arenduse käigus pikemas perspektiivis ettevõtte kontekstis",
+      "SAST on kasutaja-tasandi turvatest (parooli tugevus jms), DAST arendaja-tasandi turvatest (koodi-haavatavused) — kaks rolli järgi defineeritud testimist, mis täiendavad üksteist sprindi vältel projekti algfaasis suuremas ettevõttes",
+      "SAST on täielikult automaatne ja DAST täielikult manuaalne pen-testija poolt — automatiseerimise aste on terminite peamine eristaja praktikas turvalisuse-testimise valdkonnas pikemas perspektiivis suurprojektides ettevõttes"
+    ],
+    "correctIndex": 0,
+    "explanation": "SAST (Static App Security Testing) loeb lähtekoodi otse — leiab nt SQL injection mustreid, hardcoded secret'eid (SonarQube, Checkmarx). DAST (Dynamic App Security Testing) ründab jooksvat rakendust HTTP-päringutega (OWASP ZAP, Burp Suite). IAST kombineerib mõlemad. Variandid 2, 3, 4 segavad termineid muude eristamise viisidega."
+  },
+  {
+    "level": 8,
+    "question": "Mis vahe on vulnerability scan'il ja vulnerability assessment'il?",
+    "options": [
+      "Scan on automaatne tööriista-päring (matching tuntud haavatavustega CVE-andmebaasist); assessment lisab konteksti, eemaldab false positive'id ja annab äri-mõju hinnangu",
+      "Scan toimub tundide jooksul ja assessment päevade jooksul — kaks järjestikust faasi sama tegevuse jaoks vastavalt projekti ajakavale tüüpiliselt suurettevõtte taristu projekti raames pikas perspektiivis ettevõtte planeerimisel",
+      "Scan kontrollib OS-tasandi haavatavusi (Linux, Windows kerneli) ja assessment rakenduse-tasandi haavatavusi (XSS, SQL injection) — kaks erinevat kihti süsteemis sõltuvalt skaneeritavast osast pikas perspektiivis projekti vältel",
+      "Scan on kommertstöö ja assessment akadeemiline uurimus — kaks erineva motivatsiooniga tegevust, mis erinevad eesmärgi ja sihtgrupi poolest reaalselt tüüpiliselt globaalselt erialastes ringkondades igapäevaselt nii ettevõtetes kui ülikoolides"
+    ],
+    "correctIndex": 0,
+    "explanation": "Scan = masin lugeb tunnuseid CVE-andmebaasist (Nessus, Qualys, OpenVAS) ja loob loendi. Assessment = analüütik vaatab loendi üle, eemaldab false positive'id, hindab kontekstuaalset mõju (kas haavatav teenus on internetile avatud? kas exploit on praktiliselt kasutatav?). Variandid 2, 3, 4 võtavad eristust valedes kontekstides."
+  },
+  {
+    "level": 9,
+    "question": "Mis on peamine erinevus security assessment'i ja penetration test'i vahel?",
+    "options": [
+      "Assessment rõhutab LAIUST (katvus paljudes süsteemides ilma reaalse exploit'imiseta), pen-test rõhutab SÜGAVUST (üksikute haavatavuste reaalne ärakasutamine ründaja võimaluste hindamiseks)",
+      "Assessment on alati automaatne ja penetration test alati manuaalne — automatiseerimise aste on peamine eristaja kahe lähenemise vahel praktikas suurettevõttes pikemas perspektiivis sprindi vältel turvatiimis koos pilve-tööriistadega",
+      "Assessment on odav ja penetration test kallis — hinna erinevus on peamine põhjus, miks ettevõtted valivad ühe või teise vastavalt eelarvele kvartali kontekstis pikemas perspektiivis projekti algfaasis ettevõttes pärast eelarve kinnitamist",
+      "Assessment käsitleb turvalisust juriidilisest vaatest (vastavus GDPR, PCI-DSS), pen-test tehnilisest vaatest — kaks rolli, juriidiline ja tehniline, mis täiendavad üksteist tüüpiliselt suuremas organisatsioonis ja korporatsioonis pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Assessment vastab 'kus on potentsiaalsed augud süsteemis tervikuna?'. Pen-test vastab 'kui kaugele saab konkreetse haavatavuse abil pääseda — kas sealt edasi root-õiguse, andmebaasini, teiste süsteemideni?'. Pen-test on agressiivsem, sügavam, tihti aja-piiratud (näit 2 nädalat). Variandid 2, 3, 4 segavad eristust muude mõõtmetega."
+  },
+  {
+    "level": 10,
+    "question": "Mis on 'non-repudiation' (mittetagasilükatavus) turvalisuse kontekstis?",
+    "options": [
+      "Garantii, et saatja ei saa hiljem eitada sõnumi saatmist ja vastuvõtja vastuvõtmist — saavutatakse digitaalse allkirja ja audit-log'iga",
+      "Garantii, et süsteem on alati kättesaadav (24/7) ilma plaaniliste või planeerimata katkestusteta tingimata ka õnnetuste korral nagu maavärin või tulekahju andmekeskuses kogu maailmas pikas perspektiivis töötamiseks",
+      "Garantii, et kasutaja ei saa muuta enda sissetoodud andmeid pärast salvestamist andmebaasi — andmete-immutability nõue suuremas süsteemis sprindi vältel projekti algfaasis pikemas vaates ettevõttes pikas perspektiivis",
+      "Garantii, et kasutaja autentimine põhineb vähemalt kahe faktori kombinatsioonil (parool + telefon, biomeetria + token) — multi-factor authentication nõue moodses turvalisuse-arhitektuuris pikemas perspektiivis ettevõttes pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Non-repudiation = juriidiline-tehniline garantii, et tegevuse autorit saab tõestada (digiallkiri, certified timestamp, audit-log seotud kasutaja-identiteediga). Oluline kohtus, finantstehingutes. Variant 2 kirjeldab availability-d; variant 3 integrity osa; variant 4 multi-factor authentication-it — kõik on erinevad turvalisuse-mõisted."
+  },
+  {
+    "level": 12,
+    "question": "Mis on security audit'i tüüpiline juhtmotiiv ja ulatus?",
+    "options": [
+      "Audit on COMPLIANCE-juhitud (HIPAA, PCI-DSS, ISO 27001) — keskendub kindla raamistiku kontrollidele kitsa ulatusega, et tõestada vastavust regulaatorile",
+      "Audit on tervikliku turvalisuse hindamise variant, mis hõlmab kõiki süsteemi-tasandeid (kerneli, draiverid, rakendused, andmebaas, võrk) ühe kvartali jooksul tüüpiliselt suurettevõttes pikemas perspektiivis sprindi vältel projektijuhtimise raames",
+      "Audit on penetratsioonitesti formaalne nimi ametlikes dokumentides — kaks terminit sama tegevuse jaoks, eri organisatsioonide kasutuses sõltuvalt valdkonnast pikemas perspektiivis ja ettevõtte kultuurist tüüpiliselt globaalselt",
+      "Audit on automatiseeritud skaneerimise tulemus (Nessus, OpenVAS) JSON-formaadis — masin-loetav vorming integreerimiseks SIEM-süsteemidesse pikemas perspektiivis suurkorporatsiooni turvaoperaatorile igapäevaselt jälgimiseks"
+    ],
+    "correctIndex": 0,
+    "explanation": "Security audit = vastavus-fookus konkreetsele standardile/regulatsioonile. Auditor kontrollib KINDLAID kontrolle (näiteks PCI-DSS nõuab krüpteeritud salvestust, võrgu-segmenteerimist) — kitsam ulatus, formaalne raport regulaatorile. Variant 2 segab assessment'iga; variant 3 on müüt; variant 4 ajab segi vulnerability scan'iga."
+  },
+  {
+    "level": 14,
+    "question": "Mis on 'shift-left security' (DevSecOps) põhiidee testimise kontekstis?",
+    "options": [
+      "Turvalisuse-testimine viiakse SDLC-s VARA — SAST iga commit'iga, sõltuvuste-skaneerimine (npm audit, Snyk), threat modeling disainifaasis; vältida kalleid leide hilises etapis",
+      "Turvatestimine tehakse ainult juurutamise vahetult eel staging-keskkonnas, et säästa eelmiste sprintide ressursse muude testitüüpide jaoks pikemas perspektiivis ja optimeerida ettevõtte testitiimi koormust pikemas vaates kvartali aruandluses",
+      "Turvatestija tiim asetatakse organisatsioonis arenduse-tiimist VASAKULE (varakult) hierarhia-skeemis — visuaalne paigutus juhtimisarmatuurlauas, mis aitab juhtkonnal turvarolli prioriseerida sprindi vältel ettevõttes pikemas perspektiivis hallata",
+      "Kõik turvalisus-otsused tehakse Linuxi command-line'i 'left' operaatori abil — sed/awk skripti-põhine analüüs koodibaasis pikemas perspektiivis tarkvaratiimi jaoks regulaarselt sprindi käigus tüüpiliselt suurettevõttes pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "DevSecOps = security as code, shift-left turvalisus. Tüüpilised tehnikad: SAST CI-pipeline'is, dependency scan (Dependabot, Snyk, npm audit), container scan (Trivy), threat modeling disainifaasis. Variandid 2, 3, 4 võtavad sõna 'left' eri kontekstides — staging, organisatsiooni-hierarhia, command-line — pole shift-left security."
   }
 ]
