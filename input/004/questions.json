@@ -1570,5 +1570,77 @@
     ],
     "correctIndex": 0,
     "explanation": "Fault injection = chaos engineering juur (Netflix Chaos Monkey). Tööriistad: Chaos Monkey, Gremlin, Litmus, ToxiProxy. Tüüpilised süstitavad tõrked: võrgu-latents, packet loss, CPU 100%, disk fill, kill -9 protsessile, DB ühenduse kõrvaldamine. Variandid 2, 3, 4 võtavad sõna 'süstida' eri kontekstides (test data, debug, security)."
+  },
+  {
+    "level": 4,
+    "question": "Mis on volume testing'u põhi-eesmärk?",
+    "options": [
+      "Hinnata, kuidas süsteem käitub SUURTE andmemahtude juures (suur andmebaasi-tabel, suur fail) — jõudluse-degradatsioon, mälu-kasutus, päringute aeg",
+      "Mõõta süsteemi heli-väljundi (volume) tasandit — multimedia rakenduste audio-testimise spetsiaalne alaliik pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas vaates pikas perspektiivis",
+      "Hinnata, kui palju kasutajad päevas süsteemi külastavad — analytics-mõõdik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates pikas perspektiivis",
+      "Kontrollida tarkvara müügi-mahtu (volume of sales) eri turgudel — turundusuuringu mõõdik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume testing = 'kui süsteemis on miljoneid kirjeid, kas töötab veel kiiresti?'. Eesmärk: leida andmemahuga seotud probleemid (full-table scans, mälu-puudus, faili-süsteemi limiidid). Variandid 2, 3, 4 võtavad sõna 'volume' eri tähendustes (heli-tugevus, külastatavus, müügimaht), kuid pole testimise valdkonna termin."
+  },
+  {
+    "level": 6,
+    "question": "Mis vahe on volume testing'u, load testing'u ja stress testing'u vahel?",
+    "options": [
+      "Volume = palju ANDMEID (suur DB, suur fail), load = palju samaaegseid KASUTAJAID (oodatud koormus), stress = ÜLE oodatud piiri (kuni murdumiseni)",
+      "Volume on alati manuaalne, load alati automaatne ja stress alati AI-juhitud — kolme testimise automatiseerimise aste on peamine eristaja praktikas pikemas perspektiivis suuremas ettevõttes pikas vaates pikas perspektiivis pikas vaates",
+      "Volume testib frontend-i, load backend-i, stress andmebaasi — kolm kihti, mis täiendavad üksteist suuremas süsteemis pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Volume on tasuta avatud tööriistadega, load BlazeMeter-i pilvega, stress kommertstööriistadega — kolm erineva eelarvega lähenemist sõltuvalt projekti suurusest pikemas perspektiivis ettevõttes pikas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kolm performance testing'u alaliiki, eri ülekoormuse-mõõtmega: volume = ANDMETE-mõõde, load = KASUTAJATE-mõõde tavaolukorras, stress = KASUTAJATE-mõõde üle ootuste. Saavad kombineeritud (näit volume + load = palju andmeid + palju kasutajaid). Variandid 2, 3, 4 on müüdid (automatiseerimine, kihi-jaotus, eelarve)."
+  },
+  {
+    "level": 7,
+    "question": "Kuidas tüüpiliselt valmistatakse testandmed volume testing'u jaoks?",
+    "options": [
+      "Sünteetilised andmegeneraatorid (Faker, Mockaroo, dbForge) loovad miljoneid realistlikke kirjeid; otsene production-andmete koopia on tihti GDPR-i tõttu välistatud",
+      "Testijad sisestavad kõik andmed käsitsi sprindi vältel — täpne, kuid aeglane meetod suurte andmemahtude jaoks pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Andmed laaditakse otse Wikipediast XML-export'i abil — tasuta meetod, mida kasutavad enamikud testimisettevõtted pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas vaates pikas perspektiivis",
+      "Andmed kopeeritakse production-keskkonnast otse ilma muudatusi tegemata — tagab kõige reaalsema testikogemuse pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sünteetiline data generation on standard: Faker (Python/JS, genereerib nimesid, aadresse, e-maile), Mockaroo (web-tool 1000+ veerge), dbForge (DB-spetsiifiline). GDPR keelab production-andmete kasutamise testides ilma anonüümistamiseta. Variandid 2, 3, 4 on absurdsed/ebapraktilised lähenemised."
+  },
+  {
+    "level": 8,
+    "question": "Mida tüüpiliselt volume testing kontrollib andmebaasi-rakendustes?",
+    "options": [
+      "Päringute kiirust suurte tabelite peal (10M+ ridu), indeksite kasulikkust, tabelite-skannide aega, mälu-kasutust suurte resultsetide korral",
+      "Andmebaasi-tabelite normaliseerimise astet vastavalt 1NF/2NF/3NF/BCNF reeglitele — andmebaasi-disaini auditi tegevus pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "SQL-syntaxi korrektsust kõigis migratsioonifailides — staatilise analüüsi tegevus pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas vaates pikemas perspektiivis",
+      "Andmebaasi-skeemi version-haldust Liquibase või Flyway abil — DBA-tööriistade konfigureerimine pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume test andmebaasis paljastab: päring, mis 100 rea peal töötab 1ms, võib 10M rea peal töötada 30s (sest indeks puudub või on vale), JOIN'id muutuvad katastroofiks, OFFSET-pagination aeglustub. Lahendused: indeksid, query optimization, pagination cursor'iga. Variandid 2, 3, 4 on muude DB-tegevuste kirjeldused."
+  },
+  {
+    "level": 10,
+    "question": "Millises stsenaariumis on volume testing eriti oluline?",
+    "options": [
+      "Pangad, e-pood, analytics-platvormid — kus produktsioonis on miljoneid tehinguid/kliente/tellimusi, kuid arendus-keskkonnas tavaliselt ainult sajad",
+      "Lihtsad CRUD-rakendused mis pole avalikud — testimine pole vajalik, sest andmemahud jäävad väikseks pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Staatilised veebilehed (HTML+CSS, ilma andmebaasita) — volume testing on neil eriti oluline, sest sisu maht mõjutab serveri-jõudlust pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas",
+      "Varajases prototüübifaasis (MVP) enne reaalsete kasutajate olemasolu — volume test annab varakult tagasiside disainile pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume test on hädavajalik domeenides, kus dev-keskkond ei kajasta production-mahtu. Klassikaline näide: e-poe leht töötab dev-iga (50 toodet) suurepäraselt, jookseb production'is (200 000 toodet) kokku — keegi unustas pagination/index. Variandid 2, 3, 4 on müüdid — staatiline leht ei vaja volume test'i, MVP eeldab valminud andmestruktuuri."
+  },
+  {
+    "level": 12,
+    "question": "Milliseid tüüpilisi defekte volume testing leiab?",
+    "options": [
+      "Aeglased päringud (puuduvad indeksid, full-table scan), out-of-memory vead suurte resultsetide korral, faili-süsteemi limiidid (max file size), pagination puudumine",
+      "UI-paigutuse vead eri ekraani-resolutsioonidel ja seadmetel — responsive design'i probleemid pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Autentimise vead pärast parooli muutmist või kahefaktori-koodi sisestamist — turvalisuse-probleemid pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Brauseri-konsoolide hoiatused JS-erindite kohta — front-end debug-vajaduse näitajad pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Klassikalised volume defektid: SELECT * FROM orders ORDER BY created_at LIMIT 50 OFFSET 1000000 (lehe 20001 jaoks) — võtab minutid; Excel-export 1M rea peal sööb mälu (parem stream-ima); pildi-üleslaadimine 5GB faili annab 500 (max file size limit); puudub paginatsioon → frontend lukustub. Variandid 2, 3, 4 on muude testitüüpide leiud."
   }
 ]
