@@ -994,5 +994,77 @@
     ],
     "correctIndex": 0,
     "explanation": "DevSecOps = security as code, shift-left turvalisus. Tüüpilised tehnikad: SAST CI-pipeline'is, dependency scan (Dependabot, Snyk, npm audit), container scan (Trivy), threat modeling disainifaasis. Variandid 2, 3, 4 võtavad sõna 'left' eri kontekstides — staging, organisatsiooni-hierarhia, command-line — pole shift-left security."
+  },
+  {
+    "level": 5,
+    "question": "Mis on interoperability testing (koostalitlusvõime testimine) põhieesmärk?",
+    "options": [
+      "Kontrollida, kas kaks või enam SÕLTUMATUT süsteemi (eri platvormid, tehnoloogiad, müüjad) suudavad omavahel suhelda, andmeid vahetada ja töötada koos sujuvalt",
+      "Kontrollida, kas süsteemi sisemised komponendid (moodulid, teenused, andmebaasid) suudavad ühe rakenduse piires üksteisega koostööd teha ja andmeid edastada vastavalt sisearhitektuurile suuremas projektis pikas perspektiivis",
+      "Kontrollida, kas rakendus jookseb õigesti eri operatsioonisüsteemidel (Windows, macOS, Linux) ja brauserites (Chrome, Firefox) — peamine kontroll cross-platform compatibility'le pikemas perspektiivis ettevõttes pikas vaates",
+      "Kontrollida, kas üksiku API endpoint'i sisendid ja väljundid vastavad spetsifikatsioonile (OpenAPI/Swagger) — REST-teenuste kvaliteedi tagamise põhi-meetod moodses arenduses suuremas tarkvarapakettis pikas vaates ettevõttes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Interoperability = ERI süsteemide (tihti eri müüjate, eri tehnoloogiate) koos töötamine. Variant 2 kirjeldab integration testing'ut (sama-süsteemi sisesed komponendid); variant 3 kirjeldab compatibility testing'ut (sama rakendus eri keskkondadel); variant 4 on API contract testing. Kõik on REAALSED testitüübid, kuid pole interoperability."
+  },
+  {
+    "level": 6,
+    "question": "Mis on peamine erinevus interoperability testing'u ja integration testing'u vahel?",
+    "options": [
+      "Integration test kontrollib komponente ÜHE süsteemi piires; interop test kontrollib lõpuni töötavust ERI süsteemide vahel (tihti kolmandate poolte ökosüsteemid)",
+      "Integration on alati automaatne ja interoperability alati manuaalne — automatiseerimise aste on kahe testimise peamine erinevus suuremas tarkvaratiimis vastavalt rolli-jaotuse põhimõtetele pikemas perspektiivis ettevõttes ja organisatsioonis pikas vaates",
+      "Integration test toimub arendusfaasis (DEV-keskkonnas) ja interoperability ainult production'is (live-keskkonnas) — kaks järjestikust ajalist faasi sama tegevuse jaoks pikas perspektiivis projektijuhtimise raames suuremas ettevõttes pikemas vaates",
+      "Integration kontrollib funktsionaalsust ja interoperability mittefunktsionaalsust süsteemis — kaks ortogonaalset mõõdet, mis täiendavad üksteist tarkvara kvaliteedi-hindamisel ISO 25010 raamistikus pikemas perspektiivis tarkvarapakettide arenduses kvartali vältel"
+    ],
+    "correctIndex": 0,
+    "explanation": "Integration = sama-süsteemi sisesed komponendid (näiteks tellimuse-moodul + maksemoodul samas rakenduses). Interop = ERI süsteemide vaheline koostöö (näiteks panga API + e-poe API + maksuameti API). Variandid 2, 3, 4 segavad eristust automatiseerimise, ajakava ja funktsionaalsuse mõõtmetega — pole õige eristamise alus."
+  },
+  {
+    "level": 7,
+    "question": "Mida kontrollib 'data integrity' aspekt interoperability testing'us?",
+    "options": [
+      "Andmetüübid, formaadid (JSON, XML) ja semantiline tähendus jäävad samaks edastamisel kahe süsteemi vahel — vastuvõtja saab sama mõtte mis saatja saatis",
+      "Andmebaasi tabelite normaliseerimine vastavalt 1NF/2NF/3NF reeglitele — kontroll, et andmed pole duplikeeritud ja salvestus on optimaalne suuremate tarkvarapakettide juures pikas perspektiivis pikemas vaates ettevõttes pikas vaates",
+      "Andmete krüpteerimine TLS 1.3 protokolli abil edastamise jooksul — võrgu-tasandi turvalisuse aspekt, mis kaitseb pealtkuulamise eest avalikus internetis pikas perspektiivis suuremate süsteemide kontekstis ettevõttes ja organisatsioonis",
+      "Andmete varundamise sagedus ja taastamise testimine pärast katastroofi — disaster-recovery aspekt, mis tagab äri-jätkuvuse kriitilistes süsteemides pikemas perspektiivis suuremas korporatsioonis kvartali aruandluses pikemas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Data integrity interop'is = saatja edastas {kuupäev: '2026-05-15', summa: 100.50 EUR}, vastuvõtja sai sama tähenduse (mitte näiteks '15-05-2026' Ameerika-formaadis MM-DD-YYYY-na, mis muudaks 'mai 15' '15. mai' asemel). Variant 2 on andmebaasi-disain; variant 3 võrgu-turvalisus; variant 4 disaster recovery — kõik eraldi mõisted."
+  },
+  {
+    "level": 9,
+    "question": "Mida kontrollib 'compatibility' aspekt interoperability testing'us?",
+    "options": [
+      "Backward compatibility (uus klient + vana server) ja forward compatibility (vana klient + uus server) — integratsioon töötab nii pärit-versioonidega kui uute API-värskendustega",
+      "Compatibility on testimine eri operatsioonisüsteemide vahel (Windows 10/11, macOS, Linuxi distributsioonid) — cross-OS testimise peamine eesmärk pikemas perspektiivis suuremas ettevõttes pikas vaates kvartali raames pikas perspektiivis",
+      "Compatibility tähendab, et rakendus näeb sama välja eri ekraani-resolutsioonidel ja seadmetel — responsive design'i kontroll moodses tarkvaraarenduses suuremate veebiprojektide kontekstis ettevõttes pikemas perspektiivis tarkvaratiimi sees pikas vaates",
+      "Compatibility on litsentside ühilduvus eri komponentide vahel (MIT, GPL, Apache) — juriidiline kontroll avatud lähtekoodiga teekide kasutamisel ettevõtte tarkvaras pikemas perspektiivis õigusega seotud sprindi planeerimise käigus pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Versioneerimise reaalne probleem: API muutub ajas. Backward compat = uus server peab teenindama vanu kliente (kes pole veel uuendanud). Forward compat = vana server peab taluma uue kliendi sisendit (graceful degradation). Variant 2 on cross-OS, variant 3 responsive design, variant 4 litsentside-vastavus — kõik 'compatibility' sünonüümid muudes kontekstides."
+  },
+  {
+    "level": 11,
+    "question": "Mida kontrollib 'error handling' aspekt interoperability testing'us?",
+    "options": [
+      "Süsteem käsitleb graatsiliselt välise teenuse vigu (timeout, vigane vastus, teenus down) — ei jookse kokku ega jää lõputult ootama, vaid annab kasutajale teate",
+      "Kõik rakenduse koodis tehtud try/catch-blokid on testitud kõigi võimalike erindite kombinatsioonide vastu — defensiivse programmeerimise täielik katvus iga moodulis pikas perspektiivis tarkvaratiimi sees ettevõttes pikemas vaates",
+      "Kasutaja sisendi-vigade korral kuvatakse selge teade (vorm-validatsioon) — front-end UX kontroll, mis tagab kasutajakogemuse hea kvaliteedi suuremas veebirakenduses pikemas perspektiivis ettevõttes pikas vaates kvartali aruandluses kogu maailmas",
+      "Logifailide formaat vastab keskse log-süsteemi (ELK, Splunk) ootustele — observability-aspekt, mis võimaldab probleemide kiiret debugimist tarkvaratiimi poolt sprindi vältel pikemas perspektiivis suuremas süsteemis ettevõttes pikas vaates pikemas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Interop error handling = mis juhtub, kui väline süsteem (kolmas pool, mille üle pole kontrolli) hakkab käituma ootamatult? Hea käitumine: timeout-muster, retry-with-backoff, circuit breaker, fallback-vastus. Halb: kogu kasutaja-leht jookseb kokku. Variandid 2, 3, 4 on muude testimise-tegevuste kontrollid (unit-test catch'idest, vorm-validatsioon, observability)."
+  },
+  {
+    "level": 13,
+    "question": "Mis valdkonnas on interoperability testing eriti kriitiline ja mis standardid sellega seonduvad?",
+    "options": [
+      "Tervishoid (HL7, FHIR), IoT (MQTT, Zigbee), mikroteenused (REST, gRPC) — domeenid, kus eri müüjate süsteemid peavad ühilduma ja regulatsioon nõuab tõestatud koostalitlust",
+      "Mängude arendus (Unity, Unreal) — eri mootorite ühildumise testimine on peamine kasutus, sest mängijad ootavad sujuvat kogemust eri platvormidel ka kõrge graafikaga PC-del ja konsoolidel pikemas perspektiivis kogu maailmas pikas vaates",
+      "Sotsiaalmeedia platvormid (Facebook, X, Instagram) — kasutajate andmete sünkroniseerimine eri keskkondade vahel on peamine vajadus moodses internetis pikemas perspektiivis kasutajakogemuse parandamiseks pikas vaates kogu maailmas pikemas perspektiivis",
+      "Akadeemilised uurimusprojektid (ülikoolid, instituudid) — interop testing on peamiselt teadusliku kogukonna vahend, mille kommertsrakendused on piiratud üksikute eksperimentidega pikemas perspektiivis ka teadusartiklites avaldamiseks pikemas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tervishoid (HL7 sõnumid haiglate-andmebaaside vahel, FHIR REST-API patsiendi-andmetele), IoT (sensorid + gateway + cloud, MQTT-protokoll), mikroteenused (Service A räägib Service B-ga). Regulatsioonid (HL7 vastavus EL-is, USA-s) nõuavad ametlikku interop-sertifitseerimist. Variandid 2, 3, 4 on valdkonnad, kus interop pole peamine fookus."
   }
 ]
