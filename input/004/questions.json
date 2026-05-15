@@ -1702,5 +1702,65 @@
     ],
     "correctIndex": 0,
     "explanation": "CI hea tava: smoke test iga commit'iga (push → CI trigger → smoke test). Põhjus: kui regressioon ilmub, on viimane muudatus väike (lihtne diagnoosida) ja arendaja konteksti veel mäletab. Vananenud lähenemine 'nightly build' (üks kord öösiti) jätab regressioonid 24h+ varjatuks. Variandid 2, 3, 4 on aeglased anti-mustrid."
+  },
+  {
+    "level": 4,
+    "question": "Mis on sanity testing'u põhi-eesmärk?",
+    "options": [
+      "Kontrollida kitsalt KONKREETSEID hiljutisi muudatusi või bug-fixe stabiilsel build'il — kas parandus töötab ja ei toonud uusi defekte",
+      "Hinnata testija enda mõistuse-tervist pärast pikka tööperioodi — HR-mõõdik suuremas tarkvaratiimis pikemas perspektiivis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates",
+      "Mõõta süsteemi loogilise terviklikkuse-tasandit täielikult — semantilise analüüsi tegevus pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas vaates",
+      "Kontrollida andmebaasi normaalformide vastavust (1NF, 2NF, 3NF, BCNF) — DB-disaini auditi tegevus pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sanity test = 'kas mu mõistus on alles?' — kitsas verifikatsioon, et konkreetne parandus toimis. Tehakse pärast smoke test'i (mis kinnitas üldist stabiilsust) ja keskendub AINULT muutuse-mõjutatud osale. Variandid 2, 3, 4 võtavad sõna 'sanity' eri kontekstides (HR, semantika, DB) — pole testimise valdkonna definitsioon."
+  },
+  {
+    "level": 6,
+    "question": "Mis on sanity testing'u suhe regressioonitestimisega?",
+    "options": [
+      "Sanity test on regressioonitestimise alaliik — kitsam, kiirem versioon, mis kontrollib AINULT muutuse-mõjutatud osi (mitte tervet süsteemi nagu täielik regressioon)",
+      "Sanity test asendab täielikult regressioonitestimist iga release-eelses faasis — kaks sünonüümi, mis on sama tegevuse erinevad nimed pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Sanity ja regressioon on eraldi testitüübid, mille vahel pole otsest seost — kaks iseseisvat tegevust pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikemas vaates",
+      "Sanity test on regressioonitestimise jaoks vajalik eel-kontroll — peab toimuma enne, et regressioonid saaksid alata pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sanity test = 'mini-regressioon': pärast bug-fix'i kontrollitakse parandatud osa + lähedalt seotud funktsionaalsus, MITTE täielik regressioon. Eelis: kiire (minutid, mitte tunde). Piirang: ei taba defekte kaugemates osades. Täielik regressioon tehakse harvemini (näit enne release'i). Variandid 2, 3, 4 on terminoloogilised eksitused."
+  },
+  {
+    "level": 8,
+    "question": "Mis ulatusega tüüpiliselt sanity testing toimub?",
+    "options": [
+      "KITSALT — keskendub ainult muutuse-mõjutatud moodulitele (näit kui parandati parooli-reseti, testitakse parooli-reset + sisselogimine, mitte kogu süsteemi)",
+      "LAIALT — kõikide moodulite täielik kontroll alates UI-st kuni andmebaasini iga release-i puhul pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "KESKMISELT — pool süsteemi kontrollitakse igal sprindi lõpus, teine pool järgmisel sprindi lõpus pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis",
+      "SÜGAVALT — iga moodul testitakse mitmest aspektist (funktsionaalsus, jõudlus, turvalisus, kasutatavus) korraga pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sanity = kitsas + mõõdukalt sügav. Smoke = lai + madal. Tüüpiline sanity-stsenaarium: 'parandasin password reset bug'i, kontrollime selle voogu lõpuni + lähedalt seotud osi (sisselogimine pärast resetit)'. Variandid 2, 3, 4 kirjeldavad muude testitüüpide ulatust (täielik regressioon, etapiviisi testimine, multi-aspect test)."
+  },
+  {
+    "level": 10,
+    "question": "Kuidas tüüpiliselt sanity testi käivitatakse?",
+    "options": [
+      "Tihti manuaalselt ja mitteformaalselt — ilma eel-defineeritud skriptide ja täis-dokumentatsioonita; testija kasutab oma kogemust ja konteksti-teadmist muudatusest",
+      "Alati automaatselt CI pipeline'is kindla testikomplektiga — pole võimalik manuaalselt teha pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates",
+      "Spetsiaalse 'sanity-test' tööriistaga (mis pole Selenium/JMeter/JUnit) — proprietaarne tehnoloogia pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates",
+      "Modereeritud session usability testija juhendamisel, kes salvestab kasutaja käitumist videoga — formaalne UX-uuring pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sanity test on tihti AD-HOC: testija saab muudatuse, vaatab koodi-diff, otsustab 'mida ma testin'. Pole alati Jira-ssagat ega skripti — kasutab kogemust. Saab automatiseerida (kui sama parandus tuleb tihti), kuid see pole nõue. Variant 2 on müüt; variant 3 on välja mõeldud; variant 4 on usability-test, mitte sanity."
+  },
+  {
+    "level": 12,
+    "question": "Stsenaarium: arendaja parandas defekti parooli-reseti funktsioonis. Mis oleks tüüpiline SANITY test selle paranduse jaoks?",
+    "options": [
+      "Manuaalselt testige parooli-reseti voogu (vana parool → uus parool) + kontrollige, et uus parool töötab sisselogimisel; ei testita seotuid funktsioone (profiil, maksed)",
+      "Käivitage kogu regressioonikomplekt (sadu testijuhte) iga moodulis, et tagada, et parandus pole midagi muud rikkunud — täielik garantii kogu süsteemi terviklikkuse osas pikemas perspektiivis ettevõttes",
+      "Käivitage jõudlustestid 1000 samaaegse kasutajaga, et kontrollida, kas parooli-reset talub tipp-koormust — performance regression check pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas",
+      "Käivitage turvauuring OWASP ZAP-iga kogu süsteemi vastu — vastavus-audit pärast iga code-muudatust pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sanity = kitsas, fookustatud, kiire. Testija proovib parandatud voo läbi + lähedalt seotud osa, et kinnitada, et fix ei lõhkunud sisselogimist. Variant 2 on täielik regressioon (sanity tüpiliselt selle väldib mahu pärast); variant 3 on performance test (eraldi); variant 4 on turvatest (eraldi). Sanity = väike, sihipärane kontroll."
   }
 ]
