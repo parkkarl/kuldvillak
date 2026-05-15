@@ -634,5 +634,101 @@
     ],
     "correctIndex": 1,
     "explanation": "Tööriistad: Testim, Mabl, Functionize (self-healing UI-testid); GitHub Copilot / Diffblue Cover (testikoodi generatsioon); Applitools (visuaalne AI-regressioon); Launchable (test prioritization ML-iga). Variant 1 on hype-ülepingutus; variant 3 on defensiivne eitus (AI on juba praktikas kasutuses); variant 4 on liiga kitsas."
+  },
+  {
+    "level": 3,
+    "question": "Mis on CI (Continuous Integration) peamine mõju testimisele tiimi-tasandil?",
+    "options": [
+      "CI asendab testimise täielikult — kui pipeline läbib edukalt, pole eraldi testimist enam vaja, kõik kvaliteediküsimused on automaatselt lahendatud koos juurutusega staging-keskkonda",
+      "CI loob kiire tagasiside-tsükli — automaatsed testid käivituvad iga commit'i järel, defektid avastatakse minutites tundide või päevade asemel",
+      "CI tähendab, et testid käivituvad ainult öösiti planeeritud aknas — päeval arendaja ei pea ootama, sest pilve-ressursid on jagatud kasutajate jaoks võimsuse järgi prioritiseeritult",
+      "CI on testimise asendaja moodses arenduses — testimist enam ei tehta käsitsi, sest pidev integratsioon ja DevOps-praktikad tagavad koodi kvaliteedi automaatselt sprindi vältel"
+    ],
+    "correctIndex": 1,
+    "explanation": "CI võti on KIIRE TAGASISIDE: muudatus → automaatne build + test → tulemus tiimile minutites. Variant 1 ja 4 segavad CI testimise asendajaga (CI EI asenda testimist, ta automatiseerib selle); variant 3 võtab CI-d planeeritud öise tööna, mis on klassikaline 'nightly build' anti-muster CI vastandina."
+  },
+  {
+    "level": 5,
+    "question": "Miks soovitatakse arendajal unit-testid lokaalselt läbi käia ENNE commit'i CI pipeline'i tegemist?",
+    "options": [
+      "CI server keeldub commit'i vastu võtmast, kui unit-testid pole eelnevalt lokaalselt käivitatud — Git-i sisemine reegel, mis kehtib kõikidele projektidele globaalselt vaikimisi konfiguratsioonis",
+      "Vältida mainline'i 'punaseks' jätmist teistele — katkine build blokeerib tiimi tööd",
+      "Lokaalsed testid annavad arendajale kindlustunde ja säästavad CI ressursse, kuid kohustuslik pole — CI on lõplik tõe-allikas testimise asjus ja tema tulemus on autoriteetne tiimi jaoks",
+      "Lokaalsed unit-testid kasutavad rohkem mälu kui CI omad — neid tehakse arendaja masinaga, et säästa pilve-arveid ja vähendada CO2 jalajälge ettevõttes vastavalt jätkusuutlikkuse-strateegiale"
+    ],
+    "correctIndex": 1,
+    "explanation": "CI head tavad: arendaja kasutab TDD-d ja jookseb kõik unit-testid lokaalselt edukalt enne commit'i. Katkine mainline blokeerib teisi (järgmised commit'id ehituvad katkise pealt → defektid kuhjuvad → juurpõhjus hägustub). Variant 1 on müüt (Git ei kontrolli teste); variant 3 alahindab vastutust; variant 4 segab terminit lokaalsega."
+  },
+  {
+    "level": 6,
+    "question": "Mis on standardne tiimi-protokoll, kui CI mainline ehitus läheb katki (broken build)?",
+    "options": [
+      "Ignoreerida ja jätkata uute featuride arendamisega — keegi parandab varsti, töö ei tohi peatuda kogu tiimis ja sprindi-edasiminek peab säilima vastavalt sprindi-eesmärgile ja velocity-le",
+      "Katkise build'i parandamine on TIIMI ESMANE prioriteet — uued commit'id peatatakse kuni roheline",
+      "Pöörata viimase commit'i automaatselt tagasi — git revert HEAD käivitatakse CI hook'i poolt iga ebaõnnestumise korral, et hoida mainline alati roheline ja deployable iga hetk kõigile",
+      "Saata defekti raport eraldi testitiimile, kes uurib põhjuse ja teavitab arendajat — arendaja ise ei tegele build'i parandamisega, see on testija standardvastutus tüüpiliselt organisatsiooni hierarhias"
+    ],
+    "correctIndex": 1,
+    "explanation": "'Stop the line' põhimõte (Toyota Production System'ist). Iga uus commit katkise build'i pealt tooks defekte juurde ja hägustaks juurpõhjuse. Variant 1 lubab probleemil kasvada; variant 3 (auto-revert) on agressiivne ja kustutab töö kontrollimata; variant 4 lükkab vastutuse valele rollile — broken build on arendaja vastutus."
+  },
+  {
+    "level": 7,
+    "question": "Miks on testikeskkonna sarnasus produktsiooniga (environment parity) oluline CI/CD kontekstis?",
+    "options": [
+      "Sarnasus pole oluline — testid on sama-tulemuslikud igas keskkonnas, sest tarkvara on deterministlik ja sõltumatu OS-ist, taristust ning konfiguratsioonist põhimõtteliselt vastuvõetavalt aja jooksul",
+      "Tarkvara käitub eri keskkondades erinevalt (OS, sõltuvused, võrk, andmemaht) — ainult sarnane keskkond paljastab juurutuseaegsed üllatused",
+      "Sarnasus on vajalik AINULT enne suuri väljaandmisi (major release) — sprindi-tasemel testid võivad joosta kerge mock-keskkonnas, sest mõju on piiratud ja tagasipöördumine on lihtne hiljem CI kaudu",
+      "Sarnasus tähendab, et test peab kasutama production-andmebaasi otsekoopiat sisu järgi — sünteetilised testandmed pole lubatud, sest jätaksid kasutusmustreid katmata kõikides süsteemides reaalselt"
+    ],
+    "correctIndex": 1,
+    "explanation": "CI hea tava: testimine sarnasel cloned production environment'il paljastab klassikalised üllatused (eri sõltuvuste versioonid, võrgu-latents, andmemahu mõjud päringutele). Variant 1 on müüt; variant 3 lubab defektidel jõuda hilja; variant 4 segab parity-mõiste production-andmete kasutamisega (mis on GDPR-i tõttu reeglina keelatud)."
+  },
+  {
+    "level": 8,
+    "question": "Mis on teenuste virtualiseerimine (service virtualization) testautomaatika kontekstis?",
+    "options": [
+      "Pilve-platvormide kasutamine, kus iga test käivitub eraldi virtuaalmasinas — alternatiivne tehnika konteinerite (Docker, Kubernetes) kasutamisele paralleelses testikäituses CI-pipelines suuremas ettevõttes",
+      "Välised sõltuvused (kolmandate API-d, andmebaasid, maksesüsteemid) asendatakse simuleeritud teenusega",
+      "Selenium WebDriver-i kasutamine virtuaalsete brauseri-akende loomiseks paralleelseks testimiseks — alternatiivne nimi headless browser testing'ule moodses arendus-konteinerites jooksvalt järjest",
+      "Virtuaalmasinate (VirtualBox, VMware) kasutamine eri OS-de simuleerimiseks testimisel — vajalik cross-platform compatibility testing'u jaoks Windows-, Mac- ja Linux-versioonidel paralleelselt"
+    ],
+    "correctIndex": 1,
+    "explanation": "Service virtualization (WireMock, Mountebank, Hoverfly) imiteerib väliseid sõltuvusi, kui päris teenus pole saadaval (rate-limited API, kallis sandbox, ebastabiilne kolmas pool). Eelis: deterministlikud testid, kiired, isoleeritud. Variandid 1, 3, 4 võtavad sõna 'virtualiseerimine' eri tehnilistes kontekstides."
+  },
+  {
+    "level": 9,
+    "question": "Miks CI head tavad soovitavad lisada IGA bug-fix commit'i juurde uue testijuhu?",
+    "options": [
+      "ISTQB ja ISO/IEC/IEEE 29119 standardid nõuavad seda formaalselt — ilma testijuhu lisamiseta bug-fix commit ei vasta rahvusvahelistele kvaliteedinõuetele tarkvara tarnimise kontekstis ettevõttes auditi käigus",
+      "Et regressioonitestide-katmise mõõtmine oleks lihtsam — iga uus testijuht annab numbrilise lisand kvaliteediskoorile, mida juhtimisarmatuurlauas kuvatakse otsustajatele ja juhtkonnale igakuiselt jälgimiseks",
+      "Vältida sama defekti taas-ilmumist — test 'lukustab' parandatud käitumise",
+      "Et arendaja õpiks defekti paremini mõistma — testijuhu kirjutamine kohustab läbi mõtlema, mis täpselt katki oli, ja avab võimaluse code review-ks teisele arendajale sprindi planeerimise käigus tooteomanikuga"
+    ],
+    "correctIndex": 2,
+    "explanation": "Klassikaline CI muster: bug → reprodutseeriv test → fix → test rohestab. Tulemus: regressioon test püüab kinni, kui keegi tulevikus muudatuse tagasi keerab või regressiooni tekitab. Variant 1 on liialdus (standardid soovitavad, ei nõua otseselt); variandid 2, 4 puudutavad kõrvalkasusid, mitte põhipõhjust."
+  },
+  {
+    "level": 11,
+    "question": "Miks on CI pipeline'i kiire käivitusaeg (näiteks alla 10 minuti) testimise vaates oluline?",
+    "options": [
+      "Pilve-arved on otseses sõltuvuses pipeline'i kestusest — iga lisaminut maksab raha ja kvartali eelarve võib ületuda enne aasta lõppu, kui CI käivitub liiga sageli ja aeglaselt eri keskkondades samaaegselt",
+      "Aeglane pipeline julgustab muudatusi koguma — juurpõhjuse leidmine raskeb, CI eelis kaob",
+      "Brauserid keelduvad pikemast 10-minutilisest test-sessioonidest oma vaikimisi-konfiguratsiooniga — selle ümbersõit nõuab spetsiaalseid konfigureerimise samme iga uue projekti algul ükshaaval testijate poolt",
+      "ISTQB CTAL-TAE sertifitseerimisnõue nõuab pipeline'i alla 10 minuti — selle ületamisel kaob automaatselt ettevõttetaseme Test Automation Engineer'i kvalifikatsioon vastavalt rahvusvahelistele standarditele"
+    ],
+    "correctIndex": 1,
+    "explanation": "CI peamine väärtus on KIIRE tagasiside. Aeglase pipeline'i puhul arendaja kogub muudatusi suurte lõikudena ('käivitan testid kord päevas') — kui midagi katki, juurpõhjus on ühe suure lõigu sees, mitte ühes väikses commit'is. Variandid 1, 3, 4 on müüdid või tehniliselt valed."
+  },
+  {
+    "level": 13,
+    "question": "Mis järjekorras peaks tüüpiline CI testpipeline käivitama eri testitüüpe?",
+    "options": [
+      "Unit → Integration → E2E (UI) — kiiremad ja stabiilsemad testid esimesena (fail-fast)",
+      "E2E → Integration → Unit — kõige laiema katvusega testid esimesena, et tabad süsteemi-tasandi probleemid kohe ja unit-testid kontrollivad detaile pärast suurema pildi kinnitust kasutaja-perspektiivist",
+      "Paralleelselt kõik korraga ühes tasemes — kaasaegne CI-tööriistad (GitHub Actions matrix, Jenkins parallel stages, GitLab CI parallel) toetab seda ja annab kõige kiirema tagasiside igas mõõtkavas tiimile",
+      "Alfabeetiliselt vastavalt testifaili nimele — tagab korratava käivituse järjekorra kõikides keskkondades ja teeb debugimise lihtsamaks, kui mõni test ebaõnnestub eri arvuti peal sõltuvalt järjekorrast"
+    ],
+    "correctIndex": 0,
+    "explanation": "Fail-fast põhimõte: kui unit-testid jooksevad sekunditega ja leiavad 80% defektidest, pole mõtet enne neid läbida aeglaste e2e-de (minutid). Pyramid-järjekord. Variant 2 raiskab aega; variant 3 ignoreerib unit-testide kiirust (paralleelsus aitab e2e-de sees, mitte tasemete vahel); variant 4 on absurd (test järjekord pole testitulemuse-relevantne)."
   }
 ]
