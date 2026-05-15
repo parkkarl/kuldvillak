@@ -1210,5 +1210,77 @@
     ],
     "correctIndex": 0,
     "explanation": "Configuration testing protsess: vali (mis kombinatsioonid katta), loo (testijuhud iga setupi jaoks), käivita (manuaal/auto), analüüsi (mis on setupi-spetsiifiline defekt vs ühine bug). Variandid 2, 3, 4 on muude testimise-tegevuste sammud (CI-pipeline ehitamine, koodi-audit, testpüramid)."
+  },
+  {
+    "level": 4,
+    "question": "Mis on installation testing põhi-fookus?",
+    "options": [
+      "Kontrollida, et kasutaja saab tarkvara edukalt paigaldada ja seadistada sihtkeskkonnas — eraldi testimisharu, mis keskendub installeerimisprotsessile, mitte funktsionaalsusele",
+      "Kontrollida, et tarkvara funktsionaalsus pärast install'i vastab nõuete dokumendile täielikult — funktsionaalne kontroll, mis algab installi lõppedes ja katab kõik kasutuslood pikemas perspektiivis ettevõttes ja organisatsioonis pikas vaates",
+      "Kontrollida, et tarkvara installeerub iga kvartal vähemalt korra automaatselt mainline-keskkonda — DevOps pidev-juurutamise muster pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikemas perspektiivis pikas vaates",
+      "Kontrollida, et installeerija fail (.msi, .deb, .pkg, .dmg) on krüpteeritud korralikult enne jagamist klientidele — turvalisuse kontroll suuremas tarkvarapakettis pikemas perspektiivis ettevõttes pikas vaates pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Installation testing on omaette testimisharu, mis ei kattu funktsionaalse testimisega — selle fookus on PAIGALDUSPROTSESS ise (sõltuvuste tuvastamine, õigete kataloogide loomine, registri-kanded, otseteed jne). Variant 2 kirjeldab funktsionaalset testimist; variant 3 puudutab CI/CD-d; variant 4 on turvatestimise alaliik."
+  },
+  {
+    "level": 6,
+    "question": "Mis vahe on installation testing'ul ja functional testing'ul?",
+    "options": [
+      "Installation testing kontrollib SETUP-protsessi (paigaldamine, registri-kanded, sõltuvuste laadimine); functional testing kontrollib töötava rakenduse käitumist nõuete vastu",
+      "Installation on alati manuaalne ja functional alati automaatne — automatiseerimise aste on kahe testimise peamine eristaja praktikas suurettevõttes pikemas perspektiivis IT-osakonnas pikas vaates pikas perspektiivis pikas vaates pikemas perspektiivis",
+      "Installation testib ainult Windows-i ja functional ainult Linux-i — kaks platvormi-spetsiifilist testimisharu sõltuvalt OS-ist pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikemas vaates pikas perspektiivis pikas vaates",
+      "Installation toimub arenduse algfaasis ja functional projekti lõpus — kaks järjestikust ajalist faasi sama tegevuse jaoks pikas perspektiivis projekti vältel suuremas ettevõttes pikemas vaates pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Installation = enne kui rakendus käivitub esmakordselt. Functional = rakendus on installeeritud, käivitub ja testitakse käitumist. Kaks järjestikust faasi, eri fookusega. Variandid 2, 3, 4 on müüdid (mõlemat saab automatiseerida, mõlemad töötavad kõikidel OS-idel, ei ole ajalise järjekorra peamiseks eristajaks)."
+  },
+  {
+    "level": 7,
+    "question": "Mida tüüpiliselt installation testing kontrollib seoses sõltuvustega (dependencies)?",
+    "options": [
+      "Vajalike teekide, raamistike ja runtime'ide olemasolu (näit .NET Framework, Java JRE, libssl, Visual C++ Redistributable) ning nende õige versiooni — installer-pakett tuvastab puudujäägid ja vajadusel paigaldab",
+      "Kõik kolmandate poolte teekide litsentside ühilduvus (MIT vs GPL vs Apache 2.0) — juriidiline kontroll, mis tagab vastavuse avatud lähtekoodi reeglitele pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas vaates pikas perspektiivis",
+      "Iga sõltuvuse turvahaavatavused (CVE-de jälgimine, Snyk, Dependabot) — turvatestimise alaliik, mis tagab, et installeeritav tarkvara ei sisalda tuntud haavatavusi pikemas perspektiivis ettevõttes pikas vaates pikas perspektiivis pikas vaates pikas perspektiivis",
+      "Sõltuvuste graafi visuaalne kuvamine kasutajale install'i ajal (npm graph, mvn dependency:tree) — UX-aspekt, mis annab kasutajale ülevaate paigaldamise sisust pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Installation testing kontrollib, et installer ENDA TÖÖD teeks korralikult: tuvastab puuduvad sõltuvused (näit 'see rakendus vajab .NET 8'), pakub paigaldamist või katkestab korralikult selge teatega. Variant 2 on litsentsi-audit; variant 3 on dependency security scan (eraldi tegevus); variant 4 on dev-tooling, mitte installer."
+  },
+  {
+    "level": 9,
+    "question": "Mis on 'dry run' (või 'dress rehearsal') tüüpi installation testing distributeeritud süsteemides?",
+    "options": [
+      "Plaanitud juurutamise täielik harjutus replica-keskkonnas, mis sarnaneb production'iga — testitakse andmebaasi-skeemide migratsiooni, mitme tasandi rakenduse-uuendust ja back-out plaani enne päris-juurutust",
+      "Lühike hommiku-koosolek tiimi-juhi juures, kus arutatakse järgmise nädala juurutamise kava ja jagatakse rolle töötajate vahel — projektijuhtimise praktika pikemas perspektiivis suuremas ettevõttes pikas vaates pikas perspektiivis pikas vaates",
+      "Spetsiaalse 'dry-run' lipuga (--dry-run) command-line skripti käivitamine, mis simuleerib käske ilma neid päris-täitmata — Linux-i tööriistade tavaline funktsioon pikemas perspektiivis suuremas DevOps-tiimis pikas vaates pikas perspektiivis pikas vaates",
+      "Tarkvarapakettide paigaldamine kuiva (vee-vaba) keskkonnas — riistvara-katsete eritüüp, mis välistab niiskuse mõju installeerimisel andmekeskuses pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas vaates pikemas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dry run / dress rehearsal = juurutamise täielik harjutus production-sarnasel keskkonnal enne päris juurutamist. Eriti oluline mitme tasandi süsteemides (DB-migratsioon + API-uuendus + frontend-deploy + cache-invalidation). Variant 3 on REAALNE termin (--dry-run flag), kuid eri kontekstis. Variant 2 ja 4 on müüdid."
+  },
+  {
+    "level": 11,
+    "question": "Mida kontrollib 'post-installation testing' (paigaldusjärgne testimine)?",
+    "options": [
+      "Kas tarkvara KÄIVITUB pärast installi, kas vajalikud failid on õigetes asukohtades, kas käivitusmenüü-otseteed töötavad, kas teenused (Windows Service, systemd unit) registreeruvad ja stardivad",
+      "Kas kasutaja-tellimuse ja makse-protsessi terve kasutaja-teekond töötab e-poes vastavalt nõuetele — funktsionaalne süsteemitest tervikliku kasutaja-stsenaariumi vastu pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas",
+      "Kas rakenduse logifailid jõuavad keskse log-süsteemi (ELK, Splunk, Loki) korrektse formaadiga — observability-kontroll moodses pilve-arhitektuuris pikemas perspektiivis suuremas ettevõttes pikas vaates pikas perspektiivis pikas vaates pikas perspektiivis",
+      "Kas kasutaja teadmised tarkvara käitumise kohta vastavad dokumentatsioonile — kasutaja-koolituse hindamine pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Post-installation testing = 'minimum smoke test' pärast installeerimist: kas kõik installer'i poolt loodud asjad TEGELIKULT TÖÖTAVAD? Kas .exe käivitub? Kas teenused on aktiivsed? Kas otseteed on toimivad? Variant 2 on funktsionaalne süsteemitest (eraldi); variant 3 on observability-test; variant 4 on koolituse-hindamine."
+  },
+  {
+    "level": 13,
+    "question": "Mis on 'back-out procedure' installation testing'us?",
+    "options": [
+      "Plaan ja testitud sammud, kuidas tagasi pöörata juurutamine, kui see ebaõnnestub — andmebaas, failid ja konfiguratsioon taastatakse pre-install seisu ilma andmekaota",
+      "Tagasi-pöördumine kasutaja-konto loomiseni, kui registreerimise vorm ebaõnnestub keskel — UX-paranduse muster moodses veebirakenduses pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas vaates pikemas perspektiivis",
+      "Defekti tagasi-suunamine arendajale pärast testija leidu — Jira-s 'returned to dev' staatuse omistamine sprindi vältel suuremas tarkvaratiimis pikemas perspektiivis ettevõttes pikas vaates pikas perspektiivis pikemas vaates pikas vaates",
+      "Pen-testi tulemuste tagasi-suunamine turvaarhitektidele — formaalne raporteerimine vastavus-audit'i raames suuremas korporatsioonis pikemas perspektiivis ja regulatsiooni-vastavuse tagamiseks pikas vaates ettevõttes pikas vaates pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Back-out = juurutamise 'undo'. Erineb failback'ist (mis viib töökoormuse tagasi primaarsele pärast DR-i): back-out viib süsteemi tagasi pre-deployment seisu kui juurutus läks valesti. Vajab head testimist enne juurutust (et back-out ise töötab). Variandid 2, 3, 4 on muude protsesside kirjeldused."
   }
 ]
