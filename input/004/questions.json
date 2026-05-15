@@ -3,10 +3,10 @@
     "level": 1,
     "question": "Mis on testimise peamine eesmärk kaasaegses tarkvaraarenduses?",
     "options": [
-      "Tõestada formaalselt, et tarkvara on vigadeta — testikomplekti edukas läbimine garanteerib defektide täieliku puudumise",
-      "Avastada defekte, hinnata kvaliteeti ja anda sidusrühmadele teavet süsteemi seisukorra ning riskide kohta",
-      "Kontrollida, et arendaja on järginud kõiki kodeerimisstandardeid — testija roll on koodistiili ja konventsioonide järelevalve",
-      "Garanteerida, et iga võimalik sisendi-kombinatsioon ja kasutusstsenaarium on enne juurutamist süstemaatiliselt kontrollitud"
+      "Tõestada formaalselt matemaatilise rangusega, et tarkvara on vigadeta — testikomplekti edukas täielik läbimine garanteerib defektide täieliku puudumise enne väljaandmist",
+      "Avastada defekte, hinnata kvaliteeti ja anda sidusrühmadele teavet süsteemi seisukorra kohta",
+      "Kontrollida, et arendaja on järginud kõiki kodeerimisstandardeid ning et kommentaarid, nimed ja vorming vastavad ettevõtte stiilijuhendile",
+      "Garanteerida, et iga võimalik sisendi-kombinatsioon ja kasutusstsenaarium on enne juurutamist süstemaatiliselt kontrollitud erinevates keskkondades"
     ],
     "correctIndex": 1,
     "explanation": "ISTQB põhimõte: testimine NÄITAB defekti olemasolu, kuid ei TÕESTA nende puudumist (variant 1 on klassikaline müüt). Täielik kombinatsioonide testimine on praktiliselt võimatu (variant 4). Koodistiili kontroll on koodiülevaatuse, mitte testimise ülesanne (variant 3)."
@@ -15,22 +15,22 @@
     "level": 1,
     "question": "Mis vahe on terminitel error, defect ja failure?",
     "options": [
-      "Need on tegelikult sünonüümid, mida kasutatakse vaheldumisi sõltuvalt projekti dokumentatsiooni stiilist ja organisatsiooni traditsioonidest",
-      "Error tähistab kompileerimisaegset viga koodis, defect kompileerimishoiatust ja failure käivitusaegset erinditeadet konsoolis",
-      "Error on inimese tehtud eksimus (mistake), defect on selle tagajärjel artefakti jäänud puudus, failure on käivitamisel jälgitav kõrvalekalle oodatust",
-      "Error on lihtsalt eestikeelne tõlge, defect inglise standardtermin ja failure süsteemiarhitekti kasutatav formaalne mõiste"
+      "Need on tegelikult sünonüümid, mida kasutatakse vaheldumisi sõltuvalt projekti dokumentatsiooni stiilist, organisatsiooni traditsioonidest ja keelest",
+      "Error tähistab kompileerimisaegset viga koodis, defect aga kompileerimishoiatust, mis pole kriitiline ja failure käivitusaegset erinditeadet konsoolis",
+      "Error on inimese eksimus, defect on selle tagajärjel artefakti jäänud puudus, failure on käivitamisel jälgitav kõrvalekalle oodatust",
+      "Error on lihtsalt eestikeelne tõlge sõnale defect; defect on inglise standardtermin ja failure süsteemiarhitekti kasutatav formaalne mõiste tehnilises spetsifikatsioonis"
     ],
     "correctIndex": 2,
-    "explanation": "ISTQB sõnastiku põhiahel: arendaja eksib (error) → kood saab vea (defect/bug/fault) → kasutaja kogeb tõrget (failure). Iga defekt ei tekita failure'i — võib jääda käivitamata teel. Variantide 1, 2, 4 puhul jäetakse tähelepanuta klassikaline põhjusahel inimese eksimusest kasutaja tõrkeni."
+    "explanation": "ISTQB sõnastiku põhiahel: arendaja eksib (error) → kood saab vea (defect/bug/fault) → kasutaja kogeb tõrget (failure). Iga defekt ei tekita failure'i — võib jääda käivitamata teel. Variantide 1, 2, 4 puhul jäetakse tähelepanuta klassikaline põhjusahel."
   },
   {
     "level": 1,
     "question": "Miks öeldakse, et täielik testimine pole võimalik?",
     "options": [
-      "Sellepärast, et testimisvahendid pole piisavalt arenenud — AI-põhiste testigeneraatorite ja pilve-arvutuse ajastul see piirang kaob varsti",
-      "Ainult kriitiliste süsteemide (lennundus, meditsiin) puhul on täielik testimine kohustuslik, muudel juhtudel kulukuse tõttu ebaratsionaalne",
-      "Sisendite, seisundite ja keskkondade kombinatsioonide hulk on praktiliselt lõpmatu, mistõttu testitakse riskipõhiselt valitud osa süstemaatiliselt",
-      "Testimisstandardid (IEEE, ISO) keelavad mõnede tarkvara osade testimist, et säilitada arendaja vastutus ja vältida testija eelarvamust"
+      "Sellepärast, et testimisvahendid pole piisavalt arenenud — AI-põhiste testigeneraatorite, pilve-arvutuse ja kvant-arvutuse ajastul see tehnoloogiline piirang kaob varsti",
+      "Ainult kriitiliste süsteemide (lennundus, meditsiin, tuumajaamad) puhul on täielik testimine kohustuslik, muudel juhtudel kulukuse ja ajakulu tõttu lihtsalt ebaratsionaalne",
+      "Kombinatsioonide hulk on praktiliselt lõpmatu, mistõttu testitakse riskipõhiselt valitud osa",
+      "Testimisstandardid (IEEE 829, ISO/IEC/IEEE 29119) keelavad mõnede tarkvara osade testimist, et säilitada arendaja vastutus ja vältida testija eelarvamust"
     ],
     "correctIndex": 2,
     "explanation": "Üks ISTQB seitsmest põhimõttest: 'exhaustive testing is impossible'. Isegi lihtne 32-bitise sisendi väli annab 4 miljardit varianti — kombinatoorne plahvatus on piiranguks. AI ei lahenda kombinatsioonide hulka (variant 1); lennunduses ei testita 'kõike', vaid kõrgendatud katvusega (variant 2); standardid ei keela testimist (variant 4)."
@@ -39,22 +39,22 @@
     "level": 2,
     "question": "Mis on putukamürgi paradoks (pesticide paradox) testimises?",
     "options": [
-      "Sama testikomplekti korduv käivitamine lakkab uusi defekte avastamast — testid tuleb regulaarselt üle vaadata, täiendada ja varieerida, et nad jätkaksid leidmist",
-      "Mida rohkem teste kirjutatakse, seda enam defekte avastatakse, sest iga uus test kaudselt tutvustab koodi täiendavaid muudatusi ja regressioone",
-      "Defektid kobarduvad teatud moodulite ümber — kui ühes failis on viga, on tõenäoliselt teisigi samas failis, nii nagu mürk kontsentreerub ühte kohta",
-      "Automaattestide käitamine tarbib serveriressurssi nii intensiivselt, et CI/CD pipeline'i tuleb piirata kindla arvu päevadetegevuste kohta"
+      "Sama testikomplekti korduv käivitamine lakkab uusi defekte avastamast — testid tuleb regulaarselt üle vaadata ja täiendada",
+      "Mida rohkem teste kirjutatakse, seda enam defekte avastatakse, sest iga uus test toob kaudselt kaasa koodi muudatusi, mis omakorda võivad olla bug'ide allikaks",
+      "Defektid kobarduvad teatud moodulite ümber — kui ühes failis on viga, siis on tõenäoliselt teisigi sarnaseid samas failis, nii nagu mürk kontsentreerub teatud kohtadesse pinnasel",
+      "Automaattestide käitamine tarbib serveriressurssi nii intensiivselt, et CI/CD pipeline'i tuleb piirata kindla arvu päevasete käivituste juurde, et säästa pilve-arveid"
     ],
     "correctIndex": 0,
-    "explanation": "ISTQB põhimõte: testid 'harjuvad' koodiga sarnaselt putukate harjumisega mürgile. Lahendus on testikomplekti pidev uuendamine ja varieerimine. Variant 3 kirjeldab defektide kobardumist (defect clustering) — eraldi ISTQB põhimõte, mitte putukamürgi paradoks. Variandid 2 ja 4 on väljamõeldud sõnastused."
+    "explanation": "ISTQB põhimõte: testid 'harjuvad' koodiga sarnaselt putukate harjumisega mürgile. Variant 3 kirjeldab DEFEKTIDE KOBARDUMIST (defect clustering) — eraldi ISTQB põhimõte, mis on kerge segi ajada. Variandid 2 ja 4 on väljamõeldud sõnastused."
   },
   {
     "level": 2,
     "question": "Mis on testitasandid (test levels) klassikalises ISTQB raamistikus?",
     "options": [
-      "Testija oskustasemete jaotus (algaja, kesktase, edasijõudnu, ekspert) vastavalt ISTQB sertifitseerimise hierarhia tasanditele ja töökogemusele",
-      "Komponenditest (unit), integratsioonitest, süsteemitest ja vastuvõtutest (acceptance) — testimine erineva detailsuse tasemel arenduse käigus",
-      "Funktsionaalne, mittefunktsionaalne, regressioon ja jõudlustest — neli põhilist testimise viisi, mida iga sprindi vältel rakendatakse",
-      "Automatiseerimise astmed: manuaalne, skripti-põhine, andme-juhitud, võtmesõna-juhitud — vastavalt sellele, kui palju koodi testija ise kirjutab"
+      "Testija oskustasemete jaotus (algaja, kesktase, edasijõudnu, ekspert) vastavalt ISTQB sertifitseerimise hierarhia tasanditele ja töökogemusele aastates",
+      "Komponenditest, integratsioonitest, süsteemitest ja vastuvõtutest — testimine erineva detailsuse tasemel",
+      "Funktsionaalne, mittefunktsionaalne, regressioon ja jõudlustest — neli põhilist testimise viisi, mida iga sprindi jooksul rakendatakse erinevates projektifaasides",
+      "Automatiseerimise astmed: manuaalne, skripti-põhine, andme-juhitud, võtmesõna-juhitud — vastavalt sellele, kui palju koodi testija ise kirjutab raami sees"
     ],
     "correctIndex": 1,
     "explanation": "Testitasandid vastavad arenduse abstraktsioonitasanditele (mooduldisain ↔ unit, süsteemidisain ↔ system). Variant 3 segab testitasandid testitüüpidega — need on ortogonaalsed (funktsionaalne komponenditest VÕI mittefunktsionaalne süsteemitest). Variant 4 puudutab automatiseerimise tehnikat, variant 1 sertifitseerimist."
@@ -63,10 +63,10 @@
     "level": 2,
     "question": "Mis on funktsionaalse ja mittefunktsionaalse testimise vahe?",
     "options": [
-      "Funktsionaalne testimine on alati käsitsi tehtav, mittefunktsionaalne nõuab spetsiaalseid tööriistu (JMeter jõudluseks, OWASP ZAP turvalisuseks)",
-      "Funktsionaalne testimine kontrollib MIDA süsteem teeb (vastavus nõuetele), mittefunktsionaalne KUIDAS ta seda teeb (jõudlus, turvalisus, kasutatavus)",
-      "Funktsionaalne testimine puudutab frontend'i ja kasutajaliideseid, mittefunktsionaalne backend'i, andmebaasi ja infrastruktuuri kihti",
-      "Funktsionaalne testimine on kohustuslik iga release jaoks, mittefunktsionaalne tehakse ainult kriitilistele süsteemidele või suurte versioonide puhul"
+      "Funktsionaalne testimine on alati käsitsi tehtav inimese poolt, mittefunktsionaalne nõuab spetsiaalseid tööriistu (JMeter jõudluseks, OWASP ZAP turvalisuseks, Lighthouse kasutatavuseks)",
+      "Funktsionaalne kontrollib MIDA süsteem teeb (vastavus nõuetele), mittefunktsionaalne KUIDAS ta seda teeb (jõudlus, turvalisus, kasutatavus)",
+      "Funktsionaalne testimine puudutab frontend'i ja kasutajaliideseid kõikidel kihtidel, mittefunktsionaalne backend'i, andmebaasi ja infrastruktuuri kihti tervikuna",
+      "Funktsionaalne testimine on kohustuslik iga release jaoks ja vastab nõuetele, mittefunktsionaalne tehakse ainult kriitilistele süsteemidele või suuremate versioonide eel kontrollina"
     ],
     "correctIndex": 1,
     "explanation": "Klassikaline jagamine. Funktsionaalne: 'kas sisselogimine töötab nõuetele vastavalt?'. Mittefunktsionaalne: 'kui kiiresti? kui turvaliselt? kui kasutatavalt?'. Variandid 1, 3, 4 on müüdid — mõlemat saab teha käsitsi/automaatselt, mõlemad puudutavad kõiki kihte ja iga süsteem vajab mõlemat (kasvõi minimaalsel tasemel)."
@@ -75,22 +75,22 @@
     "level": 3,
     "question": "Mis on V-mudel tarkvaraarenduses?",
     "options": [
-      "Versioonihalduse mudel, kus iga release saab unikaalse 'V'-prefiksi (V1, V2) ja branchide nimed järgivad sama konventsiooni",
-      "Iteratiivne arendusmudel, kus iga 'V'-tähistatud iteratsioon kestab kaks nädalat ja sisaldab planeerimist, arendust ja vastuvõttu",
-      "SDLC mudel, kus iga arendusetapp (nõuded, disain, kood) seostatakse vastava testimistasandiga — testimist planeeritakse paralleelselt arendusega, mitte selle järel",
-      "Valideerimismudel, mis nõuab iga funktsiooni testimist viiel viisil (unit, integration, system, acceptance, regression) enne juurutamist"
+      "Versioonihalduse mudel, kus iga release saab unikaalse 'V'-prefiksi (V1, V2, V3) ja branchide nimed järgivad sama konventsiooni meeskonnas, sh release-branchi-, hotfix-branchi- ja feature-branchi puhul",
+      "Iteratiivne arendusmudel, kus iga 'V'-tähistatud iteratsioon kestab kaks nädalat ja sisaldab planeerimist, arendust ja vastuvõttu — Scrum-laadne raamistik teisesõnastuses",
+      "SDLC mudel, kus iga arendusetapp seostatakse vastava testimistasandiga — testimist planeeritakse paralleelselt, mitte hiljem",
+      "Valideerimismudel, mis nõuab iga funktsiooni testimist viiel viisil (unit, integration, system, acceptance, regression) enne juurutamist — 'V' tähistab numbrit viis rooma numbritega"
     ],
     "correctIndex": 2,
-    "explanation": "V-mudel on Waterfall'i laiendus, kus 'V' kuju näitab arenduse (vasak haar) ja testimise (parem haar) sümmeetriat: nõuded ↔ vastuvõtutest, süsteemidisain ↔ süsteemitest, mooduldisain ↔ unit-test. Variant 2 ajab segi iteratiivse mudeliga (Scrum); variant 4 keerab numbri '5' V-tähena. Variant 1 võtab termini sõnasõnalt."
+    "explanation": "V-mudel on Waterfall'i laiendus, kus 'V' kuju näitab arenduse (vasak haar) ja testimise (parem haar) sümmeetriat: nõuded ↔ vastuvõtutest, süsteemidisain ↔ süsteemitest, mooduldisain ↔ unit-test. Variant 2 ajab segi iteratiivse mudeliga; variant 4 keerab numbri '5' V-tähena. Variant 1 võtab termini sõnasõnalt."
   },
   {
     "level": 3,
     "question": "Mis vahe on testistsenaariumil (test scenario) ja testijuhul (test case)?",
     "options": [
-      "Testistsenaarium on alati automatiseeritud Selenium-iga, testijuht manuaalne — automatiseerimise aste on terminite peamine eristaja",
-      "Testistsenaarium kirjeldab MIDA testitakse kõrgemal tasemel (nt 'kasutaja teeb tellimuse'), testijuht on konkreetne sammude jada koos sisendite ja oodatud tulemustega",
-      "Testijuht testib positiivset (happy path) käitumist, testistsenaarium negatiivset (vea-juhtumeid) — need on positiivse ja negatiivse testimise sünonüümid",
-      "Testijuht koostatakse sprindi planeerimise faasis, testistsenaarium pärast arendust integratsiooni- ja süsteemitestide planeerimise käigus"
+      "Testistsenaarium on alati automatiseeritud Selenium-iga või Cypress-iga, testijuht on käsitsi käivitatav — automatiseerimise aste on terminite peamine eristaja praktikas",
+      "Testistsenaarium kirjeldab MIDA testitakse kõrgemal tasemel, testijuht on konkreetne sammude jada koos sisendite ja oodatud tulemustega",
+      "Testijuht testib alati positiivset (happy path) käitumist toodetest, testistsenaarium negatiivset (vea-juhtumeid) — need on positiivse ja negatiivse testimise sünonüümid eri organisatsioonides",
+      "Testijuht koostatakse sprindi planeerimise faasis enne arendust, testistsenaarium pärast arenduse lõppu integratsiooni- ja süsteemitestide planeerimise käigus PO juhendamisel"
     ],
     "correctIndex": 1,
     "explanation": "Stsenaarium = situatsioon või kasutusjuhtum. Testijuht = selle situatsiooni konkreetne kontroll koos sisendite ja sammudega. Üks stsenaarium võib hõlmata mitut testijuhtu (positiivne tee, piirväärtused, negatiivne tee). Variantide 1, 3, 4 jagamise alused ei ole ISTQB definitsioonid."
@@ -99,10 +99,10 @@
     "level": 3,
     "question": "Mis kuulub kvaliteetse testijuhu (test case) struktuuri?",
     "options": [
-      "Ainult oodatav tulemus ja prioriteet — kõik muu jääb testija hinnangule, et säilitada paindlikkust ja vältida ülemääraset bürokraatiat",
-      "Unikaalne ID, eeltingimused, sammud, sisendandmed, oodatav tulemus, järeltingimused, prioriteet ja jälgitavus nõudega (traceability)",
-      "Lähtekood, mis kontrollib funktsiooni, koos assertion-idega — testijuht ja automaattest on tegelikult sama dokumendi kaks vormi",
-      "Defekti raport koos screenshot'i, logide ja repro-sammudega — testijuht on tegelikult dokumenteeritud defekti kirjeldus pärast leidmist"
+      "Ainult oodatav tulemus ja prioriteet — kõik muu jääb testija individuaalsele hinnangule, et säilitada paindlikkust ja vältida ülemääraset bürokraatiat suurettevõttes",
+      "Unikaalne ID, eeltingimused, sammud, sisendandmed, oodatav tulemus, järeltingimused, prioriteet ja jälgitavus nõudega",
+      "Lähtekood, mis kontrollib funktsiooni, koos assertion-idega ja import-deklaratsioonidega — testijuht ja automaattest on tegelikult sama dokumendi kaks kuvavormi",
+      "Defekti raport koos screenshot'i, logifailide ja repro-sammudega — testijuht on tegelikult dokumenteeritud defekti kirjeldus pärast leidmist ja triage'i"
     ],
     "correctIndex": 1,
     "explanation": "IEEE 829 / ISO 29119-3 määratleb testijuhu standardstruktuuri. Eesmärk: korratavus (iga testija saab samad tulemused) ja jälgitavus (lingib nõudega). Variant 1 jätaks testimise mittedeterministlikuks; variant 3 ajab segi testijuhu (spetsifikatsiooni) ja testikoodi (realisatsiooni); variant 4 segab testijuhu (eeltöö) defekti raportiga (tagajärg)."
@@ -111,22 +111,22 @@
     "level": 4,
     "question": "Mis on must-kasti (black-box) testimine?",
     "options": [
-      "Lähtekoodi-põhine testimine, kus testija analüüsib kontrollivoogu ja kavandab teste, mis katavad kõik tingimuslaused ja hargnemised süstemaatiliselt",
-      "Mittefunktsionaalne testimine UI kihis, kus testija kontrollib ainult välimust ja paigutust, jättes API ja andmebaasi tasandi puutumata",
-      "Spetsifikatsioonipõhine testimine, kus testija kavandab teste sisendite ja oodatud väljundite alusel, ilma lähtekoodi vaatamata — keskendub välisele käitumisele",
-      "Automaattestimise vorm, kus testitööriist genereerib juhuslikke sisendeid ja võrdleb tulemusi varem salvestatud 'kuldse' väljundiga (golden master)"
+      "Lähtekoodi-põhine testimine, kus testija analüüsib detailselt kontrollivoogu ning kavandab teste, mis katavad kõik tingimuslaused, hargnemised ja tsüklid süstemaatiliselt mõõdetava katvusega",
+      "Mittefunktsionaalne testimine UI kihis, kus testija kontrollib ainult välimust, paigutust ja värve, jättes API ja andmebaasi tasandi puutumata teiste testijate tarbeks",
+      "Spetsifikatsioonipõhine testimine, kus testija kavandab teste sisendite ja oodatud väljundite alusel, lähtekoodi vaatamata",
+      "Automaattestimise vorm, kus testitööriist genereerib juhuslikke sisendeid suurel hulgal ja võrdleb tulemusi varem salvestatud 'kuldse' väljundiga (golden master pattern)"
     ],
     "correctIndex": 2,
-    "explanation": "Must kast = testija näeb süsteemi 'väljast' (sisend → väljund), ei tea sisemist struktuuri. Variant 1 kirjeldab vastandit — valge-kasti (white-box) testimist. Variant 2 ajab segi must-kasti UI-testimisega (eri abstraktsuse mõõtmed). Variant 4 kirjeldab golden master / approval testing'ut, mis on eraldi tehnika."
+    "explanation": "Must kast = testija näeb süsteemi 'väljast' (sisend → väljund), ei tea sisemist struktuuri. Variant 1 kirjeldab vastandit — valge-kasti (white-box) testimist. Variant 2 ajab segi must-kasti UI-testimisega (eri abstraktsuse mõõtmed). Variant 4 kirjeldab golden master / approval testing'ut."
   },
   {
     "level": 4,
     "question": "Mis on ekvivalentsusklasside (equivalence partitioning) tehnika?",
     "options": [
-      "Sisendite jagamine rühmadeks, kus kõik liikmed käituvad eeldatavasti sarnaselt — igast rühmast testitakse ühte esindajat, vähendades testide arvu kaotamata katvust",
-      "Testijuhtude jagamine prioriteediklassideks (kõrge, keskmine, madal) riski järgi, millest käivitatakse alati ainult kõrgeima prioriteediga klassi",
-      "Test-suit'ide grupeerimine vastavalt sellele, millises sprindi faasis nad käivitatakse (commit-time, nightly, release-time) — ajakava-põhine jagamine",
-      "Defektide klassifitseerimine ekvivalentsetes raskusastmete klassides (S1, S2, S3, S4) — eesmärk on ühtlustada hindamist testijate vahel"
+      "Sisendite jagamine rühmadeks, kus liikmed käituvad eeldatavasti sarnaselt — igast rühmast testitakse ühte esindajat",
+      "Testijuhtude jagamine prioriteediklassideks (kõrge, keskmine, madal) riski järgi, millest käivitatakse alati ainult kõrgeima prioriteediga klassi enne väljaandmist juurutusse",
+      "Test-suit'ide grupeerimine vastavalt sellele, millises sprindi faasis nad käivitatakse (commit-time, nightly, weekly, release-time) — ajakava-põhine jagamine pipeline'is",
+      "Defektide klassifitseerimine ekvivalentsetes raskusastmete klassides (S1, S2, S3, S4) — eesmärk on ühtlustada hindamist eri testijate vahel ja organisatsioonides"
     ],
     "correctIndex": 0,
     "explanation": "Klassikaline must-kasti tehnika. Näide: vanus 0–17 (laps), 18–64 (täiskasvanu), 65+ (pensionär), kehtetu (-1, 200) — testitakse iga klassi esindajat. Variandid 2, 3, 4 võtavad sõna 'klass' eri testimise-kontekstides (prioriteet, ajakava, raskusaste), kuid ei vasta tegelikule must-kasti tehnikale."
@@ -135,10 +135,10 @@
     "level": 4,
     "question": "Mis on piirväärtuste analüüs (boundary value analysis, BVA) ja miks see oluline on?",
     "options": [
-      "Süsteemi maksimum-läbilaskvuse mõõtmine stress-testimisel — leida punkt, kus süsteem hakkab vigu andma või vastuse-aeg ületab SLA piiri",
-      "Iga ekvivalentsusklassi piiril asuvate väärtuste testimine, sest defektid kobarduvad piiride lähedusse (klassikalised off-by-one ja võrdusmärgi vead `<` vs `<=`)",
-      "Testijuhtude valik vastavalt projekti eelarvelisele piirangule — kui palju testimist mahub kindla rahasumma sisse ja mida prioriseerida",
-      "Riistvarapiirangute (RAM, CPU, kettaruum) mõõtmine testimise käigus, et leida miinimum- ja maksimumkonfiguratsioon, kus tarkvara veel toimib"
+      "Süsteemi maksimum-läbilaskvuse mõõtmine stress-testimisel — leida punkt, kus süsteem hakkab vigu andma või vastuse-aeg ületab teenuse-taseme leppes (SLA) seatud piiri",
+      "Iga ekvivalentsusklassi piiril asuvate väärtuste testimine, sest defektid kobarduvad piiride lähedusse",
+      "Testijuhtude valik vastavalt projekti eelarvelisele piirangule — kui palju testimist mahub kindla rahasumma sisse ja mida prioriseerida testimiseks lõpuks",
+      "Riistvarapiirangute (RAM, CPU, kettaruum) mõõtmine testimise käigus, et leida miinimum- ja maksimumkonfiguratsioon, kus tarkvara veel töötab vastuvõetava jõudlusega"
     ],
     "correctIndex": 1,
     "explanation": "Klassi 1–100 piirid: 0, 1, 100, 101 (mõnikord ka 2 ja 99). Programmeerijad eksivad sageli piiritingimustes — seetõttu on piir kõrge defekti-tihedusega koht. Variant 1 ajab segi BVA stress-testiga; variandid 3 ja 4 kasutavad sõna 'piir' eri kontekstides (eelarve, riistvara), kuid pole BVA definitsioon."
@@ -147,82 +147,82 @@
     "level": 5,
     "question": "Mis vahe on staatilisel ja dünaamilisel testimisel?",
     "options": [
-      "Staatiline testimine on alati automaatne (linter, SonarQube), dünaamiline alati manuaalne — automatiseerimise aste on peamine erinevus kahe lähenemise vahel",
-      "Staatiline testimine teeb tarkvara KÄIVITAMATA (code review, walkthrough, staatiline analüüs), dünaamiline KÄIVITAB tarkvara ja annab sisendeid",
-      "Staatiline testib muutumatut, juba juurutatud funktsionaalsust, dünaamiline iga sprindi jooksul muutuvat osa koos uute featuredega ja bugifix'idega",
-      "Staatiline kasutab fikseeritud andmestikku (test data set), dünaamiline juhuslikult genereeritud sisendeid (fuzz testing) ühe dünaamilise tsükli sees"
+      "Staatiline testimine on alati automatiseeritud (linter, SonarQube, Checkstyle), dünaamiline alati manuaalne testija poolt — automatiseerimise aste on peamine erinevus kahe lähenemise vahel",
+      "Staatiline testimine teeb tarkvara KÄIVITAMATA, dünaamiline KÄIVITAB tarkvara ja annab sisendeid",
+      "Staatiline testib muutumatut, juba juurutatud funktsionaalsust production-keskkonnas, dünaamiline iga sprindi jooksul muutuvat osa koos uute featuredega ja bugifix'idega CI-pipelines",
+      "Staatiline kasutab fikseeritud andmestikku (test data set, fixtures), dünaamiline juhuslikult genereeritud sisendeid (fuzz testing, property-based testing) ühe testitsükli sees"
     ],
     "correctIndex": 1,
-    "explanation": "Staatiline ≈ 'vaata, ära käivita' (review, walkthrough, inspection, linter, SonarQube). Dünaamiline ≈ 'käivita ja vaata' (unit, integration, system, performance). Eelis staatilisel: defektid leitakse VARA, kui parandamine on odav. Variandid 1, 3, 4 kasutavad sõnu 'staatiline/dünaamiline' eri kontekstides, kuid ei vasta ISTQB definitsioonile."
+    "explanation": "Staatiline ≈ 'vaata, ära käivita' (review, walkthrough, inspection, linter, SonarQube). Dünaamiline ≈ 'käivita ja vaata' (unit, integration, system, performance). Eelis staatilisel: defektid leitakse VARA, kui parandamine on odav. Variandid 1, 3, 4 ei vasta ISTQB definitsioonile."
   },
   {
     "level": 5,
     "question": "Mis on uurimustestimine (exploratory testing)?",
     "options": [
-      "Akadeemiline tegevus, mille käigus testija kirjutab teadusartikleid uuemate testimismeetodite kohta ja avaldab neid konverentsides ja ajakirjades",
-      "Mitteformaalne lähenemine, kus testija samaaegselt õpib süsteemi, kavandab teste ja viib neid läbi — sobib ajaboksitud sessioonidesse, eeldab kogemust",
-      "Konkurendi tarkvara süstemaatiline analüüs, et tuvastada nende lahendusest eeskuju võtmiseks ideid ja ehitada oma turundusargumente",
-      "Testimise variant, kus arendaja seisab testija kõrval ja juhendab live'is, milliseid juhtumeid millises järjekorras kontrollida"
+      "Akadeemiline tegevus, mille käigus testija kirjutab teadusartikleid uuemate testimismeetodite kohta ja avaldab neid konverentsides ja erialastes ajakirjades retsensiooni läbi",
+      "Mitteformaalne lähenemine, kus testija samaaegselt õpib süsteemi, kavandab teste ja viib neid läbi",
+      "Konkurendi tarkvara süstemaatiline analüüs ja vastusekontroll, et tuvastada nende lahendusest eeskuju võtmiseks ideid ja ehitada oma toote turundusargumente paremini",
+      "Testimise variant, kus arendaja seisab testija kõrval ja juhendab live'is, milliseid juhtumeid millises järjekorras kontrollida ning kus kontrollida ootuste vasturääkivust"
     ],
     "correctIndex": 1,
-    "explanation": "Cem Kaner ja James Bach on populariseerinud session-based exploratory testing. Pole 'mängimine' — vajab missiooni, ajaboksi ja sessiooniraporti. Eelis: leiab defekte, mida formaalsed skripti-põhised testid ei kataks. Variandid 1, 3, 4 võtavad sõna 'uurimus' eri kontekstides (teadus, konkurentsi-analüüs, juhendatud test), kuid pole exploratory testing."
+    "explanation": "Cem Kaner ja James Bach on populariseerinud session-based exploratory testing. Pole 'mängimine' — vajab missiooni, ajaboksi ja sessiooniraporti. Eelis: leiab defekte, mida formaalsed skripti-põhised testid ei kataks. Variandid 1, 3, 4 võtavad sõna 'uurimus' eri kontekstides."
   },
   {
     "level": 5,
     "question": "Mis vahe on smoke-testil ja sanity-testil?",
     "options": [
-      "Smoke-test on alati automaatne (CI/CD pipeline'i osa), sanity-test alati manuaalne (testija jälgib silmaga) — automatiseerimine on peamine eristaja",
-      "Smoke-test käivitatakse enne arenduse algust (kas keskkond on valmis?), sanity-test pärast produktsiooni juurutamist (kas live-süsteem töötab?)",
-      "Smoke-test on lai ja madal (kas süsteem käivitub ja põhi-funktsioonid töötavad), sanity-test on kitsas ja sügav (kas konkreetne parandus/funktsioon töötab)",
-      "Smoke-test ja sanity-test on samad mõisted erinevates organisatsioonides — terminoloogiline erinevus, mis sõltub ettevõtte ISTQB-traditsioonist"
+      "Smoke-test on alati automatiseeritud (CI/CD pipeline'i osa, käivitub iga build'iga), sanity-test alati manuaalne (testija jälgib silmaga ja kommenteerib reaalajas) — automatiseerimine on peamine eristaja",
+      "Smoke-test käivitatakse enne arenduse algust (kas keskkond ja tooling on valmis?), sanity-test pärast produktsiooni juurutamist (kas live-süsteem töötab kasutajatele plaanitult?) — eri etappides",
+      "Smoke-test on lai ja madal, sanity-test on kitsas ja sügav",
+      "Smoke-test ja sanity-test on tegelikult samad mõisted erinevates organisatsioonides — terminoloogiline erinevus, mis sõltub ettevõtte ISTQB-traditsioonist ja koolitajate eelistustest"
     ],
     "correctIndex": 2,
-    "explanation": "Smoke = 'kas suitseb, kui sisse lülitan?' (build verification, lai). Sanity = 'kas mõistus on alles?' (kitsam veendumine, et konkreetne osa toimib). Mõlemad on kiired sõelumis-testid. Variant 1 (automatiseerimine) ja 2 (ajakava) on müüdid; variant 4 on tavaline väärarusaam — neil on selge ja standardne tähenduserinevus."
+    "explanation": "Smoke = 'kas suitseb, kui sisse lülitan?' (build verification, lai). Sanity = 'kas mõistus on alles?' (kitsam veendumine, et konkreetne osa toimib). Mõlemad on kiired sõelumis-testid. Variandid 1, 2, 4 on müüdid — mõlemat tehakse erinevatel viisidel ja eri ajal."
   },
   {
     "level": 6,
     "question": "Mis vahe on verifitseerimisel (verification) ja valideerimisel (validation)?",
     "options": [
-      "Verifitseerimine on alati automaatne (CI/CD test'id), valideerimine alati manuaalne (UAT inimese poolt) — automatiseerimise aste on peamine eristaja",
-      "Verifitseerimine küsib 'kas me ehitame toodet ÕIGESTI (vastavalt spetsifikatsioonile)?', valideerimine 'kas me ehitame ÕIGET toodet (vastavalt kasutaja vajadustele)?'",
-      "Verifitseerimine puudutab koodi ja arhitektuuri tehnilist taset, valideerimine andmebaasi terviklikkust ja võrgu turvalisust — eri kihid süsteemis",
-      "Verifitseerimine on tehniline kontroll testija poolt, valideerimine juriidiline vastavuse-audit regulaatorite (GDPR, HIPAA) nõuetega ühilduvuseks"
+      "Verifitseerimine on alati automaatne (CI/CD test'id käivituvad iga commit'iga), valideerimine alati manuaalne (UAT inimese poolt klassiruumis) — automatiseerimise aste on peamine eristaja",
+      "Verifitseerimine küsib 'kas me ehitame toodet ÕIGESTI?', valideerimine 'kas me ehitame ÕIGET toodet?'",
+      "Verifitseerimine puudutab koodi ja arhitektuuri tehnilist taset arendaja vaatest, valideerimine andmebaasi terviklikkust, võrgu turvalisust ja infrastruktuuri DBA ja DevOps poolelt",
+      "Verifitseerimine on tehniline kontroll testija poolt, valideerimine juriidiline vastavuse-audit regulaatorite (GDPR, HIPAA, PCI-DSS) nõuetega ühilduvuseks ettevõttes"
     ],
     "correctIndex": 1,
-    "explanation": "Boehmi klassikaline sõnastus. Verifitseerimine = vastavuskontroll (kood vs disain, disain vs nõuded). Valideerimine = sobivuskontroll (kas süsteem lahendab kasutaja tegelikku probleemi). UAT on tüüpiline valideerimine; code review on verifitseerimine. Variandid 1, 3, 4 jagavad mõõtmeid valedes kohtades — testija teeb mõlemat, mõlemad puudutavad kõiki kihte."
+    "explanation": "Boehmi klassikaline sõnastus. Verifitseerimine = vastavuskontroll (kood vs disain, disain vs nõuded). Valideerimine = sobivuskontroll (kas süsteem lahendab kasutaja tegelikku probleemi). UAT on tüüpiline valideerimine; code review on verifitseerimine. Variandid 1, 3, 4 jagavad mõõtmeid valedes kohtades."
   },
   {
     "level": 6,
     "question": "Mis on regressioonitestimise eesmärk?",
     "options": [
-      "Kontrollida, et eelmise versiooni dokumenteeritud käitumismustrid säilivad uues versioonis — varasema funktsionaalsuse tagasiühilduvuse tagamine",
-      "Kontrollida pärast muudatust (uus feature, bug fix, refactoring), et VAREM töötanud funktsionaalsus ei ole uue muudatuse tõttu katki läinud",
-      "Käivitada testid 'tagurpidi' järjestuses (viimasest ülesleitud defektist esimese poole), et leida algsete defektide pärit-vorme uues versioonis",
-      "Vähendada testikomplekti suurust, eemaldades kõik testid, mis pole viimase 3 sprindi jooksul ühtegi defekti leidnud — efektiivsuse parandamine"
+      "Kontrollida, et eelmise versiooni dokumenteeritud käitumismustrid säilivad uues versioonis muutumatuna — varasema funktsionaalsuse tagasiühilduvuse tagamine API-tarbijatele ja partneritele",
+      "Kontrollida pärast muudatust, et VAREM töötanud funktsionaalsus ei ole uue muudatuse tõttu katki läinud",
+      "Käivitada testid 'tagurpidi' kronoloogilises järjestuses (viimasest ülesleitud defektist esimese poole), et leida algsete defektide pärit-vorme uuemates versioonides ja regressiooni-pesa",
+      "Vähendada testikomplekti suurust, eemaldades kõik testid, mis pole viimase 3 sprindi jooksul ühtegi defekti leidnud — efektiivsuse parandamine ja CI-aja optimeerimine pikas perspektiivis"
     ],
     "correctIndex": 1,
-    "explanation": "Regressioon = 'taandareng'. Iga muudatus võib rikkuda midagi, mis varem töötas — regressioonitest tabab seda. Tüüpiliselt automatiseeritakse, sest käivitatakse iga muudatuse järel CI/CD-s. Variant 1 ajab regressiooni segi tagasiühilduvuse testimisega (sarnane, kuid eraldi mõiste); variandid 3, 4 on väljamõeldud sõnastused."
+    "explanation": "Regressioon = 'taandareng'. Iga muudatus võib rikkuda midagi, mis varem töötas — regressioonitest tabab seda. Tüüpiliselt automatiseeritakse, sest käivitatakse iga muudatuse järel CI/CD-s. Variant 1 ajab regressiooni segi tagasiühilduvuse testimisega; variandid 3, 4 on väljamõeldud sõnastused."
   },
   {
     "level": 6,
     "question": "Mis vahe on raskusastmel (severity) ja prioriteedil (priority) defekti raportis?",
     "options": [
-      "Raskusaste on numbriline skaala (1–5), prioriteet sõnaline kategooria (Low/Medium/High) — vormingu erinevus on peamine eristaja kahe atribuudi vahel",
-      "Raskusaste hindab defekti tehnilist mõju süsteemile, prioriteet hindab parandamise kiireloomulisust ärilisest vaatest — need on sõltumatud mõõtmed, ei pruugi langeda kokku",
-      "Raskusaste määratakse defekti avastamisel testija poolt, prioriteet pärast parandamist tagasiulatuvalt arendaja poolt — kaks järjestikust hindamist",
-      "Raskusaste on testija individuaalne hinnang, prioriteet arendaja tehniline hinnang — sama defekti hindavad eri rollid eri kriteeriumite järgi"
+      "Raskusaste on numbriline skaala (1–5 või kriitiline kuni triviaalne), prioriteet sõnaline kategooria (Low/Medium/High/Urgent) — vormingu erinevus on peamine eristaja kahe atribuudi vahel raportis",
+      "Raskusaste hindab tehnilist mõju süsteemile, prioriteet ärilist kiireloomulisust",
+      "Raskusaste määratakse defekti avastamisel testija poolt vahetult pärast leidmist, prioriteet pärast parandamist tagasiulatuvalt arendaja poolt — kaks järjestikust ja sõltuvat hindamist",
+      "Raskusaste on testija individuaalne hinnang oma kogemuse põhjal, prioriteet arendaja tehniline hinnang koodibaasi keerukuse kontekstis — sama defekti hindavad eri rollid eri kriteeriumite järgi"
     ],
     "correctIndex": 1,
-    "explanation": "Severity = 'kui katki on?' (testija/tehniline hinnang). Priority = 'kui kiiresti parandada?' (toote-omanik/äriline hinnang). Tüüpiline lahknemine: kosmeetiline tippkihise lehe typo (Severity: Low, Priority: High enne pressikonverentsi). Variandid 1, 3, 4 sisaldavad osa-tõdesid (vormingud, hindajad), kuid jätavad puudutamata sõltumatud mõõtmed."
+    "explanation": "Severity = 'kui katki on?' (testija/tehniline hinnang). Priority = 'kui kiiresti parandada?' (toote-omanik/äriline hinnang). Tüüpiline lahknemine: kosmeetiline tippkihise lehe typo (Severity: Low, Priority: High enne pressikonverentsi). Variandid 1, 3, 4 sisaldavad osa-tõdesid, kuid jätavad puudutamata sõltumatud mõõtmed."
   },
   {
     "level": 7,
     "question": "Mis on IEEE 829 standard?",
     "options": [
-      "Brauserite ja veebirakenduste turvastandard, mis kehtestab cookie-, sessiooni- ja localStorage-andmete krüpteerimise nõuded ja autentimise protseduurid",
-      "Klassikaline (1998/2008) testimisdokumentatsiooni standard, mis defineeris testiplaani, testidisaini, testijuhu ja muude dokumentide vormingud — alates 2013 asendab ISO/IEC/IEEE 29119",
-      "Tarkvara hooldatavuse ja tehnilise võla mõõtmise standard, mille järgi arvutatakse koodi kvaliteediskoor ning seda kasutatakse SonarQube tööriistas",
-      "Andmebaasi-skeemide versioneerimise ja migreerimise standard, mis võimaldab muudatuste jälgimist, tagasipööramist ja auditit ettevõtte süsteemides"
+      "Brauserite ja veebirakenduste turvastandard, mis kehtestab cookie-, sessiooni- ja localStorage-andmete krüpteerimise nõuded, autentimise protseduurid ja kasutaja-andmete säilitamise reeglid GDPR-i kontekstis",
+      "Klassikaline (1998/2008) testimisdokumentatsiooni standard — testiplaan, testidisain, testijuht jt vormingud",
+      "Tarkvara hooldatavuse ja tehnilise võla mõõtmise standard, mille järgi arvutatakse koodi kvaliteediskoor ning seda kasutatakse SonarQube ja CodeClimate tööriistas auditi käigus",
+      "Andmebaasi-skeemide versioneerimise ja migreerimise standard, mis võimaldab muudatuste jälgimist, tagasipööramist ja auditit ettevõtte süsteemides — Liquibase ja Flyway aluseks"
     ],
     "correctIndex": 1,
     "explanation": "IEEE 829 oli aastakümneid testdokumentatsiooni alus — 8 põhidokumenti (test plan, test design, test case, test procedure, test log, incident report, test summary report). Tänapäeval viidatakse selle järglasele ISO/IEC/IEEE 29119-3. Variandid 1, 3, 4 on väljamõeldud või muude standardi-tüüpide segadus."
@@ -231,34 +231,34 @@
     "level": 7,
     "question": "Mis on ISTQB roll testimise valdkonnas?",
     "options": [
-      "Standardiseerimisorganisatsioon, mis avaldab kohustuslikke testimise standardeid samaväärselt ISO ja IEEE-ga ning kontrollib nende rakendamist organisatsioonides",
-      "Avalikult rahastatud teadusasutus, mis viib läbi testimismetoodikate uurimusi, avaldab artikleid ja koolitab uusi metoodikaid ülikoolides",
-      "Mittetulundusühing, mis koostab globaalset sertifitseerimissüsteemi (Foundation, Advanced, Expert) ja avaldab testimissõnastiku, mis on de facto terminoloogia alus",
-      "Kommertsorganisatsioon, mis arendab ja müüb sertifitseeritud testimisrakendusi (test management, automation) ja annab oma toodete kasutamise sertifikaate"
+      "Standardiseerimisorganisatsioon, mis avaldab kohustuslikke testimise standardeid samaväärselt ISO ja IEEE-ga, ning auditeerib organisatsioonide vastavust avalike sertifitseerimiste käigus globaalselt",
+      "Mittetulundusühing, mis koostab globaalset sertifitseerimissüsteemi ja avaldab testimissõnastiku",
+      "Avalikult rahastatud teadusasutus, mis viib läbi testimismetoodikate uurimusi, avaldab artikleid retsenseeritud ajakirjades ja koolitab uusi metoodikaid ülikoolides üle maailma õppejõudude võrgustiku kaudu",
+      "Kommertsorganisatsioon, mis arendab ja müüb sertifitseeritud testimisrakendusi (test management, automation, performance) ning annab oma toodete kasutamise sertifikaate testijatele"
     ],
-    "correctIndex": 2,
-    "explanation": "ISTQB = International Software Testing Qualifications Board. Annab välja sertifikaate (CTFL on testija algtase). Sõnastik on tasuta ja universaalne viide. Pole standardiseerimisorganisatsioon (variant 1 — need on ISO/IEEE); pole teadusasutus (variant 2); pole tööriistapakkuja (variant 4 — Tricentis, Smartbear jt on need)."
+    "correctIndex": 1,
+    "explanation": "ISTQB = International Software Testing Qualifications Board. Annab välja sertifikaate (CTFL on testija algtase). Sõnastik on tasuta ja universaalne viide. Pole standardiseerimisorganisatsioon (variant 1 — need on ISO/IEEE); pole teadusasutus (variant 3); pole tööriistapakkuja (variant 4 — Tricentis, Smartbear jt on need)."
   },
   {
     "level": 7,
     "question": "Mis on testimise sisenemis- ja väljumiskriteeriumid (entry/exit criteria)?",
     "options": [
-      "Testija isiklikud juurdepääsuload testikeskkonda — kellele on lubatud milliseid keskkondi kasutada (dev/test/staging) ja milliseid teste käivitada",
-      "Sisenemiskriteeriumid määravad, mis peab olema valmis ENNE testimise alustamist (ehitus stabiilne, testandmed valmis, keskkond töötab); väljumiskriteeriumid millal testimine on PIISAVALT VALMIS (katvuse tase, jäänud defektid)",
-      "Andmete sisendi ja väljundi formaadid, mida konkreetne test käsitleb — sisendvõtmed ja oodatavad väljundväärtused — kasutusel testijuhu definitsioonis",
-      "Tarkvara installeerimise ja deinstallerimise testid — kontroll, et tarkvara saab korrektselt paigaldatud süsteemi ja eemaldatud sealt ilma jäänusteta"
+      "Testija isiklikud juurdepääsuload testikeskkonda — kellele on lubatud milliseid keskkondi kasutada (dev/test/staging/prod) ja milliseid teste käivitada vastavalt rolli- ja konfidentsiaalsuse-tasemele",
+      "Sisenemiskriteeriumid määravad, mis peab olema valmis enne testimist; väljumiskriteeriumid millal testimine on piisavalt valmis",
+      "Andmete sisendi ja väljundi formaadid, mida konkreetne test käsitleb — sisendvõtmed ja oodatavad väljundväärtused — kasutusel testijuhu definitsioonis ja testikatuse mõõtmise dokumendis",
+      "Tarkvara installeerimise ja deinstallerimise testid — kontroll, et tarkvara saab korrektselt paigaldatud süsteemi ja eemaldatud sealt ilma jäänusteta või konfliktideta varasemate versioonidega"
     ],
     "correctIndex": 1,
-    "explanation": "Kriteeriumid panevad testimisele 'väravad'. Ilma sisenemiskriteeriumita testitakse halba ehitust (raisatud aeg). Ilma väljumiskriteeriumita ei teata, millal lõpetada (perfectionism). Tüüpiline näide: '95% kriitilistest testijuhtudest läbi, 0 lahtist Critical defekti'. Variandid 1, 3, 4 kasutavad sõnu 'sisenemine/väljumine' eri kontekstides (juurdepääs, andmevoog, installatsioon)."
+    "explanation": "Kriteeriumid panevad testimisele 'väravad'. Ilma sisenemiskriteeriumita testitakse halba ehitust (raisatud aeg). Ilma väljumiskriteeriumita ei teata, millal lõpetada (perfectionism). Tüüpiline näide: '95% kriitilistest testijuhtudest läbi, 0 lahtist Critical defekti'. Variandid 1, 3, 4 kasutavad sõnu 'sisenemine/väljumine' eri kontekstides."
   },
   {
     "level": 8,
     "question": "Mis on jõudlustestimise (performance testing) alaliigid?",
     "options": [
-      "Frontend- ja backend-jõudlus — vastavalt sellele, millises kihis mõõtmine toimub ning kuidas tulemused kasutajale kuvatakse vs serveri-poolel kogutakse",
-      "Load test (oodatud koormus, kas SLA on täidetud), stress test (üle piiri, kus on murdumispunkt), spike test (järsk hüpe), endurance/soak test (pikk aeg, kas lekib), volume test (suur andmemaht)",
-      "Manuaalne ja automaatne jõudlustestimine — vastavalt sellele, kas tester kasutab spetsiaalseid tööriistu (JMeter, k6) või lihtsalt jälgib silmaga vastuse-aega",
-      "Esmane (production-monitoring), teisene (staging-test) ja kolmandane (development-profiling) jõudlustestimine — vastavalt sellele, millises keskkonnas mõõtmine toimub"
+      "Frontend- ja backend-jõudlus — vastavalt sellele, millises kihis mõõtmine toimub ning kuidas tulemused kasutajale kuvatakse vs serveri-poolel kogutakse loglikustes tööriistades nagu Datadog ja Grafana",
+      "Load test, stress test, spike test, endurance/soak test, volume test",
+      "Manuaalne ja automaatne jõudlustestimine — vastavalt sellele, kas tester kasutab spetsiaalseid tööriistu (JMeter, k6, Gatling) või lihtsalt jälgib silmaga vastuse-aega kasutaja perspektiivist",
+      "Esmane (production-monitoring), teisene (staging-test) ja kolmandane (development-profiling) jõudlustestimine — vastavalt sellele, millises keskkonnas mõõtmine toimub ja milliseid tööriistu kasutatakse"
     ],
     "correctIndex": 1,
     "explanation": "Iga alaliik vastab konkreetsele küsimusele: load = kas süsteem peab tavakoormust? stress = kus on murdumispunkt? spike = kuidas reageerib järsule kasvule? endurance = kas mälu lekib pikas perspektiivis? volume = kuidas käitub suure andmebaasiga? Tööriistad: JMeter, k6, Gatling, LoadRunner. Variantide 1, 3, 4 jagamine pole ISTQB raamistik."
@@ -267,22 +267,22 @@
     "level": 8,
     "question": "Mis on testikatvus (test coverage) ja millest räägib näiteks 80% statement coverage?",
     "options": [
-      "80% kirjutatud testijuhtudest läbib edukalt — ülejäänud 20% ebaõnnestub testikomplekti viimasel käivitamisel ja vajab veel analüüsimist",
-      "80% leitud defektidest on parandatud ja kontrollitud — ülejäänud 20% on lahtine ja ootab arendaja tegevust või äri-otsust",
-      "Testid käivitavad 80% koodi lausetest vähemalt korra — kuid see ei garanteeri, et neis lausetes peituvad bug'id avastatakse, sest assertion'id võivad olla nõrgad",
-      "80% testijatest või automaattestidest töötavad antud projekti raames aktiivselt — see on inimressursi ja tööriistade kasutuse mõõdik koos"
+      "80% kirjutatud testijuhtudest läbib edukalt — ülejäänud 20% ebaõnnestub testikomplekti viimasel käivitamisel ja vajab veel uurimist või parandamist enne juurutamist staging keskkonda",
+      "80% leitud defektidest on parandatud ja taas-testitud testija poolt — ülejäänud 20% on lahtine ja ootab arendaja tegevust või äri-otsust juhtimise poolt",
+      "Testid käivitavad 80% koodi lausetest vähemalt korra",
+      "80% testijatest või automaattestidest töötavad antud projekti raames aktiivselt täiskoormusega — see on inimressursi ja tööriistade kasutuse efektiivsuse mõõdik koos arvestades"
     ],
     "correctIndex": 2,
-    "explanation": "Code coverage = mis osa koodist testid käivitavad. 100% statement coverage ≠ 0 bug'i — võivad puududa edge case'id, assertion'id võivad olla nõrgad. Branch ja MC/DC katvus on rangemad. Katvus on indikaator, mitte kvaliteedi-tõestus. Variandid 1, 2, 4 ajavad katvuse segi testijuhtude pass-rate'iga, defektide-parandamise edenemisega ja inimressursi mõõdikuga."
+    "explanation": "Code coverage = mis osa koodist testid käivitavad. 100% statement coverage ≠ 0 bug'i — võivad puududa edge case'id, assertion'id võivad olla nõrgad. Branch ja MC/DC katvus on rangemad. Katvus on indikaator, mitte kvaliteedi-tõestus. Variandid 1, 2, 4 ajavad katvuse segi muude mõõdikutega."
   },
   {
     "level": 8,
     "question": "Mis on alfa- ja beetatestimine?",
     "options": [
-      "Tarkvara versiooninumbrite süsteem (alfa = 0.x katsetuste-versioon, beeta = 0.9.x peaaegu valmis, release = 1.0+) — versioonihalduse konventsioon väljaande staatuste märkimiseks",
-      "Alfa: vastuvõtutest sisemise kasutaja (töötajate, varaste adopteerijate) poolt arendaja kontrollitud keskkonnas; Beeta: testimine välistes 'päris' kasutajate keskkonnas, et leida reaalse maailma kasutusmustri- ja keskkonna-probleeme",
-      "Alfa: positiivsete (happy path) stsenaariumite testimine kõige sagedasematest kasutusjuhtudest alates; Beeta: negatiivsete ja edge-case stsenaariumite testimine ülejäänud ulatuse jaoks",
-      "Alfa: arendaja-tasandi unit-testid kohalikus keskkonnas; Beeta: testija-tasandi süsteemitestid testikeskkonnas — kaks järjestikust testimisetappi enne juurutamist"
+      "Tarkvara versiooninumbrite süsteem (alfa = 0.x katsetuste-versioon, beeta = 0.9.x peaaegu valmis, release candidate = 1.0-rc, lõplik release = 1.0+) — versioonihalduse konventsioon väljaande staatuste märkimiseks tooteomaniku ja arendustiimi poolt ühiselt",
+      "Alfa: vastuvõtutest sisemise kasutaja poolt arendaja keskkonnas; Beeta: testimine välistes 'päris' kasutajate keskkonnas",
+      "Alfa: positiivsete (happy path) stsenaariumite testimine kõige sagedasematest kasutusjuhtudest alates auditooriumi eelistuste järgi; Beeta: negatiivsete ja edge-case stsenaariumite testimine kõikide ülejäänud kasutusjuhtude jaoks ulatuse kaartelt",
+      "Alfa: arendaja-tasandi unit-testid kohalikus keskkonnas; Beeta: testija-tasandi süsteemi- ja integratsioonitestid testikeskkonnas — kaks järjestikust testimisetappi enne juurutamist staging-keskkonda"
     ],
     "correctIndex": 1,
     "explanation": "Alpha ja beta on operative acceptance testing alaliigid. Alpha — varased adopteerijad, kontrollitud keskkond; Beta — laiem auditoorium, leitakse 'reaalse maailma' probleeme. Variant 1 ajab segi versioneerimisega (kasutab samu termineid eri tähenduses). Variant 3 ajab segi positiivse/negatiivse testimisega. Variant 4 on välja mõeldud."
@@ -291,214 +291,214 @@
     "level": 9,
     "question": "Mis on muutusetega seotud testimise (change-related testing) alaliigid?",
     "options": [
-      "Ainult regressioonitestimine — change-related testing on regressioonitestimise teine nimi, mida kasutatakse formaalsemates ISTQB-dokumentides ja standardites",
-      "Kordustest (kas konkreetne parandus töötab pärast bug'i fix'imist), regressioonitest (kas parandus rikkus midagi muud, mis varem töötas) ja mõju-analüüs (impact analysis: milliseid osi muudatus mõjutab)",
-      "Smoke-testimine ja sanity-testimine — kaks kiiret kontrolli pärast muutuse tegemist, et kas süsteem üldse käivitub ja konkreetne osa töötab eelmise vea taas-ilmnemisest",
-      "Alfa- ja beetatestimine — testimine kasutaja-rühmade poolt enne ja pärast väljaandmist, et tabada muutustega seotud probleeme tegelikus kasutuses ja eri keskkondades"
+      "Ainult regressioonitestimine — change-related testing on regressioonitestimise teine nimi, mida kasutatakse formaalsemates ISTQB-dokumentides ja standardites enamasti akadeemilises kontekstis koolituse käigus",
+      "Kordustest, regressioonitest ja mõju-analüüs (impact analysis)",
+      "Smoke-testimine ja sanity-testimine — kaks kiiret kontrolli pärast muutuse tegemist, et kas süsteem üldse käivitub ja konkreetne osa töötab eelmise vea taas-ilmnemiseks erilise tähelepanuga keskendudes",
+      "Alfa- ja beetatestimine — testimine kasutaja-rühmade poolt enne ja pärast väljaandmist, et tabada muutustega seotud probleeme tegelikus kasutuses ja eri keskkondades üle kogu kliendibaasi maailmas"
     ],
     "correctIndex": 1,
-    "explanation": "Change-related testing on ISTQB neljas testitüüp (funktsionaalse, mittefunktsionaalse ja struktuuripõhise kõrval). Iga muudatus = potentsiaalne defekt. Variant 1 jätab välja kordustesti ja impact analysis'i (regressioon on vaid üks osa). Variandid 3, 4 ajavad change-related testing'u segi smoke/sanity ja alpha/beta tüüpidega."
+    "explanation": "Change-related testing on ISTQB neljas testitüüp. Iga muudatus = potentsiaalne defekt. Variant 1 jätab välja kordustesti ja impact analysis'i (regressioon on vaid üks osa). Variandid 3, 4 ajavad change-related testing'u segi smoke/sanity ja alpha/beta tüüpidega."
   },
   {
     "level": 9,
     "question": "Mis on testimise sõltumatuse (test independence) tasemed ja miks see oluline on?",
     "options": [
-      "Testija peab füüsiliselt töötama eraldi ruumis, kus arendaja ei näe tema ekraani — füüsiline ja ruumiline eraldatus tagab objektiivsuse defektide leidmisel",
-      "Tasemed: 1) arendaja testib oma koodi, 2) sama tiimi teine arendaja, 3) sõltumatu testitiim, 4) väline organisatsioon — suurem sõltumatus toob uue vaatenurga, kuid pikendab tagasiside-tsüklit",
-      "Iga test peab töötama ilma välise võrguühenduseta ja andmebaasita — sõltumatus välistest süsteemidest tagab korratavuse ja stabiilsuse CI/CD pipeline'is",
-      "Iga test peab andma sama tulemuse iga kord olenemata käivitamise järjekorrast — testide sõltumatus üksteisest (test isolation) ja juhuslikkusest tagamiseks"
+      "Testija peab füüsiliselt töötama eraldi ruumis, kus arendaja ei näe tema ekraani — füüsiline ja ruumiline eraldatus tagab objektiivsuse defektide leidmisel ning väldib soovitud tulemuste varjamist surve all hiljem",
+      "Tasemed: 1) arendaja testib oma koodi, 2) sama tiimi teine arendaja, 3) sõltumatu testitiim, 4) väline organisatsioon",
+      "Iga test peab töötama ilma välise võrguühenduseta ja andmebaasita — sõltumatus välistest süsteemidest tagab korratavuse ja stabiilsuse CI/CD pipeline'is ka võrgukatkestuste ajal või pilve-tõrgete korral",
+      "Iga test peab andma sama tulemuse iga kord olenemata käivitamise järjekorrast — testide sõltumatus üksteisest (test isolation) ja juhuslikkusest tagamiseks deterministlike tulemuste kindlustamiseks"
     ],
     "correctIndex": 1,
-    "explanation": "Sõltumatu silmade-paar leiab defekte, mille kohta arendaja on 'pime' (cognitive bias 'minu kood on õige'). Sõltumatu test täiendab arendaja unit-teste, ei asenda. Variant 1 võtab terminit liiga sõna-sõnalt; variandid 3 (test isolation environments) ja 4 (test isolation between tests) on muude mõistete kirjeldused, mis kasutavad sama sõna 'sõltumatus'."
+    "explanation": "Sõltumatu silmade-paar leiab defekte, mille kohta arendaja on 'pime' (cognitive bias 'minu kood on õige'). Sõltumatu test täiendab arendaja unit-teste, ei asenda. Variant 1 võtab terminit liiga sõna-sõnalt; variandid 3 (test isolation environments) ja 4 (test isolation between tests) on muude mõistete kirjeldused."
   },
   {
     "level": 9,
     "question": "Mis on tarkvara konfiguratsioonihalduse (configuration management) roll testimises?",
     "options": [
-      "Konfiguratsioonihalduse ja testimise vahel pole otsest seost — need on eraldi distsipliinid, kus CM tegeleb juurutamisega ja testimine kvaliteedikontrolliga eraldi tiimides",
-      "Tagab, et testitakse õiget VERSIOONI õige andmestiku ja keskkonnaga; jälgib koodi, ehitusi, keskkondi, testandmeid ja testitulemusi — ilma selleta pole testimine korratav ega defektid reprodutseeritavad",
-      "Konfigureerib ja paigaldab testimisvahendeid (Selenium, JMeter, Cypress) testimisprojekti algfaasis — ühekordne ülesanne enne sprintide algust, mida vaatab üle DevOps",
-      "Hindab, milline kasutaja-konfiguratsioon (OS + brauser + ekraan + keel + region) on antud auditooriumis kõige populaarsem, et testida ainult kõige levinumat varianti"
+      "Konfiguratsioonihalduse ja testimise vahel pole otsest seost — need on eraldi distsipliinid, kus CM tegeleb juurutamisega ja taristuga, testimine kvaliteedikontrolliga eraldi tiimides ja eri eelarvete all",
+      "Tagab, et testitakse õiget VERSIOONI õige andmestiku ja keskkonnaga",
+      "Konfigureerib ja paigaldab testimisvahendeid (Selenium, JMeter, Cypress, Postman) testimisprojekti algfaasis — ühekordne ülesanne enne sprintide algust, mida vaatab üle DevOps-tiim auditiks",
+      "Hindab, milline kasutaja-konfiguratsioon (OS + brauser + ekraani-resolutsioon + keel + region) on antud auditooriumis kõige populaarsem analüütika järgi, et testida ainult kõige levinumat varianti ja säästa aega"
     ],
     "correctIndex": 1,
-    "explanation": "Configuration management (Git, CI/CD, Infrastructure as Code, artefakti-registrid) on testimise alus. 'Töötab minu masinas' = halb CM. ISTQB nõuab testija arusaamu CM-i põhimõtetest. Variant 3 ajab segi CM-i tööriistade-paigaldusega (üks osa CM-st); variant 4 puudutab keskkondade valimist (eraldi otsus); variant 1 on müüt."
+    "explanation": "Configuration management (Git, CI/CD, Infrastructure as Code, artefakti-registrid) on testimise alus. 'Töötab minu masinas' = halb CM. ISTQB nõuab testija arusaamu CM-i põhimõtetest. Variant 3 ajab segi CM-i tööriistade-paigaldusega; variant 4 puudutab keskkondade valimist; variant 1 on müüt."
   },
   {
     "level": 10,
     "question": "Mis on ISO/IEC 25010 standardi sisu?",
     "options": [
-      "Tarkvara turvauuringute metoodika — kuidas läbi viia penetration test'i, vulnerability scan'i ja koostada OWASP-i raamistikku järgides turvalisuse audit ettevõttele",
-      "Tarkvara kvaliteedimudel, mis defineerib 8 toote-kvaliteedi omadust (funktsionaalne sobivus, jõudlus, ühilduvus, kasutatavus, töökindlus, turvalisus, hooldatavus, mobiilsus) koos alaomadustega",
-      "Andmebaasi-disaini standard, mis kehtestab normaliseerimise reeglid (1NF, 2NF, 3NF, BCNF) ja indekseerimise põhimõtted ettevõtte süsteemide jaoks",
-      "Versioonihalduse standard, mis defineerib semantilise versioneerimise (semver) MAJOR.MINOR.PATCH reeglid ja kuidas neid CI/CD pipeline'is rakendada"
+      "Tarkvara turvauuringute metoodika — kuidas läbi viia penetration test'i, vulnerability scan'i ja koostada OWASP-i raamistikku järgides turvalisuse audit ettevõttele ning vastavus PCI-DSS, ISO 27001 standarditele",
+      "Tarkvara kvaliteedimudel, mis defineerib 8 toote-kvaliteedi omadust",
+      "Andmebaasi-disaini standard, mis kehtestab normaliseerimise reeglid (1NF, 2NF, 3NF, BCNF) ja indekseerimise põhimõtted ettevõtte süsteemide jaoks tarkvara-skaleeritavuse ja andmete-terviklikkuse tagamiseks",
+      "Versioonihalduse standard, mis defineerib semantilise versioneerimise (semver) MAJOR.MINOR.PATCH reeglid ja kuidas neid CI/CD pipeline'is rakendada koos changelog-ide ja release notes-iga"
     ],
     "correctIndex": 1,
-    "explanation": "ISO 25010 (asendas ISO 9126) on Software Product Quality Model. Iga omadus jaguneb alaomadusteks (turvalisus → konfidentsiaalsus, terviklikkus, mittetagasilükatavus, vastutus, autentsus). Aluseks mittefunktsionaalsete nõuete sõnastamisele. Variandid 1, 3, 4 on muude standardite kirjeldused (OWASP, andmebaasi-normaliseerimine, semver) — kasutavad numbrit, kuid eri sisuga."
+    "explanation": "ISO 25010 (asendas ISO 9126) on Software Product Quality Model. Iga omadus jaguneb alaomadusteks (turvalisus → konfidentsiaalsus, terviklikkus, mittetagasilükatavus, vastutus, autentsus). Aluseks mittefunktsionaalsete nõuete sõnastamisele. Variandid 1, 3, 4 on muude standardite kirjeldused."
   },
   {
     "level": 10,
     "question": "Mis kuulub kvaliteetse intsidendi (defekti) raporti juurde?",
     "options": [
-      "Ainult lühike defekti kirjeldus ja screenshot — testija aja säästmiseks jäetakse muu info arendaja koguda, sest tema tunneb koodi paremini ja oskab seda kiiremini teha",
-      "Unikaalne ID, kirjeldus, sammud reprodutseerimiseks, oodatav vs tegelik tulemus, raskusaste, prioriteet, keskkond (OS/brauser/versioon), lisad (logid, screenshot) ja staatus",
-      "Defekti finantsmõju arvutus (kui palju see ettevõttele maksab nädala kohta), klientide kaotus-prognoos ja ROI-arvutus parandamise kohta — testija äriline analüüs",
-      "Defekti hinnanguline parandamise aeg ja keerukus tundides ning kompleksuse-skoor (1–10) — testija pakub arendajale eelarvelist ja ajakavalist hinnangut"
+      "Ainult lühike defekti kirjeldus ja screenshot — testija aja säästmiseks jäetakse muu info arendaja koguda, sest tema tunneb koodi paremini ja oskab seda kiiremini teha kui testija dokumenteerimine üksikasjaliselt",
+      "Unikaalne ID, kirjeldus, sammud reprodutseerimiseks, oodatav vs tegelik tulemus, raskusaste, prioriteet, keskkond, lisad",
+      "Defekti finantsmõju arvutus (kui palju see ettevõttele maksab nädala kohta), klientide kaotus-prognoos, ROI parandamise kohta — testija äriline ja statistiline analüüs juhtkonna jaoks",
+      "Defekti hinnanguline parandamise aeg ja keerukus tundides ning kompleksuse-skoor (1–10) — testija pakub arendajale eelarvelist ja ajakavalist hinnangut sprindi planeerimiseks PO-le"
     ],
     "correctIndex": 1,
-    "explanation": "IEEE 829 'Test Incident Report' / ISO 29119-3 'Test Status Report'. Hea raport on REPRODUTSEERITAV (teine inimene saab samade sammudega sama tulemuse). Variant 1 paneb defekti uurimiskoormuse arendajale (väldib kasvavat backlog'i). Variandid 3, 4 ei ole testija kompetents — finantsmõju on PO/ärianalüütiku, parandamise hinnang arendaja töö."
+    "explanation": "IEEE 829 'Test Incident Report' / ISO 29119-3 'Test Status Report'. Hea raport on REPRODUTSEERITAV. Variant 1 paneb defekti uurimiskoormuse arendajale (väldib kasvavat backlog'i). Variandid 3, 4 ei ole testija kompetents — finantsmõju on PO/ärianalüütiku, parandamise hinnang arendaja töö."
   },
   {
     "level": 10,
     "question": "Stsenaarium: testija leiab production'is väikse UI-typo lehel, mida külastab 95% klientidest enne tähtsat presskonverentsi. Defekti tehniline mõju on minimaalne (süsteem töötab). Kuidas hinnata raskusastet (severity) ja prioriteeti (priority)?",
     "options": [
-      "Severity: Critical, Priority: Critical — kõik klientidele nähtavad probleemid on automaatselt kriitilised, eriti suure liikluse-mahuga lehtedel ja kuvatud sõnumites",
-      "Severity: Low, Priority: Low — kui tehniline mõju on minimaalne, jääb ka prioriteet madalaks, sest süsteem töötab ja olulisi tehinguid see ei mõjuta otseselt",
-      "Severity: Low, Priority: High — tehniline mõju on väike (typo, süsteem töötab), kuid äriline kiireloomulisus on suur (presskonverents, brändi-mõju, ajaline aken on lühike)",
-      "Severity: High, Priority: Low — kasutajale nähtav typo on alati tõsine kvaliteediprobleem, kuid kuna funktsionaalsus ei kannata, pole kiire parandada"
+      "Severity: Critical, Priority: Critical — kõik klientidele nähtavad probleemid on automaatselt kriitilised, eriti suure liikluse-mahuga lehtedel ja kuvatud sõnumites enne suuri ärisündmusi nagu pressikonverents",
+      "Severity: Low, Priority: Low — kui tehniline mõju on minimaalne ja süsteem töötab, jääb ka prioriteet madalaks, sest olulisi tehinguid see ei mõjuta otseselt ja on visuaalne pisiviga",
+      "Severity: Low, Priority: High — tehniline mõju väike, äriline kiireloomulisus suur",
+      "Severity: High, Priority: Low — kasutajale nähtav typo on alati tõsine kvaliteediprobleem brändi vaates, kuid kuna funktsionaalsus ei kannata ja kliendid saavad oma tellimused tehtud, pole kiire parandada"
     ],
     "correctIndex": 2,
-    "explanation": "Severity hindab tehnilist mõju (typo = Low, sest süsteem töötab). Priority hindab ärilist kiireloomulisust (presskonverents = High, sest mõju brändile on suur). Need on sõltumatud mõõtmed. Variandid 1, 2, 4 segavad severity ja priority hinnanguid omavahel — kõige levinum viga, kui ei eristata tehnilist ja ärilist mõõdet."
+    "explanation": "Severity hindab tehnilist mõju (typo = Low, sest süsteem töötab). Priority hindab ärilist kiireloomulisust (presskonverents = High, sest mõju brändile on suur). Need on sõltumatud mõõtmed. Variandid 1, 2, 4 segavad severity ja priority hinnanguid omavahel."
   },
   {
     "level": 11,
     "question": "Mis on testimispüramiid (test pyramid) ja miks see on soovitatud muster?",
     "options": [
-      "Mike Cohni mudel: palju kiireid komponenditeste (lai alus), vähem integratsiooniteste (kesktasand), veel vähem aeglaseid UI/e2e teste (tipp) — kiire tagasiside, väike hooldekoormus ja stabiilsus",
-      "ISTQB testitasandite hierarhia (unit, integration, system, acceptance), kus iga tasand visualiseeritakse püramiidikujuliselt vastavalt sertifitseerimise tasemele",
-      "Riski-põhise testimise visualiseerimine — kõrge riskiga moodulid tipus saavad enim teste, madala riskiga alusel saavad miinimum — ressursside jaotuse mudel",
-      "Test-haldustööriista (TestRail, Zephyr) sisemise organiseerimise muster, kus testikomplektid asetatakse hierarhilistesse kaustadesse vastavalt projekti struktuurile"
+      "Mike Cohni mudel: palju kiireid komponenditeste alusel, vähem integratsiooniteste keskel, vähe UI/e2e teste tipus",
+      "ISTQB testitasandite (unit, integration, system, acceptance) hierarhia, mis visualiseeritakse püramiidikujuliselt vastavalt sertifitseerimise tasemele ja iga organisatsiooni testijate haridusele ametiastmes",
+      "Riski-põhise testimise visualiseerimine — kõrge riskiga moodulid tipus saavad enim teste, madala riskiga alusel saavad miinimum vastavalt riski-maatriksile, mis koostatakse projekti algfaasis",
+      "Test-haldustööriista (TestRail, Zephyr, Xray) sisemise organiseerimise muster, kus testikomplektid asetatakse hierarhilistesse kaustadesse vastavalt projekti struktuurile ja sprindi-kava ajakavale"
     ],
     "correctIndex": 0,
-    "explanation": "Vastandina 'ice cream cone' anti-mustrile (palju aeglaseid UI-teste, vähe unit-teste), mis annab aeglase CI ja flaky testikomplekti. Pyramid eelistab kiireid stabiilseid teste mahus. Variant 2 ajab segi testitasandite ja testikomplekti jaotuse; variant 3 segab pyramid'i risk-based testing'uga (eraldi mõisted); variant 4 on tööriista-spetsiifiline väärarusaam."
+    "explanation": "Vastandina 'ice cream cone' anti-mustrile (palju aeglaseid UI-teste, vähe unit-teste), mis annab aeglase CI ja flaky testikomplekti. Pyramid eelistab kiireid stabiilseid teste mahus. Variant 2 ajab segi testitasandite ja testikomplekti jaotuse; variant 3 segab pyramid'i risk-based testing'uga; variant 4 on tööriista-spetsiifiline väärarusaam."
   },
   {
     "level": 11,
     "question": "Mis on Test-Driven Development (TDD) põhitsükkel?",
     "options": [
-      "Test-Disain-Deploy: kõigepealt kavandatakse formaalsed testijuhud (täis IEEE 829 dokumentidega), seejärel tehakse tarkvara disain ja lõpuks juurutamine produktsiooni keskkonda",
-      "Red-Green-Refactor: 1) kirjuta katkitestiv test, mis ootab veel olematut käitumist; 2) kirjuta minimaalne kood, mis testi rohestab; 3) refaktoreeri struktuuri, hoides teste rohelisena",
-      "Test-Document-Develop: dokumenteeritakse oodatud käitumine üksikasjalikult Confluence'is või Wiki's, alles seejärel asutakse koodi kirjutama vastavalt sellele spetsifikatsioonile",
-      "Tester-Driven-Daily-sync: testija juhib igapäevast tiimi sünki, kus järgmise päeva testimisülesanded jagatakse ja arendajad saavad teste, mida nad peavad rohestama"
+      "Test-Disain-Deploy: kõigepealt kavandatakse formaalsed testijuhud (täis IEEE 829 dokumentidega ja jälgitavusega nõudele), seejärel tehakse tarkvara disain ja lõpuks juurutamine produktsiooni keskkonda kasutajatele",
+      "Red-Green-Refactor: 1) kirjuta katkitestiv test, 2) kirjuta minimaalne kood mis testi rohestab, 3) refaktoreeri",
+      "Test-Document-Develop: dokumenteeritakse oodatud käitumine üksikasjalikult Confluence'is või Wiki's koos sammude ja näidetega, alles seejärel asutakse koodi kirjutama vastavalt sellele spetsifikatsioonile",
+      "Tester-Driven-Daily-sync: testija juhib igapäevast tiimi sünki, kus järgmise päeva testimisülesanded jagatakse ja arendajad saavad teste, mida nad peavad rohestama enne sprindi lõppu vastavalt DoD-le"
     ],
     "correctIndex": 1,
-    "explanation": "Kent Becki TDD: test on disainivahend, mitte ainult kvaliteedikontroll. Tulemus: kõrge testikatvus, modulaarne struktuur, kindlustunne refaktoreerimisel. ATDD ja BDD on seotud variandid kõrgemal tasemel. Variandid 1, 3, 4 on väljamõeldud akronüümide tähendused, mis kasutavad 'TDD' tähti eri sõnade jaoks."
+    "explanation": "Kent Becki TDD: test on disainivahend, mitte ainult kvaliteedikontroll. Tulemus: kõrge testikatvus, modulaarne struktuur, kindlustunne refaktoreerimisel. ATDD ja BDD on seotud variandid kõrgemal tasemel. Variandid 1, 3, 4 on väljamõeldud akronüümide tähendused."
   },
   {
     "level": 12,
     "question": "Mis on flaky test ja mis on selle õige käsitlemine?",
     "options": [
-      "Test, mis annab samadel sisenditel mõnikord pass, mõnikord fail — põhjused on race condition, ajastusprobleemid, jagatud state, väline sõltuvus. Tuleb diagnoosida ja parandada juur, mitte automaatselt korrata",
-      "Test, mis on liiga kiiresti vananev ja vajab pidevat uuendamist vastavalt UI muudatustele — tuleb regulaarselt üle vaadata kvartaalselt ja kohandada uue HTML-struktuuriga",
-      "Test, mis kontrollib mitut asja korraga ühe testi-funktsiooni sees ja seetõttu on raske mõista, mis täpselt katki on — tuleb tükeldada väiksemateks atomaarsemateks testideks",
-      "Test, mis põhineb juhuslikul sisendil (property-based testing, fuzz testing) ja seetõttu annab eri tulemusi iga käivitusega — see on testide omadus, mitte viga ega probleem"
+      "Test, mis annab samadel sisenditel mõnikord pass, mõnikord fail — põhjused on race condition, ajastusprobleemid, jagatud state. Tuleb diagnoosida juur, mitte automaatselt korrata",
+      "Test, mis on liiga kiiresti vananev ja vajab pidevat uuendamist vastavalt UI muudatustele — tuleb regulaarselt üle vaadata kvartaalselt ja kohandada uue HTML-struktuuriga vastavalt design-system'i muudatustele tiimis",
+      "Test, mis kontrollib mitut asja korraga ühe testi-funktsiooni sees ja seetõttu on raske mõista, mis täpselt katki on — tuleb tükeldada väiksemateks atomaarsemateks testideks, et iga test kontrollib ainult ühte asja korraga",
+      "Test, mis põhineb juhuslikul sisendil (property-based testing, fuzz testing, generative testing) ja seetõttu annab eri tulemusi iga käivitusega — see on testide omadus, mitte viga ega probleem üldse"
     ],
     "correctIndex": 0,
-    "explanation": "Flaky testid on tehnilise võla allikas. Vale lahendus: lihtsalt retry — see varjab tegelikke regressioone. Õige: leida juur (lisa explicit wait, isoleeri andmebaas, deterministlik kell). Google ja Microsoft on avaldanud uuringuid — flaky testid maksavad miljardeid. Variandid 2, 3, 4 kirjeldavad teisi reaalseid testikomplekti probleeme (UI-haprus, kombineeritud test, property-based), kuid pole flaky test."
+    "explanation": "Flaky testid on tehnilise võla allikas. Vale lahendus: lihtsalt retry — see varjab tegelikke regressioone. Õige: leida juur (lisa explicit wait, isoleeri andmebaas, deterministlik kell). Google ja Microsoft on avaldanud uuringuid — flaky testid maksavad miljardeid. Variandid 2, 3, 4 kirjeldavad teisi reaalseid testikomplekti probleeme, kuid pole flaky test."
   },
   {
     "level": 12,
     "question": "Mis on shift-left testimise põhimõte?",
     "options": [
-      "Testija peab võtma süsteemi disaini-otsused enda peale ja ütlema arendajatele, kuidas kood tuleb kirjutada — testija autoriteet nihkub vasakule (varakult) tiimi hierarhias",
-      "Testimise tegevuste viimine SDLC-s võimalikult VARA: koos nõuetega valmib testikriteerium, koos disainiga testidisain, koos koodiga unit-test (TDD) — defekti varakult tabamine",
-      "Test-haldustööriistas (Jira, TestRail) testijuhtude visuaalne paigutus vasakule (varased) ja paremale (hilised) sõltuvalt sprindi-faasist, kus need käivitatakse",
-      "Testikoormuse vähendamine, kus suurem osa testimisest tehakse vasakpoolses tiimis (frontend) ja paremas tiimis (backend) tehakse ainult kriitilisem osa — koormuse jaotamise muster"
+      "Testija peab võtma süsteemi disaini-otsused enda peale ja ütlema arendajatele, kuidas kood tuleb kirjutada — testija autoriteet nihkub vasakule (varakult) tiimi hierarhias üle arendaja ja arhitekti vastu",
+      "Testimise tegevuste viimine SDLC-s võimalikult VARA: testikriteerium koos nõuetega, unit-test koos koodiga (TDD)",
+      "Test-haldustööriistas (Jira, TestRail, Zephyr) testijuhtude visuaalne paigutus vasakule (varased sprindis) ja paremale (hilised sprindis) sõltuvalt sprindi-faasist, kus need käivitatakse vastavalt rituaalile",
+      "Testikoormuse vähendamine, kus suurem osa testimisest tehakse vasakpoolses tiimis (frontend-tiim) ja paremas tiimis (backend-tiim) tehakse ainult kriitilisem osa — koormuse jaotamise muster organisatsioonis"
     ],
     "correctIndex": 1,
-    "explanation": "Klassikaline põhimõte: defekti parandus on 10× kallim igal hilisemal SDLC etapil. Shift-left tehnikad: code review, static analysis, unit testing, TDD, threat modeling juba disainifaasis. Vastandina 'shift-right' = testimine produktsioonis (canary, A/B, observability). Variandid 1, 3, 4 võtavad sõna 'vasakule' eri kontekstides, mis pole shift-left'i tegelik tähendus."
+    "explanation": "Klassikaline põhimõte: defekti parandus on 10× kallim igal hilisemal SDLC etapil. Shift-left tehnikad: code review, static analysis, unit testing, TDD, threat modeling juba disainifaasis. Vastandina 'shift-right' = testimine produktsioonis (canary, A/B, observability). Variandid 1, 3, 4 võtavad sõna 'vasakule' eri kontekstides."
   },
   {
     "level": 13,
     "question": "Mis on risk-põhise testimise (risk-based testing) põhiprintsiip?",
     "options": [
-      "Testimine ainult riskantsete tehnoloogiate (uued raamistikud, beetaversioonid, kolmandate poolte teegid) puhul — stabiilseid, läbiproovitud tehnoloogiaid eeldatakse töötavat ja testitakse minimaalselt",
-      "Testimisressursside jagamine vastavalt riskile (risk = tõenäosus × mõju): suurima riskiga osad saavad enim teste, madalama riskiga osad saavad piisavalt — mitte maksimumi nagu happy path eeldaks",
-      "Testija isiklik finantsrisk projekti edu suhtes — boonussüsteem, kus testija sissetulek sõltub leitud Critical defektide arvust ja juurutuse õnnestumisest produktsioonis",
-      "Iga test peab olema 'riskantne' — proovida murda süsteemi loovate, ootamatute sisenditega (chaos testing, fuzz testing), mitte kontrollida tavalisi happy path stsenaariume"
+      "Testimine ainult riskantsete tehnoloogiate (uued raamistikud, beetaversioonid, kolmandate poolte teegid) puhul — stabiilseid, läbiproovitud tehnoloogiaid eeldatakse töötavat ja testitakse minimaalselt aja säästmiseks",
+      "Testimisressursside jagamine vastavalt riskile (tõenäosus × mõju)",
+      "Testija isiklik finantsrisk projekti edu suhtes — boonussüsteem, kus testija sissetulek sõltub leitud Critical defektide arvust ja juurutuse õnnestumisest produktsioonis kvartali lõpuks aastaaruandes",
+      "Iga test peab olema 'riskantne' — proovida murda süsteemi loovate, ootamatute sisenditega (chaos testing, fuzz testing, monkey testing), mitte kontrollida tavalisi happy path stsenaariume kasutajateekonnas"
     ],
     "correctIndex": 1,
-    "explanation": "Risk-based testing on praktiline vastus 'täielik testimine pole võimalik' põhimõttele. Riski-maatriks (tõenäosus × mõju) prioriseerib teste. ISO 29119 kohustab dokumenteerima riskianalüüsi. Aitab põhjendada ulatust juhtkonnale. Variant 1 jätaks stabiilse koodi täiesti testimata (vale); variant 3 on motivatsioonimuster, mitte testimismetoodika; variant 4 ajab segi chaos/fuzz'iga."
+    "explanation": "Risk-based testing on praktiline vastus 'täielik testimine pole võimalik' põhimõttele. Riski-maatriks (tõenäosus × mõju) prioriseerib teste. ISO 29119 kohustab dokumenteerima riskianalüüsi. Variant 1 jätaks stabiilse koodi täiesti testimata; variant 3 on motivatsioonimuster, mitte testimismetoodika; variant 4 ajab segi chaos/fuzz'iga."
   },
   {
     "level": 13,
     "question": "Mis on lepingupõhine testimine (contract testing) mikroteenuste kontekstis?",
     "options": [
-      "Tarkvara müügilepingu funktsionaalse vastavuse testimine — kontroll, et tarkvara tarnitakse vastavalt kliendiga sõlmitud lepingulisele kirjeldusele ja SLA-le, juriidilise meeskonna järelevalvel",
-      "Tehnika, kus testitakse, et teenuste vaheline LIIDES (API-leping) on ühilduv: tarbija defineerib oodatud lepingu, pakkuja kontrollib, kas täidab — võimaldab testida iga teenust iseseisvalt",
-      "Testimisteenuse outsourcing'u haldus — leping välise testimisfirmaga, kus määratakse SLA-d (testikatvus, defektide leidmise kiirus, raport vorm) ja saavutuste hindamine kvartalite kaupa",
-      "Iga testijuhu sõnastamine 'lepingu' formaadis (Given-When-Then BDD-stiilis), kus testija ja arendaja 'lepivad kokku' oodatava käitumise enne arenduse algust"
+      "Tarkvara müügilepingu funktsionaalse vastavuse testimine — kontroll, et tarkvara tarnitakse vastavalt kliendiga sõlmitud lepingulisele kirjeldusele ja SLA-le, juriidilise meeskonna järelevalvel ja kvartaalse auditi käigus",
+      "Tehnika, kus testitakse, et teenuste vaheline LIIDES (API-leping) on ühilduv tarbija ootustega",
+      "Testimisteenuse outsourcing'u haldus — leping välise testimisfirmaga, kus määratakse SLA-d (testikatvus, defektide leidmise kiirus, raporti vorm) ja saavutuste hindamine kvartalite kaupa juhtkomitees",
+      "Iga testijuhu sõnastamine 'lepingu' formaadis (Given-When-Then BDD-stiilis), kus testija ja arendaja 'lepivad kokku' oodatava käitumise enne arenduse algust sprindi planeerimise käigus tooteomanikuga"
     ],
     "correctIndex": 1,
-    "explanation": "Consumer-Driven Contracts (CDC) lahendab mikroteenuste 'integratsiooni-põrgu' — kõik teenused koos, aeglane, ebastabiilne. Tööriistad: Pact, Spring Cloud Contract. Variandid 1, 3 võtavad sõna 'leping' juriidiliselt (müügileping, outsourcing-leping); variant 4 ajab segi BDD spetsifikatsioonidega (samuti väärtuslikud, kuid eri eesmärgil)."
+    "explanation": "Consumer-Driven Contracts (CDC) lahendab mikroteenuste 'integratsiooni-põrgu'. Tööriistad: Pact, Spring Cloud Contract. Variandid 1, 3 võtavad sõna 'leping' juriidiliselt; variant 4 ajab segi BDD spetsifikatsioonidega."
   },
   {
     "level": 14,
     "question": "Mis on installeerimise testimise (installation testing) eesmärk?",
     "options": [
-      "Testida tarkvara müügi- ja juurutamisprotsessi — kuidas müügimeeskond installerib demo-versiooni kliendi keskkonnas ja milliseid takistusi tüüpiliselt esineb sellel teekonnal",
-      "Kontrollida installeerimise protsessi tervikuna: erinevad keskkonnad (OS, riistvara), õnnestunud install, ebaõnnestunud install (ruumi puudus, õigused), uuendamine vanematest versioonidest, deinstall, rollback",
-      "Testida ainult installerifaili allalaadimise kiirust eri võrkudes (kiire/aeglane internet, mobiili-andmed) ja kasutaja-kogemust laadimise ajal — võrgu-jõudluse aspekt",
-      "Installeerida iga test eraldi puhtas keskkonnas (Docker container, virtuaalmasin), et tagada testide sõltumatus üksteisest ja korratavus — testikeskkondade installeerimise muster"
+      "Testida tarkvara müügi- ja juurutamisprotsessi — kuidas müügimeeskond installerib demo-versiooni kliendi keskkonnas ja milliseid takistusi tüüpiliselt esineb sellel teekonnal müügilehtri viimases etapis enne tehingut",
+      "Kontrollida installeerimise protsessi tervikuna — eri keskkondades, ebaõnnestumiste käsitlus, uuendamine, deinstall",
+      "Testida ainult installerifaili allalaadimise kiirust eri võrkudes (kiire/aeglane internet, mobiili-andmed, satelliit) ja kasutaja-kogemust laadimise ajal koos progress bar'i ja eta-arvutusega",
+      "Installeerida iga test eraldi puhtas keskkonnas (Docker container, virtuaalmasin, ephemeral environment), et tagada testide sõltumatus üksteisest ja korratavus — testikeskkondade installeerimise muster CI-s"
     ],
     "correctIndex": 1,
-    "explanation": "Installation testing on operative acceptance testing osa (ISTQB). Tihti unustatud, kuid kriitiline — kasutaja kogemus algab installeerimisest. Tüüpilised vead: vajalikud sõltuvused puuduvad, õigused valed, eelmine versioon jätab räämakoha, install fail jätab süsteemi katki. Variandid 1, 3, 4 kasutavad sõna 'installeerimine' eri kontekstides (müük, võrk, test-keskkonnad), mis pole installation testing."
+    "explanation": "Installation testing on operative acceptance testing osa (ISTQB). Tihti unustatud, kuid kriitiline — kasutaja kogemus algab installeerimisest. Tüüpilised vead: vajalikud sõltuvused puuduvad, õigused valed, eelmine versioon jätab räämakoha, install fail jätab süsteemi katki. Variandid 1, 3, 4 kasutavad sõna 'installeerimine' eri kontekstides."
   },
   {
     "level": 14,
     "question": "Mis on hooldatavuse testimise (maintainability testing) eesmärk?",
     "options": [
-      "Hinnata, kui kerge on tarkvara modifitseerida, parandada ja edasi arendada: modulaarsus, taaskasutatavus, analüüsitavus, modifitseeritavus, testitavus (ISO 25010 alaomadused) — koodi kvaliteedi mõõtmine",
-      "Testida tarkvara hooldusperioodil pärast selle eluea ametlikku lõppu — mis juhtub, kui väljastaja tugi lakkab ja kasutaja peab ise süsteemi haldama ilma värskendusteta",
-      "Hinnata, kas plaanilised hooldustööd (varundus, indekseerimine, optimeerimine) toimivad õigesti planeeritud aknas (öö, nädalalõpp) ilma kasutajakogemust häirimata — DBA töö",
-      "Testida hooldusmeeskonna oskusi ja valmidust tarkvara ülal hoida — inimressursi audit, kus mõõdetakse keskmist intsidendi-lahendamise aega (MTTR) ja teadmiste levikut"
+      "Hinnata, kui kerge on tarkvara modifitseerida ja parandada (modulaarsus, testitavus)",
+      "Testida tarkvara hooldusperioodil pärast selle eluea ametlikku lõppu — mis juhtub, kui väljastaja tugi lakkab ja kasutaja peab ise süsteemi haldama ilma värskendusteta ning turvaparanduseteta pikas perspektiivis",
+      "Hinnata, kas plaanilised hooldustööd (varundus, indekseerimine, optimeerimine, vacuum) toimivad õigesti planeeritud aknas (öö, nädalalõpp) ilma kasutajakogemust häirimata ja SLA-d rikkumata",
+      "Testida hooldusmeeskonna oskusi ja valmidust tarkvara ülal hoida — inimressursi audit, kus mõõdetakse keskmist intsidendi-lahendamise aega (MTTR) ja teadmiste levikut töötajate vahel hooldusprotseduuride osas"
     ],
     "correctIndex": 0,
-    "explanation": "Maintainability on hilisem aga oluline kvaliteediomadus — 'iga rida koodi on rohkem loetud kui kirjutatud'. Hindamiseks: static analysis (SonarQube), code review, tsükloomatne keerukus, koodi-duplikatsioon. Halb hooldatavus = tehniline võlg, mis kasvab eksponentsiaalselt. Variandid 2, 3, 4 ajavad segi hooldatavuse (koodi-omadus) ja hoolduse (süsteemi-tegevuse) mõisted."
+    "explanation": "Maintainability on hilisem aga oluline kvaliteediomadus — 'iga rida koodi on rohkem loetud kui kirjutatud'. Hindamiseks: static analysis (SonarQube), code review, tsükloomatne keerukus, koodi-duplikatsioon. Variandid 2, 3, 4 ajavad segi hooldatavuse (koodi-omadus) ja hoolduse (süsteemi-tegevuse) mõisted."
   },
   {
     "level": 15,
     "question": "Mis on testija roll agile/Scrum tiimis võrreldes klassikalise V-mudeliga?",
     "options": [
-      "Sama roll nagu V-mudelis, ainult sprindi-tsüklid on lühemad (2 nädalat vs kuud) — testimise tegevused, dokumendid ja vastutused jäävad sisuliselt samaks, muutub vaid ajakava",
-      "Agile-s on testija tiimi täisliige iga sprindi vältel — osaleb planeerimises, defineerib Definition of Done, kirjutab teste samaaegselt arendusega, automatiseerib regressiooni; klassikaline 'testimine pärast arendust' faas asendub pideva testimisega",
-      "Agile-s testija rolli enam pole — arendajad teevad ka kogu testimise oma koodi kohta ja tooteomanik vastutab vastuvõtu eest; testijate ametikoht on iganenud DevOps'i ajastul",
-      "Agile-s testija töötab eraldi 'testimise tiimina' (centralized QA), mis võtab vastu sprindi tarnitavusi ja kontrollib pärast iga sprindi lõppu, kas DoD on täidetud — gateway-roll"
+      "Sama roll nagu V-mudelis, ainult sprindi-tsüklid on lühemad (2 nädalat vs kuud) — testimise tegevused, dokumendid ja vastutused jäävad sisuliselt samaks vastavalt ISTQB-le, muutub vaid ajakava ja iteratiivsus tegevuste planeerimisel",
+      "Agile-s on testija tiimi täisliige iga sprindi vältel — osaleb planeerimises, defineerib DoD, testib pidevalt",
+      "Agile-s testija rolli enam pole — arendajad teevad ka kogu testimise oma koodi kohta TDD-ga ja tooteomanik vastutab vastuvõtu eest demo-tunnis; testijate ametikoht on iganenud DevOps'i ja AI-tööriistade ajastul",
+      "Agile-s testija töötab eraldi 'testimise tiimina' (centralized QA), mis võtab vastu sprindi tarnitavusi ja kontrollib pärast iga sprindi lõppu, kas Definition of Done on täidetud — gateway-roll arenduse ja release vahel"
     ],
     "correctIndex": 1,
-    "explanation": "Agile vastandub V-mudeli 'big bang test phase'-ile. Whole-team approach: kvaliteet on kogu tiimi vastutus. Testija toob spetsiifilist oskust (riskianalüüs, testidisain, automaatika). ISTQB Agile Tester sertifikaat katab seda rolli. Variandid 1, 3, 4 on agile testimise levinud väärarusaamad — sama-roll-müüt, testija-asendamise-müüt ja centralized-QA-anti-pattern."
+    "explanation": "Agile vastandub V-mudeli 'big bang test phase'-ile. Whole-team approach: kvaliteet on kogu tiimi vastutus. Testija toob spetsiifilist oskust (riskianalüüs, testidisain, automaatika). Variandid 1, 3, 4 on agile testimise levinud väärarusaamad — sama-roll-müüt, testija-asendamise-müüt ja centralized-QA-anti-pattern."
   },
   {
     "level": 15,
     "question": "Stsenaarium: tarkvarafirma surub testijat 'lõpetama kiiremini' enne väljaandmist, vaatamata sellele, et 3 Critical defekti on lahtised. Mis on testija eetiliselt korrektne käitumine?",
     "options": [
-      "Lõpetada testimine kiiresti vastavalt juhtkonna palvele, sest projektijuht ja toote-omanik teavad äri-prioriteete paremini — testija peab usaldama otsustajaid ega tohi survele vastu seista",
-      "Märkida defektid ametlikult 'Won't fix' või 'Works as designed' staatusega, et raportis paista 0 lahtist Critical defekti — formaalne lahendus, mis rahuldab kõiki osapooli kiiresti",
-      "Dokumenteerida lahtised defektid ja seonduvad riskid kirjalikult ('risk acceptance' aktsept), eskaleerida vastavale otsustajale, kuid mitte varjata defekte ega valetada testitulemustest — vastutus on selge",
-      "Lahkuda projektist või tiimist viivitamatult ilma üleandmist tegemata, et vältida isiklikku vastutust ja kaitsa enda professionaalset reputatsiooni võimalike tagajärgede eest"
+      "Lõpetada testimine kiiresti vastavalt juhtkonna palvele, sest projektijuht ja toote-omanik teavad äri-prioriteete paremini kui testija — testija peab usaldama otsustajaid ega tohi survele vastu seista karjääri ohutuse pärast pikemas perspektiivis",
+      "Dokumenteerida lahtised defektid ja riskid kirjalikult, eskaleerida otsustajale, mitte varjata",
+      "Märkida defektid ametlikult 'Won't fix' või 'Works as designed' staatusega, et raportis paista 0 lahtist Critical defekti — formaalne lahendus, mis rahuldab kõiki osapooli kiiresti enne demo-d ja release-i koosolekut järgmisel hommikul",
+      "Lahkuda projektist või tiimist viivitamatult ilma üleandmist tegemata ega dokumentatsiooni loomata, et vältida isiklikku vastutust ja kaitsta enda professionaalset reputatsiooni võimalike negatiivsete tagajärgede eest"
     ],
-    "correctIndex": 2,
-    "explanation": "ISTQB Code of Ethics ja ACM SE Code of Ethics: testija peab raporteerima ausalt, isegi surve all. Risk acceptance dokumendis kirjeldatakse lahtised defektid + riskid + otsustaja allkiri — surve ei kao, kuid vastutus on selge. Reaalsed juhtumid (Volkswagen 'dieselgate', Boeing 737 MAX) näitavad, mis juhtub eetika eiramisel. Variandid 1, 2, 4 on eetika rikkumised (kuuletumine, võltsimine, põgenemine)."
+    "correctIndex": 1,
+    "explanation": "ISTQB Code of Ethics ja ACM SE Code of Ethics: testija peab raporteerima ausalt, isegi surve all. Risk acceptance dokumendis kirjeldatakse lahtised defektid + riskid + otsustaja allkiri — surve ei kao, kuid vastutus on selge. Reaalsed juhtumid (Volkswagen 'dieselgate', Boeing 737 MAX) näitavad, mis juhtub eetika eiramisel. Variandid 1, 3, 4 on eetika rikkumised."
   },
   {
     "level": 2,
     "question": "Mis on automaattestimise (automation testing) põhiline eelis manuaalse testimise ees?",
     "options": [
-      "Automaattestimine asendab inimese täielikult — tester pole enam vajalik, kogu kvaliteedikontroll käib skriptide ja AI-tööriistadega ilma järelevalveta",
-      "Automaattestimine on eelduste kohaselt 100% defekti-vaba, sest skriptid ei tee inimese-tüüpi tähelepanu-vigu testijuhtude käivitamisel",
-      "Korduvate testijuhtude (eriti regressioonitestide) kiire ja korratav käivitamine — sobib CI/CD pipeline'i, kus iga koodimuudatuse järel tuleb sadu teste käivitada",
-      "Automaattestimine sobib eriti hästi exploratory ja usability-testimiseks, kus inimese intuitsiooni asendamine annab parema katvuse ja objektiivsuse"
+      "Automaattestimine asendab inimese täielikult — tester pole enam vajalik, kogu kvaliteedikontroll käib skriptide ja AI-tööriistadega ilma järelevalveta ka exploratory ja usability puhul kõikides projektides",
+      "Korduvate testijuhtude kiire ja korratav käivitamine CI/CD pipeline'is",
+      "Automaattestimine on eelduste kohaselt 100% defekti-vaba, sest skriptid ei tee inimese-tüüpi tähelepanu-vigu testijuhtude käivitamisel ega väsi pikkade testisessioonide jooksul",
+      "Automaattestimine sobib eriti hästi exploratory ja usability-testimiseks, kus inimese intuitsiooni asendamine annab parema katvuse, objektiivsuse ja korratavuse keerulistes kasutajakogemuse-stsenaariumites"
     ],
-    "correctIndex": 2,
-    "explanation": "Automaatika tugevus on KORRATAVUS ja KIIRUS — sobib stabiilsetele, korduvatele stsenaariumitele (regressioon, smoke, API-testid). Variant 1 ignoreerib testija analüüsi-rolli; variant 2 on müüt — skriptid testivad ainult seda, mida programmeeritud; variant 4 on vastupidi tõele — exploratory ja usability nõuavad just inimese intuitsiooni, mida automaatika ei suuda."
+    "correctIndex": 1,
+    "explanation": "Automaatika tugevus on KORRATAVUS ja KIIRUS — sobib stabiilsetele, korduvatele stsenaariumitele (regressioon, smoke, API-testid). Variant 1 ignoreerib testija analüüsi-rolli; variant 3 on müüt — skriptid testivad ainult seda, mida programmeeritud; variant 4 on vastupidi tõele — exploratory ja usability nõuavad just inimese intuitsiooni."
   },
   {
     "level": 3,
     "question": "Millist tüüpi testimine on automatiseerimiseks tüüpiliselt KÕIGE EBASOOVITAVAM?",
     "options": [
-      "Regressioonitestimine, mis käivitatakse iga koodimuudatuse järel CI pipeline'is — sadu teste, mille manuaalne käivitamine oleks majanduslikult ebaratsionaalne",
-      "Jõudlustestimine (load, stress, spike), kus simuleeritakse tuhandeid samaaegseid kasutajaid — inimene ei suudaks füüsiliselt sellist koormust tekitada",
-      "Exploratory ja usability-testimine, kus testija intuitiivselt avastab süsteemi ja hindab kasutajakogemust — automatiseeritud skript ei oska avastada ootamatut",
-      "API-testimine, kus tuhandeid päringuid käivitatakse erinevate sisendi-kombinatsioonidega — kiired ja deterministlikud testid sobivad automaatikale ideaalselt"
+      "Regressioonitestimine, mis käivitatakse iga koodimuudatuse järel CI pipeline'is — sadu teste, mille manuaalne käivitamine oleks majanduslikult ebaratsionaalne ja viiks defektide leidmise hilinemiseni juurutusse",
+      "Jõudlustestimine (load, stress, spike), kus simuleeritakse tuhandeid samaaegseid kasutajaid — inimene ei suudaks füüsiliselt sellist koormust tekitada käsitsi ühel testikäigul ühe testija poolt",
+      "Exploratory ja usability-testimine, kus testija intuitiivselt avastab süsteemi käitumist",
+      "API-testimine, kus tuhandeid päringuid käivitatakse erinevate sisendi-kombinatsioonidega kindlate andmetega — kiired ja deterministlikud testid sobivad automaatikale ideaalselt regressiooni vältimiseks"
     ],
     "correctIndex": 2,
     "explanation": "Exploratory ja usability vajavad inimese taju — 'kas see tundub loogiline?', 'kas värvi-kontrast on piisav?', 'mis juhtub, kui ma teen midagi ootamatut?'. Skript järgib ainult ette antud sammusi. Variandid 1, 2, 4 on klassikalised automaatika TUGEVUSED — korduv, suuremahuline, deterministlik."
@@ -507,22 +507,22 @@
     "level": 4,
     "question": "Mis on Selenium peamine kasutusala automaattestimises?",
     "options": [
-      "Veebirakenduste UI-testimise automatiseerimine — Selenium WebDriver käivitab brauserit (Chrome, Firefox, Edge) programmaatiliselt ja simuleerib kasutaja-tegevusi (klikk, sisestus, navigeerimine)",
-      "Mobiilirakenduste (iOS, Android) testimise automatiseerimine natiivseid SDK-kutseid kasutades — tuntud konkurent Appium-ile mobiili-valdkonnas",
-      "Jõudlustestimine ja koormustestimine, kus simuleeritakse tuhandeid samaaegseid kasutajaid — alternatiivne tööriist JMeter-ile ja k6-le",
-      "Lähtekoodi staatiline analüüs ja koodikvaliteedi mõõtmine — tuntud konkurent SonarQube-le ja ESLint-ile arenduskeskkonnas"
+      "Veebirakenduste UI-testimise automatiseerimine — Selenium WebDriver käivitab brauserit",
+      "Mobiilirakenduste (iOS, Android) testimise automatiseerimine natiivseid SDK-kutseid kasutades — tuntud konkurent Appium-ile mobiili-valdkonnas, kasutab samuti WebDriver-protokolli ja sarnast API-d testijatele",
+      "Jõudlustestimine ja koormustestimine, kus simuleeritakse tuhandeid samaaegseid kasutajaid eri seadmetelt — alternatiivne tööriist JMeter-ile, k6-le ja Gatling-ile arenduskeskkonnas",
+      "Lähtekoodi staatiline analüüs ja koodikvaliteedi mõõtmine vastavalt SOLID-printsiipidele — tuntud konkurent SonarQube-le, ESLint-ile ja Checkmarx-ile arenduskeskkonnas pikemas perspektiivis"
     ],
     "correctIndex": 0,
-    "explanation": "Selenium = veebi UI-automaatika de facto standard. WebDriver protokoll töötab Chrome, Firefox, Safari, Edge brauseritega. Toetab Java, Python, JavaScript, C# jt keelte sidumeid. Variant 2 kirjeldab Appium-it (mobiil); variant 3 JMeter/k6 (jõudlus); variant 4 SonarQube (staatiline analüüs) — kõik on REAALSED tööriistad eri otstarvetel."
+    "explanation": "Selenium = veebi UI-automaatika de facto standard. WebDriver protokoll töötab Chrome, Firefox, Safari, Edge brauseritega. Toetab Java, Python, JavaScript, C# jt keelte sidumeid. Variant 2 kirjeldab Appium-it (mobiil); variant 3 JMeter/k6 (jõudlus); variant 4 SonarQube (staatiline analüüs)."
   },
   {
     "level": 5,
     "question": "Mis on Appium peamine kasutusala?",
     "options": [
-      "Veebirakenduste cross-browser testimine kõigis suuremates brauserites paralleelselt — pilve-põhine alternatiiv Selenium Grid-ile",
-      "Mobiilirakenduste (iOS, Android) UI-automaatika ühtse API-ga — sama testikood töötab nii natiivsetel, hübriid- kui veebi-mobiilirakendustel",
-      "API-testimine REST ja GraphQL teenuste vastu — kerge alternatiiv Postman-i ja REST Assured-i ees",
-      "Andmebaasi-testimine (PostgreSQL, MySQL, MongoDB) — kontrollib päringute korrektsust ja jõudlust kindlate sisendite puhul"
+      "Veebirakenduste cross-browser testimine kõigis suuremates brauserites (Chrome, Firefox, Safari, Edge) paralleelselt eri OS-idel — pilve-põhine alternatiiv Selenium Grid-ile koos paralleelse käivitusega",
+      "Mobiilirakenduste UI-automaatika ühtse API-ga — natiivne, hübriid, mobiili-veeb",
+      "API-testimine REST ja GraphQL teenuste vastu kindlate sisendite ja oodatud väljunditega — kerge alternatiiv Postman-i, REST Assured-i ja Karate-le suuremate organisatsioonide testautomaatika tiimis",
+      "Andmebaasi-testimine (PostgreSQL, MySQL, MongoDB, Redis) — kontrollib päringute korrektsust, jõudlust ja transaktsioonide terviklikkust kindlate sisendite puhul kasutajalehtede sees"
     ],
     "correctIndex": 1,
     "explanation": "Appium kasutab WebDriver protokolli (sama, mis Selenium), kuid sihib mobiili-platforme. Toetab natiivset (Swift/Kotlin), hübriid- (Cordova, Ionic) ja mobiili-veebi rakendusi. Variant 1 kirjeldab BrowserStack/Sauce Labs/LambdaTest tüüpi platforme; variandid 3 ja 4 on eraldi spetsialiseerunud testitööriistade nišid."
@@ -531,10 +531,10 @@
     "level": 6,
     "question": "Mis on TestNG ja JUnit roll testautomaatika kontekstis?",
     "options": [
-      "Brauseri-draiverid, mis ühendavad testikoodi konkreetsete brauseritega (Chrome, Firefox) — vajalikud Selenium WebDriver-i koos kasutamiseks",
-      "Java testiraamistikud, mis pakuvad annotatsioone (@Test, @Before, @After), assertion-eid ja testikäituse haldamist (parallel execution, grouping, dependencies) — testikoodi struktuuri alus",
-      "CI/CD pipeline'i tööriistad, mis käivitavad teste automaatselt iga koodimuudatuse järel — alternatiivid Jenkins-ile ja GitHub Actions-ile",
-      "Defekti-haldustööriistad, kus salvestatakse leitud bug'id ja jälgitakse parandamise edenemist — alternatiivid Jira-le ja Bugzilla-le"
+      "Brauseri-draiverid, mis ühendavad testikoodi konkreetsete brauseritega (ChromeDriver Chrome'i jaoks, GeckoDriver Firefox'i jaoks) — vajalikud Selenium WebDriver-i koos kasutamiseks paralleelse käivituse jaoks",
+      "Java testiraamistikud, mis pakuvad annotatsioone, assertion'eid, parallel execution'it",
+      "CI/CD pipeline'i tööriistad, mis käivitavad teste automaatselt iga koodimuudatuse järel pärast pull request'i avamist — alternatiivid Jenkins-ile, GitHub Actions-ile ja GitLab CI-le ettevõttes",
+      "Defekti-haldustööriistad, kus salvestatakse leitud bug'id ja jälgitakse parandamise edenemist sprindi-kaupa — alternatiivid Jira-le, Bugzilla-le ja YouTrack-ile suurte tiimide testijatele"
     ],
     "correctIndex": 1,
     "explanation": "TestNG (next generation) ja JUnit on test runner / framework Java-le. Pakuvad: testimeetodi annotatsioonid, eel-/järeltingimused, assertion'id, parallel run, raportid. TestNG on rikkamate funktsioonidega; JUnit lihtsam ja standardsem. Variandid 1 (driver'id), 3 (CI/CD), 4 (defekt-haldus) on testimise ökosüsteemi muud kihid."
@@ -543,46 +543,46 @@
     "level": 7,
     "question": "Kuidas Jenkins (või muu CI-tööriist) toetab automaattestimist?",
     "options": [
-      "Jenkins genereerib automaatselt testijuhud koodist staatilise analüüsi abil — testija ei pea testikoodi käsitsi kirjutama uue feature jaoks",
-      "Jenkins käivitab automaattestid iga commit'i / pull request'i / scheduled trigger'i järel kindlas keskkonnas, kogub raportid ja teavitab tiimi tõrkest — kiire tagasiside-tsükli alus",
-      "Jenkins asendab Selenium WebDriver-i ja Appium-i, sest pakub natiivset brauseri- ja mobiili-automaatikat ilma eraldi tööriistadeta",
-      "Jenkins on testijate koostöö-platform, kus saab jagada testijuhte, kommenteerida defekte ja koordineerida tööd reaalajas (sarnane Slack-ile)"
+      "Jenkins genereerib automaatselt testijuhud koodist staatilise analüüsi abil tehisintellekti kasutades — testija ei pea testikoodi käsitsi kirjutama uue feature jaoks ega vana koodi üle vaatama enne sprindi lõppu",
+      "Jenkins käivitab automaattestid iga commit'i / pull request'i / scheduled trigger'i järel ja teavitab tõrkest",
+      "Jenkins asendab Selenium WebDriver-i ja Appium-i, sest pakub natiivset brauseri- ja mobiili-automaatikat ilma eraldi tööriistadeta — kõik-ühes lahendus enterprise-keskkonnale ühe litsentsi all",
+      "Jenkins on testijate koostöö-platform, kus saab jagada testijuhte, kommenteerida defekte ja koordineerida tööd reaalajas (sarnane Slack-ile ja Microsoft Teams-ile, kuid testijate-spetsiifiline)"
     ],
     "correctIndex": 1,
-    "explanation": "Jenkins on CI/CD orchestrator — käivitab pipeline'i (build → test → deploy) trigger'ite peale. Tüüpiline test-step: 'käivita unit-testid, kui faililes, peatu; muidu jätka integration → e2e → deploy staging'. Variant 1 on AI-test-generation tüüpi tööriistade lubadus (Diffblue, Testim); variant 3 on tehniliselt vale (Jenkins ei tea brauserist midagi); variant 4 segab koostöö-tööriistadega."
+    "explanation": "Jenkins on CI/CD orchestrator — käivitab pipeline'i (build → test → deploy) trigger'ite peale. Tüüpiline test-step: 'käivita unit-testid, kui faililes, peatu; muidu jätka integration → e2e → deploy staging'. Variant 1 on AI-test-generation tüüpi tööriistade lubadus (Diffblue, Testim); variant 3 on tehniliselt vale; variant 4 segab koostöö-tööriistadega."
   },
   {
     "level": 8,
     "question": "Mis on Page Object Model (POM) muster Selenium-testides?",
     "options": [
-      "Mehhanism, kus iga testitulemus salvestatakse ühe 'Page' objektina andmebaasis — võimaldab hilisemat analüüsi ja raporteerimist",
-      "Disainimuster, kus iga veebileht (või selle suurem osa) on eraldi klass koos selektoritega ja tegevustega; testid kasutavad neid klasse, mitte ei tegele HTML-elementidega otse — UI muudatused mõjutavad ainult vastavat klassi",
-      "Selenium-i sisemine optimeerimine, mis cache-ib lehe DOM-i mälus, et järgnevad testid ei peaks lehte uuesti laadima — jõudluse-parandus",
-      "Andmevoog, kus iga lehekülg saab unikaalse ID ja test salvestab ID-ahela käivituse käigust — vajalik raporteerimiseks ja audit-logiks"
+      "Mehhanism, kus iga testitulemus salvestatakse ühe 'Page' objektina andmebaasis vastavalt lehe URL-ile — võimaldab hilisemat analüüsi, raporteerimist ja trend-jälgimist juhtimisarmatuurlauas tooteomaniku jaoks kvartaalse koosoleku ajal",
+      "Disainimuster, kus iga veebileht on eraldi klass koos selektoritega ja tegevustega; testid ei tegele HTML-iga otse",
+      "Selenium-i sisemine optimeerimine, mis cache-ib lehe DOM-i mälus pärast esimest laadimist — järgnevad testid ei pea lehte uuesti laadima, mis annab jõudluse-paranduse suurte regressioonikomplektide puhul",
+      "Andmevoog, kus iga lehekülg saab unikaalse ID ja test salvestab ID-ahela käivituse käigust testisuit'ide ja kasutajateekondade kontekstis — vajalik raporteerimiseks ja audit-logiks ettevõtte vastavuse jaoks"
     ],
     "correctIndex": 1,
-    "explanation": "POM on testautomaatika klassikaline disainimuster. Probleem ilma POM-ita: kui nupu CSS-selektor muutub, peavad SADAD testid muutuma. Lahendus POM-iga: muudad ühte page-class'i meetodit, kõik testid jätkavad tööd. Eelis: hooldatavus + loetavus. Variandid 1, 3, 4 võtavad sõnu 'page' ja 'object' eri kontekstides, mis pole POM."
+    "explanation": "POM on testautomaatika klassikaline disainimuster. Probleem ilma POM-ita: kui nupu CSS-selektor muutub, peavad SADAD testid muutuma. Lahendus POM-iga: muudad ühte page-class'i meetodit, kõik testid jätkavad tööd. Eelis: hooldatavus + loetavus. Variandid 1, 3, 4 võtavad sõnu 'page' ja 'object' eri kontekstides."
   },
   {
     "level": 9,
     "question": "Mis on andme-juhitud (data-driven) testimise põhiidee?",
     "options": [
-      "Testimine, mis kasutab ainult production-andmebaasi reaalseid andmeid — sünteetilised testandmed pole lubatud, sest võivad jätta kahe silma vahele tegelikud kasutusmustrid",
-      "Sama testi-loogika käivitamine paljude eri sisendi-kombinatsioonide vastu (CSV, Excel, JSON, andmebaas) — testikood eraldatakse testandmetest, mis muudab testikomplekti laiendatavaks ilma koodi muudatuseta",
-      "Testitulemuste analüüs masinõppega, et tuvastada defektide kobardumis-mustreid ja ennustada, milliseid teste järgmisena käivitada CI pipeline'is",
-      "Andmete (nõuded, defektid, testikatvus) keskne haldamine ühes tööriistas (Jira, TestRail), millest kõik testimise otsused tehakse statistiliselt"
+      "Testimine, mis kasutab ainult production-andmebaasi reaalseid andmeid — sünteetilised testandmed pole lubatud, sest võivad jätta kahe silma vahele tegelikud kasutusmustrid ja edge-juhtumid päris kasutajatest",
+      "Sama testi-loogika käivitamine paljude eri sisendi-kombinatsioonide vastu (CSV, Excel, JSON, andmebaas)",
+      "Testitulemuste analüüs masinõppega, et tuvastada defektide kobardumis-mustreid ja ennustada, milliseid teste järgmisena käivitada CI pipeline'is sprindi vältel ressursside säästuks ettevõttes",
+      "Andmete (nõuded, defektid, testikatvus) keskne haldamine ühes tööriistas (Jira, TestRail, Zephyr), millest kõik testimise otsused tehakse statistiliselt vastavalt trend-analüüsile ja kvartaalsetele KPI-dele"
     ],
     "correctIndex": 1,
-    "explanation": "Data-driven test = sama loogika × N andmestik. Näide: sisselogimise test kasutaja/parooli kombinatsioonidega tabelist. Tööriistad: TestNG @DataProvider, JUnit @ParameterizedTest, Cucumber Examples. Eelis: 1 test + 100 rida andmeid = 100 testijuhtu. Variandid 1, 3, 4 võtavad sõna 'data' eri kontekstides (production-data, ML, data-management)."
+    "explanation": "Data-driven test = sama loogika × N andmestik. Näide: sisselogimise test kasutaja/parooli kombinatsioonidega tabelist. Tööriistad: TestNG @DataProvider, JUnit @ParameterizedTest, Cucumber Examples. Eelis: 1 test + 100 rida andmeid = 100 testijuhtu. Variandid 1, 3, 4 võtavad sõna 'data' eri kontekstides."
   },
   {
     "level": 10,
     "question": "Mis on BDD (Behavior-Driven Development) Gherkin-süntaksi kolm võtmesõna?",
     "options": [
-      "Setup-Action-Cleanup: 1) seadista keskkond, 2) tee testitav tegevus, 3) puhasta keskkond — klassikaline xUnit testirakenduste struktuur",
-      "Given-When-Then: 1) Given (lähteolukord), 2) When (sündmus/tegevus), 3) Then (oodatav tulemus) — loomulikus keeles spetsifikatsioonide vorm Cucumber-i, SpecFlow-i ja Behave-i jaoks",
-      "Build-Test-Deploy: 1) ehita rakendus, 2) jooksuta testid, 3) juuruta produktsiooni — DevOps CI/CD pipeline'i kolm peamist etappi",
-      "Plan-Do-Check: 1) plaani test, 2) tee test, 3) kontrolli tulemust — Demingi PDCA-tsükli rakendamine testimisele kvaliteediringi mõttes"
+      "Setup-Action-Cleanup: 1) seadista keskkond ja sõltuvused, 2) tee testitav tegevus kasutaja vaatest, 3) puhasta keskkond pärast testi käivitamist — klassikaline xUnit testirakenduste struktuur AAA-mustri laiendusena",
+      "Given-When-Then: lähteolukord, sündmus/tegevus, oodatav tulemus",
+      "Build-Test-Deploy: 1) ehita rakendus tarbimiseks valmis, 2) jooksuta testid kindlas keskkonnas, 3) juuruta produktsiooni — DevOps CI/CD pipeline'i kolm peamist etappi sprindi vältel ettevõttes",
+      "Plan-Do-Check: 1) plaani test, 2) tee test ja registreeri tulemused, 3) kontrolli tulemust läbi-vastavalt-eesmärgile — Demingi PDCA-tsükli rakendamine testimisele kvaliteediringi mõttes ettevõttes"
     ],
     "correctIndex": 1,
     "explanation": "Gherkin on BDD-tööriistade (Cucumber, SpecFlow, Behave) ühine keel. Näide: 'Given kasutaja on sisse loginud / When ta klõpsab Logout / Then ta suunatakse avalehele.' Eelis: ärianalüütik, arendaja ja tester räägivad ühte keelt. Variandid 1 (xUnit), 3 (DevOps), 4 (PDCA) on kõik reaalsed mustrid eri valdkondades."
@@ -591,10 +591,10 @@
     "level": 11,
     "question": "Mis on API-testimise põhiline eelis UI-testimise ees automaatikas?",
     "options": [
-      "API-testid on alati 100% katvusega, sest testivad otse äriloogikat — UI-testid jätavad alati osa serveri-poolset koodi katmata",
-      "API-testid on tüüpiliselt kiiremad, stabiilsemad (ei sõltu UI-renderdamisest, brauseri-versioonist, animatsioonidest) ja saavad otse kontrollida andmevoogu, autoriseerimist ja äriloogikat — vähem flaky",
-      "API-testid asendavad täielikult UI-teste — kui API töötab, töötab automaatselt ka kogu kasutaja-kogemus, sest UI on lihtsalt ümbris API ümber",
-      "API-testid ei vaja teste-andmeid ega keskkonna-seadistust, sest töötavad otse koodi vastu — eelis manuaalse seadistuse koormuse ees"
+      "API-testid on alati 100% katvusega, sest testivad otse äriloogikat koodi tasemel — UI-testid jätavad alati osa serveri-poolset koodi katmata kasutaja perspektiivist ega anna täielikku ülevaadet süsteemist",
+      "API-testid on tüüpiliselt kiiremad ja stabiilsemad — vähem flaky, otse äriloogika kontroll",
+      "API-testid asendavad täielikult UI-teste — kui API töötab, töötab automaatselt ka kogu kasutaja-kogemus, sest UI on lihtsalt ümbris API ümber, mis ei lisa väärtust tarkvara-tehnilises mõttes",
+      "API-testid ei vaja teste-andmeid ega keskkonna-seadistust ega andmebaasi mock-imist, sest töötavad otse koodi vastu — eelis manuaalse seadistuse koormuse ees iga sprindi alguses tüütult ja korduvalt"
     ],
     "correctIndex": 1,
     "explanation": "API-testid (REST Assured, Postman/Newman, Karate, supertest) on testpüramidi 'kesktasand'. Eelised: kiired (millisekundid, mitte sekundid), stabiilsemad (ei murdu UI-muudatustega), parem katvus äriloogikale. Aga ei kata UI-d ja UX-i. Variant 1 on liialdus; variant 3 jätab UI-defektid katmata; variant 4 on faktiliselt vale (API-testid vajavad samuti andmeid ja keskkonda)."
@@ -603,10 +603,10 @@
     "level": 13,
     "question": "Stsenaarium: tiim kaalub investeeringut testautomaatikasse. Mis tegur on automaatika ROI hindamisel KÕIGE OLULISEM?",
     "options": [
-      "Tööriista kommertshind aastas — kõige odavam tööriist annab automaatselt parima ROI-i sõltumata projekti iseärasustest",
-      "Programmeerimiskeele moodsus — uusimat keelt (näiteks Rust või Kotlin) toetav tööriist annab pikemas perspektiivis suurema ROI-i",
-      "Kui sageli teste käivitatakse ja kui stabiilne on testitav osa: harva muutuv stabiilne UI + sage CI-käivitus = kõrge ROI; sageli muutuv UI + harv käivitus = madal ROI (võib olla kahjumis)",
-      "Tiimi suurus — mida suurem testijate tiim, seda suurem ROI, sest automaatika säästab proportsionaalselt rohkem inimtunde"
+      "Tööriista kommertshind aastas litsentsidena — kõige odavam tööriist annab automaatselt parima ROI-i sõltumata projekti iseärasustest ja sihtmärgi muutuvusest sprindi vältel sprintide kaupa",
+      "Programmeerimiskeele moodsus ja populaarsus tiimis — uusimat keelt (näiteks Rust, Kotlin, Go) toetav tööriist annab pikemas perspektiivis suurema ROI-i ja talendi-leitavuse turul",
+      "Käivituste sagedus × testitava osa stabiilsus — sage käivitus + stabiilne UI = kasum",
+      "Tiimi suurus ja kompositsioon — mida suurem testijate tiim ja erialane spetsialiseerumine, seda suurem ROI, sest automaatika säästab proportsionaalselt rohkem inimtunde päevas tunniarvestusena"
     ],
     "correctIndex": 2,
     "explanation": "Automaatika ROI = (säästetud aeg × käivituste arv) − (algkulu + hooldekulu). Sage käivitus + stabiilne sihtmärk = kasum. Kiiresti muutuv UI võib teha hoolduskulu suuremaks kui säästetud aeg. Klassikaline juhend: automatiseeri korduvaid stabiilseid teste, käsitsi tee uurivat. Variandid 1, 2, 4 on lihtsustused, mis ignoreerivad hoolduskulu."
@@ -615,10 +615,10 @@
     "level": 14,
     "question": "Mis on cross-browser testimise eesmärk ja millised tööriistad seda toetavad?",
     "options": [
-      "Testimine, mille käigus kasutaja saab valida lemmikbrauseri ja teste kohandatakse selle järgi — personalisatsiooni-omadus kasutaja-kogemuses",
-      "Testimine, kus kontrollitakse rakenduse käitumist eri brauserites (Chrome, Firefox, Safari, Edge) ja versioonides — pilveplatvormid (BrowserStack, Sauce Labs, LambdaTest) pakuvad sadu brauseri+OS kombinatsioone ilma kohaliku seadistuseta",
-      "Testimine, mille käigus kaks brauseri-akent on samaaegselt avatud ja võrreldakse erinevusi reaalajas — debug-tehnika UI-arendaja igapäeva-tööks",
-      "Testimine, kus mitu testijat töötavad samaaegselt eri brauseritega võrgu-konverentsis — koostöö-vorm hajutatud testitiimi jaoks"
+      "Testimine, mille käigus kasutaja saab valida lemmikbrauseri eelistuse rakenduses ja teste kohandatakse selle järgi automaatselt — personalisatsiooni-omadus kasutaja-kogemuses ja kasutajaprofiilis koos teemavalikuga UI-s",
+      "Testimine, kus kontrollitakse rakenduse käitumist eri brauserites (BrowserStack, Sauce Labs, LambdaTest)",
+      "Testimine, mille käigus kaks brauseri-akent on samaaegselt avatud kõrvuti ja võrreldakse erinevusi reaalajas tester silma järgi — debug-tehnika UI-arendaja igapäeva-tööks visuaalse testimise asemel",
+      "Testimine, kus mitu testijat töötavad samaaegselt eri brauseritega Zoom-i või Teams-i video-konverentsis kõrvuti — koostöö-vorm hajutatud testitiimi jaoks kaugtöötajate puhul kogu maailmas"
     ],
     "correctIndex": 1,
     "explanation": "Cross-browser testing tabab CSS-i, JS-i ja DOM-i renderdamise erinevusi brauserites. Selenium Grid lubab oma infrastruktuuris paralleelset käivitamist; pilveplatvormid annavad sama ilma kohaliku seadistuseta (sh vanad versioonid, mobile brauserid, eri OS-id). Variandid 1, 3, 4 võtavad sõnu 'cross' ja 'browser' eri kontekstides."
@@ -627,12 +627,12 @@
     "level": 15,
     "question": "Mis on AI/ML rolli kaasaegses testautomaatikas?",
     "options": [
-      "AI asendab täielikult testijad ja arendajad — kogu kvaliteedi-protsess käib autonoomse generatiivse mudeliga, mis kirjutab koodi, teste ja parandab defekte ilma inimese sekkumiseta",
-      "Self-healing testid (auto-uuenduvad selektorid UI-muudatuste järel), AI-juhitud testigeneraatorid, visuaalne regressioon ML-iga, defektide ennustamine code change'i põhjal, flaky test'ide tuvastamine — täiendavad inimest, ei asenda",
-      "AI on testimises kasutu hype, sest testimine nõuab determinismi ja korratavust — neuronvõrkude tõenäosuspõhised väljundid pole kunagi sobivad testimisvahendiks",
-      "AI rakendub testimisel ainult AI-rakenduste enda testimisel (nt LLM-i vastuse hindamine) — traditsioonilises tarkvaraarenduses ei oma rolli"
+      "AI asendab täielikult testijad ja arendajad — kogu kvaliteedi-protsess käib autonoomse generatiivse mudeliga, mis kirjutab koodi, teste, parandab defekte, võtab disaini-otsused ja vastutab kasutajate eest ilma inimese sekkumiseta sprindi vältel",
+      "Self-healing testid, AI-juhitud testigeneraatorid, visuaalne regressioon, defektide ennustamine — täiendavad inimest",
+      "AI on testimises kasutu hype, sest testimine nõuab determinismi ja korratavust eesti-jätkavalt — neuronvõrkude tõenäosuspõhised väljundid pole kunagi sobivad testimisvahendiks ega kvaliteedikontrolliks ühegi tarkvara puhul",
+      "AI rakendub testimisel ainult AI-rakenduste enda testimisel (nt LLM-i vastuse hindamine kvaliteedi suhtes) — traditsioonilises tarkvaraarenduses ei oma rolli ega anna mingit lisaväärtust automatiseerimise käigus üldse"
     ],
     "correctIndex": 1,
-    "explanation": "Tööriistad: Testim, Mabl, Functionize (self-healing UI-testid); GitHub Copilot / Diffblue Cover (testikoodi generatsioon); Applitools (visuaalne AI-regressioon); Launchable (test prioritization ML-iga). Variant 1 on hype-ülepingutus; variant 3 on defensiivne eitus (AI on juba praktikas kasutuses); variant 4 on liiga kitsas (AI on muutmas kogu testimise valdkonda)."
+    "explanation": "Tööriistad: Testim, Mabl, Functionize (self-healing UI-testid); GitHub Copilot / Diffblue Cover (testikoodi generatsioon); Applitools (visuaalne AI-regressioon); Launchable (test prioritization ML-iga). Variant 1 on hype-ülepingutus; variant 3 on defensiivne eitus (AI on juba praktikas kasutuses); variant 4 on liiga kitsas."
   }
 ]
