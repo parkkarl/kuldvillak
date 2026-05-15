@@ -1354,5 +1354,77 @@
     ],
     "correctIndex": 0,
     "explanation": "Heuristic evaluation = 3-5 UX-eksperti kontrollivad UI-d Nielseni 10 heuristika vastu (visibility of system status, match between system and real world, user control jne). Odav, kiire, leiab 'üldist sorti' probleeme. User testing = päris kasutajad, leiavad reaalseid kasutus-probleeme, mida eksperdid ei näe. Variandid 2, 3, 4 on müüdid."
+  },
+  {
+    "level": 4,
+    "question": "Mis on peamine erinevus performance testing'u ja load testing'u vahel?",
+    "options": [
+      "Performance testing on lai distsipliin (kiirus, stabiilsus, skaleeritavus, töökindlus eri tingimustel — load, stress, endurance); load testing on alaliik, mis keskendub OODATUD kasutaja-koormusele",
+      "Performance testing on alati automaatne ja load testing alati manuaalne — automatiseerimise aste on kahe testimise peamine eristaja praktikas suurettevõttes pikemas perspektiivis IT-osakonnas pikas vaates pikas perspektiivis pikas vaates",
+      "Performance testing toimub arenduse algfaasis ja load testing projekti lõpus — kaks järjestikust ajalist faasi sama tegevuse jaoks pikas perspektiivis projekti vältel suuremas ettevõttes pikemas vaates pikas perspektiivis pikas vaates",
+      "Performance testing kontrollib koodi-kvaliteeti (tsükloomatne keerukus, duplikatsioon) ja load testing serveri-koormust — kaks ortogonaalset mõõdet, mis täiendavad üksteist pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas"
+    ],
+    "correctIndex": 0,
+    "explanation": "Performance testing on katus-mõiste (load, stress, spike, endurance, volume — kõik selle alaliigid). Load testing kontrollib spetsiifiliselt OODATUD kasutaja-koormust (kas süsteem talub kavandatud nõudlust). Variandid 2, 3, 4 on müüdid (mõlemad automaatsed, mõlemad eri faasides, kumbki ei puuduta koodikvaliteeti otse)."
+  },
+  {
+    "level": 5,
+    "question": "Mida tüüpiliselt mõõdab performance testing?",
+    "options": [
+      "Response time (vastuseaeg), throughput (läbilaskvus, päringuid sekundis) ja resource utilization (CPU, mälu, võrk, ketta-IO kasutus)",
+      "Koodi-kvaliteet vastavalt SOLID-printsiipidele ja tsükloomatne keerukus iga moodulis — staatilise analüüsi-mõõdikud pikemas perspektiivis suuremas tarkvaratiimis ettevõttes pikas vaates kogu maailmas pikas vaates",
+      "Kasutaja-rahulolu skoor (NPS, CSAT) ja konversiooni-määr e-poes — turunduse-mõõdikud pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikemas vaates pikas vaates",
+      "Defektide-tihedus iga moodulis (defekte / 1000 koodirea kohta) ja katvuse-protsent unit-testidega — kvaliteedi-mõõdikud pikemas perspektiivis suuremas projektis ettevõttes pikas vaates kogu maailmas pikas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Performance testing kolm tuum-mõõdikut: response time (latency, mõõdetakse percentile'idega P50/P95/P99), throughput (req/s), resource utilization (CPU/mälu/I/O monitooring). Variant 2 on staatilise analüüsi mõõdikud; variant 3 turunduse mõõdikud; variant 4 koodi-kvaliteedi mõõdikud — kõik valesse konteksti."
+  },
+  {
+    "level": 7,
+    "question": "Mis mõõdikud on load testing'ule kõige spetsiifilisemad?",
+    "options": [
+      "Vastuseaeg, transactions per second (TPS) ja samaaegsete kasutajate arv (concurrent users) — eesmärk valideerida, et süsteem talub tipp-koormust ilma teenuse halvenemiseta",
+      "Andmebaasi-tabelite normaliseerimise aste (1NF, 2NF, 3NF, BCNF) ja indeksite arv tabelite kohta — andmebaasi-disaini mõõdikud pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis",
+      "Logifailide formaadi vastavus keskse log-süsteemi (ELK, Splunk) ootustele — observability-mõõdikud pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas perspektiivis",
+      "Brauseri-konsoolide hoiatuste arv ja JS-i erindite tüübid — front-end debug-mõõdikud pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas perspektiivis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Load testing võtmemõõdikud: TPS (kui palju tehinguid sekundis süsteem võtab vastu), concurrent users (kui palju samaaegseid kasutajaid talub), vastuseaeg sellel koormusel (kas SLA täidetud). Variandid 2, 3, 4 on muude valdkondade mõõdikud (andmebaasi-disain, observability, front-end debug)."
+  },
+  {
+    "level": 9,
+    "question": "Millal tüüpiliselt performance testing'ut ja load testing'ut tehakse?",
+    "options": [
+      "Performance testing kogu arendusperioodi vältel (üldise tervise jälgimiseks); load testing tüüpiliselt enne suuremaid release'e või turunduskampaaniaid (et valideerida tipp-koormuse talumist)",
+      "Mõlemat ainult production-keskkonnas pärast juurutamist — testimine arendusfaasis on liiga kallis suuremate süsteemide jaoks pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas vaates pikas perspektiivis",
+      "Mõlemat ainult kvartali lõpus auditi käigus — formaalne nõue regulatsiooni-vastavuse jaoks pikemas perspektiivis suuremas korporatsioonis pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas perspektiivis",
+      "Performance ainult arendaja-tasandi ja load ainult testija-tasandi tegevus — kahe rolli vastutuse jagamine sõltuvalt tasemest pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Performance jätkuvalt — märkad regressioone (uue feature pärast lehe vastuseaeg topelt). Load testing punkt-kontroll oodatud koormuse jaoks (näiteks Black Friday, mobiili-äpi reklaami-kampaania). Variandid 2, 3, 4 piiravad testimist liiga kitsalt — defektid leitakse hilja, kallilt."
+  },
+  {
+    "level": 11,
+    "question": "Millised on tavalised tööriistad performance ja load testing'u jaoks?",
+    "options": [
+      "Apache JMeter, LoadRunner, Gatling, BlazeMeter, k6 — pakuvad simuleeritud koormust, mõõdavad vastuseaegu ja genereerivad raporteid eri protokollide vastu (HTTP, JDBC, JMS jne)",
+      "SonarQube, Checkmarx, ESLint — staatilise analüüsi tööriistad, mis mõõdavad koodikvaliteeti ja leiavad turvaprobleeme pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas vaates",
+      "Selenium WebDriver, Cypress, Playwright — UI-testimise tööriistad, mida kasutatakse veebirakenduste funktsionaalsete testide automatiseerimiseks pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis",
+      "Postman, Insomnia, Bruno — API-testimise tööriistad, mida kasutatakse REST ja GraphQL teenuste manuaalseks testimiseks pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "JMeter (avatud, Java-põhine, GUI), Gatling (Scala, code-as-config), k6 (JavaScript, moodne CI-sõbralik), LoadRunner (kommerts, suurettevõtte-tase), BlazeMeter (cloud-platform JMeter-i jaoks). Variandid 2, 3, 4 on REAALSED tööriistad (staatika, UI-test, API-test) — kuid pole performance/load testimise tööriistad."
+  },
+  {
+    "level": 13,
+    "question": "Mis on performance testing'u peamine kasu süsteemi pudelikaela (bottleneck) leidmisel?",
+    "options": [
+      "Mõõta süsteemi ressursi-kasutust (CPU, mälu, võrk, ketas, andmebaasi-päringud) koormuse all — leida, milline komponent saturaalseerub esimesena ja piirab kogu süsteemi",
+      "Leida koodibaasis kõige pikemaid funktsioone (üle 100 rea) — refaktoreerimise prioritiseerimine pikemas perspektiivis suuremas tarkvarapakettis ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates",
+      "Tuvastada kõige populaarsemaid kasutajateekondi (analytics-ist) — UX-uuringu eeltöö pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas perspektiivis pikas vaates",
+      "Loendada arendaja-tiimi keskmist sprindi-edenemise kiirust (velocity points/sprint) — projektijuhtimise mõõdik pikemas perspektiivis suuremas ettevõttes pikas vaates kogu maailmas pikas perspektiivis pikas vaates pikemas vaates"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bottleneck = kitsaskoht, mis piirab kogu süsteemi läbilaskvust (Amdahli seadus). Performance test näitab kohorvalt: koormus kasvab → CPU on 100%, mälu on 40%, andmebaas on 30% → bottleneck on CPU. Lahendus: optimeerida CPU-intensiivseid teid VÕI skaaleerida horisontaalselt. Variandid 2, 3, 4 on muude analüüside metoodikad."
   }
 ]
